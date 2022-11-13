@@ -3,3 +3,9 @@
     <NuxtPage />
   </div>
 </template>
+
+<style>
+  body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+</style>
