@@ -1,3 +1,11 @@
+<script setup>
+    import { atcb_action, atcb_init } from 'add-to-calendar-button';
+
+    onMounted(() => {
+        console.log("Mounted!")
+    })
+</script>
+
 <template>
     <section class="h-[475px] py-12 bg-gray-100">
         <div class="max-w-[85%] h-full mx-auto mt-auto flex flex-col justify-end">
@@ -13,3 +21,7 @@
         </div>
     </section>
 </template>
+
+<style>
+    @import 'add-to-calendar-button/assets/css/atcb.css';
+</style>
