@@ -5,10 +5,12 @@ overrides:
 
 specifiers:
   '@nuxtjs/tailwindcss': ^6.1.3
+  '@vimeo/player': ^2.18.0
   add-to-calendar-button: ^1.18.6
   nuxt: 3.0.0-rc.13
 
 dependencies:
+  '@vimeo/player': 2.18.0
   add-to-calendar-button: 1.18.6
 
 devDependencies:
@@ -859,6 +861,13 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@vimeo/player/2.18.0:
+    resolution: {integrity: sha512-AJ8LQJ0WQXoPO6GBiMRmcBpdpUMnNm12blG/H80BgKD75w/+pLw0t1vzDHCE915O2OlFau6u1Q0QVw2HS1eRvg==}
+    dependencies:
+      native-promise-only: 0.8.1
+      weakmap-polyfill: 2.0.4
+    dev: false
 
   /@vitejs/plugin-vue-jsx/2.1.1_vite@3.2.3+vue@3.2.45:
     resolution: {integrity: sha512-JgDhxstQlwnHBvZ1BSnU5mbmyQ14/t5JhREc6YH5kWyu2QdAAOsLF6xgHoIWarj8tddaiwFrNzLbWJPudpXKYA==}
@@ -3370,6 +3379,10 @@ packages:
     hasBin: true
     dev: true
 
+  /native-promise-only/0.8.1:
+    resolution: {integrity: sha512-zkVhZUA3y8mbz652WrL5x0fB0ehrBkulWT3TomAQ9iDtyXZvzKeEA6GPxAItBYeNYl5yngKRX612qHOhvMkDeg==}
+    dev: false
+
   /negotiator/0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
@@ -5296,6 +5309,11 @@ packages:
     dependencies:
       defaults: 1.0.4
     dev: true
+
+  /weakmap-polyfill/2.0.4:
+    resolution: {integrity: sha512-ZzxBf288iALJseijWelmECm/1x7ZwQn3sMYIkDr2VvZp7r6SEKuT8D0O9Wiq6L9Nl5mazrOMcmiZE/2NCenaxw==}
+    engines: {node: '>=8.10.0'}
+    dev: false
 
   /web-streams-polyfill/3.2.1:
     resolution: {integrity: sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==}

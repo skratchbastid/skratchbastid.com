@@ -17,6 +17,7 @@
     }
   },
   "dependencies": {
+    "@vimeo/player": "^2.18.0",
     "add-to-calendar-button": "^1.18.6"
   }
 }
