@@ -6,8 +6,8 @@ module.exports = {
                 'vertical': '9 / 16'
             },
             animation: {
-                marquee: 'marquee 25s linear infinite',
-                marquee2: 'marquee2 25s linear infinite',
+                marquee: 'marquee 20s linear infinite',
+                marquee2: 'marquee2 20s linear infinite',
               },
             keyframes: {
             marquee: {
