@@ -15,11 +15,11 @@
         
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
-        <div class="w-full flex-col md:flex-row text-2xl font-bold text-slate-800">
-            <div class="bg-blue-300 w-full md:w-1/2 h-[45vh] flex items-center justify-center">
+        <div class="w-full flex flex-col md:flex-row text-2xl font-bold text-slate-800">
+            <div class="bg-blue-300 w-full h-[45vh] flex items-center justify-center">
                 Top Grillin
             </div>
-            <div class="bg-green-300 w-full md:w-1/2 h-[45vh] flex items-center justify-center">
+            <div class="bg-green-300 w-full h-[45vh] flex items-center justify-center">
                 Merch
             </div>
         </div>
