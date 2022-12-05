@@ -10,6 +10,10 @@
 
 <template>
     <div class="max-w-[85%] mx-auto py-12">
+        <div class="h-[35vh] bg-gray-200 rounded mb-12">
+
+        </div>
+
         <div class="mb-12 flex hidden">
             <div class="w-1/2">
                 <div class="aspect-video bg-transparent"></div>
