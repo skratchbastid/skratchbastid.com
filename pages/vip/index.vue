@@ -37,7 +37,7 @@
                 Deep Dives
             </div>
             <div class="flex gap-4">
-                <div v-for="n in 4" class="aspect-video flex w-1/4 bg-blue-100 rounded">
+                <div v-for="n in 3" class="aspect-video flex w-1/3 bg-blue-100 rounded">
                 </div>
             </div>
         </div>
