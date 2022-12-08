@@ -3,15 +3,26 @@
         layout: 'vip'
     })
 
-    const streams = [
-        1,2,3
-    ]
+    const streamsQuery = gql`
+        query getEpisodes {
+            episodes {
+                nodes {
+                    title
+                    vimeoID
+                    slug
+                }
+            }
+        }`
+    
+    const { result, loading, error } = useQuery(streamsQuery)
+
 </script>
 
 <template>
-    <div class="max-w-[85%] mx-auto py-12">
+    <div v-if="loading">Loading...</div>
+    <div v-else class="max-w-[85%] mx-auto py-12">
         <div class="h-[35vh] bg-gray-200 rounded mb-12">
-
+            {{ result }}
         </div>
 
         <div class="mb-12 flex hidden">
@@ -28,8 +39,9 @@
                 Latest Streams
             </div>
             <div class="flex gap-4">
-                <div v-for="n in 4" class="aspect-video flex w-1/4 bg-blue-100 rounded">
-                </div>
+                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="aspect-video flex w-1/4 bg-blue-100 rounded">
+                    {{ video.title }}
+                </NuxtLink>
             </div>
         </div>
         <div class="mb-12">
