@@ -1,4 +1,6 @@
 <script setup>
+    import VueHorizontal from "vue-horizontal"
+
     definePageMeta({
         layout: 'vip'
     })
@@ -25,6 +27,16 @@
             {{ result }}
         </div>
 
+        <div class="mb-12">
+            <div class="font-black uppercase mb-2">
+                Latest Streams
+            </div>
+            <vue-horizontal resopnsive>
+                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="aspect-video flex w-1/4 bg-blue-100 rounded mr-4">
+                    {{ video.title }}
+                </NuxtLink>
+            </vue-horizontal>
+        </div>
         <div class="mb-12 flex hidden">
             <div class="w-1/2">
                 <div class="aspect-video bg-transparent"></div>
@@ -34,7 +46,7 @@
             </div>
         </div>
 
-        <div class="mb-12">
+        <div class="mb-12 hidden">
             <div class="font-black uppercase mb-2">
                 Latest Streams
             </div>
@@ -64,3 +76,9 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    .video-slider {
+        border: 3px hotpink;
+    }
+</style>
