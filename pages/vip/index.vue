@@ -31,8 +31,8 @@
             <div class="font-black uppercase mb-2">
                 Latest Streams
             </div>
-            <vue-horizontal resopnsive>
-                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="aspect-video flex w-1/4 bg-blue-100 rounded mr-4">
+            <vue-horizontal responsive>
+                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="aspect-video flex w-1/2 md:w-1/4 bg-blue-100 rounded mr-4">
                     {{ video.title }}
                 </NuxtLink>
             </vue-horizontal>
