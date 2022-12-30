@@ -1,9 +1,9 @@
 <script setup>
     import { atcb_action } from 'add-to-calendar-button';
 
-    let version = ref(1)
+    let version = ref(3)
     function toggleVersion() {
-        version.value = version.value === 1 ? 2 : 1;
+        // version.value = version.value === 1 ? 2 : 1;
         console.log(version.value)
     }
 
@@ -60,8 +60,37 @@
             </div>
         </div>
     </section>
+    <section v-if="version == 3" class="py-12 bg-[url('/img/blue-plaid.jpg')] bg-contain">
+        <div>
+            <div class="flex flex-col justify-center items-center relative">
+                <img src="/img/TMC-Logo2.png" alt="Tuesday Morning Coffee Logo" class="w-2/3 md:w-[550px] z-10">
+                <div class="hidden md:flex bg-[#10172A] text-xs md:text-lg text-white uppercase font-bold px-2 md:px-4 py-1 rounded-lg justify-center items-center border-white border-2 z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden md:block md:w-6 md:h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
+                    <div class="px-2 z-10">Live DJ Show With The Acclaimed <q>Skratch Bastid</q></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden md:block md:w-6 md:h-6 z-10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    </svg>
+                </div>
+                <div id="stream-date" class="z-10 flex justify-center items-center uppercase text-xl md:text-2xl text-black font-black bg-white border-black border-2 py-1 px-4 my-4">
+                    <span>Tuesdays at 10am ET on</span>
+                    <img class="w-16 ml-2" src="/img/TwitchExtrudedWordmarkBlackOps.svg" />
+                </div>
+                <div class="z-10 flex flex-col md:flex-row text-center gap-4 mt-4">
+                    <a href="#" @click.prevent="addToCalendar(1)" id="calendar-button"  class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Add to Calendar</a>
+                    <a href="#" class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Learn More</a>
+                </div>
+                <img src="/img/record-bg.png" class="absolute w-4/5 top-[50px] md:w-[520px] md:top-[120px]" />
+            </div>
+        </div>
+    </section>
 </template>
 
 <style>
     @import 'add-to-calendar-button/assets/css/atcb.css';
+
+    #stream-date {
+        box-shadow: 8px 8px #000
+    }
 </style>

@@ -24,7 +24,7 @@
     <div v-if="loading">Loading...</div>
     <div v-else class="max-w-[85%] mx-auto py-12">
         <div class="h-[35vh] bg-gray-200 rounded mb-12">
-            {{ result }}
+            <!-- {{ result }} -->
         </div>
 
         <div class="mb-12">
@@ -69,10 +69,10 @@
             <div class="font-black uppercase mb-2">
                 Mixes
             </div>
-            <div class="flex gap-4">
-                <div v-for="n in 4" class="aspect-square flex w-1/4 bg-blue-100 rounded">
+            <vue-horizontal responsive>
+                <div v-for="n in 9" class="aspect-square flex w-1/4 bg-blue-100 rounded mr-4">
                 </div>
-            </div>
+            </vue-horizontal>
         </div>
     </div>
 </template>
