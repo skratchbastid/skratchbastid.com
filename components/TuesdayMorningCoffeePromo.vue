@@ -60,7 +60,7 @@
             </div>
         </div>
     </section>
-    <section v-if="version == 3" class="py-12 bg-[url('/img/blue-plaid.jpg')] bg-contain">
+    <section v-if="version == 3" class="py-16 md:py-24 bg-[url('/img/blue-plaid.jpg')] bg-contain">
         <div>
             <div class="flex flex-col justify-center items-center relative">
                 <img src="/img/TMC-Logo2.png" alt="Tuesday Morning Coffee Logo" class="w-2/3 md:w-[550px] z-10">

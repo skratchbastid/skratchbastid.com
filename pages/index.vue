@@ -11,25 +11,53 @@
 </script>
 
 <template>
-    <div class="">
-        
+    <div class="mb-6">
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
-        <div class="w-full flex flex-col md:flex-row text-2xl font-bold text-slate-800">
-            <div class="bg-blue-300 w-full h-[60vh] flex items-center justify-center">
-                Top Grillin
-            </div>
-            <div class="bg-green-300 w-full h-[60vh] flex items-center justify-center">
-                Merch
+        <TopGrillinPromo />
+
+        <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4">
+            <NewsletterSignup />
+            <div class="flex justify-center items-center mx-2 py-6 md:mx-0 md:w-1/3 rounded-lg bg-gradient-to-bl from-[#D3F2FF] to-[#D3F2FF] border-black border-4 relative">
+                <div id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
+                    <div class="text-sm relative top-1">SHOP</div>
+                    <div class="text-3xl font-black">MERCH</div>
+                </div>
+                <img src="/img/merch-items.png" alt="" class="w-4/5 -top-[40px]">
             </div>
         </div>
+
         <SkratchSelections :class.native="showSelections ? '' : 'hidden'" />
         <!-- <SongsWeListenedTo /> -->
-        <NewsletterSignup />
         <!-- <TopGrillinPromo /> -->
         <!-- <LatestVideos /> -->
-        <div class="hidden max-w-[85%] mt-12 rounded  mx-auto bg-green-300 text-4xl font-extrabold text-center py-32 text-white">
-            Featured Merch
-        </div>
     </div>
 </template>
+
+<style>
+/* #shop {
+    background: 
+        repeating-linear-gradient(
+            to right, transparent, 
+            transparent 50px, 
+            white 50px, 
+            white 55px
+        ),
+        repeating-linear-gradient(
+            to bottom, transparent,  
+            transparent 50px, 
+            white 50px, 
+            white 55px
+        ),
+        linear-gradient(45deg, pink, skyblue);
+} */
+.chess {
+  background:
+    url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none"  viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="20" height="20" fill="orange" /><rect x="5" y="5" width="5" height="5" fill="orange" /><rect x="5" y="0" width="5" height="5" fill="white" /><rect x="0" y="5" width="5" height="5" fill="white" /></svg>') 
+    0 0/75px 75px;
+}
+
+#shop-button {
+    box-shadow: 7px 7px 0 black;
+}
+</style>
