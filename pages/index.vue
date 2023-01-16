@@ -23,7 +23,7 @@
                     <div class="text-sm relative top-1">SHOP</div>
                     <div class="text-3xl font-black">MERCH</div>
                 </div>
-                <img src="/img/merch-items.png" alt="" class="w-4/5 -top-[40px]">
+                <img src="/img/merch-items.png" alt="" class="w-4/5 md:w-[80%] -top-[40px]">
             </div>
         </div>
 

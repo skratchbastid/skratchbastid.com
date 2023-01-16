@@ -1,7 +1,7 @@
 <template>
     <div class="h-[58px] z-50 bg-white dark:bg-gray-900 flex justify-center items-center sticky top-0 w-full border-b dark:border-b-0">
       <div class="w-[85%] mx-auto flex h-[58px] items-center justify-between">
-        <div class="flex hidden gap-2 dark:text-white">
+        <div class="flex gap-2 dark:text-white">
           <Icon name="ph:instagram-logo" />
           <Icon name="ph:tiktok-logo" />
           <Icon name="ph:youtube-logo" />
