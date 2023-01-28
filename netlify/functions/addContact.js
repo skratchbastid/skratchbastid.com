@@ -5,6 +5,6 @@ const mailjet = require('node-mailjet').connect(
 exports.handler = async function(event, context) {
     return {
         statusCode: 200,
-        JSON.stringify({ message: "Hello Greg! Let's figureo ut how to use Mailjet in here..." })
+        body: JSON.stringify({ message: "Hello Greg! Let's figureo ut how to use Mailjet in here..." })
     }   
 }
