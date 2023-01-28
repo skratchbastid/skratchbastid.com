@@ -13,24 +13,11 @@ exports.handler = async function(event, context) {
           Name: "New Contact"
         })
     
-    request
-        .then((result) => {
-            console.log("Maybe working")
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ message: "It worked maybe?"})
-            }   
-        })
-        .catch((err) => {
-            console.log("error")
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ message: "Error"})
-            }
-        })
+    let response = await request()
     
-    // return {
-    //     statusCode: 200,
-    //     body: JSON.stringify({ message: "Does this get returned?"})
-    // }
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Does this get returned?"}),
+        response
+    }
 }
