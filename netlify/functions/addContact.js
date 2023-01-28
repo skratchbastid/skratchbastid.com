@@ -1,7 +1,4 @@
-const mailjet = require('node-mailjet').connect(
-    process.env.MJ_APIKEY_PUBLIC,
-    process.env.MJ_APIKEY_PRIVATE
-  )
+const mailjet = require('node-mailjet')
 exports.handler = async function(event, context) {
     return {
         statusCode: 200,
