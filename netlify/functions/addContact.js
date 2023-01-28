@@ -11,8 +11,19 @@ exports.handler = async function(event, context) {
           IsExcludedFromCampaigns: true,
           Name: "New Contact"
         })
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Hello Greg! Let's figureo ut how to use Mailjet in here..."})
-    }   
+    
+
+    request
+        .then((result) => {
+            return {
+                statusCode: 200,
+                body: JSON.stringify({ message: "It worked maybe?"})
+            }   
+        })
+        .catch((err) => {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: "Error"})
+            }   
+        })
 }
