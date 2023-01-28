@@ -13,7 +13,7 @@ exports.handler = async function(event, context) {
           Name: "New Contact"
         })
     
-
+    console.log(request)
     request
         .then((result) => {
             console.log(result.body)
@@ -27,6 +27,11 @@ exports.handler = async function(event, context) {
             return {
                 statusCode: 400,
                 body: JSON.stringify({ message: "Error"})
-            }   
+            }
         })
+    
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: "Does this get returned?"})
+    }
 }
