@@ -16,12 +16,14 @@ exports.handler = async function(event, context) {
 
     request
         .then((result) => {
+            console.log(result.body)
             return {
                 statusCode: 200,
                 body: JSON.stringify({ message: "It worked maybe?"})
             }   
         })
         .catch((err) => {
+            console.log(result.body)
             return {
                 statusCode: 400,
                 body: JSON.stringify({ message: "Error"})
