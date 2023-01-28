@@ -1,5 +1,6 @@
 const Mailjet = require('node-mailjet');
 exports.handler = async function(event, context) {
+    console.log("testing")
     const mailjet = new Mailjet({
         apiKey: process.env.MJ_APIKEY_PUBLIC,
         apiSecret: process.env.MJ_APIKEY_PRIVATE,
