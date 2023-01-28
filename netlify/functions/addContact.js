@@ -1,3 +1,4 @@
+const mailjet = require ('node-mailjet')
 exports.handler = async function(event, context) {
     return {
         statusCode: 200,
