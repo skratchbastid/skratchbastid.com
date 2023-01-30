@@ -4,22 +4,32 @@ exports.handler = async function(event, context) {
         apiKey: process.env.MJ_APIKEY_PUBLIC || '889cd83ccd0cb897240c938c0d8fe98e',
         apiSecret: process.env.MJ_APIKEY_PRIVATE || '4a541c442e683fd53a5cf1f63498f096',
     });
-    const email = event.queryStringParameters.email
+    // const email = event.queryStringParameters.email
+    const email = JSON.parse(event.body).email
 
     // Check to see if contact exists, if not create one!
     let contact = await findContact(email)
     if (!contact) {
         console.log("No contact, let's create one")
         contact = await createContact(email)
+        if (!contact.success) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({
+                    status: 400,
+                    message: "Invalid email address"
+                })
+            }
+        }
         contact.new = true
     }
 
     // To do: See if contact is already subscribed
-    if (contact.new) {
-        console.log("New contact, subscribe them")
-    } else {
-        console.log("Existing contact, check subs")
-    }
+    // if (contact.new) {
+    //     console.log("New contact, subscribe them")
+    // } else {
+    //     console.log("Existing contact, check subs")
+    // }
 
     // Create the subscription
     const subscription = await createSubscription(email)
@@ -28,6 +38,7 @@ exports.handler = async function(event, context) {
     return {
         statusCode: 200,
         body: JSON.stringify({ 
+            success: true,
             contact,
             params: event.queryStringParameters
         }),
@@ -49,7 +60,6 @@ exports.handler = async function(event, context) {
     }
 
     async function createContact(email) {
-        console.log(`Create contact: ${email}`, console.log(typeof email))
         const request = mailjet
             .post('contact')
             .request({
@@ -58,11 +68,16 @@ exports.handler = async function(event, context) {
             })
     
         try{
-            console.log("Lets try this...")
             let response = await request
-            return response.body.Data[0]
+            return {
+                success: true,
+                contact: response.body.Data[0]
+            }
         } catch(err) {
-            console.log("Nah son!", err)
+            return { 
+                success: false,
+                message: "Invalid email address"
+            }
         }
     }
 
@@ -84,18 +99,47 @@ exports.handler = async function(event, context) {
 
     async function createSubscription(email) {
         console.log("Create the sub!")
-        const request = mailjet
+        try {
+            const request = mailjet
             .post("contactslist", {'version': 'v3'})
             .id(10289282)
             .action("managecontact")
             .request({
-                "Name": "Greg Bates",
                 "Action":"addforce",
                 "Email":email
             })
-        
-        const response = await request
-        console.log(response.body)
+
+            const response = await request
+            return {
+                success: true,
+                message: "Contact created"
+            }
+            // console.log(response.body)
+
+            // TODO: Somehow create a double optin mechanism
+            // const emailRequest = mailjet
+            //     .post("send", {'version': 'v3'})
+            //     .request({
+            //     "FromEmail":"greg@batesy.ca",
+            //     "FromName":"Skratch Bastid",
+            //     "Recipients":[
+            //         {
+            //         "Email": email
+            //         }
+            //     ],
+            //     "Subject":"Let's go!",
+            //     "Text-part":"Let's figure out how to opt you in.",
+            //     "Html-part":"<h3>DWhat up!</h3><br />Let's try to opt you in to this list somehow..."
+            //     })
+            
+            // const emailResp = await emailRequest
+            // console.log(emailResp.body)
+        } catch (err) {
+            console.log("Nonono")
+            return {
+                success: false
+            }
+        }
     }
 }
 
