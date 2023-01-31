@@ -1,5 +1,9 @@
 <script setup>
 const shows = useState('shows')
+
+onMounted(() => {
+    window.scrollTo(0,0)
+})
 </script>
 
 <template>
