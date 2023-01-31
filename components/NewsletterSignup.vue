@@ -11,6 +11,7 @@
         const data = { email: email.value }
         const response = await fetch('https://skratchbastid.netlify.app/.netlify/functions/addContact', {
             method: 'POST', 
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
