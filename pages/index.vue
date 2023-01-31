@@ -2,11 +2,11 @@
     const showSelections = ref(false)
 
     onMounted(() => {
-        document.addEventListener('keyup', function(e) {
-            if (e.key === 's') {
-                showSelections.value = !showSelections.value
-            }
-            })
+        // document.addEventListener('keyup', function(e) {
+        //     if (e.key === 's') {
+        //         showSelections.value = !showSelections.value
+        //     }
+        //     })
     })
 </script>
 

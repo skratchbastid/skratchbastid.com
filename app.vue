@@ -17,11 +17,11 @@
     ]
   useState('shows', () => showListings)
   onMounted(() => {
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'd') {
-        darkMode.value = !darkMode.value
-      }
-    })
+    // document.addEventListener('keyup', function(e) {
+    //   if (e.key === 'd') {
+    //     darkMode.value = !darkMode.value
+    //   }
+    // })
   })
 </script>
 
