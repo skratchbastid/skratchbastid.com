@@ -3,7 +3,7 @@ const shows = useState('shows')
 </script>
 
 <template>
-    <div class="bg-[url(img/blue-dots-bg-2.png)] bg-cover bg-no-repeat w-full">
+    <div class="bg-[url(/img/blue-dots-bg-2.png)] bg-cover bg-no-repeat w-full">
         <div class="flex flex-col w-full md:w-[60%] m-auto pt-16 gap-x-4">
             <h1 class="uppercase text-center text-5xl font-black text-shadow text-white">Upcoming Shows</h1>
             <div class="my-8">
