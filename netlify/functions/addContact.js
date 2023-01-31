@@ -16,7 +16,9 @@ exports.handler = async function(event, context) {
             return {
                 statusCode: 400,
                 headers: {
-                    "access-control-allow-origin": "*",
+                    "Access-Control-Allow-Origin": "*",
+                    'Access-Control-Allow-Methods': 'POST',
+                    'Access-Control-Max-Age': '8640'
                 },
                 body: JSON.stringify({
                     status: 400,
@@ -41,7 +43,9 @@ exports.handler = async function(event, context) {
     return {
         statusCode: 200,
         headers: {
-            "access-control-allow-origin": "*",
+            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Max-Age': '8640'
         },
         body: JSON.stringify({ 
             success: true,
