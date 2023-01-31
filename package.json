@@ -6,7 +6,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "node .output/server/index.js"
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxtjs/apollo": "5.0.0-alpha.4",
