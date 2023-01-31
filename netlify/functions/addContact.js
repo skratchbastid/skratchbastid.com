@@ -15,6 +15,9 @@ exports.handler = async function(event, context) {
         if (!contact.success) {
             return {
                 statusCode: 400,
+                headers: {
+                    "access-control-allow-origin": "*",
+                },
                 body: JSON.stringify({
                     status: 400,
                     message: "Invalid email address"
@@ -37,6 +40,9 @@ exports.handler = async function(event, context) {
     
     return {
         statusCode: 200,
+        headers: {
+            "access-control-allow-origin": "*",
+        },
         body: JSON.stringify({ 
             success: true,
             contact,
