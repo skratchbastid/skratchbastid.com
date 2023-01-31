@@ -77,8 +77,7 @@
 </script>
 
 <template>
-    <div v-if="loading">Loading...</div>
-    <div v-else class="max-w-[85%] mx-auto py-12">
+    <div class="max-w-[85%] mx-auto py-12">
         <div class="h-[35vh] bg-gray-200 rounded mb-12">
             <!-- {{ result }} -->
         </div>
@@ -94,7 +93,8 @@
                 </NuxtLink>
             </div>
             <div class="mt-10 text-center">
-                <button class="border border-2 px-6 py-2 m-auto" @click="loadMore">Load More</button>
+                <div v-if="loading">Loading...</div>
+                <button v-else class="border border-2 px-6 py-2 m-auto" @click="loadMore">Load More</button>
             </div>
             <!-- <vue-horizontal responsive>
                 <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="flex flex-col w-1/2 md:w-1/4 rounded mr-4">

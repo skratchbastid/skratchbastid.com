@@ -1,6 +1,5 @@
-<script setup>
-  let darkMode = ref(false)
-  const showListings = [
+
+    const showListings = [
         {date: new Date('2023-02-03'), city: "Guelph, ON", details: "Hillside Inside w/ Kid Koala, Lealani", venue: "Royal City Mission", link: "https://www.eventbrite.ca/e/kid-koala-lealani-with-special-guest-skratch-bastid-tickets-488845940367"},
         {date: new Date('2023-02-07'), city: "New York, NY", details: "Burton / Run DMC", venue: "Burton New York City Flagship Store", link: "https://burtonxrundmclaunchevent.splashthat.com/"},
         {date: new Date('2023-02-10'), city: "Brooklyn, NY", details: "Boogie Blind Presents 'Easily'", venue: "Friends & Lovers", link: "https://www.eventbrite.com/e/boogie-blind-presents-easily-feat-skratch-bastid-tickets-419575159597"},
@@ -15,27 +14,11 @@
         {date: new Date('2023-03-17'), city: "Austin, TX", details: "BASTID'S BBQ @ SXSW", venue: "Native Hostel", link: ""},
         {date: new Date('2023-05-27'), city: "Somerset, UK", details: "Shindig Weekender Festival", venue: "Dillington Estate", link: "https://shindigfestival.co.uk/"},
     ]
-  useState('shows', () => showListings)
-  onMounted(() => {
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'd') {
-        darkMode.value = !darkMode.value
-      }
-    })
-  })
-</script>
+    
+    export const shows = useState('shows', showListings)
+    export const sharedState = useState('share-this', () => 'default value');
 
-<template>
-  <div :class="darkMode == true ? 'dark' : ''">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
-</template>
-
-<style>
-  body {
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-
-</style>
+    export const useFoo = () => {
+    return useState('foo', () => 'bar')
+    }
+      

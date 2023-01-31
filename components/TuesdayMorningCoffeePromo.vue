@@ -37,7 +37,7 @@
                 <div class="font-light">Skratch Bastid's weekly livestream. More descriptive text here sometime soon.</div>
                 <div class="mt-4">
                     <a href="#" @click.prevent="addToCalendar(1)" id="calendar-button" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4">Add to Calendar</a>
-                    <NuxtLink to="/tuesday-morning-coffee" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4 ml-4">Learn More</NuxtLink>
+                    <a href="/tuesday-morning-coffee" target="_blank" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4 ml-4">Learn More</a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                 <span class="text-3xl font-black uppercase mb-5">Tuesdays at 10am ET</span>
                 <div>
                     <a href="#" @click.prevent="addToCalendar(2)" id="calendar-button2" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4">Add to Calendar</a>
-                    <NuxtLink to="/tuesday-morning-coffee" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4 ml-4">Learn More</NuxtLink>
+                    <a href="https://www.twitch.tv/skratchbastid/schedule" target="_blank" class="bg-[#2bb0d8] text-xs font-semibold text-white uppercase py-2 px-4 ml-4">Learn More</a>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="z-10 flex flex-col md:flex-row text-center gap-4 mt-4">
                     <a href="#" @click.prevent="addToCalendar(1)" id="calendar-button"  class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Add to Calendar</a>
-                    <a href="#" class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Learn More</a>
+                    <a href="https://www.twitch.tv/skratchbastid/schedule" target="_blank" class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Learn More</a>
                 </div>
                 <img src="/img/record-bg.png" class="absolute w-4/5 top-[50px] md:w-[520px] md:top-[120px]" />
             </div>

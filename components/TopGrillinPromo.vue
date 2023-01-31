@@ -18,7 +18,7 @@
                         </ul>
                     </div>
                     <div class="flex flex-grow justify-center items-center md:justify-start md:ml-24">
-                        <a href="#" id="vip-join-button" class="border-cyan-700 border-2 text-4xl bg-white text-cyan-700 px-8 py-2 text-white uppercase font-black rotate-2 md:rotate-3">Join Now</a>
+                        <a href="https://www.bastidsbbq.com/vip/" target="_blank" id="vip-join-button" class="border-cyan-700 border-2 text-4xl bg-white text-cyan-700 px-8 py-2 text-white uppercase font-black rotate-2 md:rotate-3">Join Now</a>
                     </div>
                 </div>
             </div>

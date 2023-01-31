@@ -1,20 +1,24 @@
+<script setup>
+const shows = useState('shows')
+</script>
+
 <template>
-    <div class="bg-[url(img/blue-dots-bg-2.png)] bg-contain">
+    <div class="bg-[url(img/blue-dots-bg-2.png)] bg-cover bg-no-repeat w-full">
         <div class="flex flex-col w-full md:w-[60%] m-auto pt-16 gap-x-4">
             <h1 class="uppercase text-center text-5xl font-black text-shadow text-white">Upcoming Shows</h1>
             <div class="my-8">
-                <div class="flex w-full items-center my-8 bg-white p-6 border-2 border-black rounded" v-for="n in 10">
+                <div v-for="show in shows" class="flex w-full items-center my-4 bg-white px-6 py-4 border-2 border-black rounded">
                     <div class="leading-tight">
                         <div class="uppercase text-sm font-bold leading-none">January</div>
                         <div class="text-right text-2xl font-bold leading-none">14</div>
                     </div>
-                    <div class="text-3xl font-black uppercase w-1/3 text-center">Halifax, NS</div>
-                    <div class="w-1/3 text-center">
-                        <div class="text-xl uppercase">The Marquee Ballroom</div>
-                        <div class="text-xs text-blue-600 font-bold uppercase">with DJ Jazzy Jeff</div>
+                    <div class="text-3xl font-black uppercase w-2/5 text-center">{{ show.city }}</div>
+                    <div class="w-1/4 text-center">
+                        <div class="text-lg leading-none uppercase mb-1">{{ show.venue }}</div>
+                        <div class="text-xs text-blue-600 font-bold uppercase" v-show="show.details">{{ show.details }}</div>
                     </div>
                     <div class="ml-auto">
-                        <a href="#" class="uppercase bg-red-600 text-white py-4 px-8 rounded font-bold">Tickets</a>
+                        <a v-show="show.link" :href="show.link" target="_blank" class="uppercase bg-teal-600 text-white py-3 px-5 rounded font-bold">Tickets</a>
                     </div>
                 </div>
             </div>

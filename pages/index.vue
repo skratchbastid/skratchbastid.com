@@ -20,10 +20,10 @@
         <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 mb-20">
             <NewsletterSignup />
             <div class="flex justify-center items-center mx-2 py-6 md:mx-0 md:w-1/3 rounded-lg bg-gradient-to-bl from-[#D3F2FF] to-[#D3F2FF] border-black border-4 relative">
-                <div id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
+                <a href="https://skratchbastidstore.myshopify.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
                     <div class="text-sm relative top-1">SHOP</div>
                     <div class="text-3xl font-black">MERCH</div>
-                </div>
+                </a>
                 <img src="/img/merch-items.png" alt="" class="w-4/5 md:w-[80%] -top-[40px]">
             </div>
         </div>
@@ -33,14 +33,14 @@
         <!-- <TopGrillinPromo /> -->
         <!-- <LatestVideos /> -->
     </div>
-    <div class="bg-black text-white font-light flex gap-24 items-center justify-center text-center py-16">
+    <div class="bg-black text-white font-light flex flex-col md:flex-row gap-12 md:gap-24 items-center justify-center text-center py-16">
         <div class="flex flex-col">
-            <div class="font-black uppercase">Business</div>
+            <div class="font-black uppercase">Management</div>
             <div>management@skratchbastid.com</div>
         </div>
         <div class="flex flex-col">
             <div class="font-black uppercase">Bookings</div>
-            <div>management@skratchbastid.com</div>
+            <div>himmelfarb@feldman-agency.com</div>
         </div>
     </div>
 </template>
