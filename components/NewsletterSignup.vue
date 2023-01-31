@@ -9,7 +9,7 @@
         submitPending.value = true
 
         const data = { email: email.value }
-        const response = await fetch('http://skratchbastid.netlify.app/.netlify/functions/addContact', {
+        const response = await fetch('https://skratchbastid.netlify.app/.netlify/functions/addContact', {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',
