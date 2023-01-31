@@ -2,7 +2,7 @@
   let darkMode = ref(false)
   const showListings = [
         {date: new Date('02-03-2023'), city: "Guelph, ON", details: "Hillside Inside w/ Kid Koala, Lealani", venue: "Royal City Mission", link: "https://www.eventbrite.ca/e/kid-koala-lealani-with-special-guest-skratch-bastid-tickets-488845940367"},
-        {date: new Date('02-07-2023'), city: "New York, NY", details: "Burton / Run DMC", venue: "Burton New York City Flagship Store", link: ""},
+        {date: new Date('02-07-2023'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""},
         {date: new Date('02-10-2023'), city: "Brooklyn, NY", details: "Boogie Blind Presents 'Easily'", venue: "Friends & Lovers", link: "https://www.eventbrite.com/e/boogie-blind-presents-easily-feat-skratch-bastid-tickets-419575159597"},
         {date: new Date('02-11-2023'), city: "Miami, FL", details: "Vinyl Set", venue: "Dante's HiFi", link: ""},
         {date: new Date('02-15-2023'), city: "New York, NY", details: "Touch of Classics (Vinyl Set)", venue: "Hard Rock Hotel, Manhattan", link: ""},
