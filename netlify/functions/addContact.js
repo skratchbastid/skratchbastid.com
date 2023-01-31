@@ -15,6 +15,7 @@ exports.handler = async function(event, context) {
         if (!contact.success) {
             return {
                 statusCode: 400,
+                mode: 'no-cors',
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     'Access-Control-Allow-Methods': 'POST',
@@ -42,6 +43,7 @@ exports.handler = async function(event, context) {
     
     return {
         statusCode: 200,
+        mode: 'no-cors',
         headers: {
             "Access-Control-Allow-Origin": "*",
             'Access-Control-Allow-Methods': 'POST',
