@@ -12,10 +12,6 @@ onMounted(() => {
             <h1 class="uppercase text-center text-5xl font-black text-shadow text-white">Upcoming Shows</h1>
             <div class="my-8">
                 <div v-for="show in shows" class="flex w-full items-center my-4 bg-white px-6 py-4 border-2 border-black rounded">
-                    <div class="flex flex-col">
-                        <div>{{ show.date }}</div>
-                        <div>{{ $dayjs(show.date) }}</div>
-                    </div>
                     <div class="leading-tight w-1/10 text-right">
                         <div class="uppercase text-sm font-bold leading-none">{{ $dayjs(show.date).format('MMM')}}</div>
                         <div class="text-right text-sm md:text-2xl font-bold leading-none">{{ $dayjs(show.date).format('D')}}</div>
