@@ -1,5 +1,19 @@
 const Mailjet = require('node-mailjet');
 exports.handler = async function(event, context) {
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    };
+    if (event.httpMethod === 'OPTIONS') {
+        // To enable CORS
+        return {
+         statusCode: 200, 
+         headers,
+         body: 'success'
+       };
+   }
+
     const mailjet = new Mailjet({
         apiKey: process.env.MJ_APIKEY_PUBLIC || '889cd83ccd0cb897240c938c0d8fe98e',
         apiSecret: process.env.MJ_APIKEY_PRIVATE || '4a541c442e683fd53a5cf1f63498f096',
