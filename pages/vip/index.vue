@@ -1,76 +1,76 @@
 <script setup>
-    // import VueHorizontal from "vue-horizontal"
+    import VueHorizontal from "vue-horizontal"
 
-    // definePageMeta({
-    //     layout: 'vip'
-    // })
+    definePageMeta({
+        layout: 'vip'
+    })
 
-    // const streams = ref()
-    // const pageInfo = ref()
+    const streams = ref()
+    const pageInfo = ref()
 
-    // const streamsQuery = gql`
-    //     query getEpisodes {
-    //         episodes(first: 4) {
-    //             nodes {
-    //                 title
-    //                 vimeoID
-    //                 slug
-    //                 imageLink
-    //             }
-    //             pageInfo {
-    //                 endCursor
-    //                 hasNextPage
-    //             }
-    //         }
-    //     }`
+    const streamsQuery = gql`
+        query getEpisodes {
+            episodes(first: 4) {
+                nodes {
+                    title
+                    vimeoID
+                    slug
+                    imageLink
+                }
+                pageInfo {
+                    endCursor
+                    hasNextPage
+                }
+            }
+        }`
     
-    // const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
+    const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
     
-    // onResult((result) => {
-    //     console.log("The result!", result)
-    //     streams.value = result.data.episodes.nodes
-    //     pageInfo.value = result.data.episodes.pageInfo
-    //     console.log("ola?", result)
-    // })    
+    onResult((result) => {
+        console.log("The result!", result)
+        streams.value = result.data.episodes.nodes
+        pageInfo.value = result.data.episodes.pageInfo
+        console.log("ola?", result)
+    })    
 
-    // async function loadMore() {
-    //     try{
-    //         fetchMore({
-    //             query: gql`
-    //                 query getMoreEpisodes($cursor: String) {
-    //                     episodes(first: 4, after: $cursor) {
-    //                         nodes {
-    //                             title
-    //                             vimeoID
-    //                             slug
-    //                             imageLink
-    //                         }
-    //                         pageInfo {
-    //                             endCursor
-    //                             hasNextPage
-    //                         }
-    //                     }
-    //                 }`,
-    //                 variables: {
-    //                     cursor: pageInfo.value.endCursor
-    //                 },
-    //                 updateQuery: (previousResult, { fetchMoreResult }) => {
-    //                     return {
-    //                         episodes: {
-    //                             nodes: [
-    //                                 ...previousResult.episodes.nodes,
-    //                                 ...fetchMoreResult.episodes.nodes
-    //                             ],
-    //                             pageInfo: fetchMoreResult.episodes.pageInfo,
-    //                             __typename: fetchMoreResult.episodes.__typename
-    //                         }
-    //                     }
-    //                 }
-    //         })
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    async function loadMore() {
+        try{
+            fetchMore({
+                query: gql`
+                    query getMoreEpisodes($cursor: String) {
+                        episodes(first: 4, after: $cursor) {
+                            nodes {
+                                title
+                                vimeoID
+                                slug
+                                imageLink
+                            }
+                            pageInfo {
+                                endCursor
+                                hasNextPage
+                            }
+                        }
+                    }`,
+                    variables: {
+                        cursor: pageInfo.value.endCursor
+                    },
+                    updateQuery: (previousResult, { fetchMoreResult }) => {
+                        return {
+                            episodes: {
+                                nodes: [
+                                    ...previousResult.episodes.nodes,
+                                    ...fetchMoreResult.episodes.nodes
+                                ],
+                                pageInfo: fetchMoreResult.episodes.pageInfo,
+                                __typename: fetchMoreResult.episodes.__typename
+                            }
+                        }
+                    }
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     
 
