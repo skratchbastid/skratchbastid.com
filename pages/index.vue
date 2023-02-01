@@ -39,7 +39,7 @@
             <div>management@skratchbastid.com</div>
         </div>
         <div class="flex flex-col">
-            <div class="font-black uppercase">Bookings</div>
+            <div class="font-black uppercase">Canadian Bookings</div>
             <div>himmelfarb@feldman-agency.com</div>
         </div>
     </div>
