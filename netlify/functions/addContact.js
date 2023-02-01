@@ -13,7 +13,7 @@ exports.handler = async function(event, context) {
          body: 'success'
        };
    }
-
+   console.log(process.env.MJ_APIKEY_PUBLIC)
     const mailjet = new Mailjet({
         apiKey: process.env.MJ_APIKEY_PUBLIC,
         apiSecret: process.env.MJ_APIKEY_PRIVATE,
