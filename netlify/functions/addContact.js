@@ -15,8 +15,8 @@ exports.handler = async function(event, context) {
    }
 
     const mailjet = new Mailjet({
-        apiKey: process.env.MJ_APIKEY_PUBLIC || '889cd83ccd0cb897240c938c0d8fe98e',
-        apiSecret: process.env.MJ_APIKEY_PRIVATE || '4a541c442e683fd53a5cf1f63498f096',
+        apiKey: process.env.MJ_APIKEY_PUBLIC,
+        apiSecret: process.env.MJ_APIKEY_PRIVATE,
     });
     // const email = event.queryStringParameters.email
     const email = JSON.parse(event.body).email
@@ -126,7 +126,7 @@ exports.handler = async function(event, context) {
         try {
             const request = mailjet
             .post("contactslist", {'version': 'v3'})
-            .id(10289282)
+            .id(4524)
             .action("managecontact")
             .request({
                 "Action":"addforce",
