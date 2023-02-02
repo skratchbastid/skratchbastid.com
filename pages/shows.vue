@@ -1,4 +1,7 @@
 <script setup>
+useHead({
+    title: 'Skratch Bastid | Upcoming Shows'
+})
 const shows = useState('shows')
 
 onMounted(() => {
