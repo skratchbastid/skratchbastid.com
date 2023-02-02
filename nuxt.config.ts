@@ -3,7 +3,8 @@ export default {
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-icon',
-        '@nuxtjs/apollo'
+        '@nuxtjs/apollo',
+        '@nuxt/image-edge',
     ],
     apollo: {
         clients: {
@@ -13,6 +14,12 @@ export default {
                     credentials: 'include'
                 }
             }
+        }
+    },
+    image: {
+        provider: 'cloudflare',
+        cloudflare: {
+            baseURL: 'https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/'
         }
     }
 }
