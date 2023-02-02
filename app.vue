@@ -5,7 +5,7 @@
         {date: new Date('2023-02-07T12:00:00'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""},
         {date: new Date('2023-02-10T12:00:00'), city: "Brooklyn, NY", details: "Boogie Blind Presents 'Easily'", venue: "Friends & Lovers", link: "https://www.eventbrite.com/e/boogie-blind-presents-easily-feat-skratch-bastid-tickets-419575159597"},
         {date: new Date('2023-02-11T12:00:00'), city: "Miami, FL", details: "Vinyl Set", venue: "Dante's HiFi", link: ""},
-        {date: new Date('2023-02-15T12:00:00'), city: "New York, NY", details: "Touch of Classics (Vinyl Set)", venue: "Hard Rock Hotel, Manhattan", link: ""},
+        {date: new Date('2023-02-15T12:00:00'), city: "New York, NY", details: "Touch of Classics (Vinyl Set)", venue: "RT60 (Hard Rock Hotel New York)", link: "https://www.eventbrite.com/e/531307534137"},
         {date: new Date('2023-02-16T12:00:00'), city: "Hunter, NY", details: "Winter Get Down / Hunter Mountain", venue: "Glen Falls House", link: ""},
         {date: new Date('2023-02-19T12:00:00'), city: "Toronto, ON", details: "w/ Thugli, Hedspin, Brandan Duke", venue: "The Black Pearl", link: ""},
         {date: new Date('2023-03-03T12:00:00'), city: "Toronto, ON", details: "Motionball Toronto Charity Gala", venue: "Liberty Grand", link: "https://motionball.com/toronto/"},
