@@ -13,7 +13,7 @@
 <template>
 
     <div class="bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r">
-        <div class="md:w-5/6 lg:2/3 m-auto flex flex-col md:flex-row gap-8 p-6 md:py-12">
+        <div class="md:w-5/6 lg:2/3 m-auto flex flex-col md:flex-row gap-8 p-6 md:py-12 lg:py-24">
             <div class="w-full md:w-1/3 lg:w-1/2">
                 <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" class="rounded" />
             </div>
