@@ -11,21 +11,23 @@
     const videoId = "792395416"
 </script>
 <template>
-    <div class="w-2/3 m-auto flex gap-16 mt-12">
-        <div class="w-1/2">
-            <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" />
-        </div>
-        <div class="w-1/2 flex flex-col justify-center">
-            <h2>Skratch Bastid & Cosmo Baker</h2>
-            <h2 class="text-2xl font-black">Songs We Listened To A Lot in 2022</h2>
-            <div class="flex mt-10 gap-x-4">
-                <a href="#" class="bg-slate-800 text-white px-7 py-2 rounded">Download</a>
-                <a href="#" class="bg-slate-800 text-white px-7 py-2 rounded">Listen on Mixcloud</a>
+    <div class="bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r">
+        <div class="w-2/3 m-auto flex gap-16 py-12">
+            <div class="w-1/2">
+                <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" />
+            </div>
+            <div class="w-1/2 flex flex-col justify-center text-white">
+                <h2>Skratch Bastid & Cosmo Baker</h2>
+                <h2 class="text-2xl font-black">Songs We Listened To A Lot in 2022</h2>
+                <div class="flex mt-10 gap-x-4">
+                    <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Download</a>
+                    <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Listen on Mixcloud</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="my-12 py-12 bg-slate-400">
+    <div class="py-12 bg-slate-400">
         <div class="flex w-3/4 m-auto text-white gap-x-12">
             <h2 class="w-1/6 text-5xl uppercase font-extrabold flex flex-col text-center justify-center"><span>About</span> <span>The</span> <span>Mix</span></h2>
             <div class="w-5/6 text-lg">
