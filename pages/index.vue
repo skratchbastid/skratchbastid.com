@@ -14,6 +14,7 @@
     <div class="mb-6">
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
+        <div class="flex items-center justify-center"><NuxtLink to="/mixes/songs-we-listened-to-alot-in-2022" class="my-8 bg-blue-600 text-white font-black w-64 px-24 py-2 m-auto w-auto">SWLT22</NuxtLink></div>
         <TopGrillinPromo />
         
 
