@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full bg-[url(/img/blue-dots-gradient-bg.jpg)] bg-no-repeat bg-cover">
+    <section class="w-full bg-[url(/img/blue-dots-gradient-bg.jpg)] bg-no-repeat bg-cover border-t border-1 border-teal-200">
         <div class="max-w-[85%] m-auto flex flex-col md:flex-row py-12 md:py-24">
             <div class="w-full md:w-1/3 flex justify-center items-center mb-6">
                 <img src="/img/top-grillin-logo.png" class="w-1/2 md:w-2/3" />

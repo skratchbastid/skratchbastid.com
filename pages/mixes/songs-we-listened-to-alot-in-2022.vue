@@ -9,6 +9,11 @@
     }
 
     const videoId = "792395416"
+
+    function playMix() {
+        console.log("Play the mix")
+        $emit('playMix')
+    }
 </script>
 <template>
 
@@ -21,6 +26,7 @@
                 <h2>Skratch Bastid & Cosmo Baker</h2>
                 <h2 class="text-2xl lg:text-4xl font-black">Songs We Listened To A Lot in 2022</h2>
                 <div class="flex flex-col text-center md:flex-row mt-8 md:mt-10 gap-4">
+                    <Icon @click="playMix" name="material-symbols:play-circle-rounded" class="text-blue-500 bg-white rounded-full" size="40" />
                     <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Download</a>
                     <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Listen on Mixcloud</a>
                 </div>
@@ -29,9 +35,9 @@
     </div>
 
     <div class="py-12">
-        <div class="flex flex-col lg:flex-row w-3/4 m-auto gap-x-12">
-            <div class="w-full lg:w-1/6 flex flex-col mb-6 lg:text-center md:justify-center">
-                <h2 class="text-5xl uppercase font-extrabold"><span>About</span> <span>The</span> <span>Mix</span></h2>
+        <div class="flex flex-col w-3/4  m-auto gap-x-12">
+            <div class="w-full flex mb-6">
+                <h2 class="text-4xl uppercase font-extrabold">About the Mix</h2>
             </div>
             <div class="w-full md:w-5/6 text-lg">
                 <p class="mb-6">A collection of Songs We Listened To A Lot in 2021 by Skratch Bastid & Cosmo Baker. An annual tradition. 47 days into 2022, but the songs are timeless. That's our excuse, anyway!</p>
@@ -41,14 +47,16 @@
         </div>
     </div>
 
-    <div class="my-12 py-12 w-full md:w-2/3 m-auto flex flex-col gap-y-4 md:gap-y-8">
-        <div class="">
-            <h2 class="text-2xl md:text-3xl text-center md:text-left font-extrabold px-4 md:px-0">Bastid and Cosmo talk through their selections on Tuesday Morning Coffee</h2>
-        </div>
-        <div class="">
-            <client-only>
-                <vue-vimeo-player :video-id="videoId" :options="options"  />
-            </client-only>
+    <div class="bg-gradient-to-b from-gray-600 to-gray-900 bg-gradient-to-t">
+        <div class="py-12 w-full md:w-3/4 m-auto flex flex-col gap-y-4 md:gap-y-8">
+            <div class="">
+                <h2 class="text-2xl md:text-3xl text-center md:text-left font-extrabold px-4 md:px-0 lg:pr6- text-white">Bastid and Cosmo: SWLTAI22 on Tuesday Morning Coffee</h2>
+            </div>
+            <div class="">
+                <client-only>
+                    <vue-vimeo-player :video-id="videoId" :options="options"  />
+                </client-only>
+            </div>
         </div>
     </div>
     <TopGrillinPromo />
