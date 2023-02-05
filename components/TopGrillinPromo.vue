@@ -10,7 +10,7 @@
                 <div class="flex flex-col md:flex-row">
                     <div class="mt-8 mb-8">
                         <ul class="uppercase text-xl">
-                            <li class="font-extrabold">400+ Hours of Live Sets</li>
+                            <li class="font-extrabold">600+ Hours of Live Sets</li>
                             <li class="font-light">Members Only Merch</li>
                             <li class="font-extrabold">Exclusive Mixes</li>
                             <li class="font-light">Guest List at Live Shows</li>

@@ -15,8 +15,5 @@
     <div class="dark:bg-gray-900 dark:text-white min-h-[95vh]">
         <slot />
     </div>
-    <div class="fixed bottom-0 z-50 w-full">
-        <iframe width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2FJorun_Bombay%2Fdj-jorun-bombays-funkbox-reload-june-2022-edition%2F" frameborder="0" ></iframe>
-    </div>
     
 </template>
