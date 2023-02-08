@@ -1,8 +1,14 @@
 <script setup>
+const { $dayjs } = useNuxtApp()
+
 useHead({
     title: 'Skratch Bastid | Upcoming Shows'
 })
 const shows = useState('shows')
+const futureShowListings = computed(() => {
+        // return shows.value.filter(show => $dayjs(show.date).isAfter($dayjs()))
+        return shows.value.filter(show => $dayjs().isSameOrBefore($dayjs(show.date, 'hour')) || $dayjs(show.date).isToday())
+    })
 
 onMounted(() => {
     window.scrollTo(0,0)
@@ -14,7 +20,7 @@ onMounted(() => {
         <div class="flex flex-col w-full md:w-[60%] m-auto pt-16 gap-x-4">
             <h1 class="uppercase text-center text-5xl font-black text-shadow text-white">Upcoming Shows</h1>
             <div class="my-8">
-                <div v-for="show in shows" class="flex w-full items-center my-4 bg-white px-6 py-4 border-2 border-black rounded">
+                <div v-for="show in futureShowListings" class="flex w-full items-center my-4 bg-white px-6 py-4 border-2 border-black rounded">
                     <div class="leading-tight w-1/10 text-right">
                         <div class="uppercase text-sm font-bold leading-none">{{ $dayjs(show.date).format('MMM')}}</div>
                         <div class="text-right text-sm md:text-2xl font-bold leading-none">{{ $dayjs(show.date).format('D')}}</div>
