@@ -29,7 +29,7 @@
 </script>
 
 <template>
-    <section v-if="version == 1" class="h-[475px] py-12 bg-gray-100" @click="toggleVersion">
+    <!-- <section v-if="version == 1" class="h-[475px] py-12 bg-gray-100" @click="toggleVersion">
         <div class="max-w-[85%] h-full mx-auto mt-auto flex flex-col justify-end">
             <div class="grid grid-cols-1 gap-y-2">
                 <div class="text-xs font-light uppercase">Tuesdays at 10am ET on Twitch</div>
@@ -59,11 +59,11 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section v-if="version == 3" class="py-16 md:py-24 bg-[url('/img/blue-plaid.jpg')] bg-contain">
+    </section> -->
+    <section v-if="version == 3" class="py-16 md:py-24 bg-[url('https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/166a4604-ce31-40fd-1e42-1801067c0800/w=1920')] bg-contain">
         <div>
             <div class="flex flex-col justify-center items-center relative">
-                <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/public" class="w-2/3 md:w-[550px] z-10" />
+                <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-2/3 md:w-[550px] z-10" />
                 <div class="hidden md:flex bg-[#10172A] text-xs md:text-lg text-white uppercase font-bold px-2 md:px-4 py-1 rounded-lg justify-center items-center border-white border-2 z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden md:block md:w-6 md:h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
