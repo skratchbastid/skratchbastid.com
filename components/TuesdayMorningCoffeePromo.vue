@@ -81,7 +81,7 @@
                     <a href="#" @click.prevent="addToCalendar(1)" id="calendar-button"  class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Add to Calendar</a>
                     <a href="https://www.twitch.tv/skratchbastid/schedule" target="_blank" class="bg-white uppercase text-lg border-2 border-black rounded-full font-bold px-4">Learn More</a>
                 </div>
-                <img src="/img/record-bg.png" class="absolute w-4/5 top-[50px] md:w-[520px] md:top-[120px]" />
+                <nuxt-img provider="cloudflare" src="d788698b-de1f-4378-72b9-d0faf2333600/w=520" class="absolute w-4/5 top-[50px] md:w-[520px] md:top-[120px]" />
             </div>
         </div>
     </section>
