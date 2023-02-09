@@ -2,7 +2,7 @@
     <section class="w-full bg-[url(https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/fcb24be8-793f-48ea-6c96-fe248ae00c00/w=1920)] bg-no-repeat bg-cover border-t border-1 border-teal-200">
         <div class="max-w-[85%] m-auto flex flex-col md:flex-row py-12 md:py-24">
             <div class="w-full md:w-1/3 flex justify-center items-center mb-6">
-                <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" class="w-1/2 md:w-2/3" />
+                <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-1/2 md:w-2/3" />
             </div>
             <div class="w-full md:w-2/3 text-center md:text-left">
                 <div class="text-lg md:text-xl font-light uppercase">Show your support by joining the</div>

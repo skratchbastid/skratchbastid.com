@@ -16,7 +16,7 @@
         <UpcomingShows />
         <section class="py-12 px-4 w-full md:max-w-[85%] m-auto flex flex-col md:flex-row gap-6 md:gap-12 hidden">
             <div class="w-full md:w-1/2">
-                <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" class="rounded w-2/3 md:w-full m-auto" />
+                <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" loading="lazy" class="rounded w-2/3 md:w-full m-auto" />
             </div>
             <div class="flex flex-col items-start items-center md:items-start justify-center w-full md:w-1/2">
                 <h3 class="mb-1 border-teal-600 border-2 text-teal-600 font-bold uppercase text-[0.6rem] md:text-sm px-2 md:px-4 py-1 rounded">New Mix!</h3>
@@ -35,7 +35,7 @@
                     <div class="text-sm relative top-1">SHOP</div>
                     <div class="text-3xl font-black">MERCH</div>
                 </a>
-                <nuxt-img src="53dff839-d033-43e4-6274-7d569aa1b800/public" alt="" class="w-4/5 md:w-[80%] -top-[40px]" />
+                <nuxt-img src="53dff839-d033-43e4-6274-7d569aa1b800/public" loading="lazy" alt="" class="w-4/5 md:w-[80%] -top-[40px]" />
             </div>
         </div>
         <SocialLinks />

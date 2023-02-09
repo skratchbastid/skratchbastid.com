@@ -45,7 +45,7 @@
                 <div class="w-2/3 m-auto text-lg font-light my-6">Keep an eye on your inbox for new 🔥🔥🔥 from Bastid soon!</div>
             </div>
         </div>
-        <nuxt-img src="9358559e-4e3e-4465-ca71-68855f44ce00/public" class="hidden md:block w-36 absolute -top-16 left-0 right-0 text-center ml-auto mr-auto -rotate-12" alt="" />
+        <nuxt-img src="9358559e-4e3e-4465-ca71-68855f44ce00/public" loading="lazy" class="hidden md:block w-36 absolute -top-16 left-0 right-0 text-center ml-auto mr-auto -rotate-12" alt="" />
     </section>
 </template>
 
