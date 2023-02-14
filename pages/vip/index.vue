@@ -5,7 +5,7 @@
         layout: 'vip'
     })
 
-    const streams = ref()
+    const streams = ref([])
     const pageInfo = ref()
 
     const streamsQuery = gql`
@@ -23,15 +23,19 @@
                 }
             }
         }`
+    console.log(useQuery)
+    const { result } = useQuery(streamsQuery)
+    // const { data, loading, fetchMore } = await useAsyncQuery(streamsQuery)
+    // console.log(data.value.episodes)
+    // streams.value = data.value.episodes.nodes
+    // pageInfo.value = data.value.episodes.pageInfo
     
-    const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
-    
-    onResult((result) => {
-        console.log("The result!", result)
-        streams.value = result.data.episodes.nodes
-        pageInfo.value = result.data.episodes.pageInfo
-        console.log("ola?", result)
-    })    
+    // onResult((result) => {
+    //     console.log("The result!", result)
+    //     streams.value = result.data.episodes.nodes
+    //     pageInfo.value = result.data.episodes.pageInfo
+    //     console.log("ola?", result)
+    // })    
 
     async function loadMore() {
         try{
