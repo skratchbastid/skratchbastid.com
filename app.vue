@@ -10,7 +10,7 @@
         {date: new Date('2023-03-03T12:00:00'), city: "Toronto, ON", details: "Motionball Toronto Charity Gala", venue: "Liberty Grand", link: "https://motionball.com/toronto/"},
         {date: new Date('2023-03-09T12:00:00'), city: "Revelstoke, BC", details: "Redbull Natural Selection", venue: "Après, TBA", link: ""},
         {date: new Date('2023-03-10T12:00:00'), city: "Revelstoke, BC", details: "Redbull Natural Selection", venue: "TBA", link: ""},
-        {date: new Date('2023-03-11T12:00:00'), city: "Edmonton, AB", details: "", venue: "99ten", link: ""},
+        {date: new Date('2023-03-11T12:00:00'), city: "Edmonton, AB", details: "JUNOfest", venue: "99ten", link: "https://www.eventbrite.ca/e/junofest-presented-by-cbc-music-skratch-bastid-with-guests-tickets-547879992807"},
         {date: new Date('2023-03-17T12:00:00'), city: "Austin, TX", details: "BASTID'S BBQ @ SXSW // 4pm-10pm", venue: "Native Hostel", link: "https://www.eventbrite.ca/e/bastids-bbq-austin-sxsw-tickets-536356545867"},
         {date: new Date('2023-05-27T12:00:00'), city: "Somerset, UK", details: "Shindig Weekender Festival", venue: "Dillington Estate", link: "https://shindigfestival.co.uk/"},
     ]
