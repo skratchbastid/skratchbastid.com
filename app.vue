@@ -16,6 +16,11 @@
     ]
   
   useState('shows', () => showListings)
+
+  onBeforeMount(() => { 
+    checkForLogin()
+  })
+
   onMounted(() => {
     // document.addEventListener('keyup', function(e) {
     //   if (e.key === 'd') {
