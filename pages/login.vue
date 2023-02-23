@@ -1,11 +1,8 @@
 <script setup>
-    const email = ref('')
-    const password = ref('')
 
-    const user = useState('user')
 </script>
 <template>
-    <div class="w-full h-[80vh] flex flex-col items-center justify-center">
+    <div class="w-full h-[80vh] flex items-center justify-center">
         <div class="bg-gray-100 w-1/3 ">
             LOGIN
         </div>
