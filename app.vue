@@ -13,7 +13,7 @@
         {date: new Date('2023-03-11T12:00:00'), city: "Edmonton, AB", details: "", venue: "99ten", link: ""},
         {date: new Date('2023-03-15T12:00:00'), city: "Austin, TX", details: "12 Rivers Open House", venue: "Native Hostel", link: ""},
         {date: new Date('2023-03-16T12:00:00'), city: "Austin, TX", details: "", venue: "Dante's Hi-Fi", link: ""},
-        {date: new Date('2023-03-17T12:00:00'), city: "Austin, TX", details: "BASTID'S BBQ @ SXSW // 4pm-10pm", venue: "Native Hostel", link: "https://www.eventbrite.ca/e/bastids-bbq-austin-sxsw-tickets-536356545867"},
+        {date: new Date('2023-03-17T12:00:00'), city: "Austin, TX", details: "BASTID'S BBQ @ SXSW // 3pm-10pm", venue: "Native Hostel", link: "https://www.eventbrite.ca/e/bastids-bbq-austin-sxsw-tickets-536356545867"},
         {date: new Date('2023-03-23T12:00:00'), city: "Miami, FL", details: "The Schmucks", venue: "Moxy Miami South Beach", link: ""},
         {date: new Date('2023-03-24T12:00:00'), city: "Miami, FL", details: "", venue: "Better Days", link: ""},
         {date: new Date('2023-03-25T12:00:00'), city: "Lancaster, PA", details: "w/ Cosmo Baker", venue: "Tellus360", link: ""},
