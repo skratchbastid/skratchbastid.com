@@ -19,6 +19,7 @@ export function checkForLogin() {
     const currentUser = useState('user')
     const user = useQuery(userQuery).result
     currentUser.value = user
+    console.log(currentUser.value)
 }
 
 export function login(email, password) {
