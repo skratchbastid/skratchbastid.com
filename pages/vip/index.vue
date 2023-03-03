@@ -1,6 +1,10 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
 
+    onMounted(() => {
+        console.log("Mounted")
+    })
+
     definePageMeta({
         layout: 'vip'
     })
@@ -27,10 +31,8 @@
     const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
     
     onResult((result) => {
-        console.log("The result!", result)
         streams.value = result.data.episodes.nodes
         pageInfo.value = result.data.episodes.pageInfo
-        console.log("ola?", result)
     })    
 
     async function loadMore() {

@@ -15,12 +15,13 @@ const userQuery = gql`
   `
 
 export function checkForLogin() {
-    console.log("Check For Login")
     const currentUser = useState('user')
-    const user = useQuery(userQuery).result
-    currentUser.value = user
-    console.log(currentUser.value)
+    const user = useQuery(userQuery, {
+        fetchPolicy: "no-cache" 
+    })
+    currentUser.value = user.result
 }
+
 
 export function login(email, password) {
     console.log(`Login: ${email}, ${password}`)
@@ -48,6 +49,8 @@ export function login(email, password) {
     mutate().then((result) => {
         console.log(result.data.loginWithCookies?.status)
         currentUser.value = useQuery(userQuery).result
+        console.log("Now we get it?", currentUser.value)
+        console.log(useQuery(userQuery).result)
         return navigateTo('/vip')
     }).catch((err) => {
         console.log("Whoops", err)

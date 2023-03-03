@@ -1,5 +1,4 @@
 <script setup>
-  checkForLogin();
   let darkMode = ref(false)
   const showListings = [
         {date: new Date('2023-02-07T12:00:00'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""},
@@ -25,18 +24,10 @@
     ]
   
   useState('shows', () => showListings)
- 
 
-  onBeforeMount(() => { 
+  onBeforeMount(() => {
+    console.log("Before mount")
     checkForLogin()
-  })
-
-  onMounted(() => {
-    // document.addEventListener('keyup', function(e) {
-    //   if (e.key === 'd') {
-    //     darkMode.value = !darkMode.value
-    //   }
-    // })
   })
 </script>
 
