@@ -44,12 +44,33 @@ export function login(email, password) {
         refetchQueries: [
             { query: userQuery }
         ]
-        })
-        mutate().then((result) => {
-            currentUser.value = useQuery(userQuery).result
-        })
+    })
+    mutate().then((result) => {
+        console.log(result.data.loginWithCookies?.status)
+        currentUser.value = useQuery(userQuery).result
+        return navigateTo('/vip')
+    }).catch((err) => {
+        console.log("Whoops", err)
+    })
 }
 
+const LOG_OUT = gql`
+  mutation logOut {
+    logout(input: {}) {
+      status
+    }
+  }
+`;
+
 export function logout() {
-    console.log("Log out!")
+    console.log("Let's log out...")
+    const { mutate } = useMutation(LOG_OUT, {
+      refetchQueries: [
+        { query: userQuery }
+      ],
+    });
+   
+    mutate().then((result) => {
+        console.log(result.data)
+    })
 }

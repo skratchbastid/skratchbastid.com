@@ -1,11 +1,14 @@
 <script setup>
+    definePageMeta({
+        layout: 'blank'
+    })
     const user = useState('user')
     const email = ref('')
     const password = ref('')
 </script>
 <template>
-    <div class="w-full h-[80vh] flex flex-col items-center justify-center">
-        <div class="w-full h-[100vh] bg-[#F7FAFC] flex items-center justify-center">
+    <div class="w-full min-h-[100vh] bg-[#F7FAFC] flex flex-col items-center justify-center">
+        <div class="w-full h-full flex items-center justify-center">
             <div class="bg-white rounded shadow-xl p-12 w-[35%] flex flex-col">
                 <span class="font-semibold text-2xl mb-8">Sign into your account</span>
                 <form class="flex flex-col" @submit.prevent="login(email, password)">

@@ -24,7 +24,7 @@
         <div v-if="user?.viewer" class="relative flex justify-center items-center">
           <img :src="user.viewer.avatar.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
           <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
-            Logout
+            <a href="#" @click.prevent="logout">Logout</a>
           </div>
         </div>
         <div v-else>
