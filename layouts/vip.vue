@@ -3,7 +3,7 @@
   const menuVisible = ref(false)
 
   onMounted(() => {
-    console.log("HI")
+    
   })
 
   function toggleMenu() {
