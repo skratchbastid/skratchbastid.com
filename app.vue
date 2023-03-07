@@ -20,6 +20,8 @@
         {date: new Date('2023-04-01T12:00:00'), city: "Montreal, QC", details: "Montreal Canadiens Game", venue: "Centre Bell", link: ""},
         {date: new Date('2023-04-07T12:00:00'), city: "Ottawa, ON", details: "", venue: "BERLIN", link: "https://www.eventbrite.ca/e/skratch-bastid-at-berlin-tickets-560626688517"},
         {date: new Date('2023-05-27T12:00:00'), city: "Somerset, UK", details: "Shindig Weekender Festival", venue: "Dillington Estate", link: "https://shindigfestival.co.uk/"},   
+        {date: new Date('2023-07-29T12:00:00'), city: "Toronto, ON", details: "Bastid's BBQ", venue: "The Bentway", link: "https://www.universe.com/events/bastids-bbq-toronto-two-days-july-29th-july-30th-tickets-TW2F6M"},   
+        {date: new Date('2023-07-30T12:00:00'), city: "Toronto, ON", details: "Bastid's BBQ", venue: "The Bentway", link: "https://www.universe.com/events/bastids-bbq-toronto-two-days-july-29th-july-30th-tickets-TW2F6M"},   
     ]
   
   useState('shows', () => showListings)
