@@ -17,7 +17,7 @@
         {date: new Date('2023-03-23T12:00:00'), city: "Miami, FL", details: "The Schmucks", venue: "Moxy Miami South Beach", link: ""},
         {date: new Date('2023-03-24T12:00:00'), city: "Miami, FL", details: "", venue: "Better Days", link: ""},
         {date: new Date('2023-03-25T12:00:00'), city: "Lancaster, PA", details: "w/ Cosmo Baker", venue: "Tellus360", link: ""},
-        {date: new Date('2023-03-26T12:00:00'), city: "Philadelphia, PA", details: "w/ Cosmo Baker", venue: "Brooklyn BOwl", link: "https://www.brooklynbowl.com/philadelphia/events/detail/skratch-bastid-cosmo-baker-13040565"},
+        {date: new Date('2023-03-26T12:00:00'), city: "Philadelphia, PA", details: "Free Show w/ Cosmo Baker", venue: "Brooklyn Bowl", link: "https://www.brooklynbowl.com/philadelphia/events/detail/skratch-bastid-cosmo-baker-13040565"},
         {date: new Date('2023-04-01T12:00:00'), city: "Montreal, QC", details: "Montreal Canadiens Game", venue: "Centre Bell", link: ""},
         {date: new Date('2023-04-07T12:00:00'), city: "Ottawa, ON", details: "", venue: "BERLIN", link: "https://www.eventbrite.ca/e/skratch-bastid-at-berlin-tickets-560626688517"},
         {date: new Date('2023-05-06T12:00:00'), city: "Toronto, ON", details: "w/ The Shuffle Demons", venue: "Koerner Hall", link: "https://www.rcmusic.com/tickets/seats/242401"},
