@@ -51,12 +51,10 @@
   })  
   
   useState('shows', () => showListings)
-  onMounted(() => {
-    // document.addEventListener('keyup', function(e) {
-    //   if (e.key === 'd') {
-    //     darkMode.value = !darkMode.value
-    //   }
-    // })
+
+  onBeforeMount(() => {
+    console.log("Before mount")
+    checkForLogin()
   })
 </script>
 
