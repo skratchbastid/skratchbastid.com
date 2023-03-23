@@ -49,8 +49,7 @@
   onResult((result) => {
       // streams.value = result.data.episodes.nodes
       // pageInfo.value = result.data.episodes.pageInfo
-      showListings.value = result.data.events.nodes
-      console.log(result)
+      showListings.value = filterAndSortEventsByDate(result.data.events.nodes)
   })  
   
   useState('shows', () => showListings)

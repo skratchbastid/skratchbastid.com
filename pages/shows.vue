@@ -21,7 +21,7 @@ onMounted(() => {
             <div class="my-8">
                 <div v-for="show in futureShowListings" class="flex w-full items-center my-4 bg-white px-6 py-4 border-2 border-black rounded">
                     <div class="leading-tight w-1/10 text-right">
-                        <div class="uppercase text-sm font-bold leading-none">{{ $dayjs(show.date).format('MMM')}}</div>
+                        <div class="uppercase text-sm font-bold leading-none">{{ $dayjs(show.eventDate).format('MMM')}}</div>
                         <div class="text-right text-sm md:text-2xl font-bold leading-none">{{ $dayjs(show.eventDate).format('D')}}</div>
                     </div>
                     <div class="flex flex-col md:flex-row flex-grow md:flex-grow-0 w-9/12 items-center justify-center">
