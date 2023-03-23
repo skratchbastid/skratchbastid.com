@@ -1,0 +1,24 @@
+// utils/eventUtils.js
+
+export function filterAndSortEventsByDate(events) {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Set time to 00:00:00 for accurate date comparison
+
+    const filteredEvents = events.filter((event) => {
+        const eventDate = new Date(event.eventDate);
+        return eventDate >= currentDate;
+    });
+
+    // Sort events in ascending order by eventDate
+    filteredEvents.sort((a, b) => {
+        const dateA = new Date(a.eventDate);
+        const dateB = new Date(b.eventDate);
+
+        if (dateA < dateB) return -1;
+        if (dateA > dateB) return 1;
+        return 0;
+    });
+    
+    return filteredEvents;    
+}
+  
