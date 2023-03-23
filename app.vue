@@ -47,8 +47,6 @@
   const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
     
   onResult((result) => {
-      // streams.value = result.data.episodes.nodes
-      // pageInfo.value = result.data.episodes.pageInfo
       showListings.value = filterAndSortEventsByDate(result.data.events.nodes)
   })  
   
