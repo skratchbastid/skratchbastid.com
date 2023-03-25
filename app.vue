@@ -1,6 +1,6 @@
 <script setup>
   let darkMode = ref(false)
-  const showListings = ref([{date: new Date('2023-02-07T12:00:00'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""}])
+  const showListings = ref([])
   // const showListings = [
   //       {date: new Date('2023-02-07T12:00:00'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""},
   //       {date: new Date('2023-02-10T12:00:00'), city: "Brooklyn, NY", details: "Boogie Blind Presents 'Easily'", venue: "Friends & Lovers", link: "https://www.eventbrite.com/e/boogie-blind-presents-easily-feat-skratch-bastid-tickets-419575159597"},
@@ -46,16 +46,17 @@
   `
   const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
   
-  const shows = useState('shows', () => showListings)
-  
+  console.log("1", showListings.value.length)
   onResult((result) => {
-      console.log('1', showListings)
       showListings.value = filterAndSortEventsByDate(result.data.events.nodes)
-      console.log('2', showListings)
-  })
-  console.log("3", showListings)
-  console.log("4", shows.value)
+      console.log("2", showListings.value.length)
+  })  
+  
+  console.log("3", showListings.value.length)
 
+  useState('shows', () => showListings)
+
+  console.log("4", showListings.value.length)
   onBeforeMount(() => {
     checkForLogin()
   })
