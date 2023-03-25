@@ -45,15 +45,19 @@
     }
   `
   const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
-    
+  
+  console.log("1", showListings.value.length)
   onResult((result) => {
       showListings.value = filterAndSortEventsByDate(result.data.events.nodes)
+      console.log("2", showListings.value.length)
   })  
   
+  console.log("3", showListings.value.length)
+
   useState('shows', () => showListings)
 
+  console.log("4", showListings.value.length)
   onBeforeMount(() => {
-    console.log("Before mount")
     checkForLogin()
   })
 </script>
