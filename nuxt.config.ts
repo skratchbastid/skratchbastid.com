@@ -2,6 +2,10 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+    server: {
+        host: '0.0.0.0',
+        port: 3000
+    },
     app: {
         head: {
             title: 'Skratch Bastid',
@@ -19,7 +23,7 @@ export default defineNuxtConfig({
     apollo: {
         clients: {
             default: {
-                httpEndpoint: "https://wp.slowjams.xyz/graphql",
+                httpEndpoint: "https://wp.skratchbastid.dev/graphql",
                 httpLinkOptions: {
                     credentials: 'include'
                 }

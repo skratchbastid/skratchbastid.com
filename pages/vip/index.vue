@@ -1,10 +1,6 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
 
-    onMounted(() => {
-        console.log("Mounted")
-    })
-
     definePageMeta({
         layout: 'vip'
     })
@@ -80,17 +76,17 @@
 
 <template>
     <div class="max-w-[85%] mx-auto py-12">
-        <div class="h-[35vh] bg-gray-200 rounded mb-12">
-            <!-- {{ result }} -->
+        <div class="mb-12 grid grid-cols-2 md:grid-cols-3">
+            
         </div>
 
         <div class="mb-12">
-            <div class="font-black uppercase mb-2">
+            <div class="font-black text-3xl uppercase mb-2">
                 Latest Streams
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12">
                 <NuxtLink :to="'videos/' + video.slug" v-for="video in streams" class="flex flex-col w-full rounded mr-4">
-                    <img :src="video.imageLink" class="rounded-sm" />
+                    <img :src="video.imageLink" class="rounded" />
                     <div class="text-sm font-semibold mt-2">{{ video.title }}</div>
                 </NuxtLink>
             </div>
