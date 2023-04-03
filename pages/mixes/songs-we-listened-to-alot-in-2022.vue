@@ -24,7 +24,7 @@
             </div>
             <div class="md:w-2/3 lg:1/3 flex flex-col items-center md:items-start justify-center text-white pb-4">
                 <h2>Skratch Bastid & Cosmo Baker</h2>
-                <h2 class="text-2xl lg:text-4xl font-black">Songs We Listened To A Lot in 2022</h2>
+                <h2 class="text-2xl lg:text-4xl font-black text-center">Songs We Listened To A Lot in 2022</h2>
                 <div class="flex flex-col text-center md:flex-row mt-8 md:mt-10 gap-4">
                     <!-- <Icon @click="playMix" name="material-symbols:play-circle-rounded" class="text-blue-500 bg-white rounded-full" size="40" />
                     <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Download</a> -->
