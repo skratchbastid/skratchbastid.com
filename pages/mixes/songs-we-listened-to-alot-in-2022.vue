@@ -39,7 +39,7 @@
             <div class="w-full flex mb-6">
                 <h2 class="text-4xl uppercase font-extrabold">About the Mix</h2>
             </div>
-            <div class="w-full md:w-5/6 text-lg">
+            <div class="w-full md:w-5/6 text-lg" id="mix-details">
                 <p class="mb-6">Damn near 4 hours of incredible music that Skratch Bastid & Cosmo Baker listened to a lot in 2022. Funny year it was, 2022, eh? Well, music once again got us through life (as it always does).</p>
                 <p class="mb-6">Here are beats, arrangements, themes, moods, and more that resonated with us last year; through our homes, our streams on Twitch (<a href="http://www.twitch.tv/skratchbastid" target="_blank">http://www.twitch.tv/skratchbastid</a> & <a href="http://www.twitch.tv/cosmobaker" target="_blank">http://www.twitch.tv/cosmobaker</a>), our headphones, and at our shows. Please support these artists by buying their music & merch, sharing their art with your friends on & off the internet, supporting concerts, and just finding a way to give back. This mix is part of our offering to them! Long live great art & artists.</p>
                 <p class="mb-6">Art by Rhek</p>
@@ -62,4 +62,11 @@
     <TopGrillinPromo />
 
 </template>
+
+<style scoped>
+#mix-details a {
+    color: #0d7490;
+    text-decoration: underline;
+  }
+</style>
 
