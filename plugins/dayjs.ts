@@ -4,6 +4,8 @@ import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import isToday from 'dayjs/plugin/isToday'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
 
 const tz = 'America/Toronto'
 
@@ -13,6 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   dayjs.extend(timezone)
   dayjs.extend(isSameOrBefore)
   dayjs.extend(isToday)
+  dayjs.extend(relativeTime)
   dayjs.tz.setDefault('America/New_York')
   nuxtApp.provide('dayjs', dayjs)
 })

@@ -45,21 +45,18 @@
     }
   `
   const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
-  
-  console.log("1", showListings.value.length)
-  onResult((result) => {
-      showListings.value = filterAndSortEventsByDate(result.data.events.nodes)
-      console.log("2", showListings.value.length)
-  })  
-  
-  console.log("3", showListings.value.length)
+  const shows = ref(useState('shows', () => []))
 
-  useState('shows', () => showListings)
+  onResult((result) => {
+    shows.value = filterAndSortEventsByDate(result.data.events.nodes)
+  })  
+
 
   console.log("4", showListings.value.length)
   onBeforeMount(() => {
     checkForLogin()
   })
+
 </script>
 
 <template>

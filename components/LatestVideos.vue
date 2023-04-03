@@ -1,3 +1,28 @@
+<script setup>
+    const streamsQuery = gql`
+        query getEpisodes {
+            episodes(first: 10) {
+                nodes {
+                    title
+                    vimeoID
+                    slug
+                    imageLink
+                    date
+                }
+                pageInfo {
+                    endCursor
+                    hasNextPage
+                }
+            }
+        }`
+    
+    const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
+    
+    onResult((result) => {
+        streams.value = result.data.episodes.nodes
+        pageInfo.value = result.data.episodes.pageInfo
+    })   
+</script>
 <template>
     <div class="max-w-[85%] m-auto my-12">
         <h2 class="font-extrabold text-2xl mb-2">Latest Videos</h2>

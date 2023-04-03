@@ -2,6 +2,7 @@
     const { $dayjs } = useNuxtApp()
     const paused = ref(false)
     const shows = useState('shows')
+    
     const futureShowListings = computed(() => {
         return shows.value.filter(show => $dayjs().isSameOrBefore($dayjs(show.eventDate, 'day')) || $dayjs(show.eventDate).isToday())
     })

@@ -14,7 +14,7 @@
     <div class="mb-6">
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
-        <section class="py-12 px-4 w-full md:max-w-[85%] m-auto flex flex-col md:flex-row gap-6 md:gap-12 hidden">
+        <section class="py-12 px-4 w-full md:max-w-[85%] m-auto flex flex-col md:flex-row gap-6 md:gap-12">
             <div class="w-full md:w-1/2">
                 <nuxt-img src="3cb68bc3-0d31-4f30-f8c5-9635aabbfc00/public" loading="lazy" class="rounded w-2/3 md:w-full m-auto" />
             </div>
