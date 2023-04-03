@@ -1,5 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 import { defineNuxtConfig } from 'nuxt/config'
+import signedUrl from './server/api/signedUrl';
 
 export default defineNuxtConfig({
     app: {
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
             ]
         }
     },
+    serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-icon',

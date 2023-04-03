@@ -7,15 +7,17 @@
 
     const streams = ref()
     const pageInfo = ref()
+    const user = useState('user')
 
     const streamsQuery = gql`
         query getEpisodes {
-            episodes(first: 4) {
+            episodes(first: 10) {
                 nodes {
                     title
                     vimeoID
                     slug
                     imageLink
+                    date
                 }
                 pageInfo {
                     endCursor
@@ -75,74 +77,68 @@
 </script>
 
 <template>
-    <div class="max-w-[85%] mx-auto py-12">
-        <div class="mb-12 grid grid-cols-2 md:grid-cols-3">
-            
-        </div>
-
-        <div class="mb-12">
-            <div class="font-black text-3xl uppercase mb-2">
-                Latest Streams
+    <div class="min-h-[40vh] w-full hidden">
+        <!-- Subscriptions: {{  user?.viewer?.subscriptions }} -->
+        <div class="mx-10 my-8 flex gap-8">
+            <div class="w-1/2">
+                <div class="aspect-video bg-slate-200 flex justify-center items-center text-2xl font-bold">
+                    Latest Stream
+                </div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12">
+            <div class="w-1/2 flex flex-col gap-4 justify-center items-center">
+                <div class="bg-slate-200 w-2/3 py-6 text-center">Zoom Room</div>
+                <div class="bg-slate-200 w-2/3 py-6 text-center">Guest List</div>
+                <div class="bg-slate-200 w-2/3 py-6 text-center">Another Option</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="my-8">
+            <LatestStreams class="mb-8" />
+            <DeepDives />
+            <!-- <div class="text-lg font-semibold mb-2 ml-4 md:ml-10">
+                Latest Streams
+            </div> -->
+            <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12">
                 <NuxtLink :to="'videos/' + video.slug" v-for="video in streams" class="flex flex-col w-full rounded mr-4">
                     <img :src="video.imageLink" class="rounded" />
                     <div class="text-sm font-semibold mt-2">{{ video.title }}</div>
+                    {{ $dayjs().to(video.date)}}
                 </NuxtLink>
             </div>
             <div class="mt-10 text-center">
                 <div v-if="loading">Loading...</div>
                 <button v-else class="border border-2 px-6 py-2 m-auto" @click="loadMore">Load More</button>
-            </div>
-            <!-- <vue-horizontal responsive>
-                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="flex flex-col w-1/2 md:w-1/4 rounded mr-4">
-                    <img :src="video.imageLink" class="rounded-sm" />
-                    <div class="text-sm font-semibold mt-2">{{ video.title }}</div>
+            </div> -->
+            <!-- <vue-horizontal class="ml-4 md:px-6">
+                <NuxtLink :to="'videos/' + video.slug" v-for="video in streams" class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
+                    <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
+                    <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                    <div class="text-xs font-light">{{ $dayjs().to(video.date)}}</div>
                 </NuxtLink>
             </vue-horizontal> -->
         </div>
-        <!-- <div class="mb-12 flex hidden">
-            <div class="w-1/2">
-                <div class="aspect-video bg-transparent"></div>
-            </div>
-            <div class="w-1/2 flex items-center justify-center">
-                
-            </div>
-        </div>
-
-        <div class="mb-12 hidden">
-            <div class="font-black uppercase mb-2">
-                Latest Streams
-            </div>
-            <div class="flex gap-4">
-                <NuxtLink :to="'videos/' + video.slug" v-for="video in result.episodes.nodes" class="aspect-video flex w-1/4 bg-blue-100 rounded">
-                    {{ video.title }}!
-                </NuxtLink>
-            </div>
-        </div>
         <div class="mb-12">
-            <div class="font-black uppercase mb-2">
-                Deep Dives
+            <div class="mb-2 ml-4 md:ml-10">
+                <h2 class="text-lg font-semibold">Mixes</h2>
             </div>
-            <div class="flex gap-4">
-                <div v-for="n in 3" class="aspect-video flex w-1/3 bg-blue-100 rounded">
-                </div>
-            </div>
-        </div>
-        <div class="mb-12">
-            <div class="font-black uppercase mb-2">
-                Mixes
-            </div>
-            <vue-horizontal responsive>
-                <div v-for="n in 9" class="aspect-square flex w-1/4 bg-blue-100 rounded mr-4">
+            <vue-horizontal class="ml-4 md:ml-10">
+                <div class="w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-6" v-for="n in 10">
+                    Mix {{ n }}
                 </div>
             </vue-horizontal>
-        </div> -->
+        </div> 
     </div>
 </template>
 
 <style scoped>
-    .video-slider {
-        border: 3px hotpink;
+
+.vue-horizontal :deep(.v-hl-btn svg) {
+    @apply hidden
+}
+@media (min-width: 768px) {
+    .vue-horizontal :deep(.v-hl-btn svg) {
+        @apply block
     }
+}
 </style>

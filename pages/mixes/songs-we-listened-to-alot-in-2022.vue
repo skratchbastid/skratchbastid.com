@@ -26,9 +26,9 @@
                 <h2>Skratch Bastid & Cosmo Baker</h2>
                 <h2 class="text-2xl lg:text-4xl font-black">Songs We Listened To A Lot in 2022</h2>
                 <div class="flex flex-col text-center md:flex-row mt-8 md:mt-10 gap-4">
-                    <Icon @click="playMix" name="material-symbols:play-circle-rounded" class="text-blue-500 bg-white rounded-full" size="40" />
-                    <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Download</a>
-                    <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Listen on Mixcloud</a>
+                    <!-- <Icon @click="playMix" name="material-symbols:play-circle-rounded" class="text-blue-500 bg-white rounded-full" size="40" />
+                    <a href="#" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Download</a> -->
+                    <a href="https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2022/" target="_blank" class="bg-blue-500 text-white font-bold px-7 py-2 rounded">Listen on Mixcloud</a>
                 </div>
             </div>
         </div>
@@ -40,9 +40,9 @@
                 <h2 class="text-4xl uppercase font-extrabold">About the Mix</h2>
             </div>
             <div class="w-full md:w-5/6 text-lg">
-                <p class="mb-6">A collection of Songs We Listened To A Lot in 2021 by Skratch Bastid & Cosmo Baker. An annual tradition. 47 days into 2022, but the songs are timeless. That's our excuse, anyway!</p>
-                <p class="mb-6">For real, though - these songs are ones that caught our attention, came into our lives and stayed, came back into our lives from another time in our lives, or for any reason at all crossed our speakers & minds a lot in 2021 all without any boundary of release date, genre, or style. Just the simple classification that they were played a lot on our personal time, in our livestreams, and shared with our friends & family during the unique year of 2021.</p>
-                <p>We hope you find some that stick with you for years to come.</p>
+                <p class="mb-6">Damn near 4 hours of incredible music that Skratch Bastid & Cosmo Baker listened to a lot in 2022. Funny year it was, 2022, eh? Well, music once again got us through life (as it always does).</p>
+                <p class="mb-6">Here are beats, arrangements, themes, moods, and more that resonated with us last year; through our homes, our streams on Twitch (<a href="http://www.twitch.tv/skratchbastid" target="_blank">http://www.twitch.tv/skratchbastid</a> & <a href="http://www.twitch.tv/cosmobaker" target="_blank">http://www.twitch.tv/cosmobaker</a>), our headphones, and at our shows. Please support these artists by buying their music & merch, sharing their art with your friends on & off the internet, supporting concerts, and just finding a way to give back. This mix is part of our offering to them! Long live great art & artists.</p>
+                <p class="mb-6">Art by Rhek</p>
             </div>
         </div>
     </div>
