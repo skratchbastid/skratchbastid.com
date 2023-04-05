@@ -72,8 +72,11 @@
 </script>
 <template>
     <div>
-        <div class="text-lg font-semibold mb-2 ml-4 md:ml-10">
-            Latest Streams
+        <div class="flex items-center mb-4">
+            <h2 class="text-lg font-extrabold ml-10">
+                Latest Streams
+            </h2>
+            <NuxtLink to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
         </div>
         <vue-horizontal class="ml-4 md:px-6">
             <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">

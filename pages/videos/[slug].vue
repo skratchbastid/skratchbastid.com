@@ -1,6 +1,10 @@
 <script setup>
     import { vueVimeoPlayer } from 'vue-vimeo-player'
 
+    definePageMeta({
+        layout: 'vip'
+    })
+
     const route = useRoute()
 
     const slug = route.params.slug

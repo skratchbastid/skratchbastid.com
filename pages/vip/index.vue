@@ -8,6 +8,7 @@
     const streams = ref()
     const pageInfo = ref()
     const user = useState('user')
+    const userIsVip = useState('userIsVip')
 
     const streamsQuery = gql`
         query getEpisodes {
@@ -94,33 +95,14 @@
     </div>
     <div>
         <div class="my-8">
+            <p class="mb-10 text-center hidden">VIP: {{ userIsVip }}</p>
+            <VipHeroCta v-if="!userIsVip" />
             <LatestStreams class="mb-8" />
             <DeepDives />
-            <!-- <div class="text-lg font-semibold mb-2 ml-4 md:ml-10">
-                Latest Streams
-            </div> -->
-            <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12">
-                <NuxtLink :to="'videos/' + video.slug" v-for="video in streams" class="flex flex-col w-full rounded mr-4">
-                    <img :src="video.imageLink" class="rounded" />
-                    <div class="text-sm font-semibold mt-2">{{ video.title }}</div>
-                    {{ $dayjs().to(video.date)}}
-                </NuxtLink>
-            </div>
-            <div class="mt-10 text-center">
-                <div v-if="loading">Loading...</div>
-                <button v-else class="border border-2 px-6 py-2 m-auto" @click="loadMore">Load More</button>
-            </div> -->
-            <!-- <vue-horizontal class="ml-4 md:px-6">
-                <NuxtLink :to="'videos/' + video.slug" v-for="video in streams" class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
-                    <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
-                    <div class="font-light mt-2 truncate">{{ video.title }}</div>
-                    <div class="text-xs font-light">{{ $dayjs().to(video.date)}}</div>
-                </NuxtLink>
-            </vue-horizontal> -->
         </div>
         <div class="mb-12">
             <div class="mb-2 ml-4 md:ml-10">
-                <h2 class="text-lg font-semibold">Mixes</h2>
+                <h2 class="text-lg font-extrabold">Mixes</h2>
             </div>
             <vue-horizontal class="ml-4 md:ml-10">
                 <div class="w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-6" v-for="n in 10">

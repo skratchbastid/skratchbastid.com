@@ -5,6 +5,7 @@
     const user = useState('user')
     const email = ref('')
     const password = ref('')
+
 </script>
 <template>
     <div class="w-full min-h-[100vh] bg-[#F7FAFC] flex flex-col items-center justify-center">
