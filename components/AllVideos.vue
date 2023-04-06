@@ -39,7 +39,7 @@
     
 </script>
 <template>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8 my-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
         <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos">
             <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
             <div class="font-light mt-2 truncate">{{ video.title }}</div>

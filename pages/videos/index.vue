@@ -10,7 +10,7 @@ definePageMeta({
             <li class="bg-black text-white px-6 py-1">
                 <NuxtLink to="/videos">Videos</NuxtLink>
             </li>
-            <li class="px-6 py-1">
+            <li class="px-6 py-1 border">
                 <NuxtLink to="/mixes">Mixes</NuxtLink>
             </li>
         </ul>

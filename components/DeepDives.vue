@@ -52,7 +52,7 @@ deepDivesOnResult((result) => {
 })
 </script>
 <template>
-    <div>
+    <div v-if="deepDives">
         <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
             Deep Dives
         </div>
@@ -66,3 +66,11 @@ deepDivesOnResult((result) => {
         </vue-horizontal>
     </div>
 </template>
+
+<style scoped>
+@media (max-width: 768px) {
+    .vue-horizontal:deep(.v-hl-btn) {
+        display: none !important;
+    }
+}
+</style>

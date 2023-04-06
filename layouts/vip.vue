@@ -3,7 +3,7 @@
   const menuVisible = ref(false)
 
   onMounted(() => {
-    
+    checkForLogin()
   })
 
   function toggleMenu() {
@@ -23,7 +23,7 @@
         <NuxtLink to="/" class="h-[70%]"><img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" class="h-full" /></NuxtLink>
         <div v-if="user" class="relative flex justify-center items-center">
           <NuxtLink v-if="$route.path !== '/vip'" to="/vip" class="bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded mr-3">VIP</NuxtLink>
-          <img :src="user?.avatar.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
+          <img v-if="user.avatar" :src="user.avatar.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
           <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
             <ul>
               <li>

@@ -71,14 +71,14 @@
     
 </script>
 <template>
-    <div>
-        <div class="flex items-center mb-4">
-            <h2 class="text-lg font-extrabold ml-10">
+    <div v-if="filteredStreams">
+        <div class="flex items-center mb-3" >
+            <h2 class="text-lg font-extrabold mx-3 md:mx-10">
                 Latest Streams
             </h2>
             <NuxtLink to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
         </div>
-        <vue-horizontal class="ml-4 md:px-6">
+        <vue-horizontal class="ml-3 md:mx-10">
             <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
                 <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
                 <div class="font-light mt-2 truncate">{{ video.title }}</div>
@@ -87,3 +87,11 @@
         </vue-horizontal>
     </div>
 </template>
+
+<style scoped>
+@media (max-width: 768px) {
+    .vue-horizontal:deep(.v-hl-btn) {
+        display: none !important;
+    }
+}
+</style>

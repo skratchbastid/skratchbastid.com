@@ -101,11 +101,11 @@
             <DeepDives />
         </div>
         <div class="mb-12">
-            <div class="mb-2 ml-4 md:ml-10">
+            <div class="mb-2 ml-4 md:mx-10">
                 <h2 class="text-lg font-extrabold">Mixes</h2>
             </div>
-            <vue-horizontal class="ml-4 md:ml-10">
-                <div class="w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-6" v-for="n in 10">
+            <vue-horizontal class="ml-4 md:mx-10">
+                <div class="w-3/5 md:w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-6" v-for="n in 10">
                     Mix {{ n }}
                 </div>
             </vue-horizontal>
@@ -114,13 +114,9 @@
 </template>
 
 <style scoped>
-
-.vue-horizontal :deep(.v-hl-btn svg) {
-    @apply hidden
-}
-@media (min-width: 768px) {
-    .vue-horizontal :deep(.v-hl-btn svg) {
-        @apply block
+@media (max-width: 768px) {
+    .vue-horizontal:deep(.v-hl-btn) {
+        display: none !important;
     }
 }
 </style>
