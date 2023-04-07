@@ -19,17 +19,14 @@
       ticketLink
     }
   `
-  const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
-  
+
   const shows = ref(useState('shows', () => []))
 
-  onResult((result) => {
-    shows.value = filterAndSortEventsByDate(result.data.events.nodes)
-  })  
+  const { data } = await useAsyncQuery(showsQuery)
+  shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
   onBeforeMount(() => {
     checkForLogin()
-    getVideos()
   })
 
 </script>
