@@ -1,6 +1,14 @@
 <script setup>
-  let darkMode = ref(false)
   const showListings = ref([])
+  const perks = [
+    'Stream over 1,000 hours of exclusive DJ sets',
+    'MP3 Downloads',
+    'Access to the VIP Discord server',
+    'VIP Zoom Room access',
+    'VIP Guest List at live shows',
+    'Members-only merch'
+]
+useState('perks', () => perks)
 
   const showsQuery = gql`
     {
@@ -19,13 +27,11 @@
       ticketLink
     }
   `
-  const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
-  
+
   const shows = ref(useState('shows', () => []))
 
-  onResult((result) => {
-    shows.value = filterAndSortEventsByDate(result.data.events.nodes)
-  })  
+  const { data } = await useAsyncQuery(showsQuery)
+  shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
   onBeforeMount(() => {
     checkForLogin()
@@ -34,7 +40,7 @@
 </script>
 
 <template>
-  <div :class="darkMode == true ? 'dark' : ''">
+  <div>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

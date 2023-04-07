@@ -10,7 +10,7 @@ const props = defineProps({
 })
 
 const deepDivesQuery = gql`
-    query getEpisodes {
+    query getDeepDives {
         episodes(first: 10, where: {
             taxQuery: {
             taxArray: [
@@ -46,13 +46,12 @@ const deepDivesQuery = gql`
         }
     }`
 
-const { result: deepDivesResult, loading: deepDivesLoading, error: deepDivesError, onResult: deepDivesOnResult } = useQuery(deepDivesQuery)
-deepDivesOnResult((result) => {
-    deepDives.value = result.data.episodes.nodes
-})
+const { data } = await useAsyncQuery(deepDivesQuery)
+deepDives.value = data.value.episodes.nodes
+
 </script>
 <template>
-    <div v-if="deepDives">
+    <div>
         <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
             Deep Dives
         </div>

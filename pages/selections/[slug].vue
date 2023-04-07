@@ -2,6 +2,7 @@
     const route = useRoute()
     const slug = route.params.slug
 
+
     onMounted(() => {
         window.scrollTo(0,0)
     })

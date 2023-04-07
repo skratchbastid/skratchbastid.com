@@ -15,7 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="bg-[url(https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/99af408d-6c49-4743-41f2-9e14cfaeb500/w=1920)] bg-cover bg-no-repeat w-full">
+    <div class="bg-[url(https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/99af408d-6c49-4743-41f2-9e14cfaeb500/w=1920)] bg-cover bg-no-repeat w-full min-h-[95vh]">
         <div class="flex flex-col w-full md:w-[60%] m-auto pt-16 gap-x-4">
             <h1 class="uppercase text-center text-5xl font-black text-shadow text-white">Upcoming Shows</h1>
             <div class="my-8">
