@@ -1,7 +1,6 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
     const streams = ref(null)
-    const deepDives = ref(null)
     const pageInfo = ref(null)
 
     const props = defineProps({
@@ -34,10 +33,10 @@
                 date
                 streamTypes {
                     edges {
-                    node {
-                        id
-                        name
-                    }
+                        node {
+                            id
+                            name
+                        }
                     }
                 }
                 }
@@ -47,17 +46,9 @@
                 }
             }
         }`
-        
-    
-    
 
-    
-    const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
-
-    onResult((result) => {
-        streams.value = result.data.episodes.nodes
-        pageInfo.value = result.data.episodes.pageInfo
-    })
+    const { data } = await useAsyncQuery(streamsQuery)
+    streams.value = data.value.episodes.nodes
 
 
     const filteredStreams = computed(() => {
@@ -79,7 +70,7 @@
             <NuxtLink to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
         </div>
         <vue-horizontal class="ml-3 md:mx-10">
-            <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
+            <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4">
                 <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
                 <div class="font-light mt-2 truncate">{{ video.title }}</div>
                 <div class="text-xs font-light">{{ $dayjs().to(video.date)}}</div>

@@ -16,7 +16,7 @@
             </div>
             <div class="flex flex-col text-center">
                 <h1 class="text-xl md:text-3xl lg:text-5xl font-extrabold mb-3 hidden">Join Skratch Bastid's Top Grillin' VIP Crew</h1>
-                <div class="text-3xl font-extrabold text-blue-500 mb-3">$9.99 USD / Month</div>
+                <div class="hidden text-3xl font-extrabold text-blue-500 mb-3">$9.99 USD / Month</div>
                 <div class="flex">
                     <div>
                         <div class="flex items-center my-1" v-for="perk in perks">
@@ -25,7 +25,7 @@
                                 {{ perk }}
                             </div>
                         </div>
-                        <a href="#" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-5 uppercase">Join the Crew</a>
+                        <a href="#" class="flex items-center justify-center inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
                     </div>
                 </div>
             </div>

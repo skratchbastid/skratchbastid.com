@@ -29,6 +29,7 @@
 
   onBeforeMount(() => {
     checkForLogin()
+    getVideos()
   })
 
 </script>
