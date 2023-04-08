@@ -63,7 +63,7 @@
                     <div class="w-full bg-black relative h-[60vh] sm:h-auto">
                         <div class="aspect-video relative">
                             <img :src="video?.imageLink" class="w-full" />
-                            <div class="h-full w-full bg-gradient-to-b from-transparent via-transparent to-black absolute top-0 left-0 sm:hidden"></div>
+                            <div id="poster-gradient" class="h-full w-full absolute top-0 left-0 sm:hidden"></div>
                         </div>
                         <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
                             <div class="flex items-center justify-center p-8 w-full h-full">
@@ -80,7 +80,7 @@
                                             </div>
                                         </ul>
                                     </div>
-                                    <a href="#" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
+                                    <a href="https://wp.skratchbastid.dev/register/top-grillin/" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         {{ $dayjs().to(video?.date)}}
                     </div>
                 </div>
-                <div class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
+                <div v-if="userIsVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
                 </div>
@@ -107,3 +107,9 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    div#poster-gradient {
+        background: linear-gradient(to top, black, transparent 10%) !important;
+    }
+</style>
