@@ -1,3 +1,5 @@
+import { useRouter } from 'vue-router'
+
 const userQuery = gql`
     query getUser {
       viewer {
