@@ -1,5 +1,6 @@
 <script setup>
     const showSelections = ref(false)
+    const userIsVip = useState('userIsVip')
 
     onMounted(() => {
         // document.addEventListener('keyup', function(e) {
@@ -15,10 +16,9 @@
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
         <SongsWeListenedTo />
-        <TopGrillinPromo />
+        <TopGrillinPromo v-if="!userIsVip" />
         
-
-        <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 mb-20">
+        <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 md:mt-16 mb-20">
             <NewsletterSignup />
             <div class="flex justify-center items-center mx-2 py-6 md:mx-0 md:w-1/3 rounded-lg bg-gradient-to-bl from-[#D3F2FF] to-[#D3F2FF] border-black border-4 relative">
                 <a href="https://skratchbastidstore.myshopify.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
