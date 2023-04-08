@@ -9,6 +9,11 @@
   function toggleMenu() {
     menuVisible.value = !menuVisible.value
   }
+
+  function logoutUserOut() {
+    menuVisible.value = false
+    logout()
+  }
 </script>
 
 <template>
@@ -30,7 +35,7 @@
                 <a href="https://wp.skratchbastid.dev/account" target="_blank">My Account</a>
               </li>
               <li>
-                <a href="#" @click.prevent="logout">Logout</a>
+                <a href="#" @click.prevent="logoutUserOut">Logout</a>
               </li>
             </ul>
           </div>

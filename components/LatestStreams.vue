@@ -72,7 +72,7 @@
 <template>
     <div v-if="filteredStreams">
         <div class="flex items-center mb-3" >
-            <h2 class="text-lg font-extrabold mx-3 md:mx-10">
+            <h2 class="text-lg font-extrabold ml-3 md:ml-10">
                 {{ title || 'Latest Streams' }}
             </h2>
             <NuxtLink v-if="seeAll" to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
