@@ -6,75 +6,84 @@
     })
 
     const streams = ref()
+    const mixes = useState('mixes')
     const pageInfo = ref()
     const user = useState('user')
     const userIsVip = useState('userIsVip')
 
-    const streamsQuery = gql`
-        query getEpisodes {
-            episodes(first: 10) {
-                nodes {
-                    title
-                    vimeoID
-                    slug
-                    imageLink
-                    date
-                }
-                pageInfo {
-                    endCursor
-                    hasNextPage
-                }
-            }
-        }`
-    
-    const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
-    
-    onResult((result) => {
-        streams.value = result.data.episodes.nodes
-        pageInfo.value = result.data.episodes.pageInfo
-    })    
+    // const displayMixes = computed(() => {
+    //     let newMixes = mixes.value
+    //     // add to the beginning of the array
+    //     newMixes.unshift({image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/7/a/3/47a0-779b-4bb2-8819-7cc3f0f349fe', link: '/mixes/songs-we-listened-to-alot-in-2022'})
+    //     return newMixes
+    // })
 
-    async function loadMore() {
-        try{
-            fetchMore({
-                query: gql`
-                    query getMoreEpisodes($cursor: String) {
-                        episodes(first: 4, after: $cursor) {
-                            nodes {
-                                title
-                                vimeoID
-                                slug
-                                imageLink
-                            }
-                            pageInfo {
-                                endCursor
-                                hasNextPage
-                            }
-                        }
-                    }`,
-                    variables: {
-                        cursor: pageInfo.value.endCursor
-                    },
-                    updateQuery: (previousResult, { fetchMoreResult }) => {
-                        return {
-                            episodes: {
-                                nodes: [
-                                    ...previousResult.episodes.nodes,
-                                    ...fetchMoreResult.episodes.nodes
-                                ],
-                                pageInfo: fetchMoreResult.episodes.pageInfo,
-                                __typename: fetchMoreResult.episodes.__typename
-                            }
-                        }
-                    }
-            })
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
+    // const displayMixes = mixes.value
+    // displayMixes.unshift({image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/7/a/3/47a0-779b-4bb2-8819-7cc3f0f349fe', link: '/mixes/songs-we-listened-to-alot-in-2022'})
     
 
+    // const streamsQuery = gql`
+    //     query getEpisodes {
+    //         episodes(first: 10) {
+    //             nodes {
+    //                 title
+    //                 vimeoID
+    //                 slug
+    //                 imageLink
+    //                 date
+    //             }
+    //             pageInfo {
+    //                 endCursor
+    //                 hasNextPage
+    //             }
+    //         }
+    //     }`
+    
+    // // const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
+    
+    // // onResult((result) => {
+    // //     streams.value = result.data.episodes.nodes
+    // //     pageInfo.value = result.data.episodes.pageInfo
+    // // })    
+
+    // async function loadMore() {
+    //     try{
+    //         fetchMore({
+    //             query: gql`
+    //                 query getMoreEpisodes($cursor: String) {
+    //                     episodes(first: 4, after: $cursor) {
+    //                         nodes {
+    //                             title
+    //                             vimeoID
+    //                             slug
+    //                             imageLink
+    //                         }
+    //                         pageInfo {
+    //                             endCursor
+    //                             hasNextPage
+    //                         }
+    //                     }
+    //                 }`,
+    //                 variables: {
+    //                     cursor: pageInfo.value.endCursor
+    //                 },
+    //                 updateQuery: (previousResult, { fetchMoreResult }) => {
+    //                     return {
+    //                         episodes: {
+    //                             nodes: [
+    //                                 ...previousResult.episodes.nodes,
+    //                                 ...fetchMoreResult.episodes.nodes
+    //                             ],
+    //                             pageInfo: fetchMoreResult.episodes.pageInfo,
+    //                             __typename: fetchMoreResult.episodes.__typename
+    //                         }
+    //                     }
+    //                 }
+    //         })
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 </script>
 
 <template>
@@ -100,14 +109,15 @@
             <LatestStreams class="mb-8" />
             <DeepDives />
         </div>
+        <SwltSeries class="mb-8 "/>
         <div class="mb-12">
             <div class="mb-2 ml-4 md:mx-10">
                 <h2 class="text-lg font-extrabold">Mixes</h2>
             </div>
             <vue-horizontal class="ml-4 md:mx-10">
-                <div class="w-3/5 md:w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-6" v-for="n in 10">
-                    Mix {{ n }}
-                </div>
+                <NuxtLink v-for="mix in mixes" :to="mix.link" target="_blank" class="w-3/5 md:w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4">
+                    <img :src="mix.image" alt="">
+                </NuxtLink>
             </vue-horizontal>
         </div> 
     </div>
