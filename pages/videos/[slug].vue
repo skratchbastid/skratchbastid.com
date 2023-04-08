@@ -61,8 +61,9 @@
             <div v-else>
                 <div class="max-w-full lg:w-8/12 mx-auto mb-6">
                     <div class="w-full bg-black relative h-[80vh] sm:h-auto">
-                        <div class="aspect-video">
+                        <div class="aspect-video relative">
                             <img :src="video?.imageLink" class="w-full" />
+                            <div class="h-full w-full bg-gradient-to-b from-transparent via-transparent to-black absolute top-0 left-0 sm:hidden"></div>
                         </div>
                         <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
                             <div class="flex items-center justify-center p-8 w-full h-full">
@@ -86,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="my-3 md:w-2/3 mx-auto px-4 md:px-0 ">
+            <div class="my-3 lg:w-2/3 mx-auto px-6 lg:px-0 ">
                 <div class="texl-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
                     {{ video?.title }}
                 </div>
