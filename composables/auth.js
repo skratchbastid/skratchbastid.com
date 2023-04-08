@@ -34,7 +34,7 @@ export function checkForLogin() {
 }
 
 
-export function login(email, password) {
+export async function login(email, password, url) {
     const currentUser = useState('user')
     const loginQuery = gql`
         mutation logIn($login: String!, $password: String!) {
@@ -58,9 +58,10 @@ export function login(email, password) {
     })
     mutate().then((result) => {
         currentUser.value = useQuery(userQuery).result
-        return navigateTo('/vip')
+        navigateTo(url || '/')
     }).catch((err) => {
         console.log("Error: ", err)
+        return false
     })
 }
 
