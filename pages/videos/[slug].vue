@@ -90,7 +90,7 @@
                 <div class="texl-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
                     {{ video?.title }}
                 </div>
-                <div class="text-white text-xs font-light">
+                <div v-if="video" class="text-white text-xs font-light">
                     {{ $dayjs().to(video?.date)}}
                 </div>
             </div>
