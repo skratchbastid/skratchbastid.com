@@ -19,7 +19,7 @@ const mixes = ref([
         <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
             Songs We Listened To A Lot In...
         </div>
-        <vue-horizontal class="mx-4 md:mx-10">
+        <vue-horizontal class="ml-4 md:mx-10">
             <NuxtLink :to="mix.link" :target="index === 0 ? '' : '_blank'" v-for="(mix, index) in mixes"
                 class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
                 <img :src="mix.image" class="rounded-lg drop-shadow-lg aspect-square" />
@@ -27,3 +27,11 @@ const mixes = ref([
         </vue-horizontal>
     </div>
 </template>
+
+<style scoped>
+@media (max-width: 768px) {
+    .vue-horizontal:deep(.v-hl-btn) {
+        display: none !important;
+    }
+}
+</style>
