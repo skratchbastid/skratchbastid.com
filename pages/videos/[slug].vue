@@ -60,7 +60,7 @@
             </div>
             <div v-else>
                 <div class="max-w-full lg:w-8/12 mx-auto mb-6">
-                    <div class="w-full bg-black relative h-[80vh] sm:h-auto">
+                    <div class="w-full bg-black relative h-[60vh] sm:h-auto">
                         <div class="aspect-video relative">
                             <img :src="video?.imageLink" class="w-full" />
                             <div class="h-full w-full bg-gradient-to-b from-transparent via-transparent to-black absolute top-0 left-0 sm:hidden"></div>
