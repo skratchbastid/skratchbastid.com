@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div v-else>
-                <div class="max-w-full lg:w-8/12 mx-auto mb-6">
+                <div class="max-w-full lg:w-8/12 mx-auto mb-6 flex items-center justify-center">
                     <div class="w-full bg-black relative h-[60vh] sm:h-auto">
                         <div class="aspect-video relative">
                             <img :src="video?.imageLink" class="w-full" />
@@ -87,12 +87,18 @@
                     </div>
                 </div>
             </div>
-            <div class="my-3 lg:w-2/3 mx-auto px-6 lg:px-0 ">
-                <div class="texl-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
-                    {{ video?.title }}
+            <div class="flex flex-col md:flex-row my-3 lg:w-2/3 mx-auto px-6 lg:px-0 ">
+                <div class="flex-1">
+                    <div class="texl-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
+                        {{ video?.title }}
+                    </div>
+                    <div class="text-white text-xs font-light">
+                        {{ $dayjs().to(video?.date)}}
+                    </div>
                 </div>
-                <div class="text-white text-xs font-light">
-                    {{ $dayjs().to(video?.date)}}
+                <div class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
+                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
+                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
                 </div>
             </div>
         </div>

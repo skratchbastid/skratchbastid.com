@@ -75,11 +75,7 @@ const LOG_OUT = gql`
 export function logout() {
     const userIsVip = useState('userIsVip')
     const currentUser = useState('user')
-    const { mutate } = useMutation(LOG_OUT, {
-      refetchQueries: [
-        { query: userQuery }
-      ],
-    });
+    const { mutate } = useMutation(LOG_OUT);
    
     mutate().then((result) => {
         if (result.data.logout.status == 'SUCCESS') {
