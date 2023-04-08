@@ -21,7 +21,7 @@ const mixes = ref([
         </div>
         <vue-horizontal class="ml-4 md:mx-10">
             <NuxtLink :to="mix.link" :target="index === 0 ? '' : '_blank'" v-for="(mix, index) in mixes"
-                class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
+                class="flex flex-col w-3/5 md:w-1/4 mr-2 md:mr-4"> 
                 <img :src="mix.image" class="rounded-lg drop-shadow-lg aspect-square" />
             </NuxtLink>
         </vue-horizontal>
