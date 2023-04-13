@@ -1,25 +1,4 @@
 <script setup>
-// import { URL } from 'url'
-// import axios from 'axios'
-
-// const url = new URL('https://test-bucket-bastid.s3.amazonaws.com/10+Can+You+Feel+It.mp3')
-// const bucket = url.hostname.split('.')[0];
-// const key = decodeURIComponent(url.pathname.substring(1)).replace(/\+/g, ' '); // Remove the leading '/'
-// console.log(`Bucket: ${bucket} | Key: ${key}`)
-
-// axios.get('http://localhost:8888/.netlify/functions/generateSignedUrl', {
-//     params: {
-//       bucket,
-//       key
-//     }
-// })
-//   .then(response => {
-//     console.log(response.data)
-//   })
-//   .catch(error => {
-//     console.log(error)
-//   })
-
 const showListings = ref([])
 const perks = [
   'Stream over 1,000 hours of exclusive DJ sets',
