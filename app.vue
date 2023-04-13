@@ -1,13 +1,35 @@
 <script setup>
-  const showListings = ref([])
-  const perks = [
-    'Stream over 1,000 hours of exclusive DJ sets',
-    'MP3 Downloads',
-    'Access to the VIP Discord server',
-    'VIP Zoom Room access',
-    'VIP Guest List at live shows',
-    'Members-only merch'
+// import { URL } from 'url'
+// import axios from 'axios'
+
+// const url = new URL('https://test-bucket-bastid.s3.amazonaws.com/10+Can+You+Feel+It.mp3')
+// const bucket = url.hostname.split('.')[0];
+// const key = decodeURIComponent(url.pathname.substring(1)).replace(/\+/g, ' '); // Remove the leading '/'
+// console.log(`Bucket: ${bucket} | Key: ${key}`)
+
+// axios.get('http://localhost:8888/.netlify/functions/generateSignedUrl', {
+//     params: {
+//       bucket,
+//       key
+//     }
+// })
+//   .then(response => {
+//     console.log(response.data)
+//   })
+//   .catch(error => {
+//     console.log(error)
+//   })
+
+const showListings = ref([])
+const perks = [
+  'Stream over 1,000 hours of exclusive DJ sets',
+  'MP3 Downloads',
+  'Access to the VIP Discord server',
+  'VIP Zoom Room access',
+  'VIP Guest List at live shows',
+  'Members-only merch'
 ]
+
 const mixes = ref([
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/c/2/3/b/9b6a-73f7-4e4a-b98e-8b09709c7cd1', link: 'https://www.mixcloud.com/sizeSessionsCanada/size-sessions-canada-presents-skratch-bastid-size-canada-launch-mix/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/0/a/1/9cb7-4ff2-4157-8379-54efebc741ac', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-dinner-a-mixtape-41218/'},

@@ -24,6 +24,7 @@
                 vimeoID
                 imageLink
                 cloudflareVideoID
+                mp3Link
             }
         }`
     
@@ -42,7 +43,6 @@
         byline: false,
         portrait: false,
     }
-
 </script>
 
 <template>
