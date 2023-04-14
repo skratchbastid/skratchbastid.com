@@ -17,13 +17,10 @@ const userQuery = gql`
   `
 
 export async function checkForLogin() {
-    // console.log("1")
-    // const { result } = useQuery(userQuery);
-    // console.log("2")
-    // await result;
-    // console.log("Result: ", result)
-    // return result
-    return 'greg'
+    const { result } = useQuery(userQuery);
+    await result;
+    console.log("The result: ", result)
+    return result
   }
 
 // export function checkForLogin() {
