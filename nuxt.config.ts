@@ -7,7 +7,9 @@ export default defineNuxtConfig({
         head: {
             title: 'Skratch Bastid',
             meta: [
-                { description: "Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing."}
+                { 
+                    description: 'Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing.'
+                }
             ]
         }
     },

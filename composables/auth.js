@@ -19,7 +19,7 @@ const userQuery = gql`
 export function checkForLogin() {
     const userIsVip = useState('userIsVip')
     const user = useState('user')
-    userIsVip.value = false
+    // userIsVip.value = false
     const { result, onResult } = useQuery(userQuery, {
         fetchPolicy: "no-cache" 
     })
@@ -27,9 +27,13 @@ export function checkForLogin() {
         if (result.data.viewer) {
             useState('user').value = result.data.viewer
             const subscriptions = result.data.viewer.subscriptions.split(',')
-            // if subscriptions contains '65' then we're a VIP
+            // if subscriptions contains '64' then we're a VIP
+            console.log(subscriptions)
             if (subscriptions.includes('64')) {
+                console.log("The user is in fact a VIP!")
                 userIsVip.value = true
+            } else {
+                console.log("User is not VIP")
             }
         }
     })
