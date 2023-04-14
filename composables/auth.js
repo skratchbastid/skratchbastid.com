@@ -17,10 +17,12 @@ const userQuery = gql`
   `
 
 export function checkForLogin() {
+    console.log("Check")
     const { result, onResult } = useQuery(userQuery, {
         fetchPolicy: "no-cache" 
     })
     onResult((result) => {
+        console.log(result.data)
         const currentUser = useState('user')
         const userIsVip = useState('userIsVip')
         if (result.data.viewer) {

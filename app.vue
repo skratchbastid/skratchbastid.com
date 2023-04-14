@@ -42,13 +42,14 @@ useState('mixes', () => mixes)
 
   const shows = ref(useState('shows', () => []))
 
-  // const { data } = await useAsyncQuery(showsQuery)
-  // console.log(data.value.events.nodes)
-  // shows.value = filterAndSortEventsByDate(data.value.events.nodes)
+  const { data } = await useAsyncQuery(showsQuery)
+  console.log(data.value.events.nodes)
+  shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
-  onBeforeMount(() => {
-    checkForLogin()
-  })
+  // onBeforeMount(() => {
+  //   checkForLogin()
+  // })
+
 
 </script>
 

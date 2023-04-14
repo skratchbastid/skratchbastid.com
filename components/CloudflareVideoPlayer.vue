@@ -24,7 +24,6 @@
     }
 
     onMounted(() => {
-        console.log("HELLO")
         initPlayer()
     })
 </script>

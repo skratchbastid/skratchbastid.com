@@ -55,15 +55,20 @@
                 }
             }
         }`
-    console.log("Hello")
-    const { data } = await useAsyncQuery(streamsQuery)
-    console.log(data.value)
-    streams.value = data.value.episodes.nodes
+    
+    const { result, loading, error, onResult } = useQuery(streamsQuery)
+    onResult((result) => {
+        streams.value = result.data.episodes.nodes
+    })
+
+    // const { data } = await useAsyncQuery(streamsQuery)
+    // console.log(data.value)
+    // streams.value = data.value.episodes.nodes
     const filteredStreams = computed(() => {
         if (props.excludeId) {
-            return streams.value.filter((video) => video.id !== props.excludeId)
+            return streams?.value?.filter((video) => video.id !== props.excludeId)
         } else {
-            return streams.value
+            return streams?.value
         }
     })
     

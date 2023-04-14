@@ -27,14 +27,16 @@
             }
         }`
     
-    // const { result, loading, error, onResult } = useQuery(videoQuery, { slug })
+    // const { result } = useQuery(videoQuery, { slug })
+    // video.value = result.episode
+    
+    const { result, loading, error, onResult } = useQuery(videoQuery, { slug })
+    onResult((result) => {
+        video.value = result.data.episode
+    })
 
-    // onResult((result) => {
-    //     video.value = result.data.episode
-    // })
-
-    const { data } = await useAsyncQuery(videoQuery, { slug })
-    video.value = data.value.episode
+    // const { data } = await useAsyncQuery(videoQuery, { slug })
+    // video.value = data.value.episode
 
     const options = {
         responsive: true,
