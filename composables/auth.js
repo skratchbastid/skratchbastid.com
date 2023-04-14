@@ -17,28 +17,36 @@ const userQuery = gql`
   `
 
 export function checkForLogin() {
-    const userIsVip = useState('userIsVip', () => false)
-    const user = useState('user', () => null)
-
-    const { result, onResult } = useQuery(userQuery, {
+    const currentUser = useState('user')
+    const user = useQuery(userQuery, {
         fetchPolicy: "no-cache" 
     })
-    onResult((result) => {
-        if (result.data.viewer) {
-            user.value = result.data.viewer
-            // useState('user').value = result.data.viewer
-            const subscriptions = result.data.viewer.subscriptions.split(',')
-            // if subscriptions contains '64' then we're a VIP
-            console.log(subscriptions)
-            if (subscriptions.includes('64')) {
-                console.log("The user is in fact a VIP!")
-                userIsVip.value = true
-            } else {
-                console.log("User is not VIP")
-            }
-        }
-    })
+    currentUser.value = user.result.viewer
 }
+
+// export function checkForLogin() {
+//     const userIsVip = useState('userIsVip', () => false)
+//     const user = useState('user', () => null)
+
+//     const { result, onResult } = useQuery(userQuery, {
+//         fetchPolicy: "no-cache" 
+//     })
+//     onResult((result) => {
+//         if (result.data.viewer) {
+//             user.value = result.data.viewer
+//             // useState('user').value = result.data.viewer
+//             const subscriptions = result.data.viewer.subscriptions.split(',')
+//             // if subscriptions contains '64' then we're a VIP
+//             console.log(subscriptions)
+//             if (subscriptions.includes('64')) {
+//                 console.log("The user is in fact a VIP!")
+//                 userIsVip.value = true
+//             } else {
+//                 console.log("User is not VIP")
+//             }
+//         }
+//     })
+// }
 
 
 export function login(email, password, url) {
@@ -64,8 +72,16 @@ export function login(email, password, url) {
         ]
     })
     mutate().then((result) => {
-        currentUser.value = useQuery(userQuery).result
-        navigateTo(url || '/')
+        // currentUser.value = useQuery(userQuery).result.viewer
+        const user = useQuery(userQuery, {
+            fetchPolicy: "no-cache" 
+        })
+        currentUser.value = user.result
+        console.log('user: ', user.result)
+        console.log('user.value: ', user.result.value)
+        console.log('user.viewer: ', user.result.viewer)
+        console.log('user.viewer', user.viewer)
+        // navigateTo(url || '/')
     }).catch((err) => {
         console.log("Error: ", err)
         return false

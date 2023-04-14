@@ -24,7 +24,7 @@
         </div>
         <NuxtLink to="/" class="h-[70%]"><img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" class="h-full" /></NuxtLink>
 
-        <div v-show="user" class="relative flex justify-center items-center">
+        <div v-if="user" class="relative flex justify-center items-center">
           <NuxtLink v-if="$route.path !== '/vip'" to="/vip" class="bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded mr-3">VIP</NuxtLink>
           <img v-if="user?.avatar" :src="user.avatar.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
           <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
@@ -38,13 +38,14 @@
             </ul>
           </div>
         </div>
-        <div v-show="!user">
+        <div v-else>
             <NuxtLink to="/signup" class="mr-3 bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Signup</NuxtLink>
             <NuxtLink to="/login" class="border border-slate-800 dark:bg-white text-slate-800 dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Login</NuxtLink>
         </div>
       </div>
     </div>
     <div class="dark:bg-gray-900 dark:text-white min-h-[95vh]">
+      <pre>{{ user }}</pre>
         <slot />
     </div>
     
