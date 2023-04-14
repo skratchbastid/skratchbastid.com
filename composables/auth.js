@@ -19,7 +19,7 @@ const userQuery = gql`
 export function checkForLogin() {
     const userIsVip = useState('userIsVip')
     const user = useState('user')
-    // userIsVip.value = false
+    userIsVip.value = false
     const { result, onResult } = useQuery(userQuery, {
         fetchPolicy: "no-cache" 
     })
