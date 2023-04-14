@@ -55,10 +55,10 @@
                 }
             }
         }`
-
+    console.log("Hello")
     const { data } = await useAsyncQuery(streamsQuery)
+    console.log(data.value)
     streams.value = data.value.episodes.nodes
-
     const filteredStreams = computed(() => {
         if (props.excludeId) {
             return streams.value.filter((video) => video.id !== props.excludeId)

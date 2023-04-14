@@ -104,10 +104,10 @@
     </div>
     <div>
         <div class="my-8">
-            <p class="mb-10 text-center hidden">VIP: {{ userIsVip }}</p>
+            <p v-show="userIsVip" class="mb-10 text-center hidden">VIP: {{ userIsVip }}</p>
             <VipHeroCta v-if="!userIsVip" />
             <LatestStreams class="mb-8" />
-            <DeepDives />
+            <!-- <DeepDives /> -->
         </div>
         <SwltSeries class="mb-8 "/>
         <div class="mb-12">

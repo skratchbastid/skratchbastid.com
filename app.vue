@@ -1,4 +1,6 @@
 <script setup>
+const user = useState('user', () => null)
+const userIsVip = useState('userIsVip', () => false)
 const showListings = ref([])
 const perks = [
   'Stream over 1,000 hours of exclusive DJ sets',
@@ -42,12 +44,12 @@ useState('mixes', () => mixes)
 
   const shows = ref(useState('shows', () => []))
 
-  const { data } = await useAsyncQuery(showsQuery)
-  console.log(data.value.events.nodes)
-  shows.value = filterAndSortEventsByDate(data.value.events.nodes)
+  // const { data } = await useAsyncQuery(showsQuery)
+  // console.log(data.value.events.nodes)
+  // shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
   onBeforeMount(() => {
-    checkForLogin()
+    const loggedIn = checkForLogin()
   })
 
 </script>
