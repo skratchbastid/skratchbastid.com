@@ -41,7 +41,7 @@ export function checkForLogin() {
 }
 
 
-export async function login(email, password, url) {
+export function login(email, password, url) {
     const currentUser = useState('user')
     const loginQuery = gql`
         mutation logIn($login: String!, $password: String!) {
