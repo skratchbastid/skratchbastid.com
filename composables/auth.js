@@ -77,11 +77,7 @@ export function login(email, password, url) {
             fetchPolicy: "no-cache" 
         })
         currentUser.value = user.result
-        console.log('user: ', user.result)
-        console.log('user.value: ', user.result.value)
-        console.log('user.viewer: ', user.result.viewer)
-        console.log('user.viewer', user.viewer)
-        // navigateTo(url || '/')
+        navigateTo(url || '/vip')
     }).catch((err) => {
         console.log("Error: ", err)
         return false
@@ -96,13 +92,29 @@ const LOG_OUT = gql`
   }
 `;
 
+// export function logout() {
+//     const userIsVip = useState('userIsVip')
+//     const currentUser = useState('user')
+//     const { mutate } = useMutation(LOG_OUT);
+   
+//     mutate().then((result) => {
+//         if (result.data.logout.status == 'SUCCESS') {
+//             userIsVip.value = false
+//             currentUser.value = null
+//         }
+//     })
+// }
 export function logout() {
-    const userIsVip = useState('userIsVip')
-    const currentUser = useState('user')
-    const { mutate } = useMutation(LOG_OUT);
+    const { mutate } = useMutation(LOG_OUT, {
+      refetchQueries: [
+        { query: userQuery }
+      ],
+    });
    
     mutate().then((result) => {
         if (result.data.logout.status == 'SUCCESS') {
+            const userIsVip = useState('userIsVip')
+            const currentUser = useState('user')
             userIsVip.value = false
             currentUser.value = null
         }
