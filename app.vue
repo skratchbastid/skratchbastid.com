@@ -1,6 +1,4 @@
 <script setup>
-const user = useState('user', () => null)
-const userIsVip = useState('userIsVip', () => false)
 const showListings = ref([])
 const perks = [
   'Stream over 1,000 hours of exclusive DJ sets',
