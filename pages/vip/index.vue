@@ -87,8 +87,8 @@
 </script>
 
 <template>
+    <pre>Subscriptions: {{  user?.viewer?.email }} | {{ user?.viewer?.subscriptions }}</pre>
     <div class="min-h-[40vh] w-full hidden">
-        <!-- Subscriptions: {{  user?.viewer?.subscriptions }} -->
         <div class="mx-10 my-8 flex gap-8">
             <div class="w-1/2">
                 <div class="aspect-video bg-slate-200 flex justify-center items-center text-2xl font-bold">
@@ -107,7 +107,7 @@
             <p v-show="userIsVip" class="mb-10 text-center hidden">VIP: {{ userIsVip }}</p>
             <VipHeroCta v-if="!userIsVip" />
             <LatestStreams class="mb-8" />
-            <!-- <DeepDives /> -->
+            <DeepDives />
         </div>
         <SwltSeries class="mb-8 "/>
         <div class="mb-12">

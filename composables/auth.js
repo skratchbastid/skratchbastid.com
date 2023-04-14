@@ -17,12 +17,22 @@ const userQuery = gql`
   `
 
 export function checkForLogin() {
-    console.log("CHeck for login")
-    const currentUser = useState('user')
-    const user = useQuery(userQuery, {
+    const { result, onResult } = useQuery(userQuery, {
         fetchPolicy: "no-cache" 
     })
-    currentUser.value = user.result.viewer
+    onResult((result) => {
+        const currentUser = useState('user')
+        const userIsVip = useState('userIsVip')
+        if (result.data.viewer) {
+            currentUser.value = result.data
+            const subscriptions = result.data.viewer.subscriptions.split(',')
+            if (subscriptions.includes('64')) {
+                userIsVip.value = true
+            }
+        }
+    })
+    
+
 }
 
 // export function checkForLogin() {
@@ -118,6 +128,8 @@ export function logout() {
             const currentUser = useState('user')
             userIsVip.value = false
             currentUser.value = null
+            console.log("Should be logged out now")
+            navigateTo('/vip')
         }
     })
 }

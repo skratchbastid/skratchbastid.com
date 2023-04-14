@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="dark:bg-gray-900 dark:text-white min-h-[95vh]">
-      <pre>{{ user }}</pre>
+      <pre>{{ user?.viewer?.email }}</pre>
         <slot />
     </div>
     
