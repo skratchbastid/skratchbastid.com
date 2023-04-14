@@ -18,9 +18,7 @@ const userQuery = gql`
 
 export function checkForLogin() {
     console.log("Check")
-    const { result, onResult } = useQuery(userQuery, {
-        fetchPolicy: "no-cache" 
-    })
+    const { result, onResult } = useQuery(userQuery)
     onResult((result) => {
         console.log(result.data)
         const currentUser = useState('user')
