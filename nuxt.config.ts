@@ -1,18 +1,17 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 import { defineNuxtConfig } from 'nuxt/config'
-
+import signedUrl from './server/api/signedUrl';
 
 export default defineNuxtConfig({
     app: {
         head: {
             title: 'Skratch Bastid',
             meta: [
-                { 
-                    description: 'Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing.'
-                }
+                { description: "Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing."}
             ]
         }
     },
+    serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-icon',
@@ -22,7 +21,7 @@ export default defineNuxtConfig({
     apollo: {
         clients: {
             default: {
-                httpEndpoint: "https://wp.skratchbastid.dev/graphql",
+                httpEndpoint: "https://wp.slowjams.xyz/graphql",
                 httpLinkOptions: {
                     credentials: 'include'
                 }
