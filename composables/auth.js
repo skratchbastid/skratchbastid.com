@@ -32,6 +32,8 @@ export function checkForLogin() {
             if (subscriptions.includes('64')) {
                 console.log("The user is in fact a VIP!")
                 userIsVip.value = true
+            } else {
+                console.log("User is not VIP")
             }
         }
     })

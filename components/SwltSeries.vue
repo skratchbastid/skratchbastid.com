@@ -1,7 +1,7 @@
 <script setup>
-import VueHorizontal from "vue-horizontal"
+import VueHorizontal from "vue-horizontal";
 
-const mixes = ref([
+const mixes = [
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/7/a/3/47a0-779b-4bb2-8819-7cc3f0f349fe', link: 'mixes/songs-we-listened-to-alot-in-2022'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/f/1/3/5/6472-56a1-4bc9-9146-ae47b5ecd9bc', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2021/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/0/c/2/4/b2d4-7208-4ab4-b063-f96eed651e39', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2020/'},
@@ -11,7 +11,7 @@ const mixes = ref([
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/3/f/d/d/ca63-ec0c-4f44-af85-67eee327196f.jpeg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2013/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/4/f/8/bc9c-5053-4cc1-9261-f72229fe24a0.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2012/'}
     
-])
+]
 
 </script>
 <template>

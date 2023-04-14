@@ -1,6 +1,7 @@
 <script setup>
   const user = useState('user')
   const menuVisible = ref(false)
+  const userIsVip = useState('userIsVip')
 
   onMounted(() => {
     checkForLogin()
@@ -26,6 +27,7 @@
           <Icon name="ph:twitter-logo" />
         </div>
         <NuxtLink to="/" class="h-[70%]"><img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" class="h-full" /></NuxtLink>
+        <div class="text-black font-black">{{ userIsVip }}</div>
         <div v-if="user" class="relative flex justify-center items-center">
           <NuxtLink v-if="$route.path !== '/vip'" to="/vip" class="bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded mr-3">VIP</NuxtLink>
           <img v-if="user.avatar" :src="user.avatar.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
