@@ -47,7 +47,7 @@ useState('mixes', () => mixes)
   // shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
   onBeforeMount(() => {
-    const loggedIn = checkForLogin()
+    checkForLogin()
   })
 
 </script>
