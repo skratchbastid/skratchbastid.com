@@ -46,8 +46,9 @@ useState('mixes', () => mixes)
   console.log(data.value.events.nodes)
   shows.value = filterAndSortEventsByDate(data.value.events.nodes)
 
-  onBeforeMount(() => {
-    checkForLogin()
+  checkForLogin().then((result) => {
+    console.log("Did we get a user back?")
+    console.log(result)
   })
 
 

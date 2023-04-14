@@ -16,24 +16,32 @@ const userQuery = gql`
     }
   `
 
-export function checkForLogin() {
-    console.log("Check")
-    const { result, onResult } = useQuery(userQuery)
-    onResult((result) => {
-        console.log(result.data)
-        const currentUser = useState('user')
-        const userIsVip = useState('userIsVip')
-        if (result.data.viewer) {
-            currentUser.value = result.data
-            const subscriptions = result.data.viewer.subscriptions.split(',')
-            if (subscriptions.includes('64')) {
-                userIsVip.value = true
-            }
-        }
-    })
-    
+export async function checkForLogin() {
+    // console.log("1")
+    // const { result } = useQuery(userQuery);
+    // console.log("2")
+    // await result;
+    // console.log("Result: ", result)
+    // return result
+    return 'greg'
+  }
 
-}
+// export function checkForLogin() {
+//     console.log("Check")
+//     const { result, onResult } = useQuery(userQuery)
+//     onResult((result) => {
+//         console.log(result.data)
+//         const currentUser = useState('user')
+//         const userIsVip = useState('userIsVip')
+//         if (result.data.viewer) {
+//             currentUser.value = result.data
+//             const subscriptions = result.data.viewer.subscriptions.split(',')
+//             if (subscriptions.includes('64')) {
+//                 userIsVip.value = true
+//             }
+//         }
+//     })
+// }
 
 // export function checkForLogin() {
 //     const userIsVip = useState('userIsVip', () => false)
