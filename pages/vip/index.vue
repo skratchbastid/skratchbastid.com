@@ -94,6 +94,7 @@
     </div>
     <div>
         <div class="my-8">
+            {{ user?.viewer }}
             <LatestStreams class="mb-8" />
             <DeepDives />
             <!-- <div class="text-lg font-semibold mb-2 ml-4 md:ml-10">
