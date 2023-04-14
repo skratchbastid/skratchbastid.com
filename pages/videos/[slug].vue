@@ -48,6 +48,7 @@
 <template>
     <div class="min-h-[95vh]">
         <div class="bg-slate-800 pb-8 lg:py-8">
+            <p class="text-white font-black">{{ userIsVip }}</p>
             <div v-if="userIsVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
                 <div>
                     <client-only v-if="video?.vimeoID">
