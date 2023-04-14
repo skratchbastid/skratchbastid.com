@@ -1,3 +1,12 @@
+exports.handler = function(event, context) {
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            status: 200,
+            message: "Hello, World!"
+        })
+    }
+}
 // const AWS = require('aws-sdk')
 
 // const s3 = new AWS.S3({
