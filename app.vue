@@ -56,7 +56,7 @@ useState('mixes', () => mixes)
 </script>
 
 <template>
-  <div>
+  <div :class="darkMode == true ? 'dark' : ''">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
