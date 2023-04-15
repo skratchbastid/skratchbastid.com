@@ -1,4 +1,5 @@
 <script setup>
+const darkMode = ref(false)
 const showListings = ref([])
 const user = useState('user', () => {})
 const perks = [
@@ -49,6 +50,11 @@ useState('mixes', () => mixes)
   onNuxtReady(() => {
     checkForLogin().then((result) => {
       user.value = result
+    })
+    document.addEventListener('keyup', function(e) {
+      if (e.key === 'd') {
+        darkMode.value = !darkMode.value
+      }
     })
   })
 
