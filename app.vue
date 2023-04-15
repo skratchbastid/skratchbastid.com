@@ -1,5 +1,6 @@
 <script setup>
 const showListings = ref([])
+const user = useState('user', () => {})
 const perks = [
   'Stream over 1,000 hours of exclusive DJ sets',
   'MP3 Downloads',
@@ -43,13 +44,11 @@ useState('mixes', () => mixes)
   const shows = ref(useState('shows', () => []))
 
   const { data } = await useAsyncQuery(showsQuery)
-  console.log(data.value.events.nodes)
   shows.value = filterAndSortEventsByDate(data.value.events.nodes)  
 
-  onMounted(() => {
+  onNuxtReady(() => {
     checkForLogin().then((result) => {
-      console.log("Did we get a user back?")
-      console.log(result)
+      user.value = result
     })
   })
 

@@ -1,6 +1,7 @@
 <script setup>
     const showSelections = ref(false)
     const userIsVip = useState('userIsVip')
+    const user = useState('user')
 
     onMounted(() => {
         // document.addEventListener('keyup', function(e) {
@@ -13,6 +14,7 @@
 
 <template>
     <div class="mb-6">
+        <pre>{{ user }}</pre>
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
         <SongsWeListenedTo />

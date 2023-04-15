@@ -7,14 +7,20 @@
 
     const streams = ref()
     const mixes = useState('mixes')
-    const pageInfo = ref()
-    const user = useState('user')
+    const currentUser = useState('user')
     const userIsVip = useState('userIsVip')
+
+    const user = computed(() => {
+        return currentUser.value
+    })
+    watch(currentUser, (newValue, oldValue) => {
+        console.log('user changed', newValue, oldValue)
+    })
 
 </script>
 
 <template>
-    <pre>Subscriptions: {{  user?.viewer?.email }} | {{ user?.viewer?.subscriptions }}</pre>
+        <pre>Subscriptions: {{  user?.email }} | {{ user?.subscriptions }}</pre>
     <div class="min-h-[40vh] w-full hidden">
         <div class="mx-10 my-8 flex gap-8">
             <div class="w-1/2">
