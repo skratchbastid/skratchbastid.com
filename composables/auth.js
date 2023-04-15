@@ -1,32 +1,30 @@
 import { useRouter } from 'vue-router'
 
-const userQuery = gql`
-    query getUser {
-      viewer {
-        id
-        username
-        firstName
-        lastName
-        email
-        subscriptions
-        avatar {
-            url
-        }
-      }
-    }
-  `
-
 export async function checkForLogin() {
-    // try {
-    //     const { result } = useQuery(userQuery);
-    //     await result;
-    //     console.log("The result: ", result)
-    //     return result
-    // } catch(err) {
-    //     console.log("Error: ", err)
-    //     return false
-    // }
-    return 'greg'
+    const userQuery = gql`
+        query getUser {
+        viewer {
+            id
+            username
+            firstName
+            lastName
+            email
+            subscriptions
+            avatar {
+                url
+            }
+        }
+        }
+    `
+    try {
+        const { result } = useQuery(userQuery);
+        await result;
+        console.log("The result: ", result)
+        return result
+    } catch(err) {
+        console.log("Error: ", err)
+        return null
+    }
   }
 
 // export function checkForLogin() {
