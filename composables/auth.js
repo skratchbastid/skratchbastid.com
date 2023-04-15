@@ -18,7 +18,9 @@ const userQuery = gql`
 
 export async function checkForLogin() {
     try {
-        const { result } = useQuery(userQuery);
+        const { result } = useQuery(userQuery, {
+            fetchPolicy: "no-cache"
+        });
         await result;
         console.log("The result: ", result)
         return result
