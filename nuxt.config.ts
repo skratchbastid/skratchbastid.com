@@ -1,4 +1,5 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+import { BulkContactManagement, Template } from 'node-mailjet';
 import { defineNuxtConfig } from 'nuxt/config'
 import signedUrl from './server/api/signedUrl';
 
@@ -17,6 +18,7 @@ export default defineNuxtConfig({
         'nuxt-icon',
         '@nuxtjs/apollo',
         '@nuxt/image-edge',
+        '@pinia/nuxt',
     ],
     apollo: {
         clients: {

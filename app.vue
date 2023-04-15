@@ -1,7 +1,10 @@
 <script setup>
+import { useUserStore } from '@/stores/userStore'
+const userStore = useUserStore()
+
 const darkMode = ref(false)
 const showListings = ref([])
-const user = useState('user', () => {})
+
 const perks = [
   'Stream over 1,000 hours of exclusive DJ sets',
   'MP3 Downloads',
@@ -49,7 +52,7 @@ useState('mixes', () => mixes)
 
   onNuxtReady(() => {
     checkForLogin().then((result) => {
-      user.value = result
+      userStore.setUser(result)
     })
     document.addEventListener('keyup', function(e) {
       if (e.key === 'd') {
@@ -64,6 +67,7 @@ useState('mixes', () => mixes)
 <template>
   <div :class="darkMode == true ? 'dark' : ''">
     <NuxtLayout>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>

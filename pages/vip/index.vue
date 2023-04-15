@@ -1,26 +1,20 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
-
+    import { useUserStore } from '@/stores/userStore'
+    
     definePageMeta({
         layout: 'vip'
     })
 
+    const userStore = useUserStore()
+    const user = computed(() => userStore.user)
+
     const streams = ref()
     const mixes = useState('mixes')
-    const currentUser = useState('user')
-    const userIsVip = useState('userIsVip')
-
-    const user = computed(() => {
-        return currentUser.value
-    })
-    watch(currentUser, (newValue, oldValue) => {
-        console.log('user changed', newValue, oldValue)
-    })
-
 </script>
 
 <template>
-        <pre>Subscriptions: {{  user?.email }} | {{ user?.subscriptions }}</pre>
+    <pre>Subscriptions: {{  user?.email }} | {{ user?.subscriptions }}</pre>
     <div class="min-h-[40vh] w-full hidden">
         <div class="mx-10 my-8 flex gap-8">
             <div class="w-1/2">
@@ -37,8 +31,8 @@
     </div>
     <div>
         <div class="my-8">
-            <p v-show="userIsVip" class="mb-10 text-center hidden">VIP: {{ userIsVip }}</p>
-            <VipHeroCta v-if="!userIsVip" />
+            <p v-show="user.isVip" class="mb-10 text-center hidden">VIP: {{ user.isVip }}</p>
+            <VipHeroCta v-if="!user.isVip" />
             <LatestStreams class="mb-8" />
             <DeepDives />
         </div>

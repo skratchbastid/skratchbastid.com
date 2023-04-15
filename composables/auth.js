@@ -19,7 +19,17 @@ const userQuery = gql`
 export async function checkForLogin() {
     try {
         const { data } = await useAsyncQuery(userQuery)
-        return data.value?.viewer
+        let user = {}
+        if (data?.value?.viewer) {
+            user = data.value.viewer
+            const subscriptions = user.subscriptions.split(',')
+            if (subscriptions.includes('64')) {
+                user.isVip = true
+            } else {
+                user.isVip = false
+            }
+        }
+        return user
     } catch(err) {
         console.log("Error: ", err)
         return null
