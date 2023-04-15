@@ -1,8 +1,7 @@
 import { useRouter } from 'vue-router'
 
-export async function checkForLogin() {
-    const userQuery = gql`
-        query getUser {
+const userQuery = gql`
+    query getUser {
         viewer {
             id
             username
@@ -14,8 +13,10 @@ export async function checkForLogin() {
                 url
             }
         }
-        }
-    `
+    }
+`
+
+export async function checkForLogin() {
     try {
         const { result } = useQuery(userQuery);
         await result;
