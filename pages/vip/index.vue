@@ -1,21 +1,15 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
 
+    const user = useState('user')
+    const userIsVip = useState('userIsVip')
+
     definePageMeta({
         layout: 'vip'
     })
 
     const streams = ref()
     const mixes = useState('mixes')
-    const currentUser = useState('user')
-    const userIsVip = useState('userIsVip')
-
-    const user = computed(() => {
-        return currentUser.value
-    })
-    watch(currentUser, (newValue, oldValue) => {
-        console.log('user changed', newValue, oldValue)
-    })
 
 </script>
 
