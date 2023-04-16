@@ -10,5 +10,9 @@ export const useUserStore = defineStore('user', () => {
         user.value = newUser
     }
 
-    return { user, userIsVip, setUser }
+    function isVip() {
+        return user?.value?.subscriptions?.includes('64') ? true : false
+    }
+
+    return { user, userIsVip, setUser, isVip }
 })

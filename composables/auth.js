@@ -1,5 +1,5 @@
 import { useRouter } from 'vue-router'
-
+import { useUserStore } from '~/stores/userStore'
 const userQuery = gql`
     query getUser {
         viewer {
@@ -22,12 +22,6 @@ export async function checkForLogin() {
         let user = {}
         if (data?.value?.viewer) {
             user = data.value.viewer
-            const subscriptions = user.subscriptions.split(',')
-            if (subscriptions.includes('64')) {
-                user.isVip = true
-            } else {
-                user.isVip = false
-            }
         }
         return user
     } catch(err) {
@@ -35,47 +29,6 @@ export async function checkForLogin() {
         return null
     }
   }
-
-// export function checkForLogin() {
-//     console.log("Check")
-//     const { result, onResult } = useQuery(userQuery)
-//     onResult((result) => {
-//         console.log(result.data)
-//         const currentUser = useState('user')
-//         const userIsVip = useState('userIsVip')
-//         if (result.data.viewer) {
-//             currentUser.value = result.data
-//             const subscriptions = result.data.viewer.subscriptions.split(',')
-//             if (subscriptions.includes('64')) {
-//                 userIsVip.value = true
-//             }
-//         }
-//     })
-// }
-
-// export function checkForLogin() {
-//     const userIsVip = useState('userIsVip', () => false)
-//     const user = useState('user', () => null)
-
-//     const { result, onResult } = useQuery(userQuery, {
-//         fetchPolicy: "no-cache" 
-//     })
-//     onResult((result) => {
-//         if (result.data.viewer) {
-//             user.value = result.data.viewer
-//             // useState('user').value = result.data.viewer
-//             const subscriptions = result.data.viewer.subscriptions.split(',')
-//             // if subscriptions contains '64' then we're a VIP
-//             console.log(subscriptions)
-//             if (subscriptions.includes('64')) {
-//                 console.log("The user is in fact a VIP!")
-//                 userIsVip.value = true
-//             } else {
-//                 console.log("User is not VIP")
-//             }
-//         }
-//     })
-// }
 
 
 export function login(email, password, url) {
@@ -100,13 +53,18 @@ export function login(email, password, url) {
             { query: userQuery }
         ]
     })
-    mutate().then((result) => {
-        // currentUser.value = useQuery(userQuery).result.viewer
-        const user = useQuery(userQuery, {
-            fetchPolicy: "no-cache" 
-        })
-        currentUser.value = user.result
-        navigateTo(url || '/vip')
+    mutate().then(async (result) => {
+        const userStore = useUserStore()
+        // const user = useQuery(userQuery, {
+        //     fetchPolicy: "no-cache" 
+        // })
+        // userStore.setUser(user.result)
+        const { data } = await useAsyncQuery(userQuery)
+        if (data?.value?.viewer) {
+            userStore.setUser(data.value.viewer)
+            navigateTo('/vip')
+        }
+        
     }).catch((err) => {
         console.log("Error: ", err)
         return false
@@ -121,19 +79,8 @@ const LOG_OUT = gql`
   }
 `;
 
-// export function logout() {
-//     const userIsVip = useState('userIsVip')
-//     const currentUser = useState('user')
-//     const { mutate } = useMutation(LOG_OUT);
-   
-//     mutate().then((result) => {
-//         if (result.data.logout.status == 'SUCCESS') {
-//             userIsVip.value = false
-//             currentUser.value = null
-//         }
-//     })
-// }
 export function logout() {
+    const userStore = useUserStore()
     const { mutate } = useMutation(LOG_OUT, {
       refetchQueries: [
         { query: userQuery }
@@ -142,12 +89,8 @@ export function logout() {
    
     mutate().then((result) => {
         if (result.data.logout.status == 'SUCCESS') {
-            const userIsVip = useState('userIsVip')
-            const currentUser = useState('user')
-            userIsVip.value = false
-            currentUser.value = null
-            console.log("Should be logged out now")
-            navigateTo('/vip')
+            userStore.setUser(null)
+            // navigateTo('/vip')
         }
     })
 }

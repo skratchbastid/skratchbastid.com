@@ -13,13 +13,21 @@ export default defineNuxtConfig({
         }
     },
     serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
+    imports: {
+        dirs: ['stores']
+    },
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-icon',
         '@nuxtjs/apollo',
         '@nuxt/image-edge',
-        '@pinia/nuxt',
+        '@pinia/nuxt'
     ],
+    pinia: {
+        autoImports: [
+            'defineStore'
+        ]
+    },
     apollo: {
         clients: {
             default: {

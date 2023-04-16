@@ -12,6 +12,7 @@
 
     const userStore = useUserStore()
     const user = computed(() => userStore.user)
+    const isVip = computed(() => userStore.isVip())
 
     const route = useRoute()
     const slug = route.params.slug
@@ -52,7 +53,7 @@
 <template>
     <div class="min-h-[95vh]">
         <div class="bg-slate-800 pb-8 lg:py-8">
-            <div v-if="user.isVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
+            <div v-if="isVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
                 <div v-show="video">
                     <client-only v-if="video?.vimeoID">
                         <vue-vimeo-player :video-id="video?.vimeoID" :options="options" />
@@ -100,7 +101,7 @@
                         {{ $dayjs().to(video?.date)}}
                     </div>
                 </div>
-                <div v-if="user.isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
+                <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
 

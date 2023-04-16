@@ -8,6 +8,7 @@
 
     const userStore = useUserStore()
     const user = computed(() => userStore.user)
+    const isVip = computed(() => userStore.isVip())
 
     const streams = ref()
     const mixes = useState('mixes')
@@ -15,6 +16,7 @@
 
 <template>
     <pre>Subscriptions: {{  user?.email }} | {{ user?.subscriptions }}</pre>
+    <pre>VIP: {{ isVip }}</pre>
     <div class="min-h-[40vh] w-full hidden">
         <div class="mx-10 my-8 flex gap-8">
             <div class="w-1/2">
@@ -31,8 +33,8 @@
     </div>
     <div>
         <div class="my-8">
-            <p v-show="user.isVip" class="mb-10 text-center hidden">VIP: {{ user.isVip }}</p>
-            <VipHeroCta v-if="!user.isVip" />
+            <p v-show="isVip" class="mb-10 text-center hidden">VIP: {{ isVip }}</p>
+            <VipHeroCta v-if="!isVip" />
             <LatestStreams class="mb-8" />
             <DeepDives />
         </div>
