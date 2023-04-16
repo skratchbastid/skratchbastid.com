@@ -8,8 +8,6 @@
     })
 
     const customerId = '2yd4airrrq0kllu0'
-    console.log('account id: ', customerId)
-    console.log('video id:', videoId)
 
     const iframeSrc = `https://customer-${customerId}.cloudflarestream.com/${videoId}/iframe`
     const streamPlayer = ref(null)
@@ -18,13 +16,9 @@
         const script = document.createElement('script')
         script.src = 'https://embed.cloudflarestream.com/embed/sdk.latest.js'
         script.async = true
-        script.onload = () => {
-            console.log("LOADED")
-        }
     }
 
     onMounted(() => {
-        console.log("HELLO")
         initPlayer()
     })
 </script>
