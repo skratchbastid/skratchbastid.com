@@ -18,9 +18,11 @@
   },
   "dependencies": {
     "@nuxtjs/dayjs": "^1.4.1",
+    "@pinia/nuxt": "^0.4.8",
     "add-to-calendar-button": "^1.18.6",
     "aws-sdk": "^2.1353.0",
     "node-mailjet": "^6.0.1",
+    "pinia": "^2.0.34",
     "url": "^0.11.0",
     "vue-horizontal": "^1.0.2",
     "vue-vimeo-player": "^1.1.2"

@@ -1,5 +1,6 @@
 <script setup>
     import { vueVimeoPlayer } from 'vue-vimeo-player'
+    import { useUserStore } from '@/stores/userStore'
 
     definePageMeta({
         layout: 'vip'
@@ -9,8 +10,11 @@
         window.scrollTo(0,0)
     })
 
+    const userStore = useUserStore()
+    const user = computed(() => userStore.user)
+    const isVip = computed(() => userStore.isVip())
+
     const route = useRoute()
-    const userIsVip = useState('userIsVip')
     const slug = route.params.slug
     const video = ref(null)
     const perks = useState('perks')
@@ -30,13 +34,13 @@
     // const { result } = useQuery(videoQuery, { slug })
     // video.value = result.episode
     
-    const { result, loading, error, onResult } = useQuery(videoQuery, { slug })
-    onResult((result) => {
-        video.value = result.data.episode
-    })
+    // const { result, loading, error, onResult } = useQuery(videoQuery, { slug })
+    // onResult((result) => {
+    //     video.value = result.data.episode
+    // })
 
-    // const { data } = await useAsyncQuery(videoQuery, { slug })
-    // video.value = data.value.episode
+    const { data } = await useAsyncQuery(videoQuery, { slug })
+    video.value = data.value.episode
 
     const options = {
         responsive: true,
@@ -49,8 +53,8 @@
 <template>
     <div class="min-h-[95vh]">
         <div class="bg-slate-800 pb-8 lg:py-8">
-            <div v-if="userIsVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
-                <div>
+            <div v-if="isVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
+                <div v-show="video">
                     <client-only v-if="video?.vimeoID">
                         <vue-vimeo-player :video-id="video?.vimeoID" :options="options" />
                     </client-only>
@@ -97,14 +101,14 @@
                         {{ $dayjs().to(video?.date)}}
                     </div>
                 </div>
-                <div v-if="userIsVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
+                <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
                     <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
 
                 </div>
             </div>
         </div>
-        <div class="my-10" v-if="video">
+        <div class="my-10" v-show="video">
             <LatestStreams :excludeId="video?.id" title="More Streams" :seeAll="false" />
         </div>
     </div>
