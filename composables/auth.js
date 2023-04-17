@@ -62,7 +62,7 @@ export function login(email, password, url) {
         const { data } = await useAsyncQuery(userQuery)
         if (data?.value?.viewer) {
             userStore.setUser(data.value.viewer)
-            navigateTo('/vip')
+            navigateTo(url || '/vip')
         }
         
     }).catch((err) => {
@@ -89,7 +89,7 @@ export function logout() {
    
     mutate().then((result) => {
         if (result.data.logout.status == 'SUCCESS') {
-            userStore.setUser(null)
+            userStore.setUser({})
             // navigateTo('/vip')
         }
     })
