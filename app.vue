@@ -1,31 +1,31 @@
 <script setup>
-  let darkMode = ref(false)
-  const showListings = ref([])
-  // const showListings = [
-  //       {date: new Date('2023-02-07T12:00:00'), city: "New York, NY", details: "Burton / Run DMC", venue: "Private Event", link: ""},
-  //       {date: new Date('2023-02-10T12:00:00'), city: "Brooklyn, NY", details: "Boogie Blind Presents 'Easily'", venue: "Friends & Lovers", link: "https://www.eventbrite.com/e/boogie-blind-presents-easily-feat-skratch-bastid-tickets-419575159597"},
-  //       {date: new Date('2023-02-11T12:00:00'), city: "Miami, FL", details: "Vinyl Set", venue: "Dante's HiFi", link: "https://www.exploretock.com/danteshifi"},
-  //       {date: new Date('2023-02-15T12:00:00'), city: "New York, NY", details: "Touch of Classics (Vinyl Set)", venue: "RT60 (Hard Rock Hotel New York)", link: "https://www.eventbrite.com/e/531307534137"},
-  //       {date: new Date('2023-02-16T12:00:00'), city: "Hunter, NY", details: "Winter Get Down / Hunter Mountain", venue: "Glen Falls House", link: "https://ra.co/events/1653883"},
-  //       {date: new Date('2023-02-19T12:00:00'), city: "Toronto, ON", details: "w/ Thugli, Hedspin, Brandan Duke", venue: "The Black Pearl", link: "https://www.eventbrite.ca/e/off-the-record-tickets-532164387007"},
-  //       {date: new Date('2023-03-03T12:00:00'), city: "Toronto, ON", details: "Motionball Toronto Charity Gala", venue: "Liberty Grand", link: "https://motionball.com/toronto/"},
-  //       {date: new Date('2023-03-09T12:00:00'), city: "Revelstoke, BC", details: "Redbull Natural Selection", venue: "Après, TBA", link: ""},
-  //       {date: new Date('2023-03-10T12:00:00'), city: "Revelstoke, BC", details: "Redbull Natural Selection", venue: "TBA", link: ""},
-  //       {date: new Date('2023-03-11T12:00:00'), city: "Edmonton, AB", details: "JUNOfest", venue: "99ten", link: "https://www.eventbrite.ca/e/junofest-presented-by-cbc-music-skratch-bastid-with-guests-tickets-547879992807"},
-  //       {date: new Date('2023-03-15T12:00:00'), city: "Austin, TX", details: "12 Rivers Open House", venue: "Native Hostel", link: ""},
-  //       {date: new Date('2023-03-16T12:00:00'), city: "Austin, TX", details: "", venue: "Dante's Hi-Fi", link: ""},
-  //       {date: new Date('2023-03-17T12:00:00'), city: "Austin, TX", details: "BASTID'S BBQ @ SXSW // 3pm-10pm", venue: "Native Hostel", link: "https://www.eventbrite.ca/e/bastids-bbq-austin-sxsw-tickets-536356545867"},
-  //       {date: new Date('2023-03-23T12:00:00'), city: "Miami, FL", details: "The Schmucks", venue: "Moxy Miami South Beach", link: ""},
-  //       {date: new Date('2023-03-24T12:00:00'), city: "Miami, FL", details: "", venue: "Better Days", link: ""},
-  //       {date: new Date('2023-03-25T12:00:00'), city: "Lancaster, PA", details: "w/ Cosmo Baker", venue: "Tellus360", link: ""},
-  //       {date: new Date('2023-03-26T12:00:00'), city: "Philadelphia, PA", details: "Free Show w/ Cosmo Baker", venue: "Brooklyn Bowl", link: "https://www.brooklynbowl.com/philadelphia/events/detail/skratch-bastid-cosmo-baker-13040565"},
-  //       {date: new Date('2023-04-01T12:00:00'), city: "Montreal, QC", details: "Montreal Canadiens Game", venue: "Centre Bell", link: ""},
-  //       {date: new Date('2023-04-07T12:00:00'), city: "Ottawa, ON", details: "", venue: "BERLIN", link: "https://www.eventbrite.ca/e/skratch-bastid-at-berlin-tickets-560626688517"},
-  //       {date: new Date('2023-05-06T12:00:00'), city: "Toronto, ON", details: "w/ The Shuffle Demons", venue: "Koerner Hall", link: "https://www.rcmusic.com/tickets/seats/242401"},
-  //       {date: new Date('2023-05-27T12:00:00'), city: "Somerset, UK", details: "Shindig Weekender Festival", venue: "Dillington Estate", link: "https://shindigfestival.co.uk/"},   
-  //       {date: new Date('2023-07-29T12:00:00'), city: "Toronto, ON", details: "Bastid's BBQ", venue: "The Bentway", link: "https://www.universe.com/events/bastids-bbq-toronto-two-days-july-29th-july-30th-tickets-TW2F6M"},   
-  //       {date: new Date('2023-07-30T12:00:00'), city: "Toronto, ON", details: "Bastid's BBQ", venue: "The Bentway", link: "https://www.universe.com/events/bastids-bbq-toronto-two-days-july-29th-july-30th-tickets-TW2F6M"},   
-  //   ]
+import { useUserStore } from '@/stores/userStore'
+const userStore = useUserStore()
+
+const darkMode = ref(false)
+const showListings = ref([])
+
+const perks = [
+  'Stream over 1,000 hours of exclusive DJ sets',
+  'MP3 Downloads',
+  'Access to the VIP Discord server',
+  'VIP Zoom Room access',
+  'VIP Guest List at live shows',
+  'Members-only merch'
+]
+
+const mixes = [
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/c/2/3/b/9b6a-73f7-4e4a-b98e-8b09709c7cd1', link: 'https://www.mixcloud.com/sizeSessionsCanada/size-sessions-canada-presents-skratch-bastid-size-canada-launch-mix/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/0/a/1/9cb7-4ff2-4157-8379-54efebc741ac', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-dinner-a-mixtape-41218/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/b/c/2/a3d2-6a91-4c27-9eee-c845a489e030.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-the-gaff-soul-sisters-stand-up-100-female-funksoulrbbreaks/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/2/1/e/9/bde2-8de1-4e85-8978-e1aed313c9e6.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-the-starter-era-dope-raps-1989-1993-sneaker-freaker-magazine-exclusive/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/5/7/c/2/c7e8-e095-42e1-a751-fb51772a4473.png', link: 'https://www.mixcloud.com/skratchbastid/the-entertainer/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/2/c/d/9/5b72-edd3-4317-b49d-28a38f9a3da0.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-110/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/a/3/4/4/b475-e99f-491e-886f-3ff2820ec7bd.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-satisfaction-guaranteed/'},
+  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/c/2/f/d/0ded-0b9e-45ea-81e1-007fd8e75c0d.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-get-up/'}
+]
+useState('perks', () => perks)
+useState('mixes', () => mixes)
 
   const showsQuery = gql`
     {
@@ -44,24 +44,30 @@
       ticketLink
     }
   `
-  const { result, fetchMore, loading, error, onResult } = useQuery(showsQuery)
   const shows = ref(useState('shows', () => []))
 
-  onResult((result) => {
-    shows.value = filterAndSortEventsByDate(result.data.events.nodes)
-  })  
+  const { data } = await useAsyncQuery(showsQuery)
+  shows.value = filterAndSortEventsByDate(data.value.events.nodes)  
 
 
-  console.log("4", showListings.value.length)
-  onBeforeMount(() => {
-    checkForLogin()
+  onNuxtReady(() => {
+    checkForLogin().then((result) => {
+      userStore.setUser(result)
+    })
+    document.addEventListener('keyup', function(e) {
+      if (e.key === 'd') {
+        darkMode.value = !darkMode.value
+      }
+    })
   })
+
 
 </script>
 
 <template>
   <div :class="darkMode == true ? 'dark' : ''">
     <NuxtLayout>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>

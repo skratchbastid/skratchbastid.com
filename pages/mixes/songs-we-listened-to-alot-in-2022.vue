@@ -59,8 +59,8 @@
             </div>
         </div>
     </div>
+    <SwltSeries class="my-12" />
     <TopGrillinPromo />
-
 </template>
 
 <style scoped>

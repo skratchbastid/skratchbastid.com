@@ -10,7 +10,7 @@
                 <div class="flex flex-col md:flex-row">
                     <div class="mt-8 mb-8">
                         <ul class="uppercase text-xl">
-                            <li class="font-extrabold">600+ Hours of Live Sets</li>
+                            <li class="font-extrabold">1,000+ Hours of Live Sets</li>
                             <li class="font-light">Members Only Merch</li>
                             <li class="font-extrabold">Exclusive Mixes</li>
                             <li class="font-light">Guest List at Live Shows</li>
@@ -18,7 +18,7 @@
                         </ul>
                     </div>
                     <div class="flex flex-grow justify-center items-center md:justify-start md:ml-24">
-                        <a href="https://www.bastidsbbq.com/vip/" target="_blank" id="vip-join-button" class="border-cyan-700 border-2 text-4xl bg-white text-cyan-700 px-8 py-2 text-cyan-700 uppercase font-black rotate-2 md:rotate-3">Join Now</a>
+                        <NuxtLink to="/vip" id="vip-join-button" class="border-cyan-700 border-2 text-4xl bg-white text-cyan-700 px-8 py-2 text-cyan-700 uppercase font-black rotate-2 md:rotate-3">Join Now</NuxtLink>
                     </div>
                 </div>
             </div>
