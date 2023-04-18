@@ -2,7 +2,7 @@ import VueGtag, { trackRouter } from 'vue-gtag-next'
 
 export default defineNuxtPlugin((nuxtApp) => {
     const config = useRuntimeConfig()
-    if (!config.public.production_mode) {
+    if (config.public.production_mode) {
         nuxtApp.vueApp.use(VueGtag, {
             property: {
                 id: 'G-GTXBY1X48E',
