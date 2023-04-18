@@ -6,6 +6,7 @@
         layout: 'vip'
     })
 
+
     const userStore = useUserStore()
     const user = computed(() => userStore.user)
     const isVip = computed(() => userStore.isVip())
