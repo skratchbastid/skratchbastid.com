@@ -4,8 +4,8 @@
     const pageInfo = ref(null)
 
     const streamsQuery = gql`
-        query getEpisodes {
-            episodes(first: 50) {
+        query getStreams {
+            streams(first: 50) {
                 nodes {
                 id
                 title
@@ -32,8 +32,8 @@
     const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)
 
     onResult((result) => {
-        videos.value = result.data.episodes.nodes
-        pageInfo.value = result.data.episodes.pageInfo
+        videos.value = result.data.streams.nodes
+        pageInfo.value = result.data.streams.pageInfo
     })
     
     

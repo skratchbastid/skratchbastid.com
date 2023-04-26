@@ -21,7 +21,7 @@
 
     const videoQuery = gql`
         query getVideo($slug: ID!) {
-            episode(id: $slug, idType: SLUG) {
+            stream(id: $slug, idType: SLUG) {
                 id
                 title
                 date
@@ -40,7 +40,7 @@
     // })
 
     const { data } = await useAsyncQuery(videoQuery, { slug })
-    video.value = data.value.episode
+    video.value = data.value.stream
 
     const options = {
         responsive: true,
