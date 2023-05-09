@@ -1803,6 +1803,13 @@ convert-source-map@^1.7.0:
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.9.0.tgz#7faae62353fb4213366d0ca98358d22e8368b05f"
   integrity sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==
 
+convertkit-vue@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/convertkit-vue/-/convertkit-vue-1.0.6.tgz#c8a0b2d15fd36b8b27833f864a283ba12fc8785b"
+  integrity sha512-C2FIhqTEocA/xrqFAyUhXhakTm1i5WcLH81EPdq3LMNQbrevqsc0tgTS6y9DpuYHDqWWk664StMUcwOW5PLCnQ==
+  dependencies:
+    vue "^3.0.5"
+
 cookie-es@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/cookie-es/-/cookie-es-0.5.0.tgz#a6ad89923e68c542fc9e760b07aefa5ab020d719"
@@ -5740,7 +5747,7 @@ vue-vimeo-player@^1.1.2:
     "@vue/compiler-sfc" "^3.2.23"
     vue "^3.2.23"
 
-vue@^3.2.23, vue@^3.2.47:
+vue@^3.0.5, vue@^3.2.23, vue@^3.2.47:
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.47.tgz#3eb736cbc606fc87038dbba6a154707c8a34cff0"
   integrity sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==
