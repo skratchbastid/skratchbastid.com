@@ -9,7 +9,8 @@ export default defineNuxtConfig({
             title: 'Skratch Bastid',
             meta: [
                 { description: "Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing."}
-            ]
+            ],
+            link: [{ rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
         }
     },
     serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
