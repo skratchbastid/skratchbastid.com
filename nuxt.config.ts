@@ -1,7 +1,7 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 import { BulkContactManagement, Template } from 'node-mailjet';
 import { defineNuxtConfig } from 'nuxt/config'
-import signedUrl from './server/api/signedUrl';
+// import signedUrl from './server/api/signedUrl';
 import {isProduction} from "std-env";
 
 export default defineNuxtConfig({
@@ -16,10 +16,11 @@ export default defineNuxtConfig({
             title: 'Skratch Bastid',
             meta: [
                 { description: "Official home of Skratch Bastid. DJ. Producer. Someone to count on in a world ever-changing."}
-            ]
+            ],
+            link: [{ rel: 'icon', type: 'image/png', href: '/img/favicon.png' }],
         }
     },
-    serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
+    // serverMiddleware: [{ path: '/api/signedUrl', handler: signedUrl }],
     imports: {
         dirs: ['stores']
     },
