@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     apollo: {
         clients: {
             default: {
-                httpEndpoint: "https://wp.slowjams.xyz/graphql",
+                httpEndpoint: "https://atlastest908.wpenginepowered.com/graphql",
                 httpLinkOptions: {
                     credentials: 'include'
                 }
