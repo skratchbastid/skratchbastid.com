@@ -9,6 +9,11 @@ const userQuery = gql`
             lastName
             email
             subscriptions
+            roles {
+                nodes {
+                    name
+                }
+            }
             avatar {
                 url
             }
@@ -55,10 +60,6 @@ export function login(email, password, url) {
     })
     mutate().then(async (result) => {
         const userStore = useUserStore()
-        // const user = useQuery(userQuery, {
-        //     fetchPolicy: "no-cache" 
-        // })
-        // userStore.setUser(user.result)
         const { data } = await useAsyncQuery(userQuery)
         if (data?.value?.viewer) {
             userStore.setUser(data.value.viewer)

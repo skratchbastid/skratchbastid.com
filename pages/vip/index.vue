@@ -18,6 +18,7 @@
 <template>
     <!-- tailwind gradient -->
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45%">
+        {{  isVip }}
         <div v-show="isVip" class="pt-12">
             <div class="pb-6 px-6 flex flex-col gap-3 items-center justify-center">
                 <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32" />

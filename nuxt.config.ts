@@ -4,6 +4,9 @@ import { defineNuxtConfig } from 'nuxt/config'
 import signedUrl from './server/api/signedUrl';
 
 export default defineNuxtConfig({
+    biuld: {
+        extractCSS: true
+    },
     app: {
         head: {
             title: 'Skratch Bastid',
