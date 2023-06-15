@@ -14,7 +14,6 @@
 
 <template>
     <div class="mb-6">
-        <pre>{{ user }}</pre>
         <TuesdayMorningCoffeePromo />
         <UpcomingShows />
         <SongsWeListenedTo />

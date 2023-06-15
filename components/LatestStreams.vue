@@ -31,7 +31,7 @@
                     field: NAME
                     }
                 ]
-                }
+            }
             }) {
                 nodes {
                 id
@@ -40,6 +40,8 @@
                 slug
                 imageLink
                 date
+                mp3Link
+                noMicMP3Link
                 streamTypes {
                     edges {
                         node {
@@ -62,6 +64,7 @@
     // })
 
     const { data } = await useAsyncQuery(streamsQuery)
+    console.log('done', data.value)
     streams.value = data.value.streams.nodes
     const filteredStreams = computed(() => {
         if (props.excludeId) {

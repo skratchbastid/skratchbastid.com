@@ -28,6 +28,8 @@
                 vimeoID
                 imageLink
                 cloudflareVideoID
+                mp3Link
+                noMicMP3Link
             }
         }`
     
@@ -102,9 +104,8 @@
                     </div>
                 </div>
                 <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
-                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
-                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
-
+                    <a v-for="link in video.mp3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs" target="_blank" rel="noopener">Download MP3</a>
+                    <a v-for="link in video.noMicMP3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
                 </div>
             </div>
         </div>
