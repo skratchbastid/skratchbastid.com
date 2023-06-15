@@ -40,8 +40,6 @@
                 slug
                 imageLink
                 date
-                mp3Link
-                noMicMP3Link
                 streamTypes {
                     edges {
                         node {

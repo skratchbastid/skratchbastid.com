@@ -55,7 +55,7 @@ const deepDivesQuery = gql`
         <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
             Deep Dives
         </div>
-        <vue-horizontal class="ml-4 md:px-6" v-if="!loading?.value">
+        <vue-horizontal class="ml-3 md:mx-10" v-if="!loading?.value">
             <NuxtLink :to="'/videos/' + video.slug" v-for="video in deepDives" :key="video.slug"
                 class="flex flex-col w-7/12 md:w-3/12 mr-2 md:mr-4">
                 <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
