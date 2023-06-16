@@ -33,7 +33,7 @@
           <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
             <ul>
               <li>
-                <a href="https://wp.skratchbastid.dev/account" target="_blank">My Account</a>
+                <a href="https://wp.skratchbastid.com/account" target="_blank">My Account</a>
               </li>
               <li>
                 <a href="#" @click.prevent="logoutUserOut">Logout</a>

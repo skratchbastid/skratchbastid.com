@@ -20,8 +20,8 @@
     })
 
     const streamsQuery = gql`
-        query getEpisodes {
-            episodes(first: 10, where: {
+        query getStreams {
+            streams(first: 10, where: {
                 taxQuery: {
                 taxArray: [
                     {
@@ -31,7 +31,7 @@
                     field: NAME
                     }
                 ]
-                }
+            }
             }) {
                 nodes {
                 id
@@ -62,7 +62,8 @@
     // })
 
     const { data } = await useAsyncQuery(streamsQuery)
-    streams.value = data.value.episodes.nodes
+    console.log('done', data.value)
+    streams.value = data.value.streams.nodes
     const filteredStreams = computed(() => {
         if (props.excludeId) {
             return streams.value.filter((video) => video.id !== props.excludeId)

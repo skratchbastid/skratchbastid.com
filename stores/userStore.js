@@ -11,7 +11,9 @@ export const useUserStore = defineStore('user', () => {
     }
 
     function isVip() {
-        return user?.value?.subscriptions?.includes('64') ? true : false
+        const vip = user?.value?.subscriptions?.includes('64') ? true : false
+        const admin = user?.value?.roles?.nodes?.some((role) => role.name === 'administrator') ? true : false
+        return vip || admin
     }
 
     return { user, userIsVip, setUser, isVip }

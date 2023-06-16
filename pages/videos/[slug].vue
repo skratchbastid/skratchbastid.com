@@ -21,13 +21,15 @@
 
     const videoQuery = gql`
         query getVideo($slug: ID!) {
-            episode(id: $slug, idType: SLUG) {
+            stream(id: $slug, idType: SLUG) {
                 id
                 title
                 date
                 vimeoID
                 imageLink
                 cloudflareVideoID
+                mp3Link
+                noMicMP3Link
             }
         }`
     
@@ -40,7 +42,7 @@
     // })
 
     const { data } = await useAsyncQuery(videoQuery, { slug })
-    video.value = data.value.episode
+    video.value = data.value.stream
 
     const options = {
         responsive: true,
@@ -85,7 +87,7 @@
                                             </div>
                                         </ul>
                                     </div>
-                                    <a href="https://wp.skratchbastid.dev/register/top-grillin/" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
+                                    <a href="https://wp.skratchbastid.com/register/top-grillin/" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
                                 </div>
                             </div>
                         </div>
@@ -102,9 +104,8 @@
                     </div>
                 </div>
                 <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
-                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3</a>
-                    <a href="#" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
-
+                    <a v-for="link in video.mp3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs" target="_blank" rel="noopener">Download MP3</a>
+                    <a v-for="link in video.noMicMP3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
                 </div>
             </div>
         </div>

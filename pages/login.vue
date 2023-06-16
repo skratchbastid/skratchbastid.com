@@ -1,10 +1,14 @@
 <script setup>
+    import { useUserStore } from '@/stores/userStore'
+
     definePageMeta({
         layout: 'blank'
     })
-    const user = useState('user')
     const email = ref('')
     const password = ref('')
+
+    const userStore = useUserStore()
+    const user = computed(() => userStore.user)
 
     function logUserIn(email, password) {
         const router = useRouter()
@@ -32,10 +36,11 @@
                     </div>
                     <button type="submit" class="w-full bg-slate-800 text-white p-2 rounded">Login</button>
                 </form>
+                <NuxtLink to="forgot-password" class="text-sm text-slate-600 mt-4">Forgot your password?</NuxtLink>
             </div>
         </div>
-        <div v-if="user?.viewer" class="mt-12">
-            Logged in as {{  user.viewer.firstName }}
+        <div v-if="user" class="mt-12">
+            Logged in as {{  user.firstName }}
         </div>
     </div>
 </template>
