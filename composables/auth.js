@@ -36,7 +36,44 @@ export async function checkForLogin() {
   }
 
 
-export function login(email, password, url) {
+// export async function login(email, password, url) {
+//     const currentUser = useState('user')
+//     const loginQuery = gql`
+//         mutation logIn($login: String!, $password: String!) {
+//             loginWithCookies(input: {
+//             login: $login
+//             password: $password
+//             }) {
+//             status
+//             }
+//         }
+//         `;
+
+//     const { mutate } = useMutation(loginQuery, {
+//         variables: {
+//             login: email,
+//             password: password
+//         },
+//         refetchQueries: [
+//             { query: userQuery }
+//         ]
+//     })
+//     mutate().then(async (result) => {
+//         const userStore = useUserStore()
+//         const { data } = await useAsyncQuery(userQuery)
+//         if (data?.value?.viewer) {
+//             userStore.setUser(data.value.viewer)
+//             // navigateTo(url || '/vip')
+//         }
+//         console.log('returned data: ', data)
+//         return data.value
+//     }).catch((err) => {
+//         console.log("Error: ", err)
+//         return err
+//     })
+// }
+
+export async function login(email, password, url) {
     const currentUser = useState('user')
     const loginQuery = gql`
         mutation logIn($login: String!, $password: String!) {
@@ -57,18 +94,19 @@ export function login(email, password, url) {
         refetchQueries: [
             { query: userQuery }
         ]
-    })
-    mutate().then(async (result) => {
+    });
+
+    // Note the return keyword here to return the promise chain
+    return mutate().then(async (result) => {
         const userStore = useUserStore()
         const { data } = await useAsyncQuery(userQuery)
         if (data?.value?.viewer) {
             userStore.setUser(data.value.viewer)
-            navigateTo(url || '/vip')
+            return navigateTo(url || '/vip')
         }
-        
-    }).catch((err) => {
-        console.log("Error: ", err)
-        return false
+        // return data.value
+    }).catch((err, data) => {
+        return err.message
     })
 }
 

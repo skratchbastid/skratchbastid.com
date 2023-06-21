@@ -56,6 +56,7 @@ useState('mixes', () => mixes)
     })
     document.addEventListener('keyup', function(e) {
       if (e.key === 'd') {
+        return
         darkMode.value = !darkMode.value
       }
     })

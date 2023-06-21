@@ -6,14 +6,19 @@
     })
     const email = ref('')
     const password = ref('')
+    const incorrectPassword = ref(false)
 
     const userStore = useUserStore()
     const user = computed(() => userStore.user)
 
-    function logUserIn(email, password) {
+    async function logUserIn(email, password) {
         const router = useRouter()
-        login(email, password, router.options.history.state.back)
+        const result = await login(email, password, router.options.history.state.back)
+        if (result == 'incorrect_password') {
+            incorrectPassword.value = true
+        }
     }
+
 
 </script>
 <template>
@@ -21,7 +26,7 @@
         <div class="w-full h-full flex items-center justify-center">
             <div class="bg-white rounded shadow-xl p-12 w-11/12 sm:w-8/12 lg:w-[35%] flex flex-col">
                 <span class="font-semibold text-2xl">Sign into your account!</span>
-                <div class="bg-green-100 text-green-700  text-sm my-3 p-3">
+                <div class="bg-green-100 text-green-700 text-sm my-3 p-3">
                     We're in the process of a major site upgrade - if you have any issues, please email <a class="underline" href="mailto:holler@skratchbastid.com">holler@skratchbastid.com</a> and we'll get you sorted out!
                 </div>
                 <form class="flex flex-col" @submit.prevent="logUserIn(email, password)">
@@ -36,6 +41,7 @@
                             <span class="text-sm font-semibold text-slate-600 mb-2 inline-block">Password</span>
                         </label>
                         <input type="password" v-model="password" class="w-full border border-1 p-3 rounded bg-white">
+                        <span v-if="incorrectPassword" class="text-xs text-red-500 mt-1">Incorrect password - please try again.</span>
                     </div>
                     <button type="submit" class="w-full bg-slate-800 text-white p-2 rounded">Login</button>
                 </form>
