@@ -18,6 +18,9 @@
 
 <template>
     <!-- tailwind gradient -->
+    <div class="text-center p-2 bg-green-100 text-green-700 text-sm md:text-base">
+        🔔 We're in the process of a major upgrade to the VIP experience. If you run into any issues, please let us know at <a class="underline" href="mailto:holler@skratchbastid.com">holler@skratchbastid.com</a>
+    </div>
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45%">
         <div v-show="isVip" class="pt-12">
             <div class="pb-6 px-6 flex flex-col gap-3 items-center justify-center">

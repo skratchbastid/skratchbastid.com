@@ -20,7 +20,10 @@
     <div class="w-full min-h-[100vh] bg-[#F7FAFC] flex flex-col items-center justify-center">
         <div class="w-full h-full flex items-center justify-center">
             <div class="bg-white rounded shadow-xl p-12 w-11/12 sm:w-8/12 lg:w-[35%] flex flex-col">
-                <span class="font-semibold text-2xl mb-8">Sign into your account!</span>
+                <span class="font-semibold text-2xl">Sign into your account!</span>
+                <div class="bg-green-100 text-green-700  text-sm my-3 p-3">
+                    We're in the process of a major site upgrade - if you have any issues, please email <a class="underline" href="mailto:holler@skratchbastid.com">holler@skratchbastid.com</a> and we'll get you sorted out!
+                </div>
                 <form class="flex flex-col" @submit.prevent="logUserIn(email, password)">
                     <div class="flex flex-col mb-6">
                         <label for="email">
@@ -38,9 +41,6 @@
                 </form>
                 <NuxtLink to="forgot-password" class="text-sm text-slate-600 mt-4">Forgot your password?</NuxtLink>
             </div>
-        </div>
-        <div v-if="user" class="mt-12">
-            Logged in as {{  user.firstName }}
         </div>
     </div>
 </template>
