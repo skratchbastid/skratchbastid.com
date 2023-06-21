@@ -6,17 +6,20 @@
     })
     const email = ref('')
     const password = ref('')
+    const loading = ref(false)
     const incorrectPassword = ref(false)
 
     const userStore = useUserStore()
     const user = computed(() => userStore.user)
 
     async function logUserIn(email, password) {
+        loading.value = true
         const router = useRouter()
         const result = await login(email, password, router.options.history.state.back)
         if (result == 'incorrect_password') {
             incorrectPassword.value = true
         }
+        loading.value = false
     }
 
 
@@ -43,7 +46,11 @@
                         <input type="password" v-model="password" class="w-full border border-1 p-3 rounded bg-white">
                         <span v-if="incorrectPassword" class="text-xs text-red-500 mt-1">Incorrect password - please try again.</span>
                     </div>
-                    <button type="submit" class="w-full bg-slate-800 text-white p-2 rounded">Login</button>
+                    <button type="submit" class="w-full bg-slate-800 text-white p-2 rounded" :disabled="loading">
+                        <span v-if="!loading">Login</span>
+                        <Icon v-else name="svg-spinners:bars-scale" class="text-white ml-2" size="20" v-if="loading" />
+                    </button>
+                    
                 </form>
                 <NuxtLink to="forgot-password" class="text-sm text-slate-600 mt-4">Forgot your password?</NuxtLink>
             </div>
