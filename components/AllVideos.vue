@@ -7,7 +7,7 @@
 
     const { result, loading, error, fetchMore, onResult } = useQuery(gql`
         query getStreams($cursor: String) {
-            streams(first: 12, after: $cursor) {
+            streams(first: 36, after: $cursor) {
                 nodes {
                 id
                 title
@@ -52,7 +52,7 @@
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
         // Check if the user has scrolled near the bottom of the page
-        if (clientHeight + scrollTop >= scrollHeight - 20 && !loadingMore) {
+        if (clientHeight + scrollTop >= scrollHeight - 600 && !loadingMore) {
             loadingMore = true // Fetch operation is in progress
             // If the pageInfo indicates there are more pages to load, load them
             if (pageInfo.value && pageInfo.value.hasNextPage) {
