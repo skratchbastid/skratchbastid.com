@@ -37,11 +37,8 @@
                 <h2 class="text-shadow text-4xl text-white font-extrabold uppercase">Get Weekly Updates From Bastid!</h2>
                 <div class="w-2/3 m-auto text-lg font-light my-6">Get the latest videos, mixes and music recommendations from Bastid delivered to your inbox weekly.</div>
                 <div class="h-12 flex justify-center itms-center mx-2" id="newsletter">
-                    <!-- <input type="email" v-model="email" placeholder="you@email.com" :disabled="submitPending" class="w-2/3 md:w-1/2 h-full border-black border-2 px-2 text-lg focus:outline-0 rounded-none">
-                    <button href="#" @click.prevent="submitEmail" :disabled="submitPending" class="bg-black inline-block flex justify-center items-center px-6 h-full text-white text-sm md:text-base font-bold">SUBSCRIBE</button> -->
-                    <client-only>
-                        <ConvertKit formId="5089327" hideName="true" emailPlaceholder="your@email.com" />
-                    </client-only>
+                    <input type="email" v-model="email" placeholder="you@email.com" :disabled="submitPending" class="w-2/3 md:w-1/2 h-full border-black border-2 px-2 text-lg focus:outline-0 rounded-none">
+                    <button href="#" @click.prevent="submitEmail" :disabled="submitPending" class="bg-black inline-block flex justify-center items-center px-6 h-full text-white text-sm md:text-base font-bold">SUBSCRIBE</button>
                 </div>
                 <div v-if="error" class="w-2/3 m-auto text-xs font-bold text-red-500 mt-3">Looks like that's not a valid email address. Try again!</div>
             </div>
