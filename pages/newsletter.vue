@@ -31,7 +31,7 @@
                     <button @click.prevent="submitEmail" :disabled="submitPending" class="bg-teal-500 text-white px-5 font-semibold uppercase">Subscribe</button>
                 </div>
             </div>
-            <div v-else>
+            <div v-else class="text-center">
                 <h1 class="text-4xl md:text-5xl font-bold md:my-2">You're In!</h1>
                 <p class="my-4 md:my-6 text-lg md:text-xl md:leading-8 text-slate-700">Keep an eye on your inbox for some 🔥🔥🔥 soon!</p>
             </div>
