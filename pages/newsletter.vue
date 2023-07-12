@@ -28,7 +28,7 @@
                 </ul>
                 <div class="mt-12 border flex border-2 border-teal-500 rounded w-full xl:w-3/4">
                     <input v-model="email" type="email" required placeholder="Enter your email" class="flex-grow p-3 focus:border-teal-500 focus:ring-0 focus:outline-none rounded border-teal-500">
-                    <button @click.prevent="submitEmail" :disabled="submitPending" class="bg-teal-500 text-white px-5 font-semibold uppercase">Subscribe</button>
+                    <button @click.prevent="submitEmail" :disabled="submitPending" class="bg-teal-500 text-white text-sm md:text-base px-2 md:px-5 font-semibold uppercase">Subscribe</button>
                 </div>
             </div>
             <div v-else class="text-center">
