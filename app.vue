@@ -66,7 +66,7 @@ useState('mixes', () => mixes)
 </script>
 
 <template>
-  <div :class="darkMode == true ? 'dark' : ''">
+  <div :class="darkMode == true ? 'dark' : ''" class="min-h-screen">
     <NuxtLayout>
       <NuxtLoadingIndicator />
       <NuxtPage />

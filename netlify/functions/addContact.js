@@ -19,6 +19,7 @@ exports.handler = async function(event, context) {
     });
     // const email = event.queryStringParameters.email
     const email = JSON.parse(event.body).email
+    const source = JSON.parse(event.body).source || ''
 
     // Check to see if contact exists, if not create one!
     let contact = await findContact(email)
@@ -50,6 +51,14 @@ exports.handler = async function(event, context) {
     // }
 
     // Create the subscription
+    if (contact.new) {
+        console.log("New contact, edit their source property")
+        try {
+            updateSource(contact.ID, source)
+        } catch(error) {
+            console.log(error)
+        }
+    }
     const subscription = await createSubscription(email)
     console.log(subscription)
     
@@ -162,6 +171,24 @@ exports.handler = async function(event, context) {
             return {
                 success: false
             }
+        }
+    }
+
+    async function updateSource(contactId, source) {
+        const request = mailjet
+            .put("contactdata", {'version': 'v3'})
+            .id(contactId)
+            .request({
+                Data: [{
+                    Name: "source",
+                    Value: source
+                }]
+            })
+        try {
+            const response = await request
+            console.log(response.body)
+        } catch (err) {
+            console.log(err)
         }
     }
 }
