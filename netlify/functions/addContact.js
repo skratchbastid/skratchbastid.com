@@ -52,11 +52,11 @@ exports.handler = async function(event, context) {
 
     // Create the subscription
     if (contact.new) {
-        console.log("New contact, edit their source property")
+        console.log("New contact, edit their source property", contact, source)
         try {
-            updateSource(contact.ID, source)
+            updateSource(contact.contact.ID, source)
         } catch(error) {
-            console.log(error)
+            console.log(error.message)
         }
     }
     const subscription = await createSubscription(email)
@@ -175,20 +175,23 @@ exports.handler = async function(event, context) {
     }
 
     async function updateSource(contactId, source) {
+        console.log("update source function")
         const request = mailjet
             .put("contactdata", {'version': 'v3'})
             .id(contactId)
             .request({
                 Data: [{
                     Name: "source",
-                    Value: source
+                    Value: source || ''
                 }]
             })
+        console.log("Contact ID: ", contactId)
+        console.log("Source: ", source)
         try {
             const response = await request
             console.log(response.body)
         } catch (err) {
-            console.log(err)
+            console.log("Dang")
         }
     }
 }
