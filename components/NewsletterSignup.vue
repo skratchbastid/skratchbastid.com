@@ -1,6 +1,4 @@
 <script setup>
-    import ConvertKit from 'convertkit-vue'
-
     const email = ref()
     const submitPending = ref(false)
     const submitSuccess = ref(false)
