@@ -29,8 +29,14 @@ export default defineNuxtConfig({
         'nuxt-icon',
         '@nuxtjs/apollo',
         '@nuxt/image-edge',
-        '@pinia/nuxt'
+        '@pinia/nuxt',
+        '@nuxtjs/cloudinary'
     ],
+    cloudinary: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET
+    },
     pinia: {
         autoImports: [
             'defineStore'

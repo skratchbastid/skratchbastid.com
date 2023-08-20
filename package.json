@@ -18,15 +18,18 @@
     "vue-gtag-next": "^1.14.0"
   },
   "dependencies": {
+    "@nuxtjs/cloudinary": "^2.3.1",
     "@nuxtjs/dayjs": "^1.4.1",
     "@pinia/nuxt": "^0.4.8",
     "add-to-calendar-button": "^1.18.6",
     "aws-sdk": "^2.1353.0",
+    "cloudinary": "^1.40.0",
     "convertkit-vue": "^1.0.6",
     "node-mailjet": "^6.0.1",
     "pinia": "^2.0.34",
     "url": "^0.11.0",
     "vue-horizontal": "^1.0.2",
+    "vue-lite-youtube-embed": "^1.2.0",
     "vue-vimeo-player": "^1.1.2"
   },
   "packageManager": "yarn@1.22.19"
