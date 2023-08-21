@@ -21,6 +21,7 @@ exports.handler = async function(event, context) {
                 public_id: image.public_id,
             }
         })
+
         return {
             statusCode: 200,
             body: JSON.stringify({

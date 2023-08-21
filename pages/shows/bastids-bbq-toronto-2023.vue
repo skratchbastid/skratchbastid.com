@@ -9,6 +9,7 @@
     )
     console.log(data.value)
     const photos = ref(data.value.photos)
+    console.log(photos.value)
 </script>
 
 <template>
