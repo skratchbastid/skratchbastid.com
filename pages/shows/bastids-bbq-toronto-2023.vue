@@ -3,23 +3,7 @@
     import 'vue-lite-youtube-embed/style.css'
 
     const view = ref('recap')
-    const photos = ref([])
-    await useFetch('/.netlify/functions/getImages')
-        .then(result => {
-            console.log(result.data)
-            // let receivedPhotos = result.data.value.photos;
-            // console.log('2')
-            // Check if the first element of photos is an array, indicating that you've received an array of arrays.
-            // if (Array.isArray(receivedPhotos[0])) {
-            //     // If so, flatten the array
-            //     receivedPhotos = receivedPhotos.flat();
-            // }
-            // console.log(receivedPhotos)
-
-            // photos.value = receivedPhotos;
-            // console.log('3')
-        })
-
+    const { data: photos } = await useFetch('/.netlify/functions/getImages')
 
 </script>
 
