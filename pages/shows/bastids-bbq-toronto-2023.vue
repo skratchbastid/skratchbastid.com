@@ -6,8 +6,15 @@
     const photos = ref([])
     await useFetch('/.netlify/functions/getImages')
         .then(result => {
-            console.log(result.data.value.photos)
-            photos.value = result.data.value.photos
+            let receivedPhotos = result.data.value.photos;
+        
+            // Check if the first element of photos is an array, indicating that you've received an array of arrays.
+            if (Array.isArray(receivedPhotos[0])) {
+                // If so, flatten the array
+                receivedPhotos = receivedPhotos.flat();
+            }
+
+            photos.value = receivedPhotos;
         })
 
 
