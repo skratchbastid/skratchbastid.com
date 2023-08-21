@@ -25,7 +25,8 @@ exports.handler = async function(event, context) {
         return {
             statusCode: 200,
             body: JSON.stringify({
-                photos: photos
+                photos: photos,
+                greg: "Greg Bates"
             })
         }
     } catch(error) {

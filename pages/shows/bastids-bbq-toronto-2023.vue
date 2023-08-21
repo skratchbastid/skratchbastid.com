@@ -46,6 +46,7 @@
 
             <div v-if="view == 'photos'">
                 {{ data?.photos?.length }} photos<br />
+                {{ data?.greg }}
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
                     <div v-for="photo in data.photos" class="aspect-4x3 rounded">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
