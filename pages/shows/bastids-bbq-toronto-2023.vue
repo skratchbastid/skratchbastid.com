@@ -3,12 +3,9 @@
     import 'vue-lite-youtube-embed/style.css'
 
     const view = ref('recap')
-    const { data, pending, error } = await useAsyncData(
-        'photos',
-        () => $fetch('/.netlify/functions/getImages')
-    )
+    const { data } = await useFetch('/api/signedUrl.netlify/functions/getImages')
     const photos = ref(data.value.photos)
-    console.log(photos.value)
+    console.log(photos.value, data.value)
 </script>
 
 <template>
