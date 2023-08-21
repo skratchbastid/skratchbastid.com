@@ -7,7 +7,7 @@
         'photos',
         () => $fetch('/.netlify/functions/getImages')
     )
-    console.log(data.value)
+    console.log(JSON.parse(data.value))
     const photos = ref(data.value.photos)
     console.log(photos.value)
 </script>
