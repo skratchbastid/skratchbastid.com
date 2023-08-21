@@ -48,7 +48,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
                     <div v-for="photo in photos" class="aspect-4x3 rounded">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" class="rounded aspect-square object-cover" loading="lazy" />
+                        <img :src="photo.url" class="rounded aspect-square object-cover" />
                     </div>
                 </div>
             </div>
