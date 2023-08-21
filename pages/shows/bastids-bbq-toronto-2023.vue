@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div v-if="view == 'photos'">
+            <div v-if="view == 'photos' && photos">
                 {{ photos?.length }} photos<br />
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
                     <div v-for="photo in photos" class="aspect-4x3 rounded">
