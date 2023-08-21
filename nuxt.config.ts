@@ -4,6 +4,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 // import signedUrl from './server/api/signedUrl';
 import {isProduction} from "std-env";
 
+
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
@@ -30,12 +31,11 @@ export default defineNuxtConfig({
         '@nuxtjs/apollo',
         '@nuxt/image-edge',
         '@pinia/nuxt',
-        '@nuxtjs/cloudinary'
     ],
     cloudinary: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET
+        cloudName: '',
+        apiKey: '',
+        apiSecret: ''
     },
     pinia: {
         autoImports: [
