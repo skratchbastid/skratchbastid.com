@@ -8,6 +8,7 @@
         () => $fetch('/.netlify/functions/getImages')
     )
     console.log(data.value)
+    const photos = ref(data.value.photos)
 </script>
 
 <template>
@@ -33,11 +34,6 @@
                 <a href="#" @click="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
                 <a href="#" @click="view = 'videos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
             </div>
-
-            <div>
-                Pending: {{ pending }} <br />
-                Error: {{ error }}
-            </div>
             
             <div v-if="view == 'recap'" class="flex flex-col lg:flex-row gap-8 lg:items-center">
                 <div class="lg:w-1/2">
@@ -53,8 +49,8 @@
             </div>
 
             <div v-if="view == 'photos'">
-                {{ data.photos?.length }} photos<br />
-                {{  typeof data.photos }}<br />
+                {{ data?.photos?.length }} photos<br />
+                {{  typeof data?.photos }}<br />
                 {{ data?.photos[0] || 'nope' }}
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
                     <div v-for="photo in data.photos" class="aspect-4x3 rounded">
