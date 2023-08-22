@@ -3,10 +3,8 @@
     import 'vue-lite-youtube-embed/style.css'
 
     const view = ref('recap')
-    const photos = ref()
-    const { data } = await useFetch('/.netlify/functions/getImages')
-    photos.value = data.value.photos
-    console.log(photos.value)
+    const response = await fetch('/.netlify/functions/getImages');
+    const data = await response.json();
 </script>
 
 <template>
@@ -47,10 +45,10 @@
             </div>
 
             <div v-if="view == 'photos'">
-                {{ photos?.length }} photos<br />
+                {{ data?.photos?.length }} photos<br />
                 wtf
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
-                    <div v-for="photo in photos" class="aspect-4x3 rounded">
+                    <div v-for="photo in data.photos" class="aspect-4x3 rounded">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
                         <img :src="photo.url" class="rounded aspect-square object-cover" />
                     </div>
