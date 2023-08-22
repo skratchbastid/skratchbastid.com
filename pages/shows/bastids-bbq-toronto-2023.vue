@@ -27,9 +27,9 @@
             </div>
 
             <div class="flex w-full gap-3 text-sm my-3 mb-8">
-                <a href="#" @click="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
-                <a href="#" @click="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
-                <a href="#" @click="view = 'videos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
+                <a href="#" @click.prevent="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
+                <a href="#" @click.prevent="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
+                <a href="#" @click.prevent="view = 'videos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
             </div>
             
             <div v-if="view == 'recap'" class="flex flex-col lg:flex-row gap-8 lg:items-center">
