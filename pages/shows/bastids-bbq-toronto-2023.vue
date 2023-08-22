@@ -4,8 +4,7 @@
 
     const view = ref('recap')
     const photos = ref()
-    const { data } = await useFetch('/.netlify/functions/getImages')
-    photos.value = data.value.photos
+    const { data } = await useFetch('https://api.publicapis.org/entries')
 </script>
 
 <template>
@@ -45,13 +44,13 @@
                 </div>
             </div>
 
-            <div v-if="view == 'photos' && data.photos">
+            <div v-if="view == 'photos'">
                 {{ photos?.length }} photos<br />
-                <pre>{{  data }}</pre>
+                wtf
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
-                    <div v-for="photo in photos" class="aspect-4x3 rounded">
+                    <div v-for="photo in data" class="aspect-4x3 rounded">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" class="rounded aspect-square object-cover" />
+                        {{  photo }}
                     </div>
                 </div>
             </div>
