@@ -22,7 +22,6 @@
     })
 
     const showImage = (imageIndex) => {
-        console.log("Show image: " + index)
         lightboxVisible.value = true
         index.value = imageIndex
     }
