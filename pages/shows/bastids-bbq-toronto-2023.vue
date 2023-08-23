@@ -1,10 +1,31 @@
 <script setup>
     import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
     import 'vue-lite-youtube-embed/style.css'
+    import VueEasyLightbox from 'vue-easy-lightbox'
 
     const view = ref('recap')
-    const response = await fetch('/.netlify/functions/getImages');
-    const data = await response.json();
+    let data = ref(null)
+    const index = ref(null)
+    const lightboxVisible = ref(false)
+    const onHide = () => (lightboxVisible.value = false)
+
+    const fetchData = async () => {
+        const response = await fetch('/.netlify/functions/getImages');
+        data.value = await response.json();
+    }
+    fetchData()
+
+    const photos = computed(() => {
+        if (data.value) {
+            return data.value.photos.map(image => image.url)
+        }
+    })
+
+    const showImage = (imageIndex) => {
+        console.log("Show image: " + index)
+        lightboxVisible.value = true
+        index.value = imageIndex
+    }
 </script>
 
 <template>
@@ -45,12 +66,16 @@
             </div>
 
             <div v-if="view == 'photos'">
-                {{ data?.photos?.length }} photos<br />
-                wtf
+                <vue-easy-lightbox
+                    :visible="lightboxVisible"
+                    :imgs="photos"
+                    :index="index"
+                    @hide="onHide"
+                ></vue-easy-lightbox>
                 <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
-                    <div v-for="photo in data.photos" class="aspect-4x3 rounded">
+                    <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" class="rounded aspect-square object-cover" />
+                        <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" />
                     </div>
                 </div>
             </div>

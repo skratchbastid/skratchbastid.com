@@ -27,6 +27,7 @@
     "node-mailjet": "^6.0.1",
     "pinia": "^2.0.34",
     "url": "^0.11.0",
+    "vue-easy-lightbox": "^1.16.0",
     "vue-horizontal": "^1.0.2",
     "vue-lite-youtube-embed": "^1.2.0",
     "vue-vimeo-player": "^1.1.2"
