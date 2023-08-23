@@ -9,28 +9,24 @@
     const lightboxVisible = ref(false)
     const onHide = () => (lightboxVisible.value = false)
 
-    try {
-        const fetchData = async () => {
-            const baseUrl = process.env.NODE_ENV === 'production' ? 'https://skratch-staging.netlify.app' : '';
-            const response = await fetch(`${baseUrl}/.netlify/functions/getImages`);
-            data.value = await response.json();
-        }
-        fetchData()
-
-        const photos = computed(() => {
-            if (data.value) {
-                return data.value.photos.map(image => image.url)
-            }
-        })
-        console.log("Ok")
-    } catch (error) {
-        console.log(error)
+    const fetchData = async () => {
+        const baseUrl = process.env.NODE_ENV === 'production' ? 'https://skratch-staging.netlify.app' : '';
+        const response = await fetch(`${baseUrl}/.netlify/functions/getImages`);
+        data.value = await response.json();
     }
+    fetchData()
 
     const showImage = (imageIndex) => {
         lightboxVisible.value = true
         index.value = imageIndex
     }
+
+    const photos = computed(() => {
+        if (!data.value) return []
+        return data.value.photos.map((photo) => {
+            return photo.url
+        })
+    })
 </script>
 
 <template>
@@ -76,9 +72,9 @@
                     :imgs="photos"
                     :index="index"
                     @hide="onHide"
-                    move-disabled="true"
+                    :move-disabled="true"
                 ></vue-easy-lightbox>
-                <div class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
+                <div v-if="data.photos" class="grid grid-cols-2 md:grid-cols-4 md:grid-cols-3 gap-6">
                     <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
                         <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" />
