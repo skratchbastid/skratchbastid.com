@@ -9,17 +9,22 @@
     const lightboxVisible = ref(false)
     const onHide = () => (lightboxVisible.value = false)
 
-    const fetchData = async () => {
-        const response = await fetch('/.netlify/functions/getImages');
-        data.value = await response.json();
-    }
-    fetchData()
-
-    const photos = computed(() => {
-        if (data.value) {
-            return data.value.photos.map(image => image.url)
+    try {
+        const fetchData = async () => {
+            const response = await fetch('/.netlify/functions/getImages');
+            data.value = await response.json();
         }
-    })
+        fetchData()
+
+        const photos = computed(() => {
+            if (data.value) {
+                return data.value.photos.map(image => image.url)
+            }
+        })
+        console.log("Ok")
+    } catch (error) {
+        console.log(error)
+    }
 
     const showImage = (imageIndex) => {
         lightboxVisible.value = true
