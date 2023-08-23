@@ -11,7 +11,8 @@
 
     try {
         const fetchData = async () => {
-            const response = await fetch('/.netlify/functions/getImages');
+            const baseUrl = process.env.NODE_ENV === 'production' ? 'https://skratch-staging.netlify.app' : '';
+            const response = await fetch(`${baseUrl}/.netlify/functions/getImages`);
             data.value = await response.json();
         }
         fetchData()
