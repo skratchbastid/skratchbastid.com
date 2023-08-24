@@ -41,7 +41,7 @@
 </script>
 
 <template>
-    <div class="px-3 lg:px-[7.5rem]">
+    <div class="px-3 lg:px-[7.5rem] xl:max-w-[1440px] m-auto">
         <div class="hero mb-5">
             <img src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png" class="lg:rounded-lg lg:mt-6">
             <div class="flex flex-col w-full md:w-1/2 gap-1 justify-center py-3">
