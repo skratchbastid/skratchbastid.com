@@ -7,18 +7,20 @@
     let data = ref(null)
     const index = ref(null)
     const lightboxVisible = ref(false)
+
+    const folderName = '2023-bbq-toronto'
     const videos = ref([
+    {id: "nRXq3odkjxw", title: "Pharoahe Monch - Simon Says"},
         {id: "rbm-Q14iaEk", title: "Pharoahe Monch - Oh No"},
         {id: "PV4bnf_JAIE", title: "Pharoahe Monch - Desire"},
         {id: "yzA6xuWchyI", title: "Pharoahe Monch - Stray Bullet"},
-        {id: "zvbyGucDRDw", title: "Pharoahe Monch - Simon Says"},
     ])
 
     const onHide = () => (lightboxVisible.value = false)
 
     const fetchData = async () => {
         const baseUrl = process.env.NODE_ENV === 'production' ? 'https://www.skratchbastid.com' : '';
-        const response = await fetch(`${baseUrl}/.netlify/functions/getImages`);
+        const response = await fetch(`${baseUrl}/.netlify/functions/getImages?folderName=${encodeURIComponent(folderName)}`);
         data.value = await response.json();
     }
     fetchData()

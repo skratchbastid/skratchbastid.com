@@ -1,6 +1,7 @@
 const cloudinary = require('cloudinary').v2;
 
 exports.handler = async function(event, context) {
+    
     cloudinary.config({
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
         api_key: process.env.CLOUDINARY_API_KEY,
@@ -8,9 +9,21 @@ exports.handler = async function(event, context) {
         secure: true
     })
 
+    let folderName = event.queryStringParameters.folderName;
+    console.log(event.queryStringParameters)
+    if (!folderName) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error: 'No folder name provided'
+            })
+        }
+    }
+    
+
     try {
         const result = await cloudinary.search
-            .expression('resource_type=image AND folder=2023-bbq-toronto/photos')
+            .expression('resource_type=image AND folder=' + folderName + '/photos')
             .max_results(200)
             .execute()
         
