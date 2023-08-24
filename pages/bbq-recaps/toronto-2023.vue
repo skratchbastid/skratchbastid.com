@@ -3,12 +3,14 @@
     import 'vue-lite-youtube-embed/style.css'
     import VueEasyLightbox from 'vue-easy-lightbox'
 
-    const view = ref('photos')
+    const view = ref('recap')
     let data = ref(null)
     const index = ref(null)
     const lightboxVisible = ref(false)
 
     const folderName = '2023-bbq-toronto'
+    const photoCredits = []
+
     const videos = ref([
     {id: "nRXq3odkjxw", title: "Pharoahe Monch - Simon Says"},
         {id: "rbm-Q14iaEk", title: "Pharoahe Monch - Oh No"},
@@ -88,6 +90,15 @@
                     @hide="onHide"
                     :move-disabled="true"
                 ></vue-easy-lightbox>
+
+                <div class="mb-4 text-xs" v-if="photoCredits.length">
+                    📷 by: 
+                    <span v-for="(photographer, index) in photoCredits">
+                        <a :href="'https://www.instagram.com/' + photographer" target="_blank" class="text-blue-500">@{{ photographer }}</a>
+                        <span v-if="index != photoCredits.length-1" class="px-1">/</span>
+                    </span>
+                </div>
+
                 <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->

@@ -9,6 +9,7 @@
     const lightboxVisible = ref(false)
 
     const folderName = '2023-bbq-nyc'
+    const photoCredits = ['illkoncept', 'slimbojimbo', 'jboogielove']
     const videos = ref([
     ])
 
@@ -84,6 +85,13 @@
                     @hide="onHide"
                     :move-disabled="true"
                 ></vue-easy-lightbox>
+                <div class="mb-4 text-xs" v-if="photoCredits.length">
+                    📷 by: 
+                    <span v-for="(photographer, index) in photoCredits">
+                        <a :href="'https://www.instagram.com/' + photographer" target="_blank" class="text-blue-500">@{{ photographer }}</a>
+                        <span v-if="index != photoCredits.length-1" class="px-1">/</span>
+                    </span>
+                </div>
                 <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
