@@ -3,22 +3,19 @@
     import 'vue-lite-youtube-embed/style.css'
     import VueEasyLightbox from 'vue-easy-lightbox'
 
-    const view = ref('recap')
+    const view = ref('photos')
     let data = ref(null)
     const index = ref(null)
     const lightboxVisible = ref(false)
-    const folderName = '2023-bbq-toronto'
+
+    const folderName = '2023-bbq-nyc'
     const videos = ref([
-        {id: "rbm-Q14iaEk", title: "Pharoahe Monch - Oh No"},
-        {id: "PV4bnf_JAIE", title: "Pharoahe Monch - Desire"},
-        {id: "yzA6xuWchyI", title: "Pharoahe Monch - Stray Bullet"},
-        {id: "zvbyGucDRDw", title: "Pharoahe Monch - Simon Says"},
     ])
 
     const onHide = () => (lightboxVisible.value = false)
 
     const fetchData = async () => {
-        const baseUrl = process.env.NODE_ENV === 'production' ? 'https://www.skratchbastid.com' : '';
+        const baseUrl = process.env.NODE_ENV === 'production' ? 'https://skratch-staging.netlify.app' : '';
         const response = await fetch(`${baseUrl}/.netlify/functions/getImages?folderName=${encodeURIComponent(folderName)}`);
         data.value = await response.json();
     }
@@ -45,25 +42,25 @@
 <template>
     <div class="px-3 lg:px-[7.5rem]">
         <div class="hero mb-5">
-            <img src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692232397/2023-bbq-toronto/bastids-bbq-toronto-2023_rzlepd.webp" class="lg:rounded-lg lg:mt-6">
+            <img src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png" class="lg:rounded-lg lg:mt-6">
             <div class="flex flex-col w-full md:w-1/2 gap-1 justify-center py-3">
                 <div class="text-xl font-bold uppercase">
-                    Bastid's BBQ Toronto
+                    Bastid's BBQ NYC
                 </div>
                 <div class="flex items-center gap-2">
                     <Icon name="ep:location" />
-                    The Bentway
+                    The Seaport
                 </div>
                 <div class="flex items-center gap-2">
                     <Icon name="formkit:date" />
-                    July 29-30, 2023
+                    August 20, 2023
                 </div>
             </div>
 
             <div class="flex w-full gap-3 text-sm my-3 mb-8">
-                <a href="#" @click.prevent="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
+                <a href="#" @click.prevent="view = 'recap'" class="hidden border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
                 <a href="#" @click.prevent="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
-                <a href="#" @click.prevent="view = 'videos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
+                <a href="#" @click.prevent="view = 'videos'" class="hidden border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
             </div>
             
             <div v-if="view == 'recap'" class="flex flex-col lg:flex-row gap-8 lg:items-center">

@@ -1,6 +1,13 @@
 <script setup>
     const shows = ref([
         {
+            city: 'New York City',
+            venue: 'The Seaport',
+            date: 'August 20, 2023',
+            image: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png',
+            url: 'nyc-2023'
+        },
+        {
             city: 'Toronto',
             venue: 'The Bentway',
             date: 'July 29, 2023',
@@ -17,11 +24,11 @@
             <div class="text-lg mb-4">Relive the magic of Bastid's BBQ with these photo and video recaps.</div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-8 lg:px-28 gap-x-2 md:gap-x-8 gap-y-8">
-            <NuxtLink :to="'/bbq-recaps/' + shows[0].url" v-for="show in shows" :key="show.date" class="event cursor-pointer">
-                <div>
-                    <img :src="show.image" alt="" class="object-cover">
+            <NuxtLink :to="'/bbq-recaps/' + show.url" v-for="show in shows" :key="show.date" class="event flex flex-col cursor-pointer bg-green-500">
+                <div class="max-h-30">
+                    <img :src="show.image" alt="" class="object-fit max-h-30">
                 </div>
-                <div class="flex flex-col gap-1 bg-white shadow-sm p-3">
+                <div class="flex flex-col flex-grow justify-center gap-1 bg-white shadow-sm p-3">
                     <span class="text-lg font-bold">{{ show.city }}</span>
                     <span class="text-sm">{{ show.date }}</span>
                     <span class="text-sm text-gray-500">{{ show.venue }}</span>
