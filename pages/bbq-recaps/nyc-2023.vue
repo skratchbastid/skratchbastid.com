@@ -28,7 +28,7 @@
 
     const photos = computed(() => {
         if (!data.value) return []
-        return data.value.photos.map((photo) => {
+        return data?.value.photos?.map((photo) => {
             return photo.url
         })
     })
@@ -84,10 +84,10 @@
                     @hide="onHide"
                     :move-disabled="true"
                 ></vue-easy-lightbox>
-                <div v-if="data.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
                         <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" />
+                        <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" loading="lazy" />
                     </div>
                 </div>
             </div>
