@@ -9,7 +9,7 @@
     const lightboxVisible = ref(false)
 
     const folderName = '2023-bbq-toronto'
-    const photoCredits = []
+    const photoCredits = ['visualgram']
 
     const videos = ref([
     {id: "nRXq3odkjxw", title: "Pharoahe Monch - Simon Says"},
