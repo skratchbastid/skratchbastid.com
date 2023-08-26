@@ -4,6 +4,16 @@
     import VueEasyLightbox from 'vue-easy-lightbox'
     const img = useImage()
 
+    definePageMeta({
+        title: "Bastid's BBQ Toronto 2023 Recap",
+        description: "A recap of Bastid's BBQ Toronto 2023.",
+        keywords: "BBQ, Toronto, 2023, Recap, Skratch Bastid, DJ, Music, Festival, Event, Concert, Live, Performance, Pharoahe Monch, Dām-Funk, Bambii, Just Blaze, Myst Milano, DJ Nu-Mark",
+        og: {
+            image: "https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692232397/2023-bbq-toronto/bastids-bbq-toronto-2023_rzlepd.webp",
+            type: "image/webp"
+        }
+    })
+
     const view = ref('recap')
     let data = ref(null)
     const index = ref(null)
