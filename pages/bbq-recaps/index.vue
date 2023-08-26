@@ -13,6 +13,13 @@
             date: 'July 29, 2023',
             image: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692232397/2023-bbq-toronto/bastids-bbq-toronto-2023_rzlepd.webp',
             url: 'toronto-2023'
+        },
+        {
+            city: 'Chicago',
+            venue: 'House of Vans',
+            date: 'June 3, 2023',
+            image: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693072702/bbq-recaps/2023-bbq-chicago/BASTIDSBBQ-CHICAGO-EVENTBRITE-LINEUP-MOCK-01_havyh7.png',
+            url: 'chicago-2023'
         }
     ])
 
