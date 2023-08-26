@@ -9,6 +9,7 @@
     const event = recapStore.events.find(recap => recap.slug === route.params.slug)
     const view = ref('recap')
     const lightboxVisible = ref(false)
+    const index = ref(null)
 
     const onHide = () => (lightboxVisible.value = false)
     
@@ -78,13 +79,13 @@
             </div>
 
             <div v-if="view == 'photos'">
-                <!-- <vue-easy-lightbox
+                <vue-easy-lightbox
                     :visible="lightboxVisible"
                     :imgs="photos"
                     :index="index"
                     @hide="onHide"
                     :move-disabled="true"
-                ></vue-easy-lightbox> -->
+                ></vue-easy-lightbox>
                 <div class="mb-4 text-xs" v-if="event.photoCredits.length">
                     📷 by: 
                     <span v-for="(photographer, index) in event.photoCredits">
