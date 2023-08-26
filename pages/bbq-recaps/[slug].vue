@@ -8,6 +8,7 @@
 
     const event = recapStore.events.find(recap => recap.slug === route.params.slug)
     const view = ref('recap')
+    const lightboxVisible = ref(false)
 
     const onHide = () => (lightboxVisible.value = false)
     
