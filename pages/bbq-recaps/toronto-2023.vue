@@ -81,7 +81,7 @@
             <div v-if="view == 'recap'" class="flex flex-col lg:flex-row gap-8 lg:items-center">
                 <div class="lg:w-1/2">
                     <LiteYouTubeEmbed
-                        id="-4VZ_SEKNb4"
+                        id="5kpFYnuHLEM"
                         title="Bastid's BBQ Toronto 2023 Recap"
                     />
                 </div>

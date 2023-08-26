@@ -3,7 +3,7 @@
     import 'vue-lite-youtube-embed/style.css'
     import VueEasyLightbox from 'vue-easy-lightbox'
 
-    const view = ref('photos')
+    const view = ref('recap')
     let data = ref(null)
     const index = ref(null)
     const lightboxVisible = ref(false)
@@ -59,7 +59,7 @@
             </div>
 
             <div class="flex w-full gap-3 text-sm my-3 mb-8">
-                <a href="#" @click.prevent="view = 'recap'" class="hidden border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
+                <a href="#" @click.prevent="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
                 <a href="#" @click.prevent="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
                 <a href="#" @click.prevent="view = 'videos'" class="hidden border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
             </div>
@@ -67,13 +67,17 @@
             <div v-if="view == 'recap'" class="flex flex-col lg:flex-row gap-8 lg:items-center">
                 <div class="lg:w-1/2">
                     <LiteYouTubeEmbed
-                        id="-4VZ_SEKNb4"
-                        title="Bastid's BBQ Toronto 2023 Recap"
+                        id="EGxJ9pwXkqE"
+                        title="Bastid's BBQ NYC 2023 Recap"
                     />
                 </div>
 
                 <div class="lg:w-1/2 lg:text-lg">
-                    What a weekend in Toronto! Our first two-day BBQ weekend was just incredible. We were treated to sets from Pharoahe Monch, Dām-Funk, Bambii, Just Blaze, Myst Milano, DJ Nu-Mark and of course Skratch Bastid. The venue, food, merch -- lots of upgrades this year... if you were there, you know! 
+                    <p>
+                        Our second ever NYC BBQ was special. We took over Pier 17 on The Seaport in lower Manhattan for a full day of Good Music, Good Food, and Good people. As you can see in this recap! 
+
+Kid Capri, Diamond D, Tony Touch, Statik Selektah, DJ Perly, DJ Center, DJ Kharisma, and of course Skratch Bastid rocked the stage and the citizens of New York (and abroad!) filled in the Pier. Food provided by Shmackwich, Mad Juicy, Rooster Boy and more. Video & photo by Jimmy Giambrone @slimbojimbo, more pics by @jboogielove & @illkoncept
+                    </p>
                 </div>
             </div>
 
