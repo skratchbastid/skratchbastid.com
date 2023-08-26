@@ -56,6 +56,9 @@ export default defineNuxtConfig({
         provider: 'cloudflare',
         cloudflare: {
             baseURL: 'https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/'
+        },
+        cloudinary: {
+            baseURL: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/'
         }
     },
 },

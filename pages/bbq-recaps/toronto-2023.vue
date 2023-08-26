@@ -2,6 +2,7 @@
     import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
     import 'vue-lite-youtube-embed/style.css'
     import VueEasyLightbox from 'vue-easy-lightbox'
+    const img = useImage()
 
     const view = ref('recap')
     let data = ref(null)
@@ -24,6 +25,9 @@
         const baseUrl = process.env.NODE_ENV === 'production' ? 'https://www.skratchbastid.com' : '';
         const response = await fetch(`${baseUrl}/.netlify/functions/getImages?folderName=${encodeURIComponent(folderName)}`);
         data.value = await response.json();
+        const test = generateImageUrl(data.value.photos[3].public_id)
+        console.log(test)
+
     }
     fetchData()
 
@@ -41,6 +45,11 @@
 
     const getThumbnail = (videoId) => {
         return `https://img.youtube.com/vi/${videoId}/0.jpg`
+    }
+
+    // Generate image URL with transformations
+    const generateImageUrl = (publicId) => {
+        return img(`https://res.cloudinary.com/dmlnwhtt2/image/upload/${publicId}`, { width: 500, quality: 'auto' })
     }
     
 </script>
@@ -100,9 +109,15 @@
                 </div>
 
                 <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
-                        <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" />
+                    <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer" @click="showImage(imageIndex)">
+                        <nuxt-img 
+                            provider="cloudinary" 
+                            :src="photo.public_id" 
+                            width="500"
+                            quality="auto"
+                            class="rounded aspect-square object-cover" 
+                            loading="lazy"
+                        />
                     </div>
                 </div>
             </div>

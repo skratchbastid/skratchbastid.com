@@ -93,9 +93,15 @@
                     </span>
                 </div>
                 <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer">
-                        <!-- <nuxt-img provider="cloudinary" :src="photo" class="rounded" /> -->
-                        <img :src="photo.url" @click="showImage(imageIndex)" class="rounded aspect-square object-cover" loading="lazy" />
+                    <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer" @click="showImage(imageIndex)">
+                        <nuxt-img 
+                            provider="cloudinary" 
+                            :src="photo.public_id" 
+                            width="500"
+                            quality="auto"
+                            class="rounded aspect-square object-cover" 
+                            loading="lazy"
+                        />
                     </div>
                 </div>
             </div>
