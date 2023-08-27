@@ -8,7 +8,7 @@
             <div class="text-3xl font-black uppercase mb-4">Bastid's BBQ Recaps</div>
             <div class="text-lg mb-4">Relive the magic of Bastid's BBQ with these photo and video recaps.</div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-8 lg:px-28 gap-x-2 md:gap-x-8 gap-y-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-8 lg:px-28 gap-x-2 md:gap-x-8 gap-y-8">
             <NuxtLink :to="'/bbq-recaps/' + show.slug" v-for="show in recapStore.events" :key="show.date" class="event flex flex-col cursor-pointer">
                 <div class="max-h-30">
                     <img :src="show.banner" alt="" class="object-fit max-h-30">
