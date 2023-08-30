@@ -44,6 +44,19 @@ export const useRecapStore = defineStore('recaps', () => {
             ]
         },
         {
+            slug: 'winnipeg-2023',
+            city: 'Winnipeg',
+            date: '2023-07-16',
+            venue: '211 McDermot Ave.',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693429777/bbq-recaps/2023-bbq-winnipeg/BASTIDSBBQ-WINNIPEG-EVENTBRITE-LINEUP-MOCK-02_jfhmqw.png',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-winnipeg',
+            photoCredits: ['skyespnce'],
+            recapText: "",
+            videos: [
+            ]
+        },
+        {
             slug: 'chicago-2023',
             city: 'Chicago',
             date: '2023-06-03',

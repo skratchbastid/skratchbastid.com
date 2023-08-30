@@ -10,7 +10,7 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-8 lg:px-28 gap-x-2 md:gap-x-8 gap-y-8 w-full">
             <NuxtLink :to="'/bbq-recaps/' + show.slug" v-for="show in recapStore.events" :key="show.date" class="event flex flex-col cursor-pointer">
-                <div class="h-24 md:h-36 lg:h-48 bg-red-500 w-full">
+                <div class="h-24 md:h-36 lg:h-48 w-full">
                     <img :src="show.banner" alt="" class="object-cover w-full h-full">
                 </div>
                 <div class="flex flex-col flex-grow justify-center gap-1 bg-white shadow-sm p-3">
