@@ -21,7 +21,7 @@ export const useRecapStore = defineStore('recaps', () => {
             venue: 'The Seaport',
             banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png',
             recapId: 'EGxJ9pwXkqE',
-            cloudinaryFolder: '2023-bbq-nyc',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-nyc',
             photoCredits: ['illkoncept', 'slimbojimbo', 'jboogielove'],
             recapText: "Our second ever NYC BBQ was special. We took over Pier 17 on The Seaport in lower Manhattan for a full day of Good Music, Good Food, and Good people. As you can see in this recap! Kid Capri, Diamond D, Tony Touch, Statik Selektah, DJ Perly, DJ Center, DJ Kharisma, and of course Skratch Bastid rocked the stage and the citizens of New York (and abroad!) filled in the Pier. Food provided by Shmackwich, Mad Juicy, Rooster Boy and more.",
             videos: []
