@@ -27,6 +27,18 @@ export const useRecapStore = defineStore('recaps', () => {
             videos: []
         },
         {
+            slug: 'vancouver-2023',
+            city: 'Vancouver',
+            date: '2023-08-13',
+            venue: 'The Birdhouse',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693431381/bbq-recaps/2023-vancouver/BASTIDSBBQ-VANCOUVER-EVENTBRITE-LINEUP-MOCK-01_1_inr4jo.png',
+            recapId: 'qln1xpuuzKs',
+            cloudinaryFolder: 'bbq-recaps/2023-vancouver',
+            photoCredits: ["dannyastefan"],
+            recapText: "",
+            videos: []
+        },
+        {
             slug: 'toronto-2023',
             city: 'Toronto',
             date: '2023-07-29',
