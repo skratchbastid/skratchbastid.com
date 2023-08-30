@@ -40,7 +40,6 @@
 </script>
 
 <template>
-    <PopOver />
     <div class="px-3 lg:px-[7.5rem] xl:max-w-[1440px] m-auto">
         <div class="hero mb-5">
             <img :src="event.banner" class="lg:rounded-lg lg:mt-6">
