@@ -7,7 +7,7 @@
     const route = useRoute()
 
     const event = recapStore.events.find(recap => recap.slug === route.params.slug)
-    const view = ref('recap')
+    const view = event.recapId ? ref('recap') : ref('photos')
     const lightboxVisible = ref(false)
     const index = ref(null)
 
@@ -40,6 +40,7 @@
 </script>
 
 <template>
+    <PopOver />
     <div class="px-3 lg:px-[7.5rem] xl:max-w-[1440px] m-auto">
         <div class="hero mb-5">
             <img :src="event.banner" class="lg:rounded-lg lg:mt-6">
@@ -53,12 +54,12 @@
                 </div>
                 <div class="flex items-center gap-2">
                     <Icon name="formkit:date" />
-                    {{ $dayjs(event.date).format('MMMM DD, YYYY') }}
+                    {{ $dayjs(event.date).format('MMMM D, YYYY') }}
                 </div>
             </div>
 
             <div class="flex w-full gap-3 text-sm my-3 mb-8">
-                <a href="#" @click.prevent="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
+                <a href="#" v-if="event.recapId" @click.prevent="view = 'recap'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'recap' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Recap</a>
                 <a href="#" @click.prevent="view = 'photos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'photos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Photos</a>
                 <a v-if="event.videos.length" href="#" @click.prevent="view = 'videos'" class="border-2 px-5 py-1 rounded-lg" :class="view == 'videos' ? 'bg-gray-500 border-gray-500 text-white font-bold' : ''">Videos</a>
             </div>

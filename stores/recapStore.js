@@ -3,6 +3,18 @@ import { defineStore } from 'pinia'
 export const useRecapStore = defineStore('recaps', () => {
     const events = ref([
         {
+            slug: 'edmonton-2023',
+            city: 'Edmonton',
+            date: '2023-08-27',
+            venue: 'Home & Away',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693406078/bbq-recaps/2023-bbq-edmonton/edmonton_qrn2ue.webp',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-edmonton',
+            photoCredits: ['seanarceta'],
+            recapText: "",
+            videos: []
+        },
+        {
             slug: 'nyc-2023',
             city: 'New York City',
             date: '2023-08-20',
@@ -43,7 +55,20 @@ export const useRecapStore = defineStore('recaps', () => {
             recapText: "",
             videos: [
             ]
-        }
+        },
+        // {
+        //     slug: 'vancouver-2023',
+        //     city: 'Vancouver',
+        //     date: '2023-08-13',
+        //     venue: 'The Birdhouse',
+        //     banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693100422/bbq-recaps/2023-vancouver/BASTIDSBBQ-VANCOUVER-EVENTBRITE-LINEUP-MOCK-01_wz6bpl.png',
+        //     recapId: 'qln1xpuuzKs',
+        //     cloudinaryFolder: 'bbq-recaps/2023-vancouver',
+        //     photoCredits: [],
+        //     recapText: "",
+        //     videos: [
+        //     ]
+        // }
     ])
 
     return { events }
