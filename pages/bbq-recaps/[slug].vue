@@ -93,7 +93,7 @@
                         <span v-if="index != event.photoCredits.length-1" class="px-1">/</span>
                     </span>
                 </div>
-                <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div v-if="data?.photos" class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
                     <div v-for="(photo, imageIndex) in data.photos" class="aspect-4x3 rounded cursor-pointer" @click="showImage(imageIndex)">
                         <nuxt-img 
                             provider="cloudinary" 
