@@ -69,6 +69,19 @@ export const useRecapStore = defineStore('recaps', () => {
             ]
         },
         {
+            slug: 'calgary-2023',
+            city: 'Calgary',
+            date: '2023-07-08',
+            venue: 'Whiskey Rose',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693442154/bbq-recaps/2023-bbq-calgary/BASTIDSBBQ-CALGARY-EVENTBRITE-LINEUP-MOCK-01_ccr9ik.png',
+            recapId: 'dvX-XijCIZE',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-calgary',
+            photoCredits: [],
+            recapText: "",
+            videos: [
+            ]
+        },
+        {
             slug: 'chicago-2023',
             city: 'Chicago',
             date: '2023-06-03',

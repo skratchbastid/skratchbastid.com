@@ -3,7 +3,7 @@
 
 </script>
 <template>
-    <div class="flex flex-col min-h-[calc(100vh-58px)] items-start bg-[#f9f9f9] ">
+    <div class="flex flex-col min-h-[calc(100vh-58px)] items-start bg-[#f9f9f9] pb-8">
         <div class="pt-8 pb-4 px-4 md:px-8 lg:px-28">
             <div class="text-3xl font-black uppercase mb-4">Bastid's BBQ Recaps</div>
             <div class="text-lg mb-4">Relive the magic of Bastid's BBQ with these photo and video recaps.</div>
