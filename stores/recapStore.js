@@ -19,7 +19,7 @@ export const useRecapStore = defineStore('recaps', () => {
             city: 'New York City',
             date: '2023-08-20',
             venue: 'The Seaport',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692842741/bbq-recaps/2023-bbq-nyc/BASTIDSBBQ-NEWYORK-EVENTBRITE-LINEUP-MOCK-01_1_loadzp.png',
             recapId: 'EGxJ9pwXkqE',
             cloudinaryFolder: 'bbq-recaps/2023-bbq-nyc',
             photoCredits: ['illkoncept', 'slimbojimbo', 'jboogielove'],

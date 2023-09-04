@@ -40,7 +40,7 @@
 </script>
 
 <template>
-    <div class="px-3 lg:px-[7.5rem] xl:max-w-[1440px] m-auto">
+    <div class="w-full px-3 md:px-8 lg:px-[7.5rem] lg:max-w-[1440px] m-auto">
         <div class="hero mb-5">
             <img :src="event.banner" class="lg:rounded-lg lg:mt-6">
             <div class="flex flex-col w-full md:w-1/2 gap-1 justify-center py-3">
