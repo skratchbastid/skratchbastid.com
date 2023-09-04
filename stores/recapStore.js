@@ -94,19 +94,19 @@ export const useRecapStore = defineStore('recaps', () => {
             videos: [
             ]
         },
-        // {
-        //     slug: 'vancouver-2023',
-        //     city: 'Vancouver',
-        //     date: '2023-08-13',
-        //     venue: 'The Birdhouse',
-        //     banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693100422/bbq-recaps/2023-vancouver/BASTIDSBBQ-VANCOUVER-EVENTBRITE-LINEUP-MOCK-01_wz6bpl.png',
-        //     recapId: 'qln1xpuuzKs',
-        //     cloudinaryFolder: 'bbq-recaps/2023-vancouver',
-        //     photoCredits: [],
-        //     recapText: "",
-        //     videos: [
-        //     ]
-        // }
+        {
+            slug: 'austin-2023',
+            city: 'Austin',
+            date: '2023-03-17',
+            venue: 'SXSW',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693869671/bbq-recaps/2023-bbq-austin/BASTIDSBBQ-AUSTIN-EVENTBRITE-MOCK-05_1_efxtha.png',
+            recapId: 'NWtJk5N-ru0',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-austin',
+            photoCredits: [],
+            recapText: "",
+            videos: [
+            ]
+        }
     ])
 
     return { events }
