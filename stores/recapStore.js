@@ -106,6 +106,19 @@ export const useRecapStore = defineStore('recaps', () => {
             recapText: "",
             videos: [
             ]
+        },
+        {
+            slug: 'las-vegas-2023',
+            city: 'Las Vegas',
+            date: '2023-04-30',
+            venue: 'We All Scream',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1694477323/bbq-recaps/2023-bbq-vegas/BASTIDSBBQ-LASVEGAS-EVENTBRITE-MOCK-03_mvydwo.png',
+            recapId: 'Uz7nkVE_omw',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-vegas',
+            photoCredits: ["djtechnicolor","brightlightda","kliff_45"],
+            recapText: "",
+            videos: [
+            ]
         }
     ])
 
