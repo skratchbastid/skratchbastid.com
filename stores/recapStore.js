@@ -3,16 +3,21 @@ import { defineStore } from 'pinia'
 export const useRecapStore = defineStore('recaps', () => {
     const events = ref([
         {
-            slug: 'edmonton-2023',
-            city: 'Edmonton',
-            date: '2023-08-27',
-            venue: 'Home & Away',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693406078/bbq-recaps/2023-bbq-edmonton/edmonton_qrn2ue.webp',
-            recapId: '',
-            cloudinaryFolder: 'bbq-recaps/2023-bbq-edmonton',
-            photoCredits: ['seanarceta'],
-            recapText: "",
-            videos: []
+            slug: 'toronto-2023',
+            city: 'Toronto',
+            date: '2023-07-29',
+            venue: 'The Bentway',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692232397/2023-bbq-toronto/bastids-bbq-toronto-2023_rzlepd.webp',
+            recapId: '5kpFYnuHLEM',
+            cloudinaryFolder: '2023-bbq-toronto',
+            photoCredits: ['visualgram'],
+            recapText: "What a weekend in Toronto! Our first two-day BBQ weekend was just incredible. We were treated to sets from Pharoahe Monch, Dām-Funk, Bambii, Just Blaze, Myst Milano, DJ Nu-Mark and of course Skratch Bastid. The venue, food, merch -- lots of upgrades this year... if you were there, you know! ",
+            videos: [
+                {id: "nRXq3odkjxw", title: "Pharoahe Monch - Simon Says"},
+                {id: "rbm-Q14iaEk", title: "Pharoahe Monch - Oh No"},
+                {id: "PV4bnf_JAIE", title: "Pharoahe Monch - Desire"},
+                {id: "yzA6xuWchyI", title: "Pharoahe Monch - Stray Bullet"},
+            ]
         },
         {
             slug: 'nyc-2023',
@@ -39,49 +44,6 @@ export const useRecapStore = defineStore('recaps', () => {
             videos: []
         },
         {
-            slug: 'toronto-2023',
-            city: 'Toronto',
-            date: '2023-07-29',
-            venue: 'The Bentway',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1692232397/2023-bbq-toronto/bastids-bbq-toronto-2023_rzlepd.webp',
-            recapId: '5kpFYnuHLEM',
-            cloudinaryFolder: '2023-bbq-toronto',
-            photoCredits: ['visualgram'],
-            recapText: "What a weekend in Toronto! Our first two-day BBQ weekend was just incredible. We were treated to sets from Pharoahe Monch, Dām-Funk, Bambii, Just Blaze, Myst Milano, DJ Nu-Mark and of course Skratch Bastid. The venue, food, merch -- lots of upgrades this year... if you were there, you know! ",
-            videos: [
-                {id: "nRXq3odkjxw", title: "Pharoahe Monch - Simon Says"},
-                {id: "rbm-Q14iaEk", title: "Pharoahe Monch - Oh No"},
-                {id: "PV4bnf_JAIE", title: "Pharoahe Monch - Desire"},
-                {id: "yzA6xuWchyI", title: "Pharoahe Monch - Stray Bullet"},
-            ]
-        },
-        {
-            slug: 'winnipeg-2023',
-            city: 'Winnipeg',
-            date: '2023-07-16',
-            venue: '211 McDermot Ave.',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693429777/bbq-recaps/2023-bbq-winnipeg/BASTIDSBBQ-WINNIPEG-EVENTBRITE-LINEUP-MOCK-02_jfhmqw.png',
-            recapId: '',
-            cloudinaryFolder: 'bbq-recaps/2023-bbq-winnipeg',
-            photoCredits: ['skyespnce'],
-            recapText: "",
-            videos: [
-            ]
-        },
-        {
-            slug: 'calgary-2023',
-            city: 'Calgary',
-            date: '2023-07-08',
-            venue: 'Whiskey Rose',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693442154/bbq-recaps/2023-bbq-calgary/BASTIDSBBQ-CALGARY-EVENTBRITE-LINEUP-MOCK-01_ccr9ik.png',
-            recapId: 'dvX-XijCIZE',
-            cloudinaryFolder: 'bbq-recaps/2023-bbq-calgary',
-            photoCredits: [],
-            recapText: "",
-            videos: [
-            ]
-        },
-        {
             slug: 'chicago-2023',
             city: 'Chicago',
             date: '2023-06-03',
@@ -90,6 +52,19 @@ export const useRecapStore = defineStore('recaps', () => {
             recapId: 'zTlpY8kDmms',
             cloudinaryFolder: 'bbq-recaps/2023-bbq-chicago',
             photoCredits: ['danielboczarski'],
+            recapText: "",
+            videos: [
+            ]
+        },
+        {
+            slug: 'las-vegas-2023',
+            city: 'Las Vegas',
+            date: '2023-04-30',
+            venue: 'We All Scream',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1694477323/bbq-recaps/2023-bbq-vegas/BASTIDSBBQ-LASVEGAS-EVENTBRITE-MOCK-03_mvydwo.png',
+            recapId: 'Uz7nkVE_omw',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-vegas',
+            photoCredits: ["djtechnicolor","brightlightda","kliff_45"],
             recapText: "",
             videos: [
             ]
@@ -108,18 +83,43 @@ export const useRecapStore = defineStore('recaps', () => {
             ]
         },
         {
-            slug: 'las-vegas-2023',
-            city: 'Las Vegas',
-            date: '2023-04-30',
-            venue: 'We All Scream',
-            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1694477323/bbq-recaps/2023-bbq-vegas/BASTIDSBBQ-LASVEGAS-EVENTBRITE-MOCK-03_mvydwo.png',
-            recapId: 'Uz7nkVE_omw',
-            cloudinaryFolder: 'bbq-recaps/2023-bbq-vegas',
-            photoCredits: ["djtechnicolor","brightlightda","kliff_45"],
+            slug: 'calgary-2023',
+            city: 'Calgary',
+            date: '2023-07-08',
+            venue: 'Whiskey Rose',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693442154/bbq-recaps/2023-bbq-calgary/BASTIDSBBQ-CALGARY-EVENTBRITE-LINEUP-MOCK-01_ccr9ik.png',
+            recapId: 'dvX-XijCIZE',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-calgary',
+            photoCredits: [],
             recapText: "",
             videos: [
             ]
-        }
+        },
+        {
+            slug: 'edmonton-2023',
+            city: 'Edmonton',
+            date: '2023-08-27',
+            venue: 'Home & Away',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693406078/bbq-recaps/2023-bbq-edmonton/edmonton_qrn2ue.webp',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-edmonton',
+            photoCredits: ['seanarceta'],
+            recapText: "",
+            videos: []
+        },
+        {
+            slug: 'winnipeg-2023',
+            city: 'Winnipeg',
+            date: '2023-07-16',
+            venue: '211 McDermot Ave.',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1693429777/bbq-recaps/2023-bbq-winnipeg/BASTIDSBBQ-WINNIPEG-EVENTBRITE-LINEUP-MOCK-02_jfhmqw.png',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2023-bbq-winnipeg',
+            photoCredits: ['skyespnce'],
+            recapText: "",
+            videos: [
+            ]
+        },
     ])
 
     return { events }
