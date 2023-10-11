@@ -14,7 +14,23 @@
 
 <template>
     <div class="mb-6">
-        <TuesdayMorningCoffeePromo />
+        <!-- <TuesdayMorningCoffeePromo /> -->
+        <div class="grid grid-cols-2 gap-6 m-6 min-h-[60vh]">
+            <div class=" rounded-xl pt-6 flex flex-col items-center">
+                <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-60 z-10" />
+                <div class="text-xl my-2 font-light">
+                    Tuesdays at 10am ET on Twitch
+                </div>
+                <div class="w-2/3 mt-6">
+                    <img    
+                    class="aspect-video m-auto rounded-lg"
+                    src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d4faf854-dced-4665-82a5-4513fc9409eb.gif?ClientID=vimeo-core-prod&Date=1695813531&Signature=6a128256b5aef5eeeb2c4fa34871633bf8734389" alt="">
+                </div>
+            </div>
+            <div class="bg-gray-50">
+
+            </div>
+        </div>
         <UpcomingShows />
         <div class="grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase ">
             <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Shows</NuxtLink>
