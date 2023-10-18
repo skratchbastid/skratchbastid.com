@@ -15,20 +15,38 @@
 <template>
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
-        <div class="grid grid-cols-2 gap-6 m-6 min-h-[60vh]">
-            <div class=" rounded-xl pt-6 flex flex-col items-center">
-                <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-60 z-10" />
-                <div class="text-xl my-2 font-light">
-                    Tuesdays at 10am ET on Twitch
-                </div>
-                <div class="w-2/3 mt-6">
-                    <img    
-                    class="aspect-video m-auto rounded-lg"
-                    src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d4faf854-dced-4665-82a5-4513fc9409eb.gif?ClientID=vimeo-core-prod&Date=1695813531&Signature=6a128256b5aef5eeeb2c4fa34871633bf8734389" alt="">
+        <div class="flex flex-col md:flex-row gap-6 px-2 md:px-12">
+            <div class="w-full md:w-1/2 rounded-xl md:py-12 flex flex-col items-center relative">
+                <div class="w-full aspect-video relative rounded-lg overflow-hidden">
+                    <img class="aspect-video m-auto absolute z-10" 
+                        src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d4faf854-dced-4665-82a5-4513fc9409eb.gif?ClientID=vimeo-core-prod&Date=1695813531&Signature=6a128256b5aef5eeeb2c4fa34871633bf8734389" alt="">
+                    <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>
+                    <div class="absolute inset-0 z-30 flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent"></div>
+                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-60 z-10 p-6" />
+                        <div class="absolute bottom-0 left-0 right-0 z-40 flex justify-center items-end">
+                            <div class="bg-gradient-to-t from-black to-transparent py-6 px-4 w-full">
+                                <h2 class="text-white text-lg mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
+                                <a href="#" class="text-white text-sm border py-1 px-3">WATCH THE REPLAY</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bg-gray-50">
-
+            <div class="w-full md:w-1/2 rounded-xl md:pt-6 flex flex-col gap-y-8 items-center justify-center">
+                <div class="font-black text-2xl">
+                    RECORD OF THE WEEK
+                </div>
+                <div class="flex gap-5">
+                    <img
+                        class="aspect-square w-32 rounded"
+                        src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1697243637/rotw/a3759334790_10_wmyxcs.jpg">
+                    <div class="mt-4 flex flex-col items-center justify-center">
+                        <p class="font-bold text-lg">Jalen Ngonda</p>
+                        <p class="text-sm">Come Around and Love Me</p>
+                    </div>
+                </div>
+                <a href="#" class="text-sm border py-1 px-3">LEARN MORE</a>
             </div>
         </div>
         <UpcomingShows />
