@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="w-full md:w-1/3 rounded-xl flex flex-col gap-y-8 items-center justify-center">
-                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4  py-8 flex-wrap text-center px-4 text-base md:text-2xl uppercase font-black">
+                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4  py-8 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black">
                     <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</a>
                     <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Shows</NuxtLink>
                     <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">BBQ Recaps</NuxtLink>
