@@ -16,25 +16,32 @@
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
         <div class="flex flex-col md:flex-row gap-6 px-2 md:px-12">
-            <div class="w-full md:w-1/2 rounded-xl md:py-12 flex flex-col items-center relative">
+            <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
-                    <img class="aspect-video m-auto absolute z-10" 
+                    <img class="w-full m-auto absolute z-10" 
                         src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d4faf854-dced-4665-82a5-4513fc9409eb.gif?ClientID=vimeo-core-prod&Date=1695813531&Signature=6a128256b5aef5eeeb2c4fa34871633bf8734389" alt="">
                     <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>
                     <div class="absolute inset-0 z-30 flex flex-col">
                         <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent"></div>
-                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-60 z-10 p-6" />
+                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-72 rotate-[-3deg] z-10 p-4" />
                         <div class="absolute bottom-0 left-0 right-0 z-40 flex justify-center items-end">
                             <div class="bg-gradient-to-t from-black to-transparent py-6 px-4 w-full">
                                 <h2 class="text-white text-lg mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
-                                <a href="#" class="text-white text-sm border py-1 px-3">WATCH THE REPLAY</a>
+                                <a href="#" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 rounded-xl md:pt-6 flex flex-col gap-y-8 items-center justify-center">
-                <div class="font-black text-2xl">
+            <div class="w-full md:w-1/3 rounded-xl md:pt-6 flex flex-col gap-y-8 items-center justify-center">
+                <div class="grid grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-2xl uppercase font-black">
+                    <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</a>
+                    <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Shows</NuxtLink>
+                    <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">BBQ Recaps</NuxtLink>
+                    <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Videos</NuxtLink>
+                    <NuxtLink to="/mixes" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Mixes</NuxtLink>
+                </div>
+                <!-- <div class="font-black text-2xl">
                     RECORD OF THE WEEK
                 </div>
                 <div class="flex gap-5">
@@ -46,11 +53,12 @@
                         <p class="text-sm">Come Around and Love Me</p>
                     </div>
                 </div>
-                <a href="#" class="text-sm border py-1 px-3">LEARN MORE</a>
+                <a href="#" class="text-sm border py-1 px-3">LEARN MORE</a> -->
             </div>
         </div>
         <UpcomingShows />
-        <div class="grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase ">
+        <div class="hidden grid grid-cols-2 md:flex md:hidden items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
+            <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Store</a>
             <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Shows</NuxtLink>
             <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">BBQ Recaps</NuxtLink>
             <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Videos</NuxtLink>
