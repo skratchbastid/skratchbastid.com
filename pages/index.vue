@@ -15,7 +15,7 @@
 <template>
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
-        <div class="flex flex-col md:flex-row md:gap-6 px-2 md:px-12">
+        <div class="flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
@@ -33,8 +33,8 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/3 rounded-xl flex flex-col gap-y-8 items-center justify-center">
-                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4  py-8 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black">
+            <div class="w-full md:w-1/3 rounded-xl flex flex-col items-center justify-center">
+                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black">
                     <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</a>
                     <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Shows</NuxtLink>
                     <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">BBQ Recaps</NuxtLink>
@@ -70,7 +70,7 @@
         <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 md:mt-16 mb-20">
             <NewsletterSignup />
             <div class="flex justify-center items-center mx-2 py-6 md:mx-0 md:w-1/3 rounded-lg bg-gradient-to-bl from-[#D3F2FF] to-[#D3F2FF] border-black border-4 relative">
-                <a href="https://skratchbastidstore.myshopify.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
+                <a href="https://shop.skratchbastid.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
                     <div class="text-sm relative top-1">SHOP</div>
                     <div class="text-3xl font-black">MERCH</div>
                 </a>
