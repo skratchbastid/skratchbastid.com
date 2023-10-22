@@ -1,7 +1,6 @@
 <script setup>
     import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
     import 'vue-lite-youtube-embed/style.css'
-    import ColorThief from 'colorthief'
 
     const route = useRoute()
     const slug = route.params.slug
@@ -9,19 +8,27 @@
 
     const record = records.find(record => record.slug == slug)
 
-
-
     onMounted(() => {
         window.scrollTo(0,0)
-        // const img = document.querySelector('#album-art')
-        // if (img.complete) {
-        //     colorThief.getColor(img)
-        // } else {
-        //     img.addEventListener('load', () => {
-        //         colorThief.getColor(img)
-        //     })
-        // }
     })
+
+    const nextRecord = () => {
+        const currentIndex = records.findIndex(record => record.slug == slug)
+        if (currentIndex == records.length - 1) {
+            return records[0]
+        } else {
+            return records[currentIndex + 1]
+        }
+    }
+
+    const previousRecord = () => {
+        const currentIndex = records.findIndex(record => record.slug == slug)
+        if (currentIndex == 0) {
+            return records[records.length - 1]
+        } else {
+            return records[currentIndex - 1]
+        }
+    }
     
 
 </script>
@@ -34,6 +41,16 @@
         <div class="w-full md:px-8">
             <div class="flex flex-col lg:flex-row h-full justify-center max-w-[1200px] m-auto lg:gap-16">
                 <div class="flex flex-col lg:w-1/3 p-6 items-center justify-center relative">
+                    <nuxt-link :to="`/rotw/${previousRecord().slug}`" class="absolute left-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10">
+                        <div class="rounded-full border-0 border-blue-400 flex items-center justify-center">
+                            <Icon name="material-symbols:chevron-left" size="28" />
+                        </div>
+                    </nuxt-link>
+                    <nuxt-link :to="`/rotw/${nextRecord().slug}`" class="absolute right-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10">
+                        <div class="rounded-full border-0 border-blue-400 flex items-center justify-center">
+                            <Icon name="material-symbols:chevron-right" size="28" />
+                        </div>
+                    </nuxt-link>
                     <nuxt-img provider="cloudflare" src="ca8fd383-4e18-4141-555c-221ae8853d00/w=500" alt="" class="w-1/3 lg:w-2/3 mb-4 m-auto" />
                     <nuxt-img :src="record.imageId+'/w=500'" provider="cloudflare" id="album-art" alt="" class="m-auto w-2/3 max-w-[250px] aspect-square rounded shadow-xl" crossorigin="anonymous" />
                     <div class="flex flex-col items-center justify-center my-4">
