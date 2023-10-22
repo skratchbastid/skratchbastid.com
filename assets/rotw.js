@@ -36,7 +36,7 @@ export const records = [
         website: 'https://mobbdeep.com/'
     },
     {
-        slug: 'Tona',
+        slug: 'tona',
         artist: 'Tona',
         title: 'Cookin\'',
         album: 'Cookin\'',
