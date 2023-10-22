@@ -41,19 +41,6 @@
                     <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Videos</NuxtLink>
                     <NuxtLink to="/mixes" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Mixes</NuxtLink>
                 </div>
-                <!-- <div class="font-black text-2xl">
-                    RECORD OF THE WEEK
-                </div>
-                <div class="flex gap-5">
-                    <img
-                        class="aspect-square w-32 rounded"
-                        src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1697243637/rotw/a3759334790_10_wmyxcs.jpg">
-                    <div class="mt-4 flex flex-col items-center justify-center">
-                        <p class="font-bold text-lg">Jalen Ngonda</p>
-                        <p class="text-sm">Come Around and Love Me</p>
-                    </div>
-                </div>
-                <a href="#" class="text-sm border py-1 px-3">LEARN MORE</a> -->
             </div>
         </div>
         <UpcomingShows />
