@@ -14,8 +14,8 @@
 
 <template>
     <div class="mb-6">
-        <!-- <TuesdayMorningCoffeePromo /> -->
-        <div class="flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
+        <TuesdayMorningCoffeePromo />
+        <div class="hidden flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
@@ -44,7 +44,7 @@
             </div>
         </div>
         <UpcomingShows />
-        <div class="hidden grid grid-cols-2 md:flex md:hidden items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
+        <div class="grid grid-cols-2 md:flex md:hidden items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
             <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Store</a>
             <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Shows</NuxtLink>
             <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">BBQ Recaps</NuxtLink>
