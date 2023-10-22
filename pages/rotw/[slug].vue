@@ -1,4 +1,6 @@
 <script setup>
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
     import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
     import 'vue-lite-youtube-embed/style.css'
 
@@ -10,6 +12,10 @@
 
     onMounted(() => {
         window.scrollTo(0,0)
+        window.addEventListener('keydown', keyListener)
+    })
+    onUnmounted(() => {
+        window.removeEventListener('keydown', keyListener)
     })
 
     const nextRecord = () => {
@@ -27,6 +33,14 @@
             return records[records.length - 1]
         } else {
             return records[currentIndex - 1]
+        }
+    }
+    
+    const keyListener = (event) => {
+        if (event.key === 'ArrowRight') {
+            router.push(`/rotw/${nextRecord().slug}`)
+        } else if (event.key === 'ArrowLeft') {
+            router.push(`/rotw/${previousRecord().slug}`)
         }
     }
     
