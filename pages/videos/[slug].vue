@@ -50,6 +50,15 @@
         byline: false,
         portrait: false,
     }
+    
+    useSeoMeta({
+        title: `${video?.value.title} | Skratch Bastid`,
+        ogTitle: `${video?.value.title} | Skratch Bastid`,
+        ogDescription: `${video?.value.title} | Skratch Bastid`,
+        ogImage: `${video?.value.imageLink}`,
+        ogUrl: `https://www.skratchbastid.com/videos/${video?.value.id}`,
+        twitterCard: 'summary_large_image'
+    })
 </script>
 
 <template>

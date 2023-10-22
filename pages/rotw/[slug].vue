@@ -10,6 +10,15 @@
 
     const record = records.find(record => record.slug == slug)
 
+    useSeoMeta({
+        title: `Record of the Week | ${record.artist} - '${record.title}'`,
+        ogTitle: `Record of the Week | ${record.artist} - '${record.title}'`,
+        ogDescription: `Record of the Week | ${record.artist} - '${record.title}'`,
+        ogImage: `https://res.cloudinary.com/skratchbastid/image/upload/${record.imageId}/w=1200`,
+        ogUrl: `https://www.skratchbastid.com/rotw/${record.slug}`,
+        twitterCard: 'summary_large_image'
+    })
+
     onMounted(() => {
         window.scrollTo(0,0)
         window.addEventListener('keydown', keyListener)
@@ -55,12 +64,12 @@
         <div class="w-full md:px-8">
             <div class="flex flex-col lg:flex-row h-full justify-center max-w-[1200px] m-auto lg:gap-16">
                 <div class="flex flex-col lg:w-1/3 p-6 items-center justify-center relative">
-                    <nuxt-link :to="`/rotw/${previousRecord().slug}`" class="absolute left-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10">
+                    <nuxt-link :to="`/rotw/${previousRecord().slug}`" class="absolute left-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10 hover:text-blue-600 transition-colors duration-200">
                         <div class="rounded-full border-0 border-blue-400 flex items-center justify-center">
                             <Icon name="material-symbols:chevron-left" size="28" />
                         </div>
                     </nuxt-link>
-                    <nuxt-link :to="`/rotw/${nextRecord().slug}`" class="absolute right-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10">
+                    <nuxt-link :to="`/rotw/${nextRecord().slug}`" class="absolute right-5 top-1/2 transform -translate-y-1/2 text-3xl text-blue-400 z-10 hover:text-blue-600 transition-colors duration-200">
                         <div class="rounded-full border-0 border-blue-400 flex items-center justify-center">
                             <Icon name="material-symbols:chevron-right" size="28" />
                         </div>
