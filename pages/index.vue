@@ -15,7 +15,11 @@
 <template>
     <div class="mb-6">
         <TuesdayMorningCoffeePromo />
+<<<<<<< HEAD
         <div class="hidden flex flex-col md:flex-row gap-6 px-2 md:px-12">
+=======
+        <div class="hidden flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
+>>>>>>> rotw
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
@@ -23,37 +27,24 @@
                     <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>
                     <div class="absolute inset-0 z-30 flex flex-col">
                         <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent"></div>
-                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-72 rotate-[-3deg] z-10 p-4" />
+                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-36 md:w-48 lg:w-72 rotate-[-3deg] z-10 p-4" />
                         <div class="absolute bottom-0 left-0 right-0 z-40 flex justify-center items-end">
                             <div class="bg-gradient-to-t from-black to-transparent py-6 px-4 w-full">
-                                <h2 class="text-white text-lg mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
+                                <h2 class="text-white md:text-lg lg:text-xl mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
                                 <a href="#" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/3 rounded-xl md:pt-6 flex flex-col gap-y-8 items-center justify-center">
-                <div class="grid grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-2xl uppercase font-black">
+            <div class="w-full md:w-1/3 rounded-xl flex flex-col items-center justify-center">
+                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black">
                     <a href="https://shop.skratchbastid.com" target="_blank" class="col-span-full border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</a>
                     <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Shows</NuxtLink>
                     <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">BBQ Recaps</NuxtLink>
                     <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Videos</NuxtLink>
                     <NuxtLink to="/mixes" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Mixes</NuxtLink>
                 </div>
-                <!-- <div class="font-black text-2xl">
-                    RECORD OF THE WEEK
-                </div>
-                <div class="flex gap-5">
-                    <img
-                        class="aspect-square w-32 rounded"
-                        src="https://res.cloudinary.com/dmlnwhtt2/image/upload/v1697243637/rotw/a3759334790_10_wmyxcs.jpg">
-                    <div class="mt-4 flex flex-col items-center justify-center">
-                        <p class="font-bold text-lg">Jalen Ngonda</p>
-                        <p class="text-sm">Come Around and Love Me</p>
-                    </div>
-                </div>
-                <a href="#" class="text-sm border py-1 px-3">LEARN MORE</a> -->
             </div>
         </div>
         <UpcomingShows />
@@ -70,7 +61,7 @@
         <div class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 md:mt-16 mb-20">
             <NewsletterSignup />
             <div class="flex justify-center items-center mx-2 py-6 md:mx-0 md:w-1/3 rounded-lg bg-gradient-to-bl from-[#D3F2FF] to-[#D3F2FF] border-black border-4 relative">
-                <a href="https://skratchbastidstore.myshopify.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
+                <a href="https://shop.skratchbastid.com/" target="_blank" id="shop-button" class="z-10 absolute text-center flex flex-col px-16 py-2 border-black border-2 -rotate-2 bg-white/90">
                     <div class="text-sm relative top-1">SHOP</div>
                     <div class="text-3xl font-black">MERCH</div>
                 </a>
