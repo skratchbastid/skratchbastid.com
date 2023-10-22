@@ -15,11 +15,7 @@
 <template>
     <div class="mb-6">
         <TuesdayMorningCoffeePromo />
-<<<<<<< HEAD
-        <div class="hidden flex flex-col md:flex-row gap-6 px-2 md:px-12">
-=======
         <div class="hidden flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
->>>>>>> rotw
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
