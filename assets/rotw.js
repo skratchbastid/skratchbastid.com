@@ -139,7 +139,7 @@ export const records = [
         title: 'Ain\'t No Love Lost',
         album: 'Ain\'t No Love Lost',
         imageId: 'deb835bd-57b3-4e89-1d9e-761a8a4a8800',
-        videoId: 'https://youtu.be/ljw1AnAvEs8'
+        videoId: 'ljw1AnAvEs8'
     },
     {
         slug: 'yussef-dayes',
@@ -236,7 +236,7 @@ export const records = [
         title: 'Where I\'m Meant To Be',
         album: 'Where I\'m Meant To Be',
         imageId: '4a687f3c-b99c-443e-4af2-af3551553200',
-        videoId: 'https://youtu.be/H8r5nJV8zno',
+        videoId: 'H8r5nJV8zno',
         website: 'https://ezracollective.com/'
     },
     {
@@ -272,7 +272,7 @@ export const records = [
         title: 'Ticket To Shangri-La',
         album: 'Ticket To Shangri-La',
         imageId: '76b6d0dc-6179-4628-e3ec-0cc36cb0c800',
-        videoId: 'https://youtu.be/1nQlmjl2DE8',
+        videoId: '1nQlmjl2DE8',
         website: 'https://www.younggunsilverfox.com/'
     }
 ]
