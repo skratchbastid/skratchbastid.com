@@ -39,7 +39,7 @@
                     <div class="flex flex-col items-center justify-center my-4">
                         <h1 class="font-semibold text-xl lg:text-2xl">{{ record.title }}</h1>
                         <p class="text-sm lg:text-base">{{ record.artist }}</p>
-                        <div class="mt-5 text-xs flex gap-3">
+                        <div class="text-xs flex gap-3 mt-4">
                             <a v-if="record.spotifyLink" :href="record.spotifyLink" target="_blank" class="px-4 py-2 rounded-lg border bg-blue-500 text-white hover:bg-blue-700">Listen on Spotify</a>
                             <a v-if="record.website" :href="record.website" target="_blank" class="px-4 py-2 rounded-lg border bg-blue-500 text-white hover:bg-blue-700">Artist Website</a>
                         </div>
@@ -50,7 +50,7 @@
                         <span class="font-bold block flex items-center justify-center">SUBSCRIBE<Icon name="material-symbols:chevron-right-rounded" size="22" /></span>
                         <span class="text-xs">Get the ROTW in your inbox every week!</span>
                     </nuxt-link>
-                    <div class="rounded-lg overflow-hidden">
+                    <div class="rounded-lg overflow-hidden shadow-2xl">
                         <LiteYouTubeEmbed
                             :id="record.videoId"
                             title="Bastid's BBQ NYC 2023 Recap"
