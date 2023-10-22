@@ -45,8 +45,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="aspect-video w-full flex flex-col justify-center lg:w-2/3">
-                    <nuxt-link to="/newsletter" class="block bg-[#C81C2F] rounded-lg p-2 lg:p-4 text-white text-sm lg:text-base text-center my-8 w-full max-w-[1200px] m-auto lg:leading-none hover:bg-[#A6192B] transition-colors duration-200">
+                <div class="aspect-video w-full flex flex-col-reverse justify-center lg:w-2/3 lg:flex-col">
+                    <nuxt-link to="/newsletter" class="mx-3 md:mx-0 bg-[#C81C2F] rounded-lg p-2 lg:p-4 text-white text-sm lg:text-base text-center my-3 lg:max-w-[1200px] lg:leading-none hover:bg-[#A6192B] transition-colors duration-200">
                         <span class="font-bold block flex items-center justify-center">SUBSCRIBE<Icon name="material-symbols:chevron-right-rounded" size="22" /></span>
                         <span class="text-xs">Get the ROTW in your inbox every week!</span>
                     </nuxt-link>
