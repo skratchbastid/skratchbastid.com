@@ -27,7 +27,7 @@
 </script>
 
 <template>
-    <div class="min-h-[calc(100vh-55px)] flex flex-col items-center justify-center relative" style="background: linear-gradient(135deg, transparent 0%, #c3cfe2 100%);" >
+    <div class="min-h-[calc(100vh-55px)] flex flex-col items-center justify-center relative" style="background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(195,207,226,0.5) 100%);" >
         <nuxt-link to="/rotw" class="mb-4 absolute left-2 lg:left-5 top-5 z-50">
             <Icon name="material-symbols:arrow-back" size="28" />
         </nuxt-link>
@@ -50,10 +50,12 @@
                         <span class="font-bold block flex items-center justify-center">SUBSCRIBE<Icon name="material-symbols:chevron-right-rounded" size="22" /></span>
                         <span class="text-xs">Get the ROTW in your inbox every week!</span>
                     </nuxt-link>
-                    <LiteYouTubeEmbed
-                        :id="record.videoId"
-                        title="Bastid's BBQ NYC 2023 Recap"
-                    />
+                    <div class="rounded-lg overflow-hidden">
+                        <LiteYouTubeEmbed
+                            :id="record.videoId"
+                            title="Bastid's BBQ NYC 2023 Recap"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
