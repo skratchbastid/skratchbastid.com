@@ -50,7 +50,7 @@
                         <span class="font-bold block flex items-center justify-center">SUBSCRIBE<Icon name="material-symbols:chevron-right-rounded" size="22" /></span>
                         <span class="text-xs">Get the ROTW in your inbox every week!</span>
                     </nuxt-link>
-                    <div class="rounded-lg overflow-hidden shadow-2xl">
+                    <div class="md:rounded-lg overflow-hidden shadow-2xl">
                         <LiteYouTubeEmbed
                             :id="record.videoId"
                             title="Bastid's BBQ NYC 2023 Recap"
