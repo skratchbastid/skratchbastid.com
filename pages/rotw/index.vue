@@ -1,6 +1,11 @@
 <script setup>
     import { records } from '~/assets/rotw.js'
-    
+    useSeoMeta({
+        title: `Record of the Week | Skratch Bastid`,
+        ogTitle: `Record of the Week | Skratch Bastid`,
+        ogDescription: `Record of the Week | Skratch Bastid`,
+        ogUrl: `https://www.skratchbastid.com/rotw`,
+    })
 </script>
 
 <template>
