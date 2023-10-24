@@ -5,7 +5,7 @@ export const records = [
         title: 'Astral Plane',
         album: 'Silver',
         imageId: '0cf009da-510e-4cb8-d1b1-ddf5e4c26c00',
-        videoId: '_oe-PirwET4',
+        videoId: 'Mb_qCxbOzFI',
         website: 'https://www.saysheshe.com/'
     },
     {
