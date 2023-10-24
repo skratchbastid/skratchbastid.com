@@ -2,7 +2,7 @@ export const records = [
     {
         slug: 'say-she-she',
         artist: 'Say She She',
-        title: 'Astral Plane',
+        title: 'Silver',
         album: 'Silver',
         imageId: '0cf009da-510e-4cb8-d1b1-ddf5e4c26c00',
         videoId: 'Mb_qCxbOzFI',
