@@ -2,9 +2,9 @@ export const records = [
     {
         slug: 'torae-marco-polo',
         artist: 'Torae & Marco Polo',
-        title: 'More Danger',
+        title: 'More Dainja',
         album: 'Midnight Run',
-        imageId: '41acd4fc-0950-4ede-0338-6b8208c40a00',
+        imageId: '85a3d80e-c2d7-4848-84dd-fa01d4dd0500',
         videoId: 'qDoP0QEPqNg',
         website: 'https://midnightrunmusic.com/'
     },
