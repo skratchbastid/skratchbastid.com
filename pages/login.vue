@@ -29,7 +29,7 @@
         <div class="w-full h-full flex items-center justify-center">
             <div class="bg-white rounded shadow-xl p-12 w-11/12 sm:w-8/12 lg:w-[35%] flex flex-col">
                 <span class="font-semibold text-2xl">Sign into your account!</span>
-                <div class="bg-green-100 text-green-700 text-sm my-3 p-3">
+                <div class="hidden bg-green-100 text-green-700 text-sm my-3 p-3">
                     We're in the process of a major site upgrade - if you have any issues, please email <a class="underline" href="mailto:holler@skratchbastid.com">holler@skratchbastid.com</a> and we'll get you sorted out!
                 </div>
                 <form class="flex flex-col" @submit.prevent="logUserIn(email, password)">

@@ -1,5 +1,14 @@
 export const records = [
     {
+        slug: 'torae-marco-polo',
+        artist: 'Torae & Marco Polo',
+        title: 'More Danger',
+        album: 'Midnight Run',
+        imageId: '41acd4fc-0950-4ede-0338-6b8208c40a00',
+        videoId: 'qDoP0QEPqNg',
+        website: 'https://midnightrunmusic.com/'
+    },
+    {
         slug: 'say-she-she',
         artist: 'Say She She',
         title: 'Silver',
