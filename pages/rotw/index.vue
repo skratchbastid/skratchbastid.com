@@ -20,7 +20,7 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 px-4 lg:px-0 max-w-[1200px] m-auto">
             <div v-for="record in records">
                 <nuxt-link :to="`/rotw/${record.slug}`" class="hover:opacity-75 transition-opacity duration-200">
-                    <nuxt-img provider="cloudflare" :src="record.imageId+'/w=300'" alt="" class="rounded aspect-square object-fit" loading="lazy" />
+                    <nuxt-img provider="cloudflare" :src="record.imageId+'/w=300'" alt="" class="rounded aspect-square object-cover w-full" loading="lazy" />
                     <div>
                         <div class="font-bold text-sm">{{ record.title }}</div>
                         <div class="text-xs">{{ record.artist }}</div>

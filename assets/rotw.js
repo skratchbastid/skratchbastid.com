@@ -1,5 +1,14 @@
 export const records = [
     {
+        slug: 'cypress-hill',
+        artist: 'Cypress Hill',
+        title: 'Insane In The Brain (Statik Selektah Remix)',
+        album: 'Black Sunday (Deluxe)',
+        imageId: '9cdb93a5-0791-4be3-b64b-e115f19c1900',
+        videoId: 'MPbymiaEiZs',
+        website: 'https://cypresshill.com/'
+    },
+    {
         slug: 'torae-marco-polo',
         artist: 'Torae & Marco Polo',
         title: 'More Dainja',
