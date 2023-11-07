@@ -76,7 +76,7 @@
                     </nuxt-link>
                     <nuxt-img provider="cloudflare" src="ca8fd383-4e18-4141-555c-221ae8853d00/w=500" alt="" class="w-1/3 lg:w-2/3 mb-4 m-auto" />
                     <nuxt-img :src="record.imageId+'/w=500'" provider="cloudflare" id="album-art" alt="" class="m-auto w-2/3 max-w-[250px] aspect-square rounded shadow-xl" crossorigin="anonymous" />
-                    <div class="flex flex-col items-center justify-center my-4">
+                    <div class="flex flex-col items-center justify-center text-center my-4">
                         <h1 class="font-semibold text-xl lg:text-2xl">{{ record.title }}</h1>
                         <p class="text-sm lg:text-base">{{ record.artist }}</p>
                         <div class="text-xs flex gap-3 mt-4">
