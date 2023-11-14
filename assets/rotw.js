@@ -4,7 +4,7 @@ export const records = [
     //     artist: 'Craze',
     //     title: 'Tablism.',
     //     imageId: '1ba05011-30b2-47c9-1c47-26ec78703a00',
-    //     videoId: 'WXn2YysSJjI',
+    //     videoId: '0LeISn7bC5s',
     //     website: 'https://www.djcraze.com/'
     // },
     {
