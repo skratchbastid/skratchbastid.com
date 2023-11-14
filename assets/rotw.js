@@ -1,5 +1,13 @@
 export const records = [
     {
+        slug: 'craze-tablism',
+        artist: 'Craze',
+        title: 'Tablism.',
+        imageId: '1ba05011-30b2-47c9-1c47-26ec78703a00',
+        videoId: 'WXn2YysSJjI',
+        website: 'https://www.djcraze.com/'
+    },
+    {
         slug: 'cypress-hill',
         artist: 'Cypress Hill',
         title: 'Insane In The Brain (Statik Selektah Remix)',
