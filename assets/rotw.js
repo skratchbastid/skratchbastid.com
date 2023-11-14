@@ -1,12 +1,12 @@
 export const records = [
-    // {
-    //     slug: 'craze-tablism',
-    //     artist: 'Craze',
-    //     title: 'Tablism.',
-    //     imageId: '1ba05011-30b2-47c9-1c47-26ec78703a00',
-    //     videoId: '0LeISn7bC5s',
-    //     website: 'https://www.djcraze.com/'
-    // },
+    {
+        slug: 'craze-tablism',
+        artist: 'Craze',
+        title: 'Tablism.',
+        imageId: '1ba05011-30b2-47c9-1c47-26ec78703a00',
+        videoId: '0LeISn7bC5s',
+        website: 'https://www.djcraze.com/'
+    },
     {
         slug: 'cypress-hill',
         artist: 'Cypress Hill',
