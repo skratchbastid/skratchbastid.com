@@ -1,5 +1,12 @@
 export const records = [
     {
+        slug: 'nas-rewind',
+        artist: 'Nas',
+        title: 'Rewind',
+        imageId: 'a01e6d95-7179-48a9-0dbf-e48e7019fa00',
+        videoId: '84T2ZlNobBo'
+    },
+    {
         slug: 'craze-tablism',
         artist: 'Craze',
         title: 'Tablism.',
