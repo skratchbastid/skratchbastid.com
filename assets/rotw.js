@@ -1,5 +1,12 @@
 export const records = [
     {
+        slug: 'greg-nice-butter',
+        artist: 'Greg Nice',
+        title: 'Butter',
+        imageId: 'f83cae61-0bd0-40ab-c502-8f5dc08bb300',
+        videoId: 'S2uC3FMQz1E'
+    },
+    {
         slug: 'nas-rewind',
         artist: 'Nas',
         title: 'Rewind',
