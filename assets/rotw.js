@@ -2,7 +2,7 @@ export const records = [
     {
         slug: 'hot-sauce',
         artist: 'J. Period feat. Aloe Blacc & Andra Day',
-        title: 'Butter',
+        title: 'Hot Sauce',
         imageId: '1f55faa4-b8d8-493c-493f-c48749ad7300',
         videoId: 'dEQJFK0RMT0'
     },
