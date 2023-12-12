@@ -2,7 +2,7 @@ export const records = [
     {
         slug: 'allen-toussaint',
         artist: 'Allen Toussaint',
-        title: 'Get Our Of My Life, Woman',
+        title: 'Get Out Of My Life, Woman',
         imageId: 'b724e1b9-86f5-48d2-db16-616cb9cc2500',
         videoId: 'iyXQWoMnQ_Q'
     },
