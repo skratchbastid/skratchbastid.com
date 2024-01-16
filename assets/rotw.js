@@ -1,5 +1,13 @@
 export const records = [
     {
+        slug: 'chocolate-milk',
+        artist: 'Chocolate Milk',
+        title: 'Action Speaks Louder Than Words',
+        album: 'Action Speaks Louder Than Words',
+        imageId: 'ad45f66a-ddd7-4609-57bb-59cab0f5d400',
+        videoid: 'B7wekBiGzdo'
+    },
+    {
         slug: 'allen-toussaint',
         artist: 'Allen Toussaint',
         title: 'Get Out Of My Life, Woman',
