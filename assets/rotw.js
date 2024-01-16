@@ -5,7 +5,7 @@ export const records = [
         title: 'Action Speaks Louder Than Words',
         album: 'Action Speaks Louder Than Words',
         imageId: 'ad45f66a-ddd7-4609-57bb-59cab0f5d400',
-        videoid: 'B7wekBiGzdo'
+        videoId: 'B7wekBiGzdo'
     },
     {
         slug: 'allen-toussaint',
