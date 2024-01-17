@@ -1,5 +1,13 @@
 export const records = [
     {
+        slug: 'tanya-morgan',
+        artist: 'Tanya Morgan',
+        title: 'Don\'t Look Up',
+        website: 'https://tanyamorgan.bandcamp.com/track/dont-look-up-feat-mia-jae',
+        imageId: '906edb56-e60c-48fe-8f90-7c367748d100',
+        videoId: 'Ax6h8a9FrUY'
+    },
+    {
         slug: 'chocolate-milk',
         artist: 'Chocolate Milk',
         title: 'Action Speaks Louder Than Words',
