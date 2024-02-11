@@ -20,6 +20,7 @@ exports.handler = async function(event, context) {
     // const email = event.queryStringParameters.email
     const email = JSON.parse(event.body).email
     const source = JSON.parse(event.body).source || ''
+    const city = JSON.parse(event.body).city || ''
 
     // Check to see if contact exists, if not create one!
     let contact = await findContact(email)
@@ -52,9 +53,8 @@ exports.handler = async function(event, context) {
 
     // Create the subscription
     if (contact.new) {
-        console.log("New contact, edit their source property", contact, source)
         try {
-            updateSource(contact.contact.ID, source)
+            updateContact(contact.contact.ID, source, city)
         } catch(error) {
             console.log(error.message)
         }
@@ -174,19 +174,23 @@ exports.handler = async function(event, context) {
         }
     }
 
-    async function updateSource(contactId, source) {
+    async function updateContact(contactId, source, city) {
         console.log("update source function")
         const request = mailjet
             .put("contactdata", {'version': 'v3'})
             .id(contactId)
             .request({
-                Data: [{
-                    Name: "source",
-                    Value: source || ''
-                }]
+                Data: [
+                    {
+                        Name: "source",
+                        Value: source || ''
+                    },
+                    {
+                        Name: "city",
+                        Value: city || ''
+                    }
+                ]
             })
-        console.log("Contact ID: ", contactId)
-        console.log("Source: ", source)
         try {
             const response = await request
             console.log(response.body)
