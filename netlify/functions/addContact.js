@@ -52,13 +52,13 @@ exports.handler = async function(event, context) {
     // }
 
     // Create the subscription
-    if (contact.new) {
+    
         try {
             updateContact(contact.contact.ID, source, city)
         } catch(error) {
             console.log(error.message)
         }
-    }
+    
     const subscription = await createSubscription(email)
     console.log(subscription)
     
