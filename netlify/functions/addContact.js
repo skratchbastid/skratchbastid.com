@@ -52,13 +52,12 @@ exports.handler = async function(event, context) {
     // }
 
     // Create the subscription
-    if (contact.new) {
-        try {
-            updateContact(contact.contact.ID, source, city)
-        } catch(error) {
-            console.log(error.message)
-        }
+    try {
+        await updateContact(contact.contact.ID, source, city, contact.new)
+    } catch (error) {
+        console.log(error.message)
     }
+    
     const subscription = await createSubscription(email)
     console.log(subscription)
     
@@ -167,15 +166,28 @@ exports.handler = async function(event, context) {
             // const emailResp = await emailRequest
             // console.log(emailResp.body)
         } catch (err) {
-            console.log("Nonono")
             return {
                 success: false
             }
         }
     }
 
-    async function updateContact(contactId, source, city) {
-        console.log("update source function")
+    async function updateContact(contactId, source, city, isNewContact) {
+        
+        const data = [
+            {
+                Name: "city",
+                Value: city || ''
+            }
+        ]
+
+        if (isNewContact) {
+            data.push({
+                Name: "source",
+                Value: source || ''
+            })
+        }
+
         const request = mailjet
             .put("contactdata", {'version': 'v3'})
             .id(contactId)
