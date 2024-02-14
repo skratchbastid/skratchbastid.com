@@ -27,6 +27,7 @@ exports.handler = async function(event, context) {
     if (!contact) {
         console.log("No contact, let's create one")
         contact = await createContact(email)
+        contact = contact.contact
         if (!contact.success) {
             return {
                 statusCode: 400,
@@ -53,7 +54,7 @@ exports.handler = async function(event, context) {
 
     // Create the subscription
     try {
-        await updateContact(contact.contact.ID, source, city, contact.new)
+        await updateContact(contact.ID, source, city, contact.new)
     } catch (error) {
         console.log(error.message)
     }
@@ -83,7 +84,6 @@ exports.handler = async function(event, context) {
         try {
             console.log("Find contact...")
             let response = await request
-            console.log('the contact: ',response.body.Data)
             return response.body.Data[0]
         } catch(err) {
             return null
