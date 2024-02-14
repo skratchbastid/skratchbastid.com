@@ -83,7 +83,7 @@ exports.handler = async function(event, context) {
         try {
             console.log("Find contact...")
             let response = await request
-            // console.log(response.body.Data)
+            console.log('the contact: ',response.body.Data)
             return response.body.Data[0]
         } catch(err) {
             return null
@@ -143,7 +143,7 @@ exports.handler = async function(event, context) {
             const response = await request
             return {
                 success: true,
-                message: "Contact created"
+                message: "Subscription created"
             }
             // console.log(response.body)
 
