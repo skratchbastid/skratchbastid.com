@@ -47,7 +47,7 @@ useState('mixes', () => mixes)
   const shows = ref(useState('shows', () => []))
 
   const { data } = await useAsyncQuery(showsQuery)
-  shows.value = filterAndSortEventsByDate(data.value.events.nodes)  
+  shows.value = filterAndSortEventsByDate(data.value?.events?.nodes)  
 
 
   onNuxtReady(() => {
