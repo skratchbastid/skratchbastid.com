@@ -61,5 +61,8 @@ export default defineNuxtConfig({
             baseURL: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/'
         }
     },
+    plugins: [
+        '~/plugins/hive-sdk.client.js',
+    ]
 },
 )

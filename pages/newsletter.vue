@@ -5,9 +5,28 @@
 
     const submitEmail = async () => {
         submitPending.value = true
-        const result = await subscribeEmail(email.value, 'newsletter-lp')
-        success.value = true
-        console.log(result)
+
+        if (!email.value.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        const contactData = {
+            email: email.value,
+            didOptIn: true
+        }
+
+        HIVE_SDK(
+            'emailSignup',
+            contactData,
+            function(data) {
+                success.value = true
+                submitPending.value = false
+            },
+            function(data) {
+                console.log('error', data)
+                alert("There was an error submitting your email. Please try again.")
+            }
+        )
     }
 </script>
 

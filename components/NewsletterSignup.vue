@@ -9,23 +9,29 @@
         submitPending.value = true
 
         const data = { email: email.value }
-        const response = await fetch('https://www.skratchbastid.com/.netlify/functions/addContact', {
-            method: 'POST', 
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        const result = await response.json()
-
-        if (result.success) {
-            submitSuccess.value = true
-        } else {
-            error.value = true
-            submitPending.value = false
+        
+        if (!email.value.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
+            alert('Please enter a valid email address.');
+            return;
         }
-}
+        const contactData = {
+            email: email.value,
+            didOptIn: true
+        }
+
+        HIVE_SDK(
+            'emailSignup',
+            contactData,
+            function(data) {
+                submitSuccess.value = true
+            },
+            function(data) {
+                console.log('error', data)
+                error.value = true
+            }
+        )
+
+    }
 </script>
 
 <template>
