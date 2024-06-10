@@ -1,5 +1,117 @@
 export const records = [
     {
+        slug: "tom-novy",
+        artist: "Tom Novy",
+        title: "Do It Right (feat. Omar)",
+        videoId: "eZ4BnpR1-2A",
+        imageId: "da97e8e8-6cb0-4937-507f-bb94e7ad2300"
+    },
+    {
+        slug: "slum-village",
+        artist: "Slum Village",
+        title: "F.U.N.",
+        videoId: "NUZrfg4woGM",
+        imageId: "c26eada0-a5a4-405b-ed63-d92b4fbc4600"
+    },
+    {
+        slug: "spice-1",
+        artist: "Spice 1 feat. CL Smooth",
+        title: "Since The Day (prod. DJ Premier)",
+        videoId: "xp7aWV6BPAU",
+        imageId: "3259b09e-9855-4937-6817-11c48ff6ff00"
+    },
+    {
+        slug: "roy-ayers-ubiquity",
+        artist: "Roy Ayers Ubiquity",
+        title: "He's Coming",
+        videoId: "i-hmcgum6jM",
+        imageId: "07ec5384-b83c-45f8-c90d-20fd6cdc7800"
+    },
+    {
+        slug: "jeremy-carr",
+        artist: "Jeremy Carr",
+        title: "This Must be Heaven",
+        videoId: "zhhlyXbGcmU",
+        imageId: "236596ea-fd19-45bd-0a16-4e32d567ff00"
+    },
+    {
+        slug: "yg-marley",
+        artist: "YG Marley",
+        title: "Praise Jah In The Moonlight",
+        videoId: "Mvc7oheAFfc",
+        imageId: "10615d19-c765-404b-6d1c-378eb3784300"
+    },
+    {
+        slug: "nxworries",
+        artist: "NxWorries",
+        title: "86Sentra",
+        videoId: "PEAFPIITUJQ",
+        imageId: "57d69264-3b88-479c-5f13-2f9a7e880700"
+    },
+    {
+        slug: "lord-sko",
+        artist: "Lord Sko",
+        title: "Pimp Socks",
+        videoId: "28vMJW90_7c",
+        imageId: "403a47e3-d178-46b5-844e-baf05032cb00"
+    },
+    {
+        slug: "sir-karma",
+        artist: "Sir",
+        title: "Karma",
+        imageId: "7d2c6f88-8545-40a8-aada-3446d7051500",
+        videoId: "SaCxoASHsME"
+    },
+    {
+        slug: "garfield-fleming",
+        title: "Don't Send Me Away",
+        artist: "Garfield Fleming",
+        videoId: "c_eXRBaEXRU",
+        imageId: "593a686b-2483-4a64-9135-17be47966300"
+    },
+    {
+        slug: "dj-shadow",
+        artist: "DJ Shadow",
+        title: "You Played Me (Chrome Sparks Remix)",
+        imageId: "fb7aef07-969e-47d0-74a5-6023a0d84900",
+        videoId: "f7SjcMDgdU0"
+    },
+    {
+        slug: "aza-lineage",
+        artist: "Aza Lineage",
+        title: "Don't Say You Love Me",
+        imageId: "9b97fa55-fd44-4101-e708-48ee2d59bb00",
+        videoId: "CeBH6W8ccdk"
+    },
+    {
+        slug: "shad-this-winter",
+        artist: "Shad",
+        title: "This Winter EP",
+        imageId: "cc2a4d17-d313-4985-9b75-99cc5b9a0400",
+        videoId: "O22ktEg9Ggo"
+    },
+    {
+        slug: "hiatus-kaiyote",
+        artist: "Hiatus Kaiyote",
+        title: "Everything's Beautiful",
+        imageId: "af24bbcc-0e7b-4c06-e15d-190972916600",
+        videoId: "Zhcvt8Pyw_c"
+    },
+    {
+        slug: "lonnie-liston-smith",
+        artist: "Lonnie Liston Smith",
+        title: "A Chance For Peace",
+        videoId: "98qZb_rt1fc",
+        imageId: "27190fdc-59be-4a6e-59c4-ab46f079db00"
+    },
+    {
+        slug: 'the-new-royales',
+        artist: 'The New Royales',
+        title: 'Today',
+        videoId: 'esdDUhFuKgI',
+        imageId: '21c70db4-6c8a-4425-38a2-59cc579d1000'
+    },
+    {
         slug: 'tanya-morgan',
         artist: 'Tanya Morgan',
         title: 'Don\'t Look Up',
