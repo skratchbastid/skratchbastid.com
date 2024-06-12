@@ -86,7 +86,7 @@
         <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos">
             <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" />
             <div class="font-light mt-2 truncate">{{ video.title }}</div>
-            <div class="text-xs font-light">{{ $dayjs().to(video.date)}}</div>
+            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
         </NuxtLink>
     </div>
 </template>

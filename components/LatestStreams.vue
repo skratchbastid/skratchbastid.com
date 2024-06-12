@@ -86,7 +86,7 @@
             <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4">
                 <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
                 <div class="font-light mt-2 truncate">{{ video.title }}</div>
-                <div class="text-xs font-light">{{ $dayjs().to(video.date)}}</div>
+                <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
             </NuxtLink>
         </vue-horizontal>
     </div>
