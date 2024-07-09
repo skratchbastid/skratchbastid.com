@@ -1,6 +1,6 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
-    const streams = ref(null)
+    const streams = ref([])
     const pageInfo = ref(null)
 
     const props = defineProps({
@@ -62,8 +62,8 @@
     // })
 
     const { data } = await useAsyncQuery(streamsQuery)
-    console.log('done', data.value)
     streams.value = data.value.streams.nodes
+
     const filteredStreams = computed(() => {
         if (props.excludeId) {
             return streams.value.filter((video) => video.id !== props.excludeId)
@@ -75,7 +75,7 @@
     
 </script>
 <template>
-    <div v-if="filteredStreams">
+    <div v-if="streams.length">
         <div class="flex items-center mb-3" >
             <h2 class="text-lg font-extrabold ml-3 md:ml-10">
                 {{ title || 'Latest Streams' }}
