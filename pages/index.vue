@@ -66,7 +66,6 @@
             </div>
         </div>
         <SocialLinks />
-        <SkratchSelections :class.native="showSelections ? '' : 'hidden'" />
         <!-- <SongsWeListenedTo /> -->
         <!-- <TopGrillinPromo /> -->
         <!-- <LatestVideos /> -->
