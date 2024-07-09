@@ -16,6 +16,11 @@
             type: Boolean,
             required: false,
             default: true
+        },
+        vertical: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     })
 
@@ -35,6 +40,7 @@
             }) {
                 nodes {
                 id
+                databaseId
                 title
                 vimeoID
                 slug
@@ -56,17 +62,13 @@
             }
         }`
     
-    const { data, error } = useAsyncQuery(streamsQuery)
 
-    if (data.value?.streams) {
-        console.log("Got the streams")
-        streams.value = data.value?.streams?.nodes
-        loading.value = false
-    }
-    if (error.value) {
-        console.error(error.value)
-        loading.value = false
-    }
+    // const { result, loading, error, onResult } = useQuery(streamsQuery)
+    // onResult((result) => {
+    //     streams.value = result.data.episodes.nodes
+    // })
+    const { data } = await useAsyncQuery(streamsQuery)
+    streams.value = data.value.streams.nodes
 
     const filteredStreams = computed(() => {
         if (props.excludeId) {
@@ -81,18 +83,31 @@
 <template>
     <div v-if="streams.length">
         <div class="flex items-center mb-3" >
-            <h2 class="text-lg font-extrabold ml-3 md:ml-10">
+            <h2 class="text-lg font-extrabold" :class="!vertical ? 'ml-3 md:ml-10' : ''">
                 {{ title || 'Latest Streams' }}
             </h2>
             <NuxtLink v-if="seeAll" to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
         </div>
-        <vue-horizontal class="ml-3 md:mx-10">
+        <vue-horizontal class="ml-3 md:mx-10" v-if="!vertical">
             <NuxtLink :to="'/videos/' + video.slug" v-for="video in filteredStreams" class="flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4">
                 <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
                 <div class="font-light mt-2 truncate">{{ video.title }}</div>
                 <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
             </NuxtLink>
         </vue-horizontal>
+        <div v-else>
+            <div v-for="video in filteredStreams" :key="video.id" class="flex flex-col w-full mb-4">
+                <NuxtLink :to="'/videos/' + video.slug" class="flex gap-3">
+                    <div class="w-1/2">
+                        <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
+                    </div>
+                    <div class="w-1/2">
+                        <div class="text-sm mt-2 ">{{ video.title }}</div>
+                        <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                    </div>
+                </NuxtLink>
+            </div>
+        </div>
     </div>
 </template>
 

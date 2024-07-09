@@ -10,10 +10,12 @@
             streams(first: 36, after: $cursor) {
                 nodes {
                 id
+                databaseId
                 title
                 vimeoID
                 slug
                 imageLink
+                vimeoThumbnail
                 date
                 streamTypes {
                     edges {
@@ -78,13 +80,15 @@
             }
         }
     }
-
+    const imageUrl = (video) => {
+        return video.vimeoThumbnail || video.imageLink || `https://videodelivery.net/${video.acm_fields.cloudflareVideoID}}/thumbnails/thumbnail.jpg`
+    }
 
 </script>
 <template>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
         <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos">
-            <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" />
+            <img :src="imageUrl(video)" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" />
             <div class="font-light mt-2 truncate">{{ video.title }}</div>
             <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
         </NuxtLink>
