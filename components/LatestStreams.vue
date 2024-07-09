@@ -1,7 +1,7 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
     const streams = ref([])
-    const pageInfo = ref(null)
+    const loading = ref(true)
 
     const props = defineProps({
         excludeId: {
@@ -56,24 +56,21 @@
             }
         }`
     
-    // const { result, loading, error, onResult } = useQuery(streamsQuery)
-    // onResult((result) => {
-    //     streams.value = result.data.episodes.nodes
-    // })
-    
     const { data, error } = useAsyncQuery(streamsQuery)
 
     if (data.value?.streams) {
         console.log("Got the streams")
-        streams.value = data.value.streams.nodes
+        streams.value = data.value?.streams?.nodes
+        loading.value = false
     }
     if (error.value) {
         console.error(error.value)
+        loading.value = false
     }
 
     const filteredStreams = computed(() => {
         if (props.excludeId) {
-            return streams.value.filter((video) => video.id !== props.excludeId)
+            return streams?.value.filter((video) => video.id !== props.excludeId)
         } else {
             return streams.value
         }
