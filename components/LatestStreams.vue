@@ -75,7 +75,7 @@
     
 </script>
 <template>
-    <div v-if="streams.length">
+    <!-- <div v-if="streams.length">
         <div class="flex items-center mb-3" >
             <h2 class="text-lg font-extrabold ml-3 md:ml-10">
                 {{ title || 'Latest Streams' }}
@@ -89,7 +89,7 @@
                 <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
             </NuxtLink>
         </vue-horizontal>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>
