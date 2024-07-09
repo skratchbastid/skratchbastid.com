@@ -139,7 +139,7 @@ function clearComment() {
 </template>
 
 <style scoped>
-.comment-content::v-deep p {
+.comment-content:deep(p) {
     margin-bottom: 10px;
 }
 </style>

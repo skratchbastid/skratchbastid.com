@@ -85,13 +85,13 @@
                         <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
                             <div class="flex items-center justify-center p-8 w-full h-full">
                                 <div class="w-full">
-                                    <h2 class="font-black text-2xl sm:text-3xl shadow mb-4">Join the Top Grillin' VIP Crew</h2>
-                                    <p class="font-thin text-lg text-shadow-sm mb-4">Unlock access to this video and more:</p>
+                                    <h2 class="font-black text-xl sm:text-3xl shadow mb-4">Join the Top Grillin' VIP Crew</h2>
+                                    <p class="font-thin text-lg md:text-xl text-shadow-sm mb-4">Unlock access to this video and more:</p>
                                     <div class="text-white">
                                         <ul>
-                                            <div class="flex items-center my-1" v-for="perk in perks">
+                                            <div class="flex items-center my-1.5 leading-none md:leading-snug" v-for="perk in perks">
                                                 <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
-                                                <div class="font-thin text-shadow-sm">
+                                                <div class="font-thin text-shadow-sm md:text-lg">
                                                     {{ perk }}
                                                 </div>
                                             </div>
@@ -110,7 +110,7 @@
                         {{ video?.title }}
                     </div>
                     <div v-if="video" class="text-white text-xs font-light">
-                        {{ $dayjs().to(video?.date)}}
+                        {{ $dayjs.utc(video?.date).fromNow() }}
                     </div>
                 </div>
                 <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="my-10 px-12 flex flex-col lg:flex-row gap-10" v-show="video">
+        <div class="my-10 px-2 md:px-12 flex flex-col lg:flex-row gap-10" v-show="video">
             <VideoComments :videoId="video?.databaseId" class="w-full lg:w-2/3" />
             <LatestStreams :excludeId="video?.id" :vertical="true" title="More Streams" :seeAll="false" class="w-full lg:w-1/3" />
         </div>
