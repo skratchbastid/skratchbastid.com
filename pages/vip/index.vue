@@ -18,7 +18,9 @@
 
 <template>
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
-        <div v-show="isVip" class="pt-12">
+        <p class="py-12 text-center text-3xl">Hang tight - we're making a few updates...</p>
+        <p v-if="isVip">Is VIP?</p>
+        <!-- <div v-show="isVip" class="pt-12">
             <div class="pb-6 px-6 flex flex-col gap-3 items-center justify-center text-center">
                 <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32" />
                 <div class="text-2xl font-bold">👋 What up, {{ user?.firstName}}!</div>
@@ -48,7 +50,7 @@
                     </NuxtLink>
                 </vue-horizontal>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
