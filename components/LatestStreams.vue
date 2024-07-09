@@ -64,13 +64,13 @@
     const { data } = await useAsyncQuery(streamsQuery)
     streams.value = data.value.streams.nodes
 
-    const filteredStreams = computed(() => {
-        if (props.excludeId) {
-            return streams.value.filter((video) => video.id !== props.excludeId)
-        } else {
-            return streams.value
-        }
-    })
+    // const filteredStreams = computed(() => {
+    //     if (props.excludeId) {
+    //         return streams.value.filter((video) => video.id !== props.excludeId)
+    //     } else {
+    //         return streams.value
+    //     }
+    // })
     
     
 </script>
