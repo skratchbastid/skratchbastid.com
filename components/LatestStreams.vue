@@ -35,6 +35,7 @@
             }) {
                 nodes {
                 id
+                databaseId
                 title
                 vimeoID
                 slug
@@ -60,9 +61,9 @@
     // onResult((result) => {
     //     streams.value = result.data.episodes.nodes
     // })
-
+    console.log("Load streams")
     const { data } = await useAsyncQuery(streamsQuery)
-    console.log('done', data.value)
+    console.log("Done at: ", Date.now())
     streams.value = data.value.streams.nodes
     const filteredStreams = computed(() => {
         if (props.excludeId) {

@@ -23,6 +23,7 @@
         query getVideo($slug: ID!) {
             stream(id: $slug, idType: SLUG) {
                 id
+                databaseId
                 title
                 date
                 vimeoID
@@ -119,6 +120,7 @@
             </div>
         </div>
         <div class="my-10" v-show="video">
+            <VideoComments :videoId="video?.databaseId" />
             <LatestStreams :excludeId="video?.id" title="More Streams" :seeAll="false" />
         </div>
     </div>
