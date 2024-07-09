@@ -61,7 +61,7 @@
     //     streams.value = result.data.episodes.nodes
     // })
     
-    const { data, error } = await useAsyncQuery(streamsQuery)
+    const { data, error } = useAsyncQuery(streamsQuery, {}, { fetchOnServer: false })
 
     if (data.value?.streams) {
         console.log("Got the streams")
