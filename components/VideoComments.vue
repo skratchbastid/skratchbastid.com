@@ -112,7 +112,7 @@ function clearComment() {
             </div>
         </div>
         <div class="comments my-2">
-            <div v-if="!comments.length" class="font-light text-center mt-6">
+            <div v-if="!comments.length && isVip" class="font-light text-center mt-6">
                 No comments yet - be the first to chime in!
             </div>
             <div>
