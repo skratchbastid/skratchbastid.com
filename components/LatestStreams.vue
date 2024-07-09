@@ -61,7 +61,7 @@
     //     streams.value = result.data.episodes.nodes
     // })
     
-    const { data, error } = useAsyncQuery(streamsQuery, {}, { fetchOnServer: false })
+    const { data, error } = useAsyncQuery(streamsQuery)
 
     if (data.value?.streams) {
         console.log("Got the streams")
@@ -71,18 +71,18 @@
         console.error(error.value)
     }
 
-    // const filteredStreams = computed(() => {
-    //     if (props.excludeId) {
-    //         return streams.value.filter((video) => video.id !== props.excludeId)
-    //     } else {
-    //         return streams.value
-    //     }
-    // })
+    const filteredStreams = computed(() => {
+        if (props.excludeId) {
+            return streams.value.filter((video) => video.id !== props.excludeId)
+        } else {
+            return streams.value
+        }
+    })
     
     
 </script>
 <template>
-    <!-- <div v-if="streams.length">
+    <div v-if="streams.length">
         <div class="flex items-center mb-3" >
             <h2 class="text-lg font-extrabold ml-3 md:ml-10">
                 {{ title || 'Latest Streams' }}
@@ -96,7 +96,7 @@
                 <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
             </NuxtLink>
         </vue-horizontal>
-    </div> -->
+    </div>
 </template>
 
 <style scoped>
