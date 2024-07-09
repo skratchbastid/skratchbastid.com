@@ -35,7 +35,7 @@
         <div>
             <div class="py-8">
                 <VipHeroCta v-if="!isVip" />
-                <!-- <LatestStreams class="mb-10" /> -->
+                <LatestStreams class="mb-10" />
                 <!-- <DeepDives class="mb-10" /> -->
             </div>
             <SwltSeries class="mb-10 "/>
