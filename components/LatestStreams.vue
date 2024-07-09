@@ -60,9 +60,16 @@
     // onResult((result) => {
     //     streams.value = result.data.episodes.nodes
     // })
+    
+    const { data, error } = await useAsyncQuery(streamsQuery)
 
-    const { data } = await useAsyncQuery(streamsQuery)
-    streams.value = data.value.streams.nodes
+    if (data.value?.streams) {
+        console.log("Got the streams")
+        streams.value = data.value.streams.nodes
+    }
+    if (error.value) {
+        console.error(error.value)
+    }
 
     // const filteredStreams = computed(() => {
     //     if (props.excludeId) {
