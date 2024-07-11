@@ -1,5 +1,6 @@
 // utils/eventUtils.js
-import dayjs from 'dayjs'
+import { useDayjs } from '#dayjs' // not need if you are using auto import
+const dayjs = useDayjs()
 
 export function filterAndSortEventsByDate(events) {
     // const currentDate = new Date();

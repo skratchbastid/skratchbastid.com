@@ -1,4 +1,8 @@
 <script setup>
+import { useDayjs } from '#dayjs' // not need if you are using auto import
+const dayjs = useDayjs()
+const emit = defineEmits(['timestamp-clicked'])
+
 const props = defineProps({
     videoId: {
         type: Number,
@@ -87,6 +91,25 @@ function clearComment() {
     commenting.value = false
 }
 
+function hyperlinkTimestamps(comment) {
+    const regex = /\b(\d{1,2}:\d{2}(?::\d{2})?)\b/g;
+    return comment.replace(regex, (match) => `<a data-timestamp="${match}" class="timestamp">${match}</a>`);
+}
+
+function handleTimestampClick(event) {
+    const timestamp = event.target.dataset.timestamp;
+    const seconds = timestampToSeconds(timestamp);
+    emit('timestamp-clicked', seconds);
+}
+
+function timestampToSeconds(timestamp) {
+    const timeParts = timestamp.split(':').map(Number);
+    const seconds = timeParts.reduce((total, timePart, index) => {
+        return total + timePart * Math.pow(60, timeParts.length - index - 1);
+    }, 0);
+    return seconds;
+}
+
 </script>
 
 <template>
@@ -129,7 +152,7 @@ function clearComment() {
                                 <span class="font-bold">{{ authorName(comment.author.node.name) }}</span>
                                 <span class="text-gray-600">{{ $dayjs.utc(comment.date).fromNow() }}</span>
                             </div>
-                            <div class="comment-content" v-html="comment.content"></div>
+                            <div class="comment-content" @click.prevent="handleTimestampClick" v-html="hyperlinkTimestamps(comment.content)"></div>
                         </div>
                     </div>
                 </div>
@@ -141,5 +164,10 @@ function clearComment() {
 <style scoped>
 .comment-content:deep(p) {
     margin-bottom: 10px;
+}
+
+.comment-content:deep(a.timestamp) {
+    color: #3182ce;
+    cursor: pointer;
 }
 </style>

@@ -31,6 +31,7 @@ export default defineNuxtConfig({
         '@nuxtjs/apollo',
         '@nuxt/image-edge',
         '@pinia/nuxt',
+        'dayjs-nuxt'
     ],
     cloudinary: {
         cloudName: '',
@@ -63,6 +64,16 @@ export default defineNuxtConfig({
     },
     plugins: [
         '~/plugins/hive-sdk.client.js',
-    ]
+    ],
+    dayjs: {
+        locales: ['en'],
+        defaultLocale: 'en',
+        plugins: [
+            'isSameOrAfter',
+            'isToday',
+            'isSameOrBefore',
+            'duration',
+        ]
+    },
 },
 )
