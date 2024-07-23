@@ -4,11 +4,13 @@ const userQuery = gql`
     query getUser {
         viewer {
             id
+            userId
             username
             firstName
             lastName
             email
             subscriptions
+            registeredDate
             roles {
                 nodes {
                     name
