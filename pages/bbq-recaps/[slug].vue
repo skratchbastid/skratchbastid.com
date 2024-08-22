@@ -41,6 +41,11 @@
 
 <template>
     <div class="w-full px-3 md:px-8 lg:px-[7.5rem] lg:max-w-[1440px] m-auto">
+        <div class="flex justify-start absolute z-50 ml-5 mt-2 lg:mt-3">
+            <NuxtLink to="/bbq-recaps" class="text-white text-lg">
+        <Icon name="zondicons:arrow-left" class="text-white" size="20" />
+            </NuxtLink>
+        </div>
         <div class="hero mb-5">
             <img :src="event.banner" class="lg:rounded-lg lg:mt-6">
             <div class="flex flex-col w-full md:w-1/2 gap-1 justify-center py-3">
