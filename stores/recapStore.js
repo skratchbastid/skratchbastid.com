@@ -120,6 +120,55 @@ export const useRecapStore = defineStore('recaps', () => {
             videos: [
             ]
         },
+        {
+            slug: 'austin-2024',
+            city: 'Austin',
+            date: '03-15-2024',
+            venue: 'Inn Cahoots',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1724290322/bbq-recaps/2024-bbq-austin/austin-bbq-24_h2ofmj.jpg',
+            recapId: 'XOK5wY49dbU',
+            cloudinaryFolder: 'bbq-recaps/2024-bbq-austin',
+            photoCredits: [],
+            recapText: "",
+            videos: []
+        },
+        {
+            slug: 'nyc-2024',
+            city: 'New York City',
+            date: '2024-06-08',
+            venue: 'The Seaport',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1724290510/bbq-recaps/2024-bbq-nyc/nyc-bbq-24_umppmu.jpg',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2024-bbq-nyc',
+            photoCredits: [],
+            recapText: "",
+            videos: []
+        },
+        {
+            slug: 'calgary-2024',
+            city: 'Calgary',
+            date: '2024-06-06',
+            venue: 'Whiskey Rose',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1724290477/bbq-recaps/2024-bbq-calgary/cgy-bbq-24_wh0rbj.jpg',
+            recapId: '9v15fvJYRyA',
+            cloudinaryFolder: 'bbq-recaps/2024-bbq-calgary',
+            photoCredits: [],
+            recapText: "",
+            videos: []
+        },
+        {
+            slug: 'toronto-2024',
+            city: 'Toronto',
+            date: '2024-07-27',
+            venue: 'The Bentway',
+            banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1724290539/bbq-recaps/2024-bbq-toronto/to-bbq-24_wlgqvz.jpg',
+            recapId: '',
+            cloudinaryFolder: 'bbq-recaps/2024-bbq-toronto',
+            photoCredits: [],
+            recapText: "",
+            videos: []
+        }
+
     ])
 
     return { events }

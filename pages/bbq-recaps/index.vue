@@ -1,6 +1,8 @@
 <script setup>
     const recapStore = useRecapStore()
-
+    const events = computed(() => {
+        return recapStore.events.slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+    })  
 </script>
 <template>
     <div class="flex flex-col min-h-[calc(100vh-58px)] items-start bg-[#f9f9f9] pb-8">
@@ -9,7 +11,7 @@
             <div class="text-lg mb-4">Relive the magic of Bastid's BBQ with these photo and video recaps.</div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 px-4 md:px-8 lg:px-28 gap-x-2 md:gap-x-8 gap-y-8 w-full">
-            <NuxtLink :to="'/bbq-recaps/' + show.slug" v-for="show in recapStore.events" :key="show.date" class="event flex flex-col cursor-pointer">
+            <NuxtLink :to="'/bbq-recaps/' + show.slug" v-for="show in events" :key="show.date" class="event flex flex-col cursor-pointer">
                 <div class="h-24 md:h-36 lg:h-48 w-full">
                     <img :src="show.banner" alt="" class="object-cover w-full h-full">
                 </div>
