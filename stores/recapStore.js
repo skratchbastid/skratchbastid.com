@@ -123,7 +123,7 @@ export const useRecapStore = defineStore('recaps', () => {
         {
             slug: 'austin-2024',
             city: 'Austin',
-            date: '03-15-2024',
+            date: '2024-03-15',
             venue: 'Inn Cahoots',
             banner: 'https://res.cloudinary.com/dmlnwhtt2/image/upload/v1724290322/bbq-recaps/2024-bbq-austin/austin-bbq-24_h2ofmj.jpg',
             recapId: 'XOK5wY49dbU',
