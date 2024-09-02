@@ -19,7 +19,7 @@
                                 {{ perk }}
                             </div>
                         </div>
-                        <a href="https://wp.skratchbastid.com/register/top-grillin/" class="flex items-center justify-center inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</a>
+                        <NuxtLink to="/join" class="flex items-center justify-center inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
                     </div>
                 </div>
             </div>
