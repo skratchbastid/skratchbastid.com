@@ -1,8 +1,8 @@
 <template>
-    <div class="max-w-2xl mx-auto px-4 py-8 text-center">
-      <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32 md:w-48 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
-      <h1 class="text-4xl font-bold mb-4">We're grilling at the speed of beats.</h1>
-      <p class="text-xl mb-8 underline">Join the Top Grillin' VIP crew.</p>
+    <div class="px-4 py-0 text-center">
+      <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
+      <h1 class="text-4xl font-bold mb-4">Join the Top Grillin' VIP Crew!</h1>
+      <p class="text-xl mb-8 underline hidden">Join the Top Grillin' VIP crew.</p>
   
       <div class="text-6xl font-bold mb-8">
         ${{ price }}<span class="text-2xl font-normal">/month</span>
@@ -14,7 +14,7 @@
           :min="0"
           :max="prices.length - 1"
           v-model="selectedIndex"
-          class="w-full"
+          class="w-full h-4 bg-gray-300 rounded-lg appearance-none cursor-pointer"
         >
         <div class="flex justify-between mt-2 text-sm text-gray-600">
           <span v-for="p in prices" :key="p">${{ p }}</span>
@@ -26,9 +26,9 @@
       <p v-else-if="price === 20" class="text-xl mb-8 text-blue-500">Amazing! You're a Top Grillin' legend!</p>
       <p v-else-if="price === 25" class="text-xl mb-8 text-blue-500">LET'S GOOOOOOO!!</p>
   
-      <button class="w-full text-xl py-6 rounded-full bg-black text-white hover:bg-gray-800">
+      <NuxtLink :to="joinUrl" class="block w-full text-xl py-6 rounded-full bg-black text-white hover:bg-gray-800 transition duration-300">
         Get access now
-      </button>
+      </NuxtLink>
     </div>
   </template>
   
@@ -39,35 +39,19 @@
   const selectedIndex = ref(1) // Default to $10 option
   
   const price = computed(() => prices[selectedIndex.value])
+  
+  const joinUrl = computed(() => {
+    const baseUrl = 'https://wp.skratchbastid.com/register/top-grillin-'
+    return `${baseUrl}${price.value}`
+  })
   </script>
   
   <style scoped>
-  input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    border-radius: 5px;  
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity .2s;
-  }
-  
   input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    background: #3b82f6;
-    cursor: pointer;
+    @apply appearance-none w-6 h-6 bg-blue-500 rounded-full cursor-pointer;
   }
   
   input[type="range"]::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #3b82f6;
-    cursor: pointer;
+    @apply w-6 h-6 bg-blue-500 rounded-full cursor-pointer;
   }
   </style>
