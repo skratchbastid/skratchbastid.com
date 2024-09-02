@@ -14,8 +14,8 @@
 
 <template>
     <div class="mb-6">
-        <TuesdayMorningCoffeePromo />
-        <div class="hidden flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
+        <!-- <TuesdayMorningCoffeePromo /> -->
+        <div class=" flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
@@ -27,7 +27,8 @@
                         <div class="absolute bottom-0 left-0 right-0 z-40 flex justify-center items-end">
                             <div class="bg-gradient-to-t from-black to-transparent py-6 px-4 w-full">
                                 <h2 class="text-white md:text-lg lg:text-xl mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
-                                <a href="#" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</a>
+                                <!-- <a href="#" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</a> -->
+                                <NuxtLink to="/videos/tuesday-morning-coffee-aug-27-2024" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</NuxtLink>
                             </div>
                         </div>
                     </div>

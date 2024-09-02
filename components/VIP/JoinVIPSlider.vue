@@ -24,7 +24,7 @@
       <p v-if="price === 5" class="text-xl mb-8 text-blue-500">Every bit helps. Thanks for your support!</p>
       <p v-else-if="price === 10" class="text-xl mb-8 text-blue-500">Choose what feels right. Thanks for your support!</p>
       <p v-else-if="price === 20" class="text-xl mb-8 text-blue-500">Amazing! You're a Top Grillin' legend!</p>
-      <p v-else-if="price === 25" class="text-xl mb-8 text-blue-500">LET'S GOOOOOOO!!</p>
+      <p v-else-if="price === 50" class="text-xl font-bold mb-8 text-blue-500">LET'S GOOOOOOO!!</p>
   
       <NuxtLink :to="joinUrl" class="block w-full text-xl py-6 rounded-full bg-black text-white hover:bg-gray-800 transition duration-300">
         Get access now
@@ -35,7 +35,7 @@
   <script setup>
   import { ref, computed } from 'vue'
   
-  const prices = [5, 10, 20, 25]
+  const prices = [5, 10, 20, 50]
   const selectedIndex = ref(1) // Default to $10 option
   
   const price = computed(() => prices[selectedIndex.value])
