@@ -2,7 +2,7 @@
     <div class="px-4 py-0 text-center">
       <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
       <h1 class="text-4xl font-bold mb-4">Join the Top Grillin' VIP Crew!</h1>
-      <p class="text-xl mb-8 underline hidden">Join the Top Grillin' VIP crew.</p>
+      <NuxtLink to="https://wp.skratchbastid.com/register/free-membership" class="text-xl inline-block mb-8 underline hover:text-blue-500 transition duration-300">Or sign up with a free account for limited access.</NuxtLink>
   
       <div class="text-6xl font-bold mb-8">
         ${{ price }}<span class="text-2xl font-normal">/month</span>
