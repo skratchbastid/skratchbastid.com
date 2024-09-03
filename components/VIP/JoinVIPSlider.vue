@@ -2,7 +2,7 @@
     <div class="px-4 py-0 text-center">
       <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
       <h1 class="text-4xl font-bold mb-4">Join the Top Grillin' VIP Crew!</h1>
-      <NuxtLink to="https://wp.skratchbastid.com/register/free-membership" class="text-lg inline-block mb-8 underline hover:text-blue-500 transition duration-300">Or sign up with a free account for limited access.</NuxtLink>
+      <NuxtLink to="https://wp.skratchbastid.com/register/top-grillin-free" class="text-lg inline-block mb-8 underline hover:text-blue-500 transition duration-300">Or sign up with a free account for limited access.</NuxtLink>
   
       <div class="text-6xl font-bold mb-8">
         ${{ price }}<span class="text-2xl font-normal">/month</span>
@@ -24,7 +24,7 @@
       <p v-if="price === 5" class="text-xl mb-8 text-blue-500">Every bit helps. Thanks for your support!</p>
       <p v-else-if="price === 10" class="text-xl mb-8 text-blue-500">Choose what feels right. Thanks for your support!</p>
       <p v-else-if="price === 20" class="text-xl mb-8 text-blue-500">Amazing! You're a Top Grillin' legend!</p>
-      <p v-else-if="price === 50" class="text-xl font-bold mb-8 text-blue-500">LET'S GOOOOOOO!!</p>
+      <p v-else-if="price === 50" class="text-xl font-bold mb-8 text-blue-500 rumble-text">LET'S GOOOOOOO!!</p>
   
       <NuxtLink :to="joinUrl" class="block w-full text-xl py-6 rounded-full bg-black text-white hover:bg-gray-800 transition duration-300">
         Get access now
@@ -53,5 +53,24 @@
   
   input[type="range"]::-moz-range-thumb {
     @apply w-6 h-6 bg-blue-500 rounded-full cursor-pointer;
+  }
+  
+  @keyframes rumble {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  
+  .rumble-text {
+    animation: rumble 0.5s infinite;
+    display: inline-block;
   }
   </style>
