@@ -1,11 +1,11 @@
 <template>
     <div class="px-4 py-0 text-center">
-      <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-32 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
-      <h1 class="text-4xl font-bold mb-4">Join the Top Grillin' VIP Crew!</h1>
-      <NuxtLink to="https://wp.skratchbastid.com/register/top-grillin-free" class="text-lg inline-block mb-8 underline hover:text-blue-500 transition duration-300">Or sign up with a free account for limited access.</NuxtLink>
+      <nuxt-img src="676e1aaa-f866-4d29-51cb-7e1caf664600/public" loading="lazy" class="w-24 md:w-32 mx-auto mb-6" alt="Top Grillin' VIP Crew Logo" />
+      <h1 class="text-2xl md:text-4xl font-extrabold mb-4">Join the Top Grillin' VIP Crew!</h1>
+      <NuxtLink to="https://wp.skratchbastid.com/register/top-grillin-free" class="md:text-lg inline-block mb-8 underline hover:text-blue-500 transition duration-300">Or sign up with a free account for limited access.</NuxtLink>
   
-      <div class="text-6xl font-bold mb-8">
-        ${{ price }}<span class="text-2xl font-normal">/month</span>
+      <div class="text-4xl md:text-6xl font-bold mb-8">
+        ${{ price }}<span class="text-xl md:text-2xl font-normal">/month</span>
       </div>
   
       <div class="mb-8 px-4">
@@ -22,7 +22,7 @@
       </div>
   
       <p v-if="price === 5" class="text-xl mb-8 text-blue-500">Every bit helps. Thanks for your support!</p>
-      <p v-else-if="price === 10" class="text-xl mb-8 text-blue-500">Choose what feels right. Thanks for your support!</p>
+      <p v-else-if="price === 10" class="text-xl mb-8 text-blue-500">Choose what feels right.</p>
       <p v-else-if="price === 20" class="text-xl mb-8 text-blue-500">Amazing! You're a Top Grillin' legend!</p>
       <p v-else-if="price === 50" class="text-xl font-bold mb-8 text-blue-500 rumble-text">LET'S GOOOOOOO!!</p>
   
