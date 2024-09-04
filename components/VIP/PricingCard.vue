@@ -6,8 +6,10 @@
     </div>
     <ul class="text-left mb-8 flex-grow">
       <li v-for="perk in plan.perks" :key="perk" class="flex items-start mb-2">
-        <CheckIcon class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1" />
-        <span>{{ perk }}</span>
+        <div class="w-6 h-6 flex-shrink-0 mr-2">
+          <CheckIcon class="w-full h-full text-green-500" />
+        </div>
+        <span class="flex-grow">{{ perk }}</span>
       </li>
     </ul>
     <NuxtLink :to="plan.buttonLink" 
