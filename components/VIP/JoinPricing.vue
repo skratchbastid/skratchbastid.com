@@ -13,7 +13,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { CheckIcon } from '@heroicons/vue/24/solid/index.js'
 import PricingCard from './PricingCard.vue'
 
 const plans = ref([

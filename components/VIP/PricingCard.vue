@@ -20,7 +20,6 @@
 </template>
 
 <script setup>
-import { CheckIcon } from '@heroicons/vue/24/solid/index.js'
 
 defineProps({
   plan: {
