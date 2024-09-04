@@ -7,7 +7,7 @@
     <ul class="text-left mb-8 flex-grow">
       <li v-for="perk in plan.perks" :key="perk" class="flex items-start mb-2">
         <div class="w-6 h-6 flex-shrink-0 mr-2">
-          <CheckIcon class="w-full h-full text-green-500" />
+          <Icon name="heroicons:check" class="w-full h-full text-green-500" />
         </div>
         <span class="flex-grow">{{ perk }}</span>
       </li>
