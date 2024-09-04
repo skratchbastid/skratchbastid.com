@@ -19,6 +19,7 @@
     "vue-gtag-next": "^1.14.0"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.5",
     "@nuxtjs/dayjs": "^1.4.1",
     "@pinia/nuxt": "^0.4.8",
     "add-to-calendar-button": "^1.18.6",

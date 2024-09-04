@@ -5,7 +5,8 @@
                  style="background-image: url('/img/join-bg.png');">
             </div>
             <div class="w-full max-w-2xl z-10">
-                <JoinVIPSlider />
+                <!-- <JoinVIPSlider /> -->
+                <JoinPricing />
             </div>
         </div>
     </div>
@@ -13,4 +14,5 @@
 
 <script setup>
 import JoinVIPSlider from '@/components/VIP/JoinVIPSlider.vue';
+import JoinPricing from '@/components/VIP/JoinPricing.vue';
 </script>

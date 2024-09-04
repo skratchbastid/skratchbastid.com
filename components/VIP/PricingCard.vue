@@ -1,0 +1,29 @@
+<template>
+  <div :class="['flex-1 rounded-lg shadow-lg p-6 flex flex-col', plan.theme.bg, plan.theme.text]">
+    <h3 class="text-xl font-bold mb-4">{{ plan.name }}</h3>
+    <div class="text-4xl font-bold mb-4">
+      ${{ plan.price }}<span class="text-xl font-normal">/month</span>
+    </div>
+    <ul class="text-left mb-8 flex-grow">
+      <li v-for="perk in plan.perks" :key="perk" class="flex items-start mb-2">
+        <CheckIcon class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-1" />
+        <span>{{ perk }}</span>
+      </li>
+    </ul>
+    <NuxtLink :to="plan.buttonLink" 
+      :class="['block w-full text-lg py-3 rounded-full transition duration-300', plan.theme.button]">
+      {{ plan.buttonText }}
+    </NuxtLink>
+  </div>
+</template>
+
+<script setup>
+import { CheckIcon } from '@heroicons/vue/24/solid/index.js'
+
+defineProps({
+  plan: {
+    type: Object,
+    required: true
+  }
+})
+</script>

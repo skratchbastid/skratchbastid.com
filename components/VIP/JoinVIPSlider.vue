@@ -41,8 +41,8 @@
   const price = computed(() => prices[selectedIndex.value])
   
   const joinUrl = computed(() => {
-    const baseUrl = 'https://wp.skratchbastid.com/register/top-grillin-'
-    return `${baseUrl}${price.value}`
+    const baseUrl = 'https://wp.skratchbastid.com/register/top-grillin'
+    return price.value === 10 ? baseUrl : `${baseUrl}-${price.value}`
   })
   </script>
   
