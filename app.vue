@@ -76,8 +76,8 @@ useState('mixes', () => mixes)
 
 <template>
   <div :class="darkMode == true ? 'dark' : ''" class="min-h-screen">
+    <NuxtLoadingIndicator />
     <NuxtLayout>
-      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
     <!-- <TestingDock v-if="config.public.nodeEnv === 'development'" /> -->

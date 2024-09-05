@@ -15,7 +15,11 @@
 <template>
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
-        <div class=" flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12">
+        <div class="flex flex-col md:flex-row py-4 gap-4 md:gap-6 px-2 md:px-12 relative">
+            <!-- Move this div to be the first child and add a lower z-index -->
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-[-1]" 
+                 style="background-image: url('/img/join-bg.png');">
+            </div>
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
                 <div class="w-full aspect-video relative rounded-lg overflow-hidden">
                     <img class="w-full m-auto absolute z-10" 
@@ -34,9 +38,9 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/3 rounded-xl flex flex-col items-center justify-center">
-                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black">
-                    <a href="https://shop.skratchbastid.com" target="_blank" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</a>
+            <div class="w-full md:w-1/3 rounded-xl flex flex-col items-center justify-center relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black z-10">
+                    <NuxtLink to="https://shop.skratchbastid.com" target="_blank" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Store</NuxtLink>
                     <NuxtLink to="/rotw" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">ROTW</NuxtLink>
                     <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">Shows</NuxtLink>
                     <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4 py-1">BBQ Recaps</NuxtLink>
@@ -46,14 +50,14 @@
             </div>
         </div>
         <UpcomingShows />
-        <div class="hidden grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
+        <!-- <div class="grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
             <a href="https://shop.skratchbastid.com" target="_blank" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Store</a>
             <NuxtLink to="/rotw" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">ROTW</NuxtLink>
             <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Shows</NuxtLink>
             <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">BBQ Recaps</NuxtLink>
             <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Videos</NuxtLink>
             <NuxtLink to="/mixes" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Mixes</NuxtLink>
-        </div>
+        </div> -->
         <SongsWeListenedTo />
         <TopGrillinPromo v-if="!userIsVip" />
         

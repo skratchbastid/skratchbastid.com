@@ -13,13 +13,13 @@
     <ul class="text-left mb-8 flex-grow">
       <li v-for="perk in plan.perks" :key="perk" class="flex items-start mb-2">
         <div class="w-6 h-6 flex-shrink-0 mr-2">
-          <Icon name="heroicons:check-circle-solid" class="w-full h-full text-green-500" />
+          <Icon name="heroicons:check-circle-solid" :class="['w-full h-full', plan.name === 'Free Access' ? 'text-green-600' : 'text-green-300']" />
         </div>
         <span class="flex-grow">{{ perk }}</span>
       </li>
     </ul>
     <NuxtLink :to="plan.buttonLink" 
-      :class="['block text-center text-lg py-3 rounded-full transition duration-300 ease-in-out transform hover:scale-105', plan.theme.button]">
+      :class="['block w-full text-lg py-3 rounded-full transition duration-300', plan.theme.button]">
       {{ plan.buttonText }}
     </NuxtLink>
   </div>
