@@ -1,6 +1,9 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
+import { useRuntimeConfig } from '#app'
+
 const userStore = useUserStore()
+const config = useRuntimeConfig()
 
 const darkMode = ref(false)
 const showListings = ref([])
@@ -50,10 +53,16 @@ useState('mixes', () => mixes)
   shows.value = filterAndSortEventsByDate(data.value?.events?.nodes)  
 
 
-  onNuxtReady(() => {
-    checkForLogin().then((result) => {
+  onNuxtReady(async () => {
+    try {
+      const result = await checkForLogin()
+      console.log('Login result:', result)
       userStore.setUser(result)
-    })
+      console.log('User set in store:', userStore.user)
+    } catch (error) {
+      console.error('Error checking login:', error)
+    }
+    
     document.addEventListener('keyup', function(e) {
       if (e.key === 'd') {
         return
@@ -71,6 +80,7 @@ useState('mixes', () => mixes)
       <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
+    <!-- <TestingDock v-if="config.public.nodeEnv === 'development'" /> -->
   </div>
 </template>
 

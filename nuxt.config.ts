@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
       public: {
           google_analytics_id: 'G-GTXBY1X48E',
-          production_mode: isProduction
+          production_mode: isProduction,
+          nodeEnv: process.env.NODE_ENV
       }
   },
 

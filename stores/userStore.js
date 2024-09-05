@@ -5,14 +5,26 @@ export const useUserStore = defineStore('user', () => {
     const userIsVip = ref(false)
 
     function setUser(newUser) {
-        user.value = newUser
+        user.value = {
+            ...newUser,
+            subscriptions: Array.isArray(newUser.subscriptions) 
+                ? newUser.subscriptions 
+                : (newUser.subscriptions ? [newUser.subscriptions] : [])
+        }
+        userIsVip.value = isVip()
     }
 
     function isVip() {
-        const vip = user?.value?.subscriptions?.includes('64') ? true : false
-        const admin = user?.value?.roles?.nodes?.some((role) => role.name === 'administrator') ? true : false
+        const vip = user.value.subscriptions?.includes('64') ?? false
+        const admin = user.value.roles?.nodes?.some((role) => role.name === 'administrator') ?? false
         return vip || admin
     }
 
-    return { user, userIsVip, setUser, isVip }
+    const membershipType = computed(() => {
+        if (!user.value.id) return 'guest'
+        if (isVip()) return 'vip'
+        return 'free'
+    })
+
+    return { user, userIsVip, setUser, isVip, membershipType }
 })

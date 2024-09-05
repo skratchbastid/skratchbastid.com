@@ -19,7 +19,7 @@
       </li>
     </ul>
     <NuxtLink :to="plan.buttonLink" 
-      :class="['block w-full text-lg py-3 rounded-full transition duration-300', plan.theme.button]">
+      :class="['block text-center text-lg py-3 rounded-full transition duration-300 ease-in-out transform hover:scale-105', plan.theme.button]">
       {{ plan.buttonText }}
     </NuxtLink>
   </div>

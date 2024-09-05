@@ -1,6 +1,7 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
     import { useUserStore } from '@/stores/userStore'
+    import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'  // Add this import
     
     definePageMeta({
         layout: 'vip'
@@ -33,7 +34,8 @@
 
         <div>
             <div class="py-8">
-                <VipHeroCta v-if="!isVip" />
+                <FreeMemberCta v-if="user?.id && !isVip" />
+                <VipHeroCta v-if="!user?.id" />
                 <LatestStreams class="mb-10" />
                 <!-- <DeepDives class="mb-10" /> -->
             </div>

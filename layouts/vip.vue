@@ -45,7 +45,7 @@
           </div>
         </div>
         <div v-else>
-            <NuxtLink to="https://wp.skratchbastid.com/register/top-grillin/" class="mr-3 bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Signup</NuxtLink>
+            <NuxtLink to="/join" class="mr-3 bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Signup</NuxtLink>
             <NuxtLink to="/login" class="border border-slate-800 dark:bg-white text-slate-800 dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Login</NuxtLink>
         </div>
       </div>
