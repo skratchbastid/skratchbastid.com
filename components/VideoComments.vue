@@ -39,7 +39,7 @@ query getComments($contentId: ID!) {
 }`
 
 const { data } = await useAsyncQuery(commentsQuery, { contentId: props.videoId })
-comments.value = data.value.comments.nodes
+comments.value = data.value?.comments?.nodes || []
 
 const submitCommentMutation = gql`
 mutation CREATE_COMMENT($commentOn: Int!, $content: String!, $author: String!) {

@@ -13,7 +13,7 @@
                     endCursor
                     hasNextPage
                 }
-            }
+            }       
         }`
     
     const { result, fetchMore, loading, error, onResult } = useQuery(streamsQuery)

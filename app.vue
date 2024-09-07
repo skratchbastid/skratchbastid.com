@@ -52,26 +52,8 @@ useState('mixes', () => mixes)
   const { data } = await useAsyncQuery(showsQuery)
   shows.value = filterAndSortEventsByDate(data.value?.events?.nodes)  
 
-
-  onNuxtReady(async () => {
-    try {
-      const result = await checkForLogin()
-      console.log('Login result:', result)
-      userStore.setUser(result)
-      console.log('User set in store:', userStore.user)
-    } catch (error) {
-      console.error('Error checking login:', error)
-    }
-    
-    document.addEventListener('keyup', function(e) {
-      if (e.key === 'd') {
-        return
-        darkMode.value = !darkMode.value
-      }
-    })
-  })
-
-
+  // Remove the initializeAuth function and the app:mounted hook
+  // The global middleware will handle the auth check
 </script>
 
 <template>

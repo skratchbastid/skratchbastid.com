@@ -22,7 +22,7 @@ const plans = ref([
     perks: [
       'New Stream Every Tuesday',
       'Access to the Latest Stream',
-      'WhatsApp Community Access'
+      'General WhatsApp Broadcast Channel'
     ],
     buttonText: 'Sign Up Free',
     buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-free',
@@ -38,6 +38,7 @@ const plans = ref([
     perks: [
       'Access to the full archive of Twitch streams',
       'VIP-only streams',
+      'Full WhatsApp Community Access',
       '10% off entire online store',
       'Pre-sale and first access to new merch drops',
       'VIP Backstage access at Bastid\s BBQ events',

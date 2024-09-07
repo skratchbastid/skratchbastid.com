@@ -1,7 +1,6 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
-    const streams = ref([])
-    const loading = ref(true)
+    import { useVideos } from '~/composables/useVideos'
 
     const props = defineProps({
         excludeId: {
@@ -24,55 +23,11 @@
         }
     })
 
-    const streamsQuery = gql`
-        query getStreams {
-            streams(first: 10, where: {
-                taxQuery: {
-                taxArray: [
-                    {
-                    terms: ["Deep Dive"],
-                    taxonomy: STREAMTYPE,
-                    operator: NOT_IN,
-                    field: NAME
-                    }
-                ]
-            }
-            }) {
-                nodes {
-                id
-                databaseId
-                title
-                vimeoID
-                slug
-                imageLink
-                date
-                streamTypes {
-                    edges {
-                        node {
-                            id
-                            name
-                        }
-                    }
-                }
-                }
-                pageInfo {
-                endCursor
-                hasNextPage
-                }
-            }
-        }`
-    
-
-    // const { result, loading, error, onResult } = useQuery(streamsQuery)
-    // onResult((result) => {
-    //     streams.value = result.data.episodes.nodes
-    // })
-    const { data } = await useAsyncQuery(streamsQuery)
-    streams.value = data.value.streams.nodes
+    const { latestStreams: streams, loading, error } = useVideos()
 
     const filteredStreams = computed(() => {
         if (props.excludeId) {
-            return streams?.value.filter((video) => video.id !== props.excludeId)
+            return streams.value.filter((video) => video.id !== props.excludeId)
         } else {
             return streams.value
         }
@@ -110,7 +65,6 @@
         </div>
     </div>
 </template>
-
 <style scoped>
 @media (max-width: 768px) {
     .vue-horizontal:deep(.v-hl-btn) {

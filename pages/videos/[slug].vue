@@ -1,6 +1,7 @@
 <script setup>
     import { vueVimeoPlayer } from 'vue-vimeo-player'
     import { useUserStore } from '@/stores/userStore'
+    import { useVideos } from '@/composables/useVideos'
 
     definePageMeta({
         layout: 'vip'
@@ -11,8 +12,14 @@
     })
 
     const userStore = useUserStore()
-    const user = computed(() => userStore.user)
     const isVip = computed(() => userStore.isVip())
+
+    const { latestStreams } = useVideos()
+    const isLatestStream = computed(() => {
+        return latestStreams.value.length > 0 && latestStreams.value[0].id === video.value?.id
+    })
+
+    const canViewVideo = computed(() => (isVip.value || isLatestStream.value) && userStore.user?.id)
 
     const route = useRoute()
     const slug = route.params.slug
@@ -38,14 +45,6 @@
                 noMicMP3Link
             }
         }`
-    
-    // const { result } = useQuery(videoQuery, { slug })
-    // video.value = result.episode
-    
-    // const { result, loading, error, onResult } = useQuery(videoQuery, { slug })
-    // onResult((result) => {
-    //     video.value = result.data.episode
-    // })
 
     const { data } = await useAsyncQuery(videoQuery, { slug })
     video.value = data.value.stream
@@ -85,7 +84,7 @@
                     <Icon name="zondicons:arrow-left" class="text-white" size="20" />
                 </NuxtLink>
             </div>
-            <div v-if="isVip" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
+            <div v-if="canViewVideo" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
                 <div v-show="video">
                     <client-only v-if="video?.vimeoID">
                         <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.vimeoID" :options="options" @ready="onPlayerReady" />

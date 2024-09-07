@@ -1,5 +1,7 @@
-import { useRouter } from 'vue-router'
 import { useUserStore } from '~/stores/userStore'
+import { useQuery } from '@vue/apollo-composable'
+import { ref } from 'vue'
+
 const userQuery = gql`
     query getUser {
         viewer {
@@ -24,19 +26,25 @@ const userQuery = gql`
 `
 
 export async function checkForLogin() {
-    try {
-        const { data } = await useAsyncQuery(userQuery)
-        let user = {}
-        if (data?.value?.viewer) {
-            user = data.value.viewer
-        }
-        return user
-    } catch(err) {
-        console.log("Error: ", err)
-        return null
-    }
-  }
+    const user = ref(null)
+    const { onResult, onError } = useQuery(userQuery, null, { fetchPolicy: 'network-only' })
 
+    return new Promise((resolve, reject) => {
+        onResult((result) => {
+            if (result.data?.viewer) {
+                user.value = result.data.viewer
+                resolve(user.value)
+            } else {
+                resolve(null)
+            }
+        })
+
+        onError((error) => {
+            console.error("Error checking login:", error)
+            reject(error)
+        })
+    })
+}
 
 // export async function login(email, password, url) {
 //     const currentUser = useState('user')
