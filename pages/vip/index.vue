@@ -30,7 +30,7 @@
                     <FreeMemberCta v-if="isClient && user?.id && !isVip" />
                     <VipHeroCta v-if="isClient && !user?.id" />
                 </client-only>
-                <LatestStreams class="mb-10" />
+                <LatestStreams :excludeLatest="true" class="mb-10" />
             </div>
             <SwltSeries class="mb-10 "/>
             <div class="mb-12">

@@ -1,24 +1,19 @@
 <script setup>
+import { useVideos } from '@/composables/useVideos'
+
 const props = defineProps({
   video: {
     type: Object,
-    required: true
+    required: false
   }
 })
 
-const video = ref(props.video)
-
-const timeAgo = computed(() => {
-  // const now = new Date()
-  // const diff = now - props.video.date
-  // const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-  // return `${days} ${days === 1 ? 'day' : 'days'} ago`
-  return '1 day ago'
-})
+const { latestStreams } = useVideos()
+const video = computed(() => props.video || (latestStreams.value && latestStreams.value[0]))
 </script>
 
 <template>
-  <div class="w-full aspect-video relative rounded-lg overflow-hidden">
+  <div v-if="video" class="w-full aspect-video relative rounded-lg overflow-hidden">
     <img class="w-full h-full object-cover absolute z-10"
       :src="video.imageLink" 
       alt="Latest stream thumbnail">

@@ -1,11 +1,12 @@
 <script setup>
-    import VueHorizontal from "vue-horizontal"
-    
+    import { useQuery } from '@vue/apollo-composable'
+    import { gql } from 'graphql-tag'
+
     const videos = ref([])
     const pageInfo = ref(null)
-    let loadingMore = false
+    const loadingMore = ref(false)
 
-    const { result, loading, error, fetchMore, onResult } = useQuery(gql`
+    const VIDEOS_QUERY = gql`
         query getStreams($cursor: String) {
             streams(first: 36, after: $cursor) {
                 nodes {
@@ -13,6 +14,7 @@
                 databaseId
                 title
                 vimeoID
+                cloudflareVideoID
                 slug
                 imageLink
                 vimeoThumbnail
@@ -31,14 +33,15 @@
                     hasNextPage
                 }
             }
-        }`)
+        }
+    `
 
+    const { result, loading, error, fetchMore } = useQuery(VIDEOS_QUERY)
 
-    onResult(({ data }) => {
-        if (data && data.streams) {
-            videos.value = [...videos.value, ...data.streams.nodes]
+    watch(result, (data) => {
+        if (data?.streams) {
+            videos.value = data.streams.nodes
             pageInfo.value = data.streams.pageInfo
-            loadingMore = false // Fetch operation is complete
         }
     })
 
@@ -54,41 +57,38 @@
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
         // Check if the user has scrolled near the bottom of the page
-        if (clientHeight + scrollTop >= scrollHeight - 600 && !loadingMore) {
-            loadingMore = true // Fetch operation is in progress
-            // If the pageInfo indicates there are more pages to load, load them
-            if (pageInfo.value && pageInfo.value.hasNextPage) {
-                // Call fetchMore to fetch the next page, updating the pageInfo
-                fetchMore({
-                    variables: {
-                        cursor: pageInfo.value.endCursor
-                    },
-                    updateQuery: (previousResult, { fetchMoreResult }) => {
-                        const newVideos = fetchMoreResult.streams.nodes
-                        pageInfo.value = fetchMoreResult.streams.pageInfo
-                        console.log(newVideos)
-
-                        return {
-                            streams: {
-                                __typename: previousResult.streams.__typename,
-                                nodes: [...newVideos],
-                                pageInfo: fetchMoreResult.streams.pageInfo
-                            }
+        if (clientHeight + scrollTop >= scrollHeight - 600 && !loadingMore.value && pageInfo.value?.hasNextPage) {
+            loadingMore.value = true
+            fetchMore({
+                variables: {
+                    cursor: pageInfo.value.endCursor
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                    if (!fetchMoreResult) return prev
+                    return {
+                        streams: {
+                            __typename: prev.streams.__typename,
+                            nodes: [...prev.streams.nodes, ...fetchMoreResult.streams.nodes],
+                            pageInfo: fetchMoreResult.streams.pageInfo
                         }
                     }
-                })
-            }
+                }
+            }).finally(() => {
+                loadingMore.value = false
+            })
         }
     }
     const imageUrl = (video) => {
-        return video.vimeoThumbnail || video.imageLink || `https://videodelivery.net/${video.acm_fields.cloudflareVideoID}}/thumbnails/thumbnail.jpg`
+        return video.vimeoThumbnail || video.imageLink || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
     }
 
 </script>
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
-        <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos">
-            <img :src="imageUrl(video)" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" />
+    <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
+    <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
+        <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos" :key="video.id">
+            <img :src="imageUrl(video)" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" :alt="video.title" />
             <div class="font-light mt-2 truncate">{{ video.title }}</div>
             <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
         </NuxtLink>

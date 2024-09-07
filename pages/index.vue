@@ -21,22 +21,7 @@
                  style="background-image: url('/img/join-bg.png');">
             </div>
             <div class="w-full md:w-2/3 rounded-xl md:py-12 flex flex-col items-center relative">
-                <div class="w-full aspect-video relative rounded-lg overflow-hidden">
-                    <img class="w-full m-auto absolute z-10" 
-                        src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/d4faf854-dced-4665-82a5-4513fc9409eb.gif?ClientID=vimeo-core-prod&Date=1695813531&Signature=6a128256b5aef5eeeb2c4fa34871633bf8734389" alt="">
-                    <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>
-                    <div class="absolute inset-0 z-30 flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-transparent"></div>
-                        <nuxt-img provider="cloudflare" src="1b473f4e-e736-4e7c-d024-2c7118740100/w=550" class="w-36 md:w-48 lg:w-72 rotate-[-3deg] z-10 p-4" />
-                        <div class="absolute bottom-0 left-0 right-0 z-40 flex justify-center items-end">
-                            <div class="bg-gradient-to-t from-black to-transparent py-6 px-4 w-full">
-                                <h2 class="text-white md:text-lg lg:text-xl mb-2"><span class="font-bold">Latest Stream:</span> <span class="font-light">4 days ago</span></h2>
-                                <!-- <a href="#" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</a> -->
-                                <NuxtLink to="/videos/tuesday-morning-coffee-aug-27-2024" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">WATCH THE REPLAY</NuxtLink>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <FeaturedVideo />
             </div>
             <div class="w-full md:w-1/3 rounded-xl flex flex-col items-center justify-center relative z-10">
                 <div class="grid grid-cols-2 md:grid-cols-1 items-center justify-center gap-x-6 w-full gap-y-4 flex-wrap text-center px-4 text-base md:text-lg lg:text-2xl uppercase font-black z-10">

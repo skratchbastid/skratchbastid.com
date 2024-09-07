@@ -20,17 +20,24 @@
             type: Boolean,
             required: false,
             default: false
+        },
+        excludeLatest: {
+            type: Boolean,
+            default: false
         }
     })
 
     const { latestStreams: streams, loading, error } = useVideos()
 
     const filteredStreams = computed(() => {
+        let result = streams.value
         if (props.excludeId) {
-            return streams.value.filter((video) => video.id !== props.excludeId)
-        } else {
-            return streams.value
+            result = result.filter((video) => video.id !== props.excludeId)
         }
+        if (props.excludeLatest && result.length > 0) {
+            result = result.slice(1)
+        }
+        return result
     })
     
     

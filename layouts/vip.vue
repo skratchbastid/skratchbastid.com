@@ -1,5 +1,7 @@
 <script setup>
   import { useUserStore } from '@/stores/userStore'
+  import { ref, computed } from 'vue'
+
   const userStore = useUserStore()
   const user = computed(() => userStore.user)
   const userIsVip = computed(() => userStore.userIsVip)
@@ -14,32 +16,40 @@
     menuVisible.value = false
     logout()
   }
+
+  // Add this to ensure client-side only rendering
+  const isClient = ref(false)
+  onMounted(() => {
+    isClient.value = true
+  })
 </script>
 
 <template>
     <div class="h-[58px] z-50 bg-white dark:bg-gray-900 flex justify-center items-center sticky top-0 w-full border-b dark:border-b-0">
       <div class="w-[85%] mx-auto flex h-[58px] items-center justify-between">
         <NuxtLink to="/" class="h-[70%]"><img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" class="h-full" /></NuxtLink>
-        <div v-if="user?.id" class="relative flex justify-center items-center">
-          <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
-          <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
-            <ul class="flex flex-col gap-y-2">
-              <li>
-                <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
-              </li>
-              <li>
-                <NuxtLink to="/profile" @click.native="menuVisible = false">My Profile</NuxtLink>
-              </li>
-              <li>
-                <a href="#" @click.prevent="logoutUserOut">Logout</a>
-              </li>
-            </ul>
+        <client-only>
+          <div v-if="isClient && user?.id" class="relative flex justify-center items-center">
+            <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
+            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
+              <ul class="flex flex-col gap-y-2">
+                <li>
+                  <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
+                </li>
+                <li>
+                  <NuxtLink to="/profile" @click.native="menuVisible = false">My Profile</NuxtLink>
+                </li>
+                <li>
+                  <a href="#" @click.prevent="logoutUserOut">Logout</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div v-else>
+          <div v-else-if="isClient">
             <NuxtLink to="/join" class="mr-3 bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Signup</NuxtLink>
             <NuxtLink to="/login" class="border border-slate-800 dark:bg-white text-slate-800 dark:text-slate-800 text-xs font-semibold px-7 py-2 rounded">Login</NuxtLink>
-        </div>
+          </div>
+        </client-only>
       </div>
     </div>
     <div class="dark:bg-gray-900 dark:text-white min-h-[95vh]">

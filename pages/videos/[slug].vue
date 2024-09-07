@@ -89,9 +89,9 @@
                     <client-only v-if="video?.vimeoID">
                         <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.vimeoID" :options="options" @ready="onPlayerReady" />
                     </client-only>
-                    <div v-else-if="video?.cloudflareVideoID">
+                    <client-only v-else-if="video?.cloudflareVideoID">
                         <CloudflareVideoPlayer :videoId="video.cloudflareVideoID" />
-                    </div>
+                    </client-only>
                 </div>
             </div>
             <div v-else>
