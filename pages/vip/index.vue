@@ -1,6 +1,7 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
     import { useUserStore } from '@/stores/userStore'
+    import { storeToRefs } from 'pinia'
     import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'
     import VipGreeting from '@/components/VIP/VipGreeting.vue'  // Add this import
 
@@ -9,7 +10,7 @@
     })
 
     const userStore = useUserStore()
-    const user = computed(() => userStore.user)
+    const { user, membershipType } = storeToRefs(userStore)
     const isVip = computed(() => userStore.isVip())
 
     const streams = ref()
@@ -32,7 +33,7 @@
                     <FreeMemberCta v-else-if="isClient && user?.id && !isVip" />
                     <VipHeroCta v-else-if="isClient && !user?.id" />
                 </client-only>
-                <LatestStreams :excludeLatest="user?.id ? true : false" class="mb-10" />
+                <LatestStreams :excludeLatest="membershipType == 'free' ? true : false" class="mb-10" />
             </div>
             <SwltSeries class="mb-10 "/>
             <div class="mb-12">

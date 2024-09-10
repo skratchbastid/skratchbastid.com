@@ -1,9 +1,13 @@
 <script setup>
 import VueHorizontal from "vue-horizontal"
+import { storeToRefs } from 'pinia'
 import { LockIcon } from 'lucide-vue-next'
 import VipUpgradeModal from './VipUpgradeModal.vue'
 
 const userStore = useUserStore()
+const { user, membershipType } = storeToRefs(userStore)
+const isVip = computed(() => membershipType.value === 'vip')
+
 const { latestStreams: streams, loading, error } = useVideos()
 
 // Add this line to inherit attributes
@@ -45,7 +49,6 @@ const filteredStreams = computed(() => {
     return result
 })
 
-const isVip = computed(() => userStore.membershipType === 'vip')
 const showModal = ref(false)
 const hoveredVideo = ref(null)
 
@@ -61,7 +64,7 @@ const closeModal = () => {
     showModal.value = false
 }
 
-const LinkComponent = computed(() => isVip.value ? resolveComponent('NuxtLink') : 'div')
+const LinkComponent = computed(() => membershipType?.value === 'vip' ? resolveComponent('NuxtLink') : 'div')
 
 const handleClick = (event, video) => {
     if (!isVip.value) {
