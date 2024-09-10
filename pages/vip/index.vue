@@ -3,7 +3,8 @@
     import { useUserStore } from '@/stores/userStore'
     import { storeToRefs } from 'pinia'
     import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'
-    import VipGreeting from '@/components/VIP/VipGreeting.vue'  // Add this import
+    import VipGreeting from '@/components/VIP/VipGreeting.vue'
+    import MixesSlider from '@/components/MixesSlider.vue'
 
     definePageMeta({
         layout: 'vip'
@@ -26,34 +27,25 @@
 <template>
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
         <div>
-            <div class="py-8">
-                <!-- Wrap user-dependent components with client-only -->
+            <div class="py-10">
                 <client-only>
-                    <VipGreeting v-if="isClient && isVip" />
-                    <FreeMemberCta v-else-if="isClient && user?.id && !isVip" />
-                    <VipHeroCta v-else-if="isClient && !user?.id" />
+                    <VipGreeting class="my-10" v-if="isClient && isVip" />
+                    <FreeMemberCta class="my-10" v-else-if="isClient && user?.id && !isVip" />
+                    <VipHeroCta class="my-10" v-else-if="isClient && !user?.id" />
+                    <LatestStreams
+                      class="my-10"
+                      :excludeLatest="membershipType === 'free'"
+                    />
+                    <DeepDives class="my-10" />
+                    <SwltSeries class="my-10" />
+                    <MixesSlider class="my-10" />
                 </client-only>
-                <LatestStreams :excludeLatest="membershipType == 'free' ? true : false" class="mb-10" />
             </div>
-            <SwltSeries class="mb-10 "/>
-            <div class="mb-12">
-                <div class="mb-2 ml-4 md:mx-10">
-                    <h2 class="text-lg font-extrabold">Mixes</h2>
-                </div>
-                <vue-horizontal class="ml-4 md:mx-10">
-                    <NuxtLink v-for="mix in mixes" :key="mix.id" :to="mix.link" target="_blank" class="w-3/5 md:w-1/5 aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4">
-                        <img :src="mix.image" alt="">
-                    </NuxtLink>
-                </vue-horizontal>
-            </div>
+            
         </div>
     </div>
 </template>
 
 <style scoped>
-@media (max-width: 768px) {
-    .vue-horizontal:deep(.v-hl-btn) {
-        display: none !important;
-    }
-}
+/* You can remove the vue-horizontal styles from here if they're not needed for other elements */
 </style>

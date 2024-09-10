@@ -33,7 +33,7 @@ const props = defineProps({
         default: false
     },
     excludeLatest: {
-        type: Boolean,
+        type: [Boolean, String],
         default: false
     }
 })
@@ -43,7 +43,7 @@ const filteredStreams = computed(() => {
     if (props.excludeId) {
         result = result.filter((video) => video.id !== props.excludeId)
     }
-    if (props.excludeLatest && result.length > 0) {
+    if ((props.excludeLatest === true || props.excludeLatest === 'true') && result.length > 0) {
         result = result.slice(1)
     }
     return result
@@ -109,8 +109,8 @@ const handleClick = (event, video) => {
                             <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
                                 <LockIcon class="text-white mb-2" :size="24" />
                                 <p class="text-white text-center text-sm px-2 no-select font-semibold">
-                                    <span v-if="membershipType === 'free'">Upgrade membership to unlock</span>
-                                    <span v-else>Login or create an account to unlock</span>
+                                    <span v-if="membershipType === 'free'" class="cursor-pointer">Upgrade membership to unlock</span>
+                                    <span v-else class="cursor-pointer">Login or create an account to unlock</span>
                                 </p>
                             </div>
                         </div>
@@ -120,14 +120,15 @@ const handleClick = (event, video) => {
                 </component>
             </vue-horizontal>
             <div v-else>
-                <div
+                <component
+                    :is="LinkComponent"
                     v-for="video in filteredStreams" 
                     :key="video.id"
-                    class="flex flex-col w-full mb-4"
-                    @mouseenter="hoveredVideo = video"
-                    @mouseleave="hoveredVideo = null"
+                    :to="isVip ? `/videos/${video.slug}` : undefined"
+                    class="flex flex-col w-full mb-4 group cursor-pointer"
+                    @click="handleClick($event, video)"
                 >
-                    <div class="flex gap-3 relative group">
+                    <div class="flex gap-3 relative">
                         <div class="w-1/2 relative overflow-hidden rounded-lg">
                             <img 
                                 :src="video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`"
@@ -142,7 +143,10 @@ const handleClick = (event, video) => {
                                 <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
                                 <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
                                     <LockIcon class="text-white mb-2" :size="24" />
-                                    <p class="text-white text-center text-sm px-2 no-select font-semibold">Upgrade membership to unlock</p>
+                                    <p class="text-white text-center text-sm px-2 no-select font-semibold">
+                                        <span v-if="membershipType === 'free'" class="cursor-pointer">Upgrade membership to unlock</span>
+                                        <span v-else class="cursor-pointer">Login or create an account to unlock</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +155,7 @@ const handleClick = (event, video) => {
                             <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </div>
                     </div>
-                </div>
+                </component>
             </div>
         </div>
 

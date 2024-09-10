@@ -10,19 +10,25 @@ const mixes = [
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/b/9/2/f/ce3f-253a-434b-90ea-ec4201371746.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2014/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/3/f/d/d/ca63-ec0c-4f44-af85-67eee327196f.jpeg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2013/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/4/f/8/bc9c-5053-4cc1-9261-f72229fe24a0.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2012/'}
-    
 ]
-
 </script>
+
 <template>
     <div>
         <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
             Songs We Listened To A Lot In...
         </div>
         <vue-horizontal class="ml-4 md:mx-10">
-            <NuxtLink :to="mix.link" :target="index === 0 ? '' : '_blank'" v-for="(mix, index) in mixes"
-                class="flex flex-col w-3/5 md:w-1/4 mr-2 md:mr-4"> 
-                <img :src="mix.image" class="rounded-lg drop-shadow-lg aspect-square" />
+            <NuxtLink 
+                v-for="(mix, index) in mixes" 
+                :key="index"
+                :to="mix.link" 
+                :target="index === 0 ? '' : '_blank'"
+                class="flex flex-col w-3/5 md:w-1/4 mr-2 md:mr-4 mb-8 hover-effect-container"
+            >
+                <div class="hover-effect">
+                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
+                </div>
             </NuxtLink>
         </vue-horizontal>
     </div>
@@ -33,5 +39,18 @@ const mixes = [
     .vue-horizontal:deep(.v-hl-btn) {
         display: none !important;
     }
+}
+
+.hover-effect-container {
+    overflow: hidden;
+    border-radius: 0.5rem; /* This matches the rounded-lg class */
+}
+
+.hover-effect {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-effect-container:hover .hover-effect {
+    transform: scale(1.05) translateY(-2.5%);
 }
 </style>

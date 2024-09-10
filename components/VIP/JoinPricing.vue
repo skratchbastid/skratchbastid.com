@@ -8,6 +8,9 @@
         :plan="plan"
       />
     </div>
+    <p class="mt-8 text-lg">
+      Already have an account? <NuxtLink :to="'/login'" class="text-blue-600 hover:underline">Sign in here!</NuxtLink>
+    </p>
   </div>
 </template>
 

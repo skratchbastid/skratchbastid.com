@@ -1,5 +1,6 @@
 <script setup>
 import { useVideos } from '@/composables/useVideos'
+import { storeToRefs } from 'pinia'
 
 const props = defineProps({
   video: {
@@ -10,6 +11,9 @@ const props = defineProps({
 
 const { latestStreams } = useVideos()
 const video = computed(() => props.video || (latestStreams.value && latestStreams.value[0]))
+
+const userStore = useUserStore()
+const { user, membershipType } = storeToRefs(userStore)
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const video = computed(() => props.video || (latestStreams.value && latestStream
             <span class="font-light ml-2">{{ $dayjs.utc(video.date).fromNow() }}</span>
           </h2>
           <NuxtLink :to="'/videos/' + video.slug" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">
-            WATCH FOR FREE
+            {{ membershipType === 'vip' ? 'WATCH NOW' : 'WATCH FOR FREE' }}
           </NuxtLink>
         </div>
       </div>
