@@ -14,6 +14,10 @@ export const useUserStore = defineStore('user', () => {
         userIsVip.value = isVip()
     }
 
+    const isAdmin = computed(() => {
+        return user.value.roles?.nodes?.some((role) => role.name === 'administrator') ?? false
+    })
+
     function isVip() {
         const vip = user.value.subscriptions?.includes('64') ?? false
         const admin = user.value.roles?.nodes?.some((role) => role.name === 'administrator') ?? false
@@ -26,5 +30,5 @@ export const useUserStore = defineStore('user', () => {
         return 'free'
     })
 
-    return { user, userIsVip, setUser, isVip, membershipType }
+    return { user, userIsVip, setUser, isVip, isAdmin, membershipType }
 })

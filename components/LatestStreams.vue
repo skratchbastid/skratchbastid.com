@@ -4,6 +4,7 @@ import { LockIcon } from 'lucide-vue-next'
 import VipUpgradeModal from './VipUpgradeModal.vue'
 
 const userStore = useUserStore()
+const { latestStreams: streams, loading, error } = useVideos()
 
 // Add this line to inherit attributes
 // const attrs = useAttrs()
@@ -33,8 +34,6 @@ const props = defineProps({
     }
 })
 
-const { latestStreams: streams, loading, error } = useVideos()
-
 const filteredStreams = computed(() => {
     let result = streams.value
     if (props.excludeId) {
@@ -46,11 +45,11 @@ const filteredStreams = computed(() => {
     return result
 })
 
-const isVip = computed(() => userStore.isVip())
-
-const VideoWrapper = isVip.value ? NuxtLink : 'div'
-
+const isVip = computed(() => userStore.membershipType === 'vip')
 const showModal = ref(false)
+const hoveredVideo = ref(null)
+
+// Remove the thumbnailUrl function, we'll handle this directly in the template
 
 const openModal = () => {
     if (!isVip.value) {
@@ -60,6 +59,15 @@ const openModal = () => {
 
 const closeModal = () => {
     showModal.value = false
+}
+
+const LinkComponent = computed(() => isVip.value ? resolveComponent('NuxtLink') : 'div')
+
+const handleClick = (event, video) => {
+    if (!isVip.value) {
+        event.preventDefault()
+        openModal()
+    }
 }
 </script>
 
@@ -73,35 +81,63 @@ const closeModal = () => {
                 <NuxtLink v-if="seeAll" to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
             </div>
             <vue-horizontal class="ml-3 md:mx-10" v-if="!vertical">
-                <div 
+                <component
+                    :is="LinkComponent"
                     v-for="video in filteredStreams" 
                     :key="video.id"
-                    class="relative flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group"
+                    :to="isVip ? `/videos/${video.slug}` : undefined"
+                    class="relative flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
+                    @click="handleClick($event, video)"
+                    @mouseenter="hoveredVideo = video"
+                    @mouseleave="hoveredVideo = null"
                 >
-                    <div class="relative">
-                        <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
-                        <div v-if="!isVip" @click="openModal" class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg cursor-pointer">
-                            <LockIcon class="text-white mb-2" :size="24" />
-                            <p class="text-white text-center text-sm px-2 no-select">Upgrade membership to unlock</p>
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img 
+                            :src="video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`"
+                            class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
+                        />
+                        <img 
+                            v-if="video.imageLink"
+                            :src="video.imageLink"
+                            class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
+                        />
+                        <div v-if="!isVip" class="absolute inset-0 rounded-lg cursor-pointer">
+                            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
+                                <LockIcon class="text-white mb-2" :size="24" />
+                                <p class="text-white text-center text-sm px-2 no-select font-semibold">Upgrade membership to unlock</p>
+                            </div>
                         </div>
                     </div>
                     <div class="font-light mt-2 truncate">{{ video.title }}</div>
                     <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-                </div>
+                </component>
             </vue-horizontal>
             <div v-else>
-                <component :is="VideoWrapper"
+                <div
                     v-for="video in filteredStreams" 
                     :key="video.id"
-                    :to="isVip ? '/videos/' + video.slug : undefined"
                     class="flex flex-col w-full mb-4"
+                    @mouseenter="hoveredVideo = video"
+                    @mouseleave="hoveredVideo = null"
                 >
                     <div class="flex gap-3 relative group">
-                        <div class="w-1/2 relative">
-                            <img :src="video.imageLink" class="rounded-lg drop-shadow-lg aspect-video" />
-                            <div v-if="!isVip" class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                                <LockIcon class="text-white mb-2" :size="24" />
-                                <p class="text-white text-center text-sm px-2 no-select">Upgrade membership to unlock</p>
+                        <div class="w-1/2 relative overflow-hidden rounded-lg">
+                            <img 
+                                :src="video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`"
+                                class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
+                            />
+                            <img 
+                                v-if="video.imageLink"
+                                :src="video.imageLink"
+                                class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
+                            />
+                            <div v-if="!isVip" class="absolute inset-0 rounded-lg cursor-pointer">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
+                                    <LockIcon class="text-white mb-2" :size="24" />
+                                    <p class="text-white text-center text-sm px-2 no-select font-semibold">Upgrade membership to unlock</p>
+                                </div>
                             </div>
                         </div>
                         <div class="w-1/2">
@@ -109,7 +145,7 @@ const closeModal = () => {
                             <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </div>
                     </div>
-                </component>
+                </div>
             </div>
         </div>
 
@@ -130,5 +166,10 @@ const closeModal = () => {
     -moz-user-select: none;
     -ms-user-select: none;
     cursor: default;
+}
+
+.group:hover .group-hover\:opacity-70,
+.group:hover .group-hover\:opacity-100 {
+    transition-delay: 0.05s;
 }
 </style>

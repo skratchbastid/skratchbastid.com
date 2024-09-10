@@ -1,20 +1,17 @@
 <script setup>
-import { useUserStore } from '@/stores/userStore'
 import { useRuntimeConfig } from '#app'
 
-const userStore = useUserStore()
 const config = useRuntimeConfig()
 
 const darkMode = ref(false)
 const showListings = ref([])
 
 const perks = [
-  'Stream over 1,000 hours of exclusive DJ sets',
-  'MP3 Downloads',
-  'Access to the VIP Discord server',
-  'VIP Zoom Room access',
-  'VIP Guest List at live shows',
-  'Members-only merch'
+  'Stream over 2,000 hours of exclusive DJ sets',
+  'VIP-only streams',
+  'Full WhatsApp Community Access',
+  '10% off entire online store',
+  'Pre-sale and first access to new merch drops',
 ]
 
 const mixes = [

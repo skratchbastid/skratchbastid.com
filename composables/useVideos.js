@@ -26,6 +26,8 @@ export const useVideos = () => {
                 vimeoID
                 slug
                 imageLink
+                vimeoThumbnail
+                cloudflareVideoID
                 date
                 streamTypes {
                     edges {

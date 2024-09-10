@@ -1,7 +1,8 @@
 <script setup>
     import VueHorizontal from "vue-horizontal"
     import { useUserStore } from '@/stores/userStore'
-    import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'  // Add this import
+    import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'
+    import VipGreeting from '@/components/VIP/VipGreeting.vue'  // Add this import
 
     definePageMeta({
         layout: 'vip'
@@ -27,8 +28,9 @@
             <div class="py-8">
                 <!-- Wrap user-dependent components with client-only -->
                 <client-only>
-                    <FreeMemberCta v-if="isClient && user?.id && !isVip" />
-                    <VipHeroCta v-if="isClient && !user?.id" />
+                    <VipGreeting v-if="isClient && isVip" />
+                    <FreeMemberCta v-else-if="isClient && user?.id && !isVip" />
+                    <VipHeroCta v-else-if="isClient && !user?.id" />
                 </client-only>
                 <LatestStreams :excludeLatest="user?.id ? true : false" class="mb-10" />
             </div>

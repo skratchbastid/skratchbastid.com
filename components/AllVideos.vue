@@ -5,6 +5,8 @@
     const videos = ref([])
     const pageInfo = ref(null)
     const loadingMore = ref(false)
+    const hoveredVideo = ref(null)
+    const isClient = ref(false)
 
     const VIDEOS_QUERY = gql`
         query getStreams($cursor: String) {
@@ -46,6 +48,7 @@
     })
 
     onMounted(() => {
+        isClient.value = true
         window.addEventListener('scroll', loadMoreVideos);
     })
 
@@ -78,19 +81,41 @@
             })
         }
     }
-    const imageUrl = (video) => {
-        return video.vimeoThumbnail || video.imageLink || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
+    
+    const thumbnailUrl = (video) => {
+        if (hoveredVideo.value === video && video.imageLink) {
+            return video.imageLink
+        }
+        return video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
     }
 
 </script>
 <template>
-    <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
-    <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
-        <NuxtLink :to="'/videos/' + video.slug" v-for="video in videos" :key="video.id">
-            <img :src="imageUrl(video)" class="rounded-lg drop-shadow-lg aspect-video" loading="lazy" :alt="video.title" />
-            <div class="font-light mt-2 truncate">{{ video.title }}</div>
-            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-        </NuxtLink>
-    </div>
+    <ClientOnly>
+        <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
+        <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
+            <NuxtLink 
+                :to="'/videos/' + video.slug" 
+                v-for="video in videos" 
+                :key="video.id"
+                @mouseenter="hoveredVideo = video"
+                @mouseleave="hoveredVideo = null"
+            >
+                <div class="relative overflow-hidden rounded-lg">
+                    <img 
+                        :src="thumbnailUrl(video)" 
+                        class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                        loading="lazy" 
+                        :alt="video.title" 
+                    />
+                </div>
+                <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+            </NuxtLink>
+        </div>
+        <template #fallback>
+            <div class="text-center py-8">Loading...</div>
+        </template>
+    </ClientOnly>
 </template>
