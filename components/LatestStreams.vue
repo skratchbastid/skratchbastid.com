@@ -108,7 +108,10 @@ const handleClick = (event, video) => {
                             <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
                             <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
                                 <LockIcon class="text-white mb-2" :size="24" />
-                                <p class="text-white text-center text-sm px-2 no-select font-semibold">Upgrade membership to unlock</p>
+                                <p class="text-white text-center text-sm px-2 no-select font-semibold">
+                                    <span v-if="membershipType === 'free'">Upgrade membership to unlock</span>
+                                    <span v-else>Login or create an account to unlock</span>
+                                </p>
                             </div>
                         </div>
                     </div>
