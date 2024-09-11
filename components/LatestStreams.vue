@@ -72,6 +72,19 @@ const handleClick = (event, video) => {
         openModal()
     }
 }
+
+const thumbnail = (video) => {
+    if (video.vimeoThumbnail) {
+        return video.vimeoThumbnail
+    }
+    if (video.imageLink) {
+        return video.imageLink
+    }
+    if (video.cloudflareVideoID) {
+        return `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
+    }
+    return null // or a default image URL if you prefer
+}
 </script>
 
 <template>
@@ -96,7 +109,7 @@ const handleClick = (event, video) => {
                 >
                     <div class="relative overflow-hidden rounded-lg">
                         <img 
-                            :src="video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`"
+                            :src="thumbnail(video)"
                             class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
                         />
                         <img 
