@@ -144,7 +144,7 @@ const thumbnail = (video) => {
                     <div class="flex gap-3 relative">
                         <div class="w-1/2 relative overflow-hidden rounded-lg">
                             <img 
-                                :src="video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`"
+                                :src="thumbnail(video)"
                                 class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
                             />
                             <img 
