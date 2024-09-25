@@ -1,4 +1,6 @@
 <script setup>
+    import { sendEmailSignup, addAdminProperty } from '@/server/services/hiveService.js'
+
     const email = ref()
     const submitPending = ref(false)
     const submitSuccess = ref(false)
@@ -8,29 +10,21 @@
         console.log(`Submit email: ${email.value}`)
         submitPending.value = true
 
-        const data = { email: email.value }
-        
-        if (!email.value.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)) {
+        if (!email.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
             alert('Please enter a valid email address.');
-            return;
-        }
-        const contactData = {
-            email: email.value,
-            didOptIn: true
+            submitPending.value = false
+            return
         }
 
-        HIVE_SDK(
-            'emailSignup',
-            contactData,
-            function(data) {
-                submitSuccess.value = true
-            },
-            function(data) {
-                console.log('error', data)
-                error.value = true
-            }
-        )
-
+        try {
+            await sendEmailSignup(email.value)
+            submitSuccess.value = true
+        } catch (err) {
+            console.log('error', err)
+            error.value = true
+        } finally {
+            submitPending.value = false
+        }
     }
 </script>
 
@@ -51,7 +45,7 @@
                 <div class="w-2/3 m-auto text-lg font-light my-6">Keep an eye on your inbox for new 🔥🔥🔥 from Bastid soon!</div>
             </div>
         </div>
-        <nuxt-img src="9358559e-4e3e-4465-ca71-68855f44ce00/public" loading="lazy" class="hidden md:block w-36 absolute -top-16 left-0 right-0 text-center ml-auto mr-auto -rotate-12" alt="" />
+        <nuxt-img @click="addAdminProperty" src="9358559e-4e3e-4465-ca71-68855f44ce00/public" loading="lazy" class="hidden md:block w-36 absolute -top-16 left-0 right-0 text-center ml-auto mr-auto -rotate-12" alt="" />
     </section>
 </template>
 

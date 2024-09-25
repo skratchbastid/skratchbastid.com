@@ -5,6 +5,7 @@
     import FreeMemberCta from '@/components/VIP/FreeMemberCta.vue'
     import VipGreeting from '@/components/VIP/VipGreeting.vue'
     import MixesSlider from '@/components/MixesSlider.vue'
+    import { useRoute } from 'vue-router'
 
     definePageMeta({
         layout: 'vip'
@@ -13,6 +14,12 @@
     const userStore = useUserStore()
     const { user, membershipType } = storeToRefs(userStore)
     const isVip = computed(() => userStore.isVip())
+
+    const route = useRoute()
+    const welcome = computed(() => route.query.welcome)
+    // clear the url params
+    const router = useRouter()
+    router.replace({ query: {} })
 
     const streams = ref()
     const mixes = useState('mixes')

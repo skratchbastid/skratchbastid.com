@@ -83,10 +83,10 @@
     }
     
     const thumbnailUrl = (video) => {
-        if (hoveredVideo.value === video && video.imageLink) {
-            return video.imageLink
-        }
-        return video.vimeoThumbnail || `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
+        if (hoveredVideo.value === video && video.imageLink) return video.imageLink;
+        if (video.cloudflareVideoID) return `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`;
+        if (video.vimeoThumbnail) return video.vimeoThumbnail;
+        return video.imageLink;
     }
 
 </script>
