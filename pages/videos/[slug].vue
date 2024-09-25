@@ -27,6 +27,12 @@
     const perks = useState('perks')
     let player = null
 
+    const showMp3Options = ref(false)
+
+    const toggleMp3Options = () => {
+        showMp3Options.value = !showMp3Options.value
+    }
+
     function onPlayerReady(event) {
         player = event
     }
@@ -123,18 +129,47 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row my-3 lg:w-2/3 mx-auto px-6 lg:px-0 ">
-                <div class="flex-1">
-                    <div class="texl-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
+            <div class="flex flex-col md:flex-row my-3 lg:w-2/3 mx-auto px-6 lg:px-0 items-start">
+                <div class="flex-1 mb-4 md:mb-0">
+                    <div class="text-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
                         {{ video?.title }}
                     </div>
                     <div v-if="video" class="text-white text-xs font-light">
                         {{ $dayjs.utc(video?.date).fromNow() }}
                     </div>
                 </div>
-                <div v-if="isVip" class="flex flex-col w-1/2 md:w-auto mt-4 gap-3 text-center font-bold"> 
-                    <a v-for="link in video.mp3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs" target="_blank" rel="noopener">Download MP3</a>
-                    <a v-for="link in video.noMicMP3Link" :href="link" class="bg-white px-4 py-2 md:py-1 text-xs">Download MP3 - No Mic</a>
+                <div v-if="isVip" class="relative">
+                    <button
+                        @click="toggleMp3Options"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-1.5 px-3 text-sm rounded-full flex items-center transition duration-300 ease-in-out"
+                    >
+                        <Icon name="material-symbols:download" class="mr-1.5" size="18" />
+                        Download MP3
+                        <Icon name="material-symbols:arrow-drop-down" :class="{ 'rotate-180': showMp3Options }" size="18" />
+                    </button>
+                    <div
+                        v-if="showMp3Options"
+                        class="absolute top-full right-0 mt-1 bg-white rounded-md shadow-lg z-10 w-full min-w-[120px]"
+                    >
+                        <a
+                            v-for="link in video.mp3Link"
+                            :key="link"
+                            :href="link"
+                            class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            With Mic
+                        </a>
+                        <a
+                            v-for="link in video.noMicMP3Link"
+                            :key="link"
+                            :href="link"
+                            class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                            No Mic
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,5 +183,9 @@
 <style scoped>
     div#poster-gradient {
         background: linear-gradient(to top, black, transparent 10%) !important;
+    }
+
+    .rotate-180 {
+        transform: rotate(180deg);
     }
 </style>
