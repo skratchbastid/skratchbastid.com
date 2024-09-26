@@ -7,9 +7,11 @@ export const useUserStore = defineStore('user', () => {
     function setUser(newUser) {
         user.value = {
             ...newUser,
-            subscriptions: Array.isArray(newUser.subscriptions) 
-                ? newUser.subscriptions 
-                : (newUser.subscriptions ? [newUser.subscriptions] : [])
+            subscriptions: typeof newUser.subscriptions === 'string'
+                ? newUser.subscriptions.split(',').map(s => s.trim())
+                : Array.isArray(newUser.subscriptions)
+                    ? newUser.subscriptions
+                    : (newUser.subscriptions ? [newUser.subscriptions] : [])
         }
         userIsVip.value = isVip()
     }
