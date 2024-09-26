@@ -1,18 +1,19 @@
 <script setup>
+// Import necessary components and utilities
 import VueHorizontal from "vue-horizontal"
 import { storeToRefs } from 'pinia'
 import { LockIcon } from 'lucide-vue-next'
 import VipUpgradeModal from './VipUpgradeModal.vue'
 
+// Access user store and extract relevant user information
 const userStore = useUserStore()
 const { user, membershipType } = storeToRefs(userStore)
 const isVip = computed(() => membershipType.value === 'vip')
 
+// Fetch latest streams data using a custom composable
 const { latestStreams: streams, loading, error } = useVideos()
 
-// Add this line to inherit attributes
-// const attrs = useAttrs()
-
+// Define component props
 const props = defineProps({
     excludeId: {
         type: String,
@@ -38,6 +39,7 @@ const props = defineProps({
     }
 })
 
+// Compute filtered streams based on props
 const filteredStreams = computed(() => {
     let result = streams.value
     if (props.excludeId) {
@@ -49,11 +51,11 @@ const filteredStreams = computed(() => {
     return result
 })
 
+// State for modal and hover functionality
 const showModal = ref(false)
 const hoveredVideo = ref(null)
 
-// Remove the thumbnailUrl function, we'll handle this directly in the template
-
+// Modal control functions
 const openModal = () => {
     if (!isVip.value) {
         showModal.value = true
@@ -64,8 +66,10 @@ const closeModal = () => {
     showModal.value = false
 }
 
+// Dynamically determine the appropriate link component based on user's VIP status
 const LinkComponent = computed(() => membershipType?.value === 'vip' ? resolveComponent('NuxtLink') : 'div')
 
+// Handle click events on video items
 const handleClick = (event, video) => {
     if (!isVip.value) {
         event.preventDefault()
@@ -73,6 +77,7 @@ const handleClick = (event, video) => {
     }
 }
 
+// Function to determine the appropriate thumbnail URL for a video
 const thumbnail = (video) => {
     if (video.vimeoThumbnail) {
         return video.vimeoThumbnail
@@ -90,12 +95,14 @@ const thumbnail = (video) => {
 <template>
     <div>
         <div v-if="streams.length">
+            <!-- Header section with title and "See All" link -->
             <div class="flex items-center mb-3">
                 <h2 class="text-lg font-extrabold" :class="!vertical ? 'ml-3 md:ml-10' : ''">
                     {{ title || 'Latest Streams' }}
                 </h2>
                 <NuxtLink v-if="seeAll" to="/videos" class="block text-sm font-bold text-blue-600 ml-4">See All</NuxtLink>
             </div>
+            <!-- Horizontal layout for streams -->
             <vue-horizontal class="ml-3 md:mx-10" v-if="!vertical">
                 <component
                     :is="LinkComponent"
@@ -107,6 +114,7 @@ const thumbnail = (video) => {
                     @mouseenter="hoveredVideo = video"
                     @mouseleave="hoveredVideo = null"
                 >
+                    <!-- Video thumbnail with hover effects -->
                     <div class="relative overflow-hidden rounded-lg">
                         <img 
                             :src="thumbnail(video)"
@@ -117,6 +125,7 @@ const thumbnail = (video) => {
                             :src="video.imageLink"
                             class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
                         />
+                        <!-- Lock overlay for non-VIP users -->
                         <div v-if="!isVip" class="absolute inset-0 rounded-lg cursor-pointer">
                             <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
                             <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
@@ -128,10 +137,12 @@ const thumbnail = (video) => {
                             </div>
                         </div>
                     </div>
+                    <!-- Video title and date -->
                     <div class="font-light mt-2 truncate">{{ video.title }}</div>
                     <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                 </component>
             </vue-horizontal>
+            <!-- Vertical layout for streams -->
             <div v-else>
                 <component
                     :is="LinkComponent"
@@ -142,6 +153,7 @@ const thumbnail = (video) => {
                     @click="handleClick($event, video)"
                 >
                     <div class="flex gap-3 relative">
+                        <!-- Video thumbnail with hover effects -->
                         <div class="w-1/2 relative overflow-hidden rounded-lg">
                             <img 
                                 :src="thumbnail(video)"
@@ -152,6 +164,7 @@ const thumbnail = (video) => {
                                 :src="video.imageLink"
                                 class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
                             />
+                            <!-- Lock overlay for non-VIP users -->
                             <div v-if="!isVip" class="absolute inset-0 rounded-lg cursor-pointer">
                                 <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-70 transition-opacity duration-200 ease-in-out"></div>
                                 <div class="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out">
@@ -163,6 +176,7 @@ const thumbnail = (video) => {
                                 </div>
                             </div>
                         </div>
+                        <!-- Video title and date -->
                         <div class="w-1/2">
                             <div class="text-sm mt-2">{{ video.title }}</div>
                             <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
@@ -172,17 +186,20 @@ const thumbnail = (video) => {
             </div>
         </div>
 
+        <!-- Modal for VIP upgrade -->
         <VipUpgradeModal :show="showModal" @close="closeModal" />
     </div>
 </template>
 
 <style scoped>
+/* Hide horizontal scroll buttons on mobile */
 @media (max-width: 768px) {
     .vue-horizontal:deep(.v-hl-btn) {
         display: none !important;
     }
 }
 
+/* Prevent text selection on certain elements */
 .no-select {
     user-select: none;
     -webkit-user-select: none;
@@ -191,6 +208,7 @@ const thumbnail = (video) => {
     cursor: default;
 }
 
+/* Add a slight delay to hover effects for smoother transitions */
 .group:hover .group-hover\:opacity-70,
 .group:hover .group-hover\:opacity-100 {
     transition-delay: 0.05s;
