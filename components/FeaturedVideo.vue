@@ -19,7 +19,7 @@ const { user, membershipType } = storeToRefs(userStore)
 <template>
   <div v-if="video" class="w-full aspect-video relative rounded-lg overflow-hidden">
     <img class="w-full h-full object-cover absolute z-10"
-      :src="video.imageLink" 
+      :src="video?.imageLink" 
       alt="Latest stream thumbnail">
     <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>
     <div class="absolute inset-0 z-30 flex flex-col">
