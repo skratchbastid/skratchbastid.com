@@ -112,9 +112,9 @@ export async function login(email, password, url) {
         const { data } = await useAsyncQuery(userQuery)
         if (data?.value?.viewer) {
             userStore.setUser(data.value.viewer)
-            return navigateTo(url || '/vip')
+            // Check if url is '/join' and redirect to '/vip' instead
+            return navigateTo(url === '/join' ? '/vip' : (url || '/vip'))
         }
-        // return data.value
     }).catch((err, data) => {
         return err.message
     })
