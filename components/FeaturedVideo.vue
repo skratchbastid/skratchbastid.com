@@ -44,7 +44,7 @@ const { user, membershipType } = storeToRefs(userStore)
             <span class="font-light ml-2">{{ $dayjs.utc(video.date).fromNow() }}</span>
           </h2>
           <!-- Link to watch the video, with different text based on membership type -->
-          <NuxtLink :to="membershipType === 'vip' ? '/videos/' + video.slug : '/join'" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">
+          <NuxtLink :to="user?.id ? '/videos/' + video.slug : '/join'" class="text-white hover:text-black hover:bg-white text-sm border py-1 px-3">
             {{ membershipType === 'vip' ? 'WATCH NOW' : 'WATCH FOR FREE' }}
           </NuxtLink>
         </div>
