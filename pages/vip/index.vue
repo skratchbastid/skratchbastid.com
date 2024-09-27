@@ -63,7 +63,7 @@ onMounted(() => {
 <template>
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
         <div>
-            <div class="py-10">
+            <div class="py-0">
                 <!-- Wrap user-dependent components in client-only to prevent hydration issues -->
                 <client-only>
                     <!-- Display appropriate component based on user status -->
