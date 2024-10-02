@@ -2,6 +2,7 @@
 import VueHorizontal from "vue-horizontal";
 
 const mixes = [
+    {image: 'https://imagedelivery.net/pBWn_5oX0Np5kM_4V8gAww/1369844c-cd95-4a48-2a46-8277a2919200/public', link: '/mixes/songs-we-listened-to-alot-in-2023'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/1/7/a/3/47a0-779b-4bb2-8819-7cc3f0f349fe', link: '/mixes/songs-we-listened-to-alot-in-2022'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/f/1/3/5/6472-56a1-4bc9-9146-ae47b5ecd9bc', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2021/'},
     {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/0/c/2/4/b2d4-7208-4ab4-b063-f96eed651e39', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-cosmo-baker-songs-we-listened-to-a-lot-in-2020/'},
