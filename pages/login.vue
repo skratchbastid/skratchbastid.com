@@ -1,5 +1,6 @@
 <script setup>
     import { useUserStore } from '@/stores/userStore'
+    import { addProperty, sendMemberDataToHive } from '@/server/services/hiveService'
 
     definePageMeta({
         layout: 'blank'
@@ -13,12 +14,15 @@
     const user = computed(() => userStore.user)
 
     async function logUserIn(email, password) {
+        console.log("HELLO")
         loading.value = true
         const router = useRouter()
         const result = await login(email, password, router.options.history.state.back)
         if (result == 'incorrect_password') {
             incorrectPassword.value = true
         }
+        // sendMemberDataToHive(user.value)
+        // addProperty('membershipType', userStore.membershipType)
         loading.value = false
     }
 

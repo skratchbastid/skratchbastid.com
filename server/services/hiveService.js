@@ -1,8 +1,18 @@
 export const sendMemberDataToHive = async (member) => {
-    return {
-        status: 'success',
-        message: 'Member data sent to Hive'
+    const contactData = {
+        email: member.email,
+        firstName: member.firstName,
+        lastName: member.lastName
     }
+    
+    return new Promise((resolve, reject) => {
+        HIVE_SDK(
+            'emailSignup',
+            contactData,
+            resolve,
+            reject
+        )
+    })
 }
 
 export const sendEmailSignup = async (email) => {
@@ -21,10 +31,9 @@ export const sendEmailSignup = async (email) => {
     })
 }
 
-export const addAdminProperty = async () => {
-    console.log('Adding admin property to Hive')
+export const addProperty = async (property, value) => {
     const customData = {
-        'admin': 'true'
+        [property]: value
     }
     return new Promise((resolve, reject) => {
         HIVE_SDK(
