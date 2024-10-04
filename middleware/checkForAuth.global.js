@@ -3,26 +3,30 @@ import { checkForLogin } from '~/composables/auth'
 import { addProperty, sendMemberDataToHive } from '~/server/services/hiveService'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
+    // Get the user store instance
     const userStore = useUserStore()
 
-    // Only check for login if we don't have a user in the store
+    // Check for login only if there's no user in the store and we're on the client side
     if (!userStore.user.id && process.client) {
-        console.log('No user in store and on client side, checking for login')
         try {
-            console.log('Attempting to check for login')
+            // Attempt to retrieve user data
             const user = await checkForLogin()
-            console.log('checkForLogin result:', user)
+            
             if (user) {
-                console.log('User found, setting user in store')
+                // If a user is found, update the store
                 userStore.setUser(user)
-                console.log('Sending member data to Hive', user.email)
-                sendMemberDataToHive(userStore.user)
-                console.log('Adding membership type property', userStore.membershipType)
-                addProperty('membershipType', userStore.membershipType)
-            } else {
-                console.log('No user found after checkForLogin')
+                
+                // Send member data to Hive for analytics/tracking
+                console.log('Sending member data to Hive:', user)
+                await sendMemberDataToHive(user)
+                
+                // Add membership type as a property for segmentation
+                console.log('Adding property to Hive:', 'membershipType', userStore.membershipType)
+                await addProperty('membershipType', userStore.membershipType)
             }
+            // If no user is found, the store remains unchanged
         } catch (error) {
+            // Log any errors that occur during the login check
             console.error('Error checking login:', error)
         }
     }

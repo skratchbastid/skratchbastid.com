@@ -14,19 +14,19 @@
     const user = computed(() => userStore.user)
 
     async function logUserIn(email, password) {
-        console.log("HELLO")
         loading.value = true
         const router = useRouter()
         const result = await login(email, password, router.options.history.state.back)
         if (result == 'incorrect_password') {
             incorrectPassword.value = true
+        } else {
+            console.log('Sending member data to Hive:', user.value)
+            await sendMemberDataToHive(user.value)
+            console.log('Adding property to Hive:', 'membershipType', userStore.membershipType)
+            await addProperty('membershipType', userStore.membershipType)
         }
-        // sendMemberDataToHive(user.value)
-        // addProperty('membershipType', userStore.membershipType)
         loading.value = false
     }
-
-
 </script>
 <template>
     <div class="w-full min-h-[100vh] bg-[#F7FAFC] flex flex-col items-center justify-center">
