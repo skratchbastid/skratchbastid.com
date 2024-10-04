@@ -31,6 +31,7 @@
     "node-mailjet": "^6.0.1",
     "pinia": "^2.0.34",
     "postcss-custom-properties": "^13.3.12",
+    "posthog-js": "^1.166.1",
     "url": "^0.11.0",
     "vue-easy-lightbox": "^1.16.0",
     "vue-horizontal": "^1.0.2",

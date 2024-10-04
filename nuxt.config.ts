@@ -10,7 +10,9 @@ export default defineNuxtConfig({
       public: {
           google_analytics_id: 'G-GTXBY1X48E',
           production_mode: isProduction,
-          nodeEnv: process.env.NODE_ENV
+          nodeEnv: process.env.NODE_ENV,
+          posthogPublicKey: process.env.POSTHOG_PUBLIC_KEY,
+          posthogHost: process.env.POSTHOG_HOST
       }
   },
 
