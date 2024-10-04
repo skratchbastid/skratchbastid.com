@@ -1,5 +1,5 @@
 <script setup>
-    import { sendEmailSignup, addAdminProperty } from '@/server/services/hiveService.js'
+    import { sendEmailSignup } from '@/server/services/hiveService.js'
 
     const email = ref()
     const submitPending = ref(false)
