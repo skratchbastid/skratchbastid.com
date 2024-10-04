@@ -20,6 +20,7 @@
             incorrectPassword.value = true
         }
         loading.value = false
+        console.log("Logged in user:", userStore.user)
     }
 
 
