@@ -17,11 +17,14 @@ jobs:  # Define the jobs this workflow will run
 
       - name: Push to Personal Repo  # Step 2
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git remote add personal-repo https://${{ secrets.PERSONAL_REPO_TOKEN }}@github.com/skratchbastid/skratchbastid.com.git
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PERSONAL_REPO_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git remote add personal-repo git@github.com:skratchbastid/skratchbastid.com.git
           git push personal-repo main:main --force
         env:
+          GIT_SSH_COMMAND: "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no"
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}  # GitHub secret storing the Personal Access Token (PAT)
 
 permissions:
