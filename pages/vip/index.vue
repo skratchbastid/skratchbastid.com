@@ -61,6 +61,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <DjSurveyModal />
     <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
         <div>
             <div class="py-6">
