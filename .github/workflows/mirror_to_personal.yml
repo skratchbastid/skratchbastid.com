@@ -1,31 +1,22 @@
-name: Mirror to Personal Repo  # Name of the workflow
+name: Mirror to Personal Repository
 
 on:
   push:
     branches:
-      - main  # The workflow will trigger on a push to the 'main' branch
+      - main  # or your default branch name
 
-jobs:  # Define the jobs this workflow will run
-  mirror:  # Name of the job
-    runs-on: ubuntu-latest  # Specify the environment (runner) the job will run on (Ubuntu in this case)
-
-    steps:  # Define each step that the job will perform
-      - name: Checkout Repository  # Step 1
-        uses: actions/checkout@v3  # GitHub's official action to checkout your repo code
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Fetch all history for all branches and tags
 
-      - name: Push to Personal Repo  # Step 2
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PERSONAL_REPO_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git remote add personal-repo git@github.com:skratchbastid/skratchbastid.com.git
-          git push personal-repo main:main --force
+      - name: Push to personal repository
         env:
-          GIT_SSH_COMMAND: "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no"
-          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}  # GitHub secret storing the Personal Access Token (PAT)
-
-permissions:
-  contents: read  # Ensure the workflow has read access to the repository contents
+          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
+        run: |
+          git remote add personal https://$PERSONAL_REPO_TOKEN@github.com/skratchbastid/skratchbastid.com.git
+          git push personal --mirror
