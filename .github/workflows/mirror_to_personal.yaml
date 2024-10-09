@@ -20,6 +20,7 @@ jobs:  # Define the jobs this workflow will run
           echo "GitHub Actor: ${{ github.actor }}"
           echo "GitHub Ref: ${{ github.ref }}"
           echo "PERSONAL_REPO_URL: ${{ secrets.PERSONAL_REPO_URL }}"
+          echo "Repo visibility: ${{ github.event.repository.visibility }}"
 
       - name: Push to Personal Repo  # Step 3
         env:
@@ -29,15 +30,17 @@ jobs:  # Define the jobs this workflow will run
           git config user.name github-actions
           git config user.email github-actions@github.com
           echo "Adding remote..."
-          git remote add personal-repo https://${PERSONAL_REPO_TOKEN}@${PERSONAL_REPO_URL#https://}
+          git remote add personal-repo https://${PERSONAL_REPO_TOKEN}@${PERSONAL_REPO_URL}
           echo "Pushing to remote..."
           git push personal-repo main:main --force
         continue-on-error: true
 
       - name: Check Push Result  # Step 4
-        if: failure()
+        if: always()
         run: |
-          echo "Push failed. Checking remote..."
+          echo "Checking remote..."
           git remote -v
-          echo "Attempting to fetch from personal-repo..."
+          echo "Attempting to fetch from personal-repo...."
           git fetch personal-repo || echo "Fetch failed"
+          echo "Listing branches..."
+          git branch -a
