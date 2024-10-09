@@ -12,13 +12,17 @@ jobs:  # Define the jobs this workflow will run
     steps:  # Define each step that the job will perform
       - name: Checkout Repository  # Step 1
         uses: actions/checkout@v3  # GitHub's official action to checkout your repo code
+        with:
+          fetch-depth: 0
 
       - name: Push to Personal Repo  # Step 2
         run: |
-          git remote add personal-repo https://$PERSONAL_REPO_TOKEN@github.com/skratchbastid/skratchbastid.com.git
-          git push personal-repo main --force
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git remote add personal-repo https://${{ secrets.PERSONAL_REPO_TOKEN }}@github.com/skratchbastid/skratchbastid.com.git
+          git push personal-repo main:main --force
         env:
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}  # GitHub secret storing the Personal Access Token (PAT)
 
 permissions:
-  contents: write  # Ensure the workflow has write access to the repository contents
+  contents: read  # Ensure the workflow has read access to the repository contents
