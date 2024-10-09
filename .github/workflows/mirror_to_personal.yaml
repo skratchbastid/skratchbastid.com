@@ -38,5 +38,5 @@ jobs:  # Define the jobs this workflow will run
         run: |
           echo "Push failed. Checking remote..."
           git remote -v
-          echo "Attempting to fetch from personal-repo...."
+          echo "Attempting to fetch from personal-repo..."
           git fetch personal-repo || echo "Fetch failed"
