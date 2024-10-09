@@ -19,3 +19,6 @@ jobs:  # Define the jobs this workflow will run
           git push personal-repo main --force
         env:
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}  # GitHub secret storing the Personal Access Token (PAT)
+
+permissions:
+  contents: write  # Ensure the workflow has write access to the repository contents
