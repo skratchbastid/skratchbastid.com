@@ -1,0 +1,26 @@
+name: Mirror to Personal Repo  # Name of the workflow
+
+on:
+  push:
+    branches:
+      - main  # The workflow will trigger on a push to the 'main' branch
+
+jobs:  # Define the jobs this workflow will run
+  mirror:  # Name of the job
+    runs-on: ubuntu-latest  # Specify the environment (runner) the job will run on (Ubuntu in this case)
+
+    steps:  # Define each step that the job will perform
+      - name: Checkout Repository  # Step 1
+        uses: actions/checkout@v3  # GitHub's official action to checkout your repo code
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
+
+      - name: Push to Personal Repo  # Step 2
+        env:
+          PERSONAL_REPO_URL: ${{ secrets.PERSONAL_REPO_URL }}
+          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git remote add personal-repo https://${PERSONAL_REPO_TOKEN}@${PERSONAL_REPO_URL#https://}
+          git push personal-repo main:main --force
