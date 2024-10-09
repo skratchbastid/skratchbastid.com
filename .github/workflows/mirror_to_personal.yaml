@@ -19,6 +19,7 @@ jobs:  # Define the jobs this workflow will run
         run: |
           echo "GitHub Actor: ${{ github.actor }}"
           echo "GitHub Ref: ${{ github.ref }}"
+          echo "PERSONAL_REPO_URL: ${{ secrets.PERSONAL_REPO_URL }}"
 
       - name: Push to Personal Repo  # Step 3
         env:
