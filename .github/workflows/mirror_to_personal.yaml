@@ -12,35 +12,10 @@ jobs:  # Define the jobs this workflow will run
     steps:  # Define each step that the job will perform
       - name: Checkout Repository  # Step 1
         uses: actions/checkout@v3  # GitHub's official action to checkout your repo code
-        with:
-          fetch-depth: 0  # Fetch all history for all branches and tags
 
-      - name: Debug Info  # Step 2
+      - name: Push to Personal Repo  # Step 2
         run: |
-          echo "GitHub Actor: ${{ github.actor }}"
-          echo "GitHub Ref: ${{ github.ref }}"
-          echo "PERSONAL_REPO_URL: ${{ secrets.PERSONAL_REPO_URL }}"
-          echo "Repo visibility: ${{ github.event.repository.visibility }}"
-
-      - name: Push to Personal Repo  # Step 3
+          git remote add personal-repo https://$PERSONAL_REPO_TOKEN@github.com/skratchbastid/skratchbastid.com.git
+          git push personal-repo main --force
         env:
-          PERSONAL_REPO_URL: ${{ secrets.PERSONAL_REPO_URL }}
-          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          echo "Adding remote..."
-          git remote add personal-repo https://${PERSONAL_REPO_TOKEN}@${PERSONAL_REPO_URL}
-          echo "Pushing to remote..."
-          git push personal-repo main:main --force
-        continue-on-error: true
-
-      - name: Check Push Result  # Step 4
-        if: always()
-        run: |
-          echo "Checking remote..."
-          git remote -v
-          echo "Attempting to fetch from personal-repo..."
-          git fetch personal-repo || echo "Fetch failed"
-          echo "Listing branches..."
-          git branch -a
+          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}  # GitHub secret storing the Personal Access Token (PAT)
