@@ -6,7 +6,7 @@ on:
       - main  # or your default branch name
 
 permissions:
-  contents: read  # Updated to follow best practices
+  contents: write  # Updated to follow best practices
 
 jobs:
   mirror:
