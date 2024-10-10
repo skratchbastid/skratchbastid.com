@@ -23,7 +23,7 @@ jobs:
         env:
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
         run: |
-          git remote add personal "https://${PERSONAL_REPO_TOKEN}@github.com/skratchbastid/test.git"
+          git remote add personal "https://${PERSONAL_REPO_TOKEN}@github.com/skratchbastid/skratchbastid.com.git"
           git push personal --mirror
         
       - name: Check for errors
