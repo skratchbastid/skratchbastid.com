@@ -36,7 +36,7 @@ jobs:
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
         run: |
           echo "Adding personal remote..."
-          git remote add personal https://oauth2:${PERSONAL_REPO_TOKEN}@github.com/skratchbastid/skratchbastid.com.git
+          git remote add personal https://oauth2:${PERSONAL_REPO_TOKEN}@github.com/skratchbastid/test.git
           echo "Git remotes after adding personal:"
           git remote -v
           echo "Pushing to personal remote..."
