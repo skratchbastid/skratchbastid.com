@@ -17,9 +17,25 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags
 
+      - name: Debug Info
+        run: |
+          git remote -v
+          git branch -a
+          git status
+
       - name: Push to personal repository
         env:
           PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
         run: |
-          git remote add personal https://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@github.com/skratchbastid/skratchbastid.com.git
+          git remote add personal https://oauth2:${PERSONAL_REPO_TOKEN}@github.com/skratchbastid/skratchbastid.com.git
+          git remote -v
           git push personal --mirror
+        continue-on-error: true
+
+      - name: Check for errors
+        if: failure()
+        run: |
+          echo "Push failed. Here's some debug info:"
+          git remote -v
+          git status
+          git log -1
