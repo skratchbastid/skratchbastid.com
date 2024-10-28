@@ -77,7 +77,7 @@
     </div>
     <div class="bg-black text-white font-light flex flex-col md:flex-row gap-12 md:gap-24 items-center justify-center text-center py-16">
         <div class="flex flex-col">
-            <div class="font-black uppercase">Management.</div>
+            <div class="font-black uppercase">Management</div>
             <div>management@skratchbastid.com</div>
         </div>
         <div class="flex flex-col">
