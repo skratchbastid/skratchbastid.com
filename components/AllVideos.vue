@@ -21,7 +21,7 @@
                 imageLink
                 vimeoThumbnail
                 date
-                streamTypes {
+                streamType {
                     edges {
                         node {
                             id
