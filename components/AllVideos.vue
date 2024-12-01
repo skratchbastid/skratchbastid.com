@@ -9,33 +9,33 @@
     const isClient = ref(false)
 
     const VIDEOS_QUERY = gql`
-        query getStreams($cursor: String) {
-            streams(first: 36, after: $cursor) {
-                nodes {
-                id
-                databaseId
-                title
-                vimeoID
-                cloudflareVideoID
-                slug
-                imageLink
-                vimeoThumbnail
-                date
-                streamType {
-                    edges {
-                        node {
-                            id
-                            name
-                        }
-                    }
-                }
-                }
-                pageInfo {
-                endCursor
-                    hasNextPage
-                }
-            }
+        query GetStreams($cursor: String) {
+  streams(first: 36, after: $cursor) {
+    nodes {
+      id
+      title
+      slug
+      streamsFields {
+        vimeoId
+        cloudflareVideoId
+        imageLink
+        vimeoThumbnail
+      }
+      streamType {
+        edges {
+          node {
+            id
+            name
+          }
         }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
     `
 
     const { result, loading, error, fetchMore } = useQuery(VIDEOS_QUERY)
@@ -83,10 +83,10 @@
     }
     
     const thumbnailUrl = (video) => {
-        if (hoveredVideo.value === video && video.imageLink) return video.imageLink;
-        if (video.cloudflareVideoID) return `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`;
-        if (video.vimeoThumbnail) return video.vimeoThumbnail;
-        return video.imageLink;
+        if (hoveredVideo.value === video && video.streamsFields.imageLink) return video.streamsFields.imageLink;
+        if (video.streamsFields.cloudflareVideoID) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoID}/thumbnails/thumbnail.jpg`;
+        if (video.streamsFields.vimeoThumbnail) return video.streamsFields.vimeoThumbnail;
+        return video.streamsFields.imageLink;
     }
 
 </script>

@@ -79,14 +79,14 @@ const handleClick = (event, video) => {
 
 // Function to determine the appropriate thumbnail URL for a video
 const thumbnail = (video) => {
-    if (video.vimeoThumbnail) {
-        return video.vimeoThumbnail
+    if (video.streamsFields.vimeoThumbnail) {
+        return video.streamsFields.vimeoThumbnail
     }
-    if (video.imageLink) {
-        return video.imageLink
+    if (video.streamsFields.imageLink) {
+        return video.streamsFields.imageLink
     }
-    if (video.cloudflareVideoID) {
-        return `https://videodelivery.net/${video.cloudflareVideoID}/thumbnails/thumbnail.jpg`
+    if (video.streamsFields.cloudflareVideoID) {
+        return `https://videodelivery.net/${video.streamsFields.cloudflareVideoID}/thumbnails/thumbnail.jpg`
     }
     return null // or a default image URL if you prefer
 }
@@ -121,8 +121,8 @@ const thumbnail = (video) => {
                             class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
                         />
                         <img 
-                            v-if="video.imageLink"
-                            :src="video.imageLink"
+                            v-if="video.streamsFields.imageLink"
+                            :src="video.streamsFields.imageLink"
                             class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
                         />
                         <!-- Lock overlay for non-VIP users -->
@@ -160,8 +160,8 @@ const thumbnail = (video) => {
                                 class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
                             />
                             <img 
-                                v-if="video.imageLink"
-                                :src="video.imageLink"
+                                v-if="video.streamsFields.imageLink"
+                                :src="video.streamsFields.imageLink"
                                 class="absolute inset-0 rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" 
                             />
                             <!-- Lock overlay for non-VIP users -->

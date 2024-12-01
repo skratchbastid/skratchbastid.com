@@ -22,14 +22,14 @@ export function filterAndSortEventsByDate(events) {
     // });
     // Refactor to use dayjs for filtering and sorting
     const filteredEvents = events.filter((event) => {
-        const eventDate = dayjs(event.eventDate);
+        const eventDate = dayjs(event.eventsFields.eventDate);
         return eventDate.isSameOrAfter(dayjs(), 'day') || eventDate.isToday();
     });
 
     // Sort events in ascending order by eventDate
     filteredEvents.sort((a, b) => {
-        const dateA = dayjs(a.eventDate);
-        const dateB = dayjs(b.eventDate);
+        const dateA = dayjs(a.eventsFields.eventDate);
+        const dateB = dayjs(b.eventsFields.eventDate);
 
         return dateA.diff(dateB);
     });

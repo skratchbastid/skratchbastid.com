@@ -20,13 +20,15 @@ const video = computed(() => props.video || (latestStreams.value && latestStream
 // Get user information from the user store
 const userStore = useUserStore()
 const { user, membershipType } = storeToRefs(userStore)
+
+console.log(video)
 </script>
 
 <template>
   <div v-if="video" class="w-full aspect-video relative rounded-lg overflow-hidden">
     <!-- Display the video thumbnail -->
     <img class="w-full h-full object-cover absolute z-10"
-      :src="video?.imageLink" 
+      :src="video?.streamsFields.imageLink" 
       alt="Latest stream thumbnail">
     <!-- Add a gradient overlay -->
     <div class="absolute inset-0 z-20 bg-gradient-to-r from-red-500 to-yellow-500 opacity-50"></div>

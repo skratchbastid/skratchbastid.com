@@ -7,43 +7,44 @@ export const useVideos = () => {
 
   const latestStreamsQuery = gql`
         query getStreams {
-            streams(first: 10, where: {
-                taxQuery: {
-                taxArray: [
-                    {
-                    terms: ["Deep Dive"],
-                    taxonomy: STREAMTYPE,
-                    operator: NOT_IN,
-                    field: NAME
-                    }
-                ]
-            }
-            }) {
-                nodes {
-                id
-                databaseId
-                title
-                vimeoID
-                slug
-                imageLink
-                vimeoThumbnail
-                cloudflareVideoID
-                date
-                streamTypes {
-                    edges {
-                        node {
-                            id
-                            name
-                        }
-                    }
-                }
-                }
-                pageInfo {
-                endCursor
-                hasNextPage
-                }
-            }
-        }`
+  streams(first: 10, where: {
+    taxQuery: {
+      taxArray: [
+        {
+          terms: ["Deep Dive"],
+          taxonomy: STREAMTYPES,
+          operator: NOT_IN
+        }
+      ]
+    }
+  }) {
+    nodes {
+      id
+      databaseId
+      title
+      slug
+      date
+      streamsFields {
+        vimeoId
+        imageLink
+        vimeoThumbnail
+        cloudflareVideoId
+      }
+      streamType {  # Cambiato streamTypes a streamType
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}`
     
 
   const { result, loading: queryLoading, error } = useQuery(latestStreamsQuery)

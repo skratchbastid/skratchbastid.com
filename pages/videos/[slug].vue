@@ -36,23 +36,42 @@ function onPlayerReady(event) {
 }
 
 const videoQuery = gql`
-    query getVideo($slug: ID!) {
-        stream(id: $slug, idType: SLUG) {
-            id
-            databaseId
-            title
-            date
-            vimeoID
-            imageLink
-            cloudflareVideoID
-            mp3Link
-            noMicMP3Link
+    query GetVideo($slug: ID!) {
+  stream(id: $slug, idType: SLUG) {
+    id
+    databaseId
+    title
+    date
+    streamsFields {
+      vimeoId
+      cloudflareVideoId
+      imageLink
+      vimeoThumbnail
+      mp3link {
+        url
+        title
+				target
+      }
+        nomicmp3link {
+        url
+        title
+				target
+      }
+    }
+    streamType {
+      edges {
+        node {
+          id
+          name
         }
-    }`
+      }
+    }
+  }
+}`
 
 // Use useAsyncQuery for the initial data fetch
 const { data, pending, error: queryError } = useAsyncQuery(videoQuery, { slug })
-
+1
 // Use a ref to store the video data
 const videoData = ref(null)
 
@@ -137,11 +156,11 @@ watch(() => video.value, (newVideo) => {
                     </div>
                     <div v-if="canViewVideo" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
                         <div v-show="video">
-                            <client-only v-if="video?.vimeoID">
-                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.vimeoID" :options="options" @ready="onPlayerReady" />
+                            <client-only v-if="video?.streamsFields.vimeoID">
+                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoID" :options="options" @ready="onPlayerReady" />
                             </client-only>
-                            <client-only v-else-if="video?.cloudflareVideoID">
-                                <CloudflareVideoPlayer :videoId="video.cloudflareVideoID" />
+                            <client-only v-else-if="video?.streamsFields.cloudflareVideoID">
+                                <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoID" />
                             </client-only>
                         </div>
                     </div>
@@ -149,7 +168,7 @@ watch(() => video.value, (newVideo) => {
                         <div class="max-w-full lg:w-8/12 mx-auto mb-6 flex items-center justify-center">
                             <div class="w-full bg-black relative h-[60vh] sm:h-auto">
                                 <div class="aspect-video relative">
-                                    <img :src="video?.imageLink" class="w-full" />
+                                    <img :src="video?.streamsFields.imageLink" class="w-full" />
                                     <div id="poster-gradient" class="h-full w-full absolute top-0 left-0 sm:hidden"></div>
                                 </div>
                                 <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
@@ -197,7 +216,7 @@ watch(() => video.value, (newVideo) => {
                                 class="absolute top-full right-0 mt-1 bg-white rounded-md shadow-lg z-10 w-full min-w-[120px]"
                             >
                                 <a
-                                    v-for="link in video.mp3Link"
+                                    v-for="link in video.streamsFields.mp3Link"
                                     :key="link"
                                     :href="link"
                                     class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
@@ -207,7 +226,7 @@ watch(() => video.value, (newVideo) => {
                                     With Mic
                                 </a>
                                 <a
-                                    v-for="link in video.noMicMP3Link"
+                                    v-for="link in video.streamsFields.noMicMP3Link"
                                     :key="link"
                                     :href="link"
                                     class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"

@@ -28,21 +28,24 @@ useState('perks', () => perks)
 useState('mixes', () => mixes)
 
   const showsQuery = gql`
-    {
-      events(first: 30) {
-        nodes {
-          ...EventFields
-        }
+    query getEvents {
+  events(first: 30) {
+    nodes {
+      title
+      eventsFields {
+        location
+        venue
+        details
+        eventDate
+        ticketLink
       }
     }
-
-    fragment EventFields on Event {
-      location
-      venue
-      details
-      eventDate
-      ticketLink
+    pageInfo {
+      endCursor
+      hasNextPage
     }
+  }
+}
   `
   const shows = ref(useState('shows', () => []))
 
