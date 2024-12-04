@@ -50,12 +50,12 @@ const videoQuery = gql`
       mp3link {
         url
         title
-				target
+		target
       }
         nomicmp3link {
         url
         title
-				target
+		target
       }
     }
     streamType {
@@ -81,6 +81,7 @@ watch([data, pending, queryError], () => {
         if (queryError.value) {
             console.error('Error fetching video:', queryError.value)
         } else if (data.value?.stream) {
+            console.log(data.value?.stream)
             videoData.value = data.value.stream
         } else {
             console.error('No video found')
@@ -156,11 +157,11 @@ watch(() => video.value, (newVideo) => {
                     </div>
                     <div v-if="canViewVideo" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
                         <div v-show="video">
-                            <client-only v-if="video?.streamsFields.vimeoID">
-                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoID" :options="options" @ready="onPlayerReady" />
+                            <client-only v-if="video?.streamsFields.vimeoId">
+                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoId" :options="options" @ready="onPlayerReady" />
                             </client-only>
-                            <client-only v-else-if="video?.streamsFields.cloudflareVideoID">
-                                <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoID" />
+                            <client-only v-else-if="video?.streamsFields.cloudflareVideoId">
+                                <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoId" />
                             </client-only>
                         </div>
                     </div>

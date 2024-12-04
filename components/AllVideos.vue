@@ -15,6 +15,7 @@
       id
       title
       slug
+      date
       streamsFields {
         vimeoId
         cloudflareVideoId
@@ -42,6 +43,7 @@
 
     watch(result, (data) => {
         if (data?.streams) {
+            console.log(data?.streams)
             videos.value = data.streams.nodes
             pageInfo.value = data.streams.pageInfo
         }
@@ -84,7 +86,7 @@
     
     const thumbnailUrl = (video) => {
         if (hoveredVideo.value === video && video.streamsFields.imageLink) return video.streamsFields.imageLink;
-        if (video.streamsFields.cloudflareVideoID) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoID}/thumbnails/thumbnail.jpg`;
+        if (video.streamsFields.cloudflareVideoId) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoId}/thumbnails/thumbnail.jpg`;
         if (video.streamsFields.vimeoThumbnail) return video.streamsFields.vimeoThumbnail;
         return video.streamsFields.imageLink;
     }
