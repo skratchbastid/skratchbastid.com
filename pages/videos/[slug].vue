@@ -239,7 +239,7 @@ watch(() => video.value, (newVideo) => {
                     </div>
                 </div>
                 <div class="my-10 px-2 md:px-12 flex flex-col lg:flex-row gap-10" v-if="video">
-                    <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="w-full lg:w-2/3" />
+                    <!-- <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="w-full lg:w-2/3" /> -->
                     <LatestStreams :excludeId="video?.id" :vertical="true" title="More Streams" :seeAll="false" class="w-full lg:w-1/3" />
                 </div>
             </template>
