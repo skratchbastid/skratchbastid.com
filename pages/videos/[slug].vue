@@ -216,24 +216,25 @@ watch(() => video.value, (newVideo) => {
                                 v-if="showMp3Options"
                                 class="absolute top-full right-0 mt-1 bg-white rounded-md shadow-lg z-10 w-full min-w-[120px]"
                             >
-                                <a
-                                    v-for="link in video.streamsFields.mp3Link"
-                                    :key="link"
-                                    :href="link"
-                                    class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    With Mic
-                                </a>
-                                <a
-                                    v-for="link in video.streamsFields.noMicMP3Link"
-                                    :key="link"
-                                    :href="link"
-                                    class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                >
-                                    No Mic
-                                </a>
+                            <a
+                                v-if="video.streamsFields.mp3link?.url"
+                                :href="video.streamsFields.mp3link.url"
+                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Download With Mic
+                            </a>
+
+                            <a
+                                v-if="video.streamsFields.noMicMP3Link?.url"
+                                :href="video.streamsFields.noMicMP3Link.url"
+                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                            No Mic
+                            </a>
                             </div>
                         </div>
                     </div>
