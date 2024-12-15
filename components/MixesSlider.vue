@@ -1,15 +1,38 @@
 <script setup>
 import VueHorizontal from "vue-horizontal";
+import { storeToRefs } from 'pinia'
+
+const userStore = useUserStore()
+const { user, membershipType } = storeToRefs(userStore)
 
 const mixes = useState('mixes')
 </script>
 
 <template>
-    <div>
-        <div class="mb-2 ml-4 md:mx-10">
-            <h2 class="text-lg font-extrabold">Mixes</h2>
+    <div class="py-6 bg-white mt-8 px-6">
+        <div class="flex justify-between items-center pr-4 mb-4">
+          <div class="flex items-center gap-2">
+            <img 
+              src="/img/latest_mixes.png" 
+              alt="New in Top Grillin" 
+              class="w-6 h-6"
+            />
+            <h2 class="text-[18px] font-bold text-gray-800">{{ 'Mixes' }}</h2>
+          </div>
+          <div v-if="membershipType !== 'vip'" class="hidden md:block">
+            <NuxtLink
+              to="/join"
+              class="text-white hover:text-black hover:bg-white text-sm py-1"
+            >
+              <div class="bg-[#FF5941] px-4 py-2 rounded-lg">
+                <p class="text-[14px] font-bold text-white uppercase tracking-wide text-[14px]">
+                  Join top grillin
+                </p>
+              </div>
+            </NuxtLink>
+          </div>
         </div>
-        <vue-horizontal class="ml-4 md:mx-10">
+        <vue-horizontal class="ml-0 md:mr-10">
             <NuxtLink 
                 v-for="mix in mixes" 
                 :key="mix.id" 
@@ -22,6 +45,20 @@ const mixes = useState('mixes')
                 </div>
             </NuxtLink>
         </vue-horizontal>
+
+        <div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
+          <NuxtLink
+            to="/join"
+            class="text-white hover:text-black hover:bg-white text-sm py-1"
+          >
+            <div class="bg-[#FF5941] px-4 py-2 rounded-lg text-center">
+              <p class="text-[12px] font-bold text-white uppercase tracking-wide text-[14px]">
+                Join top grillin
+              </p>
+            </div>
+          </NuxtLink>
+        </div>
+
     </div>
 </template>
 
