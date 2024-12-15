@@ -41,7 +41,7 @@
           alt="Small Image" 
           class="w-32 mx-auto"
         />
-      </NuxtLink>
+      </NuxtLink> 
     </div>
 
     <img 
