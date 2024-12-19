@@ -14,7 +14,7 @@ const tabs = [
 <template>
     <div class="mx-4 md:mx-10 my-8">
         <!-- Menu Tabs -->
-        <ul class="flex gap-2 overflow-x-auto scrollbar-hidden text-md font-regular pt-4">
+        <ul class="flex gap-2 overflow-x-auto scrollbar-hidden text-[14px] font-regular pt-4">
             <li 
                 v-for="tab in tabs" 
                 :key="tab" 
