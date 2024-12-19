@@ -46,7 +46,7 @@
             >
               Videos
             </NuxtLink>
-            <img src="/img/imgHover/videosHover.png" alt="Videos Image" class="link-image">
+            <img src="/img/imgHover/videosHover.png" alt="Videos Image" class="link-image2">
           </div>
           <div class="link-container">
             <NuxtLink 
@@ -97,24 +97,50 @@
 
       </div>
 
-      <!-- Hamburger per tablet e mobile -->
-      <button 
-        class="lg:hidden text-black dark:text-white" 
-        @click="toggleMenu">
-        <!-- SVG icona hamburger -->
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          class="h-6 w-6" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor">
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
+      <!-- Menu Scrollabile Orizzontalmente -->
+      <div 
+        class="flex gap-6 overflow-x-auto scrollbar-hidden h-full items-center text-black dark:text-white font-semibold uppercase pr-4 lg:hidden" style="margin-left: 1rem;">
+        <NuxtLink 
+          to="/videos" 
+          class="hover:text-[#F39301] transition duration-300 whitespace-nowrap">
+          Videos
+        </NuxtLink>
+        <NuxtLink 
+          to="/audios" 
+          class="hover:text-[#FF95BC] transition duration-300 whitespace-nowrap">
+          Audios
+        </NuxtLink>
+        <NuxtLink 
+          to="/events"  
+          class="hover:text-[#85C441] transition duration-300 whitespace-nowrap">
+          Events
+        </NuxtLink>
+        <NuxtLink 
+          to="/top-grillin" 
+          class="hover:text-[#EFDA11] transition duration-300 whitespace-nowrap">
+          Top Grillin'
+        </NuxtLink>
+        <NuxtLink 
+          to="/bbq-festival" 
+          class="hover:text-[#1F85FF] transition duration-300 whitespace-nowrap">
+          BASTID’S BBQ
+        </NuxtLink>
+        <NuxtLink 
+          to="/shop"  
+          class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
+          Shop
+        </NuxtLink>
+        <NuxtLink 
+          to="/signup"  
+          class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
+          Sign Up
+        </NuxtLink>
+        <NuxtLink 
+          to="/login"  
+          class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
+          Login
+        </NuxtLink>
+      </div>
 
       <!-- Pulsanti Desktop -->
       <div class="hidden lg:flex gap-4">
@@ -199,9 +225,33 @@ const toggleMenu = () => {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.link-image2 {
+  position: absolute;
+  top: -15px; /* Posiziona l'immagine sotto il link */
+  width: 100px; /* Regola la larghezza dell'immagine */
+  height: auto;
+  opacity: 0; /* Nascondi l'immagine di default */
+  transform: translateY(10px); /* Aggiunge un effetto di transizione */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 .link-container:hover .link-image {
   opacity: 1; /* Rendi visibile l'immagine al passaggio del mouse */
   transform: translateY(0); /* Riporta l'immagine nella posizione originale */
+}
+
+.link-container:hover .link-image2{
+  opacity: 1; /* Rendi visibile l'immagine al passaggio del mouse */
+  transform: translateY(0); /* Riporta l'immagine nella posizione originale */
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
 }
 
 </style>
