@@ -25,14 +25,9 @@
             </div>
         </div>
         <!---<UpcomingShows />-->
-        <!-- <div class="grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
-            <a href="https://shop.skratchbastid.com" target="_blank" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Store</a>
-            <NuxtLink to="/rotw" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">ROTW</NuxtLink>
-            <NuxtLink to="/shows" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Shows</NuxtLink>
-            <NuxtLink to="/bbq-recaps" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">BBQ Recaps</NuxtLink>
-            <NuxtLink to="/videos" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Videos</NuxtLink>
-            <NuxtLink to="/mixes" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Mixes</NuxtLink>
-        </div> -->
+        <StoreSection
+            class="my-12 mb-6"
+        />
         <ClientOnly>
             <LatestStreams
                 class="my-12 mb-6"

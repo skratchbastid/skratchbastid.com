@@ -7,10 +7,11 @@
     const loadingMore = ref(false)
     const hoveredVideo = ref(null)
     const isClient = ref(false)
+    const props = defineProps(['filter']);
 
     const VIDEOS_QUERY = gql`
         query GetStreams($cursor: String) {
-  streams(first: 36, after: $cursor) {
+  streams(first: 40, after: $cursor) {
     nodes {
       id
       title
@@ -96,28 +97,274 @@
     <ClientOnly>
         <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
         <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
-        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-8 my-8">
-            <NuxtLink 
-                :to="'/videos/' + video.slug" 
-                v-for="video in videos" 
-                :key="video.id"
-                @mouseenter="hoveredVideo = video"
-                @mouseleave="hoveredVideo = null"
-            >
-                <div class="relative overflow-hidden rounded-lg">
-                    <img 
-                        :src="thumbnailUrl(video)" 
-                        class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                        loading="lazy" 
-                        :alt="video.title" 
-                    />
+        <div v-else>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">New in Top Grillin</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
                 </div>
-                <div class="font-light mt-2 truncate">{{ video.title }}</div>
-                <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-            </NuxtLink>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">Member Favourites</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
+                </div>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">Tuesday Morning Coffee</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
+                </div>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">BBQ Recaps</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
+                </div>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">Record of the Week</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
+                </div>
+                <div class="mb-8 mx-4 md:mx-10 my-8">
+                    <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img 
+                                src="/img/storeImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">Paul’s Wall</h2>
+                        </div>
+                        <NuxtLink
+                            :to="'/videos/All'"
+                            class="text-white hover:text-black hover:bg-white text-sm py-1"
+                        >
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
+                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
+                                </svg>
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
+                        <NuxtLink 
+                            :to="'/videos/' + video.slug" 
+                            v-for="(video, index) in videos.slice(0, 4)" 
+                            :key="video.id"
+                            @mouseenter="hoveredVideo = video"
+                            @mouseleave="hoveredVideo = null"
+                        >
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img 
+                                    :src="thumbnailUrl(video)" 
+                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                                    loading="lazy" 
+                                    :alt="video.title" 
+                                />
+                            </div>
+                            <div class="font-light mt-2 truncate">{{ video.title }}</div>
+                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
+                        </NuxtLink>
+                    </div>
+                </div>
         </div>
+        <CTAComponent />
+        <footerComponent class="" />
         <template #fallback>
             <div class="text-center py-8">Loading...</div>
         </template>
     </ClientOnly>
 </template>
+
+<style scoped>
+.scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+</style>
