@@ -24,7 +24,7 @@
                 <FeaturedVideo />
             </div>
         </div>
-        <UpcomingShows />
+        <!---<UpcomingShows />-->
         <!-- <div class="grid grid-cols-2 md:flex items-center justify-center gap-x-6 gap-y-4 mt-10 flex-wrap text-center px-4 text-base md:text-lg uppercase">
             <a href="https://shop.skratchbastid.com" target="_blank" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">Store</a>
             <NuxtLink to="/rotw" class="border border-1 border-gray-700 hover:bg-gray-700 hover:text-white rounded-full px-4">ROTW</NuxtLink>
@@ -39,7 +39,6 @@
                 :excludeLatest="true"
             />
 
-            
             <!---<div v-if="userIsVip">
                 <DeepDives class="my-10" />
                 <SwltSeries class="my-10" />
@@ -102,7 +101,7 @@
 
 @media (max-width: 768px) {
     .featureVideo{
-        height: 50vh;
+        height: 45vh;
     }
 }
 </style>

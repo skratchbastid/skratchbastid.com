@@ -38,14 +38,63 @@
 
         <!-- Menu Desktop -->
         <div 
-          class="hidden lg:flex gap-6 text-black dark:text-white font-semibold">
-          <NuxtLink to="/videos" class="hover:underline">Videos</NuxtLink>
-          <NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>
-          <NuxtLink to="/events" class="hover:underline">Events</NuxtLink>
-          <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin</NuxtLink>
-          <NuxtLink to="/bbq-festival" class="hover:underline">BBQ Festival</NuxtLink>
-          <NuxtLink to="/shop" class="hover:underline">Shop</NuxtLink>
+          class="hidden lg:flex gap-6 text-black dark:text-white font-semibold uppercase relative">
+          <div class="link-container">
+            <NuxtLink 
+              to="/videos" 
+              class="hover:text-[#F39301] transition duration-300"
+            >
+              Videos
+            </NuxtLink>
+            <img src="/img/imgHover/videosHover.png" alt="Videos Image" class="link-image">
+          </div>
+          <div class="link-container">
+            <NuxtLink 
+              to="/audios" 
+              class="hover:text-[#FF95BC] transition duration-300"
+            >
+              Audios
+            </NuxtLink>
+            <img src="/img/imgHover/audioHover.png" alt="Audios Image" class="link-image">
+          </div>
+          <div class="link-container">
+            <NuxtLink 
+              to="/events"  
+              class="hover:text-[#85C441] transition duration-300"
+            >
+              Events
+            </NuxtLink>
+            <img src="/img/imgHover/eventsHover.png" alt="Events Image" class="link-image">
+          </div>
+          <div class="link-container">
+            <NuxtLink 
+              to="/top-grillin" 
+              class="hover:text-[#EFDA11] transition duration-300"
+            >
+              Top Grillin'
+            </NuxtLink>
+            <img src="/img/imgHover/topgrillinHover.png" alt="Top Grillin' Image" class="link-image">
+          </div>
+          <div class="link-container">
+            <NuxtLink 
+              to="/bbq-festival" 
+              class="hover:text-[#1F85FF] transition duration-300"
+            >
+              BASTID’S BBQ
+            </NuxtLink>
+            <img src="/img/imgHover/bbqfestivalHover.png" alt="BBQ Festival Image" class="link-image">
+          </div>
+          <div class="link-container">
+            <NuxtLink 
+              to="/shop"  
+              class="hover:text-[#D4582D] transition duration-300"
+            >
+              Shop
+            </NuxtLink>
+            <img src="/img/imgHover/shopHover.png" alt="Shop Image" class="link-image">
+          </div>
         </div>
+
       </div>
 
       <!-- Hamburger per tablet e mobile -->
@@ -86,12 +135,12 @@
     <div 
       v-show="menuOpen" 
       class="absolute top-[58px] left-0 w-full bg-white dark:bg-gray-900 shadow-md lg:hidden">
-      <div class="flex flex-col gap-4 p-4 text-black dark:text-white font-semibold">
+      <div class="flex flex-col gap-4 p-4 text-black dark:text-white font-semibold uppercase">
         <NuxtLink to="/videos" class="hover:underline">Videos</NuxtLink>
         <NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>
         <NuxtLink to="/events" class="hover:underline">Events</NuxtLink>
-        <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin</NuxtLink>
-        <NuxtLink to="/bbq-festival" class="hover:underline">BBQ Festival</NuxtLink>
+        <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin'</NuxtLink>
+        <NuxtLink to="/bbq-festival" class="hover:underline">BASTID’S BBQ</NuxtLink>
         <NuxtLink to="/shop" class="hover:underline">Shop</NuxtLink>
         <div class="flex flex-col gap-2">
           <NuxtLink 
@@ -132,4 +181,27 @@ const toggleMenu = () => {
 [v-cloak] {
   display: none;
 }
+
+.link-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-image {
+  position: absolute;
+  bottom: -15px; /* Posiziona l'immagine sotto il link */
+  width: 100px; /* Regola la larghezza dell'immagine */
+  height: auto;
+  opacity: 0; /* Nascondi l'immagine di default */
+  transform: translateY(10px); /* Aggiunge un effetto di transizione */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.link-container:hover .link-image {
+  opacity: 1; /* Rendi visibile l'immagine al passaggio del mouse */
+  transform: translateY(0); /* Riporta l'immagine nella posizione originale */
+}
+
 </style>

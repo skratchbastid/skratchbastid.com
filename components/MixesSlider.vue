@@ -19,7 +19,7 @@ const mixes = useState('mixes')
             />
             <h2 class="text-[18px] font-bold text-gray-800">{{ 'Mixes' }}</h2>
           </div>
-          <div v-if="membershipType !== 'vip'" class="hidden md:block">
+          <div v-if="membershipType !== 'vip'" class="">
             <NuxtLink
               to="/join"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
@@ -46,8 +46,8 @@ const mixes = useState('mixes')
             </NuxtLink>
         </vue-horizontal>
 
-        <div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
-          <NuxtLink
+        <!--<div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
+         <NuxtLink
             to="/join"
             class="text-white hover:text-black hover:bg-white text-sm py-1"
           >
@@ -57,7 +57,7 @@ const mixes = useState('mixes')
               </p>
             </div>
           </NuxtLink>
-        </div>
+        </div>-->
 
     </div>
 </template>

@@ -94,7 +94,7 @@ const thumbnail = (video) => {
             />
             <h2 class="text-[18px] font-bold text-gray-800">{{ title || 'New in Top Grillin' }}</h2>
           </div>
-          <div v-if="membershipType !== 'vip'" class="hidden md:block">
+          <div v-if="membershipType !== 'vip'" class="">
             <NuxtLink
               to="/join"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
@@ -114,7 +114,7 @@ const thumbnail = (video) => {
             v-for="video in filteredStreams" 
             :key="video.id"
             :to="isVip ? `/videos/${video.slug}` : undefined"
-            class="relative flex flex-col w-7/12 md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
+            class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
             @click="handleClick($event, video)"
             @mouseenter="hoveredVideo = video"
             @mouseleave="hoveredVideo = null"
@@ -141,12 +141,12 @@ const thumbnail = (video) => {
                 </svg>
               </div>
             </div>
-  
+
             <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
           </component>
         </vue-horizontal>
   
-        <div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
+        <!--<div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
           <NuxtLink
             to="/join"
             class="text-white hover:text-black hover:bg-white text-sm py-1"
@@ -157,7 +157,7 @@ const thumbnail = (video) => {
               </p>
             </div>
           </NuxtLink>
-        </div>
+        </div>-->
       </div>
   
       <VipUpgradeModal :show="showModal" @close="closeModal" />
