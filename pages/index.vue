@@ -66,6 +66,7 @@
         <!-- <LatestVideos /> -->
     </div>
 
+    <CTAComponent2 />
     <CTAComponent />
 
     <footerComponent class="" />

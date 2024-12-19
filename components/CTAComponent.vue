@@ -12,7 +12,7 @@
     />
 
     <div class="relative z-10 text-center px-8 py-16 md:py-24">
-      <h1 class="text-[16px] md:text-5xl font-bold uppercase mb-8">
+      <h1 class="md:text-5xl text-3xl font-bold uppercase mb-8">
         Subscribe to top grillin
       </h1>
 

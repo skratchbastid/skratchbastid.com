@@ -71,18 +71,28 @@
       class="relative z-10 text-center text-sm text-[#4E5D6B] py-6 px-4 md:hidden"
       style="background-color:#142129;"
     >
-      © 2024 Skratch Bastid. All Rights Reserved.
+      © {{ currentYear }} Skratch Bastid. All Rights Reserved.
     </div>
 
     <div 
       class="relative z-10 mt-0 text-left text-sm text-[#4E5D6B] py-20 px-20 hidden md:block" 
       style="background: url('/img/footer_background.png') no-repeat center; background-size: cover; background-color:#142129;"
     >
-      © 2024 Skratch Bastid. All Rights Reserved.
+      © {{ currentYear }} Skratch Bastid. All Rights Reserved.
     </div>
 
   </footer>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
+};
+</script>
 
 <style scoped>
 footer {
