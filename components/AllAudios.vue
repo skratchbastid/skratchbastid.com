@@ -1,6 +1,7 @@
 <script setup>
     import { useQuery } from '@vue/apollo-composable'
     import { gql } from 'graphql-tag'
+    import VueHorizontal from "vue-horizontal";
 
     const videos = ref([])
     const pageInfo = ref(null)
@@ -8,89 +9,7 @@
     const hoveredVideo = ref(null)
     const isClient = ref(false)
     const props = defineProps(['filter']);
-
-    const VIDEOS_QUERY = gql`
-        query GetStreams($cursor: String) {
-  streams(first: 40, after: $cursor) {
-    nodes {
-      id
-      title
-      slug
-      date
-      streamsFields {
-        vimeoId
-        cloudflareVideoId
-        imageLink
-        vimeoThumbnail
-      }
-      streamType {
-        edges {
-          node {
-            id
-            name
-          }
-        }
-      }
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
-    `
-
-    const { result, loading, error, fetchMore } = useQuery(VIDEOS_QUERY)
-
-    watch(result, (data) => {
-        if (data?.streams) {
-            console.log(data?.streams)
-            videos.value = data.streams.nodes
-            pageInfo.value = data.streams.pageInfo
-        }
-    })
-
-    onMounted(() => {
-        isClient.value = true
-        window.addEventListener('scroll', loadMoreVideos);
-    })
-
-    onBeforeUnmount(() => {
-        window.removeEventListener('scroll', loadMoreVideos);
-    })
-    
-    function loadMoreVideos() {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-        // Check if the user has scrolled near the bottom of the page
-        if (clientHeight + scrollTop >= scrollHeight - 600 && !loadingMore.value && pageInfo.value?.hasNextPage) {
-            loadingMore.value = true
-            fetchMore({
-                variables: {
-                    cursor: pageInfo.value.endCursor
-                },
-                updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) return prev
-                    return {
-                        streams: {
-                            __typename: prev.streams.__typename,
-                            nodes: [...prev.streams.nodes, ...fetchMoreResult.streams.nodes],
-                            pageInfo: fetchMoreResult.streams.pageInfo
-                        }
-                    }
-                }
-            }).finally(() => {
-                loadingMore.value = false
-            })
-        }
-    }
-    
-    const thumbnailUrl = (video) => {
-        if (hoveredVideo.value === video && video.streamsFields.imageLink) return video.streamsFields.imageLink;
-        if (video.streamsFields.cloudflareVideoId) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoId}/thumbnails/thumbnail.jpg`;
-        if (video.streamsFields.vimeoThumbnail) return video.streamsFields.vimeoThumbnail;
-        return video.streamsFields.imageLink;
-    }
+    const mixes = useState('mixes')
 
 </script>
 <template>
@@ -98,11 +17,11 @@
         <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
         <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
         <div v-else>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -121,30 +40,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -163,30 +76,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -205,30 +112,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -247,30 +148,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -289,30 +184,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
-                                src="/img/storeImg.png" 
+                                src="/img/audiosImg.png" 
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
@@ -331,22 +220,16 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
                         <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos.slice(0, 4)" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
+                            v-for="(mix, index) in mixes.slice(0, 4)" 
+                            :key="mix.id" 
+                            :to="mix.link" 
+                            target="_blank" 
+                            class="w-[100%] aspect-square bg-slate-500 text-white flex justify-center items-center rounded-lg mr-2 md:mr-4 hover-effect-container"
                         >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
+                            <div class="hover-effect w-full h-full">
+                                <img :src="mix.image" :alt="mix.title" class="w-full h-full object-cover rounded-lg">
+                                <h2 class="text-[18px] font-semibold text-gray-800">Bastid's BBQ New York’23 Recap</h2>
                             </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
                         </NuxtLink>
                     </div>
                 </div>

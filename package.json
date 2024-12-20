@@ -32,6 +32,7 @@
     "pinia": "^2.0.34",
     "postcss-custom-properties": "^13.3.12",
     "posthog-js": "^1.166.1",
+    "swiper": "^11.1.15",
     "url": "^0.11.0",
     "vue-awesome": "^4.5.0",
     "vue-easy-lightbox": "^1.16.0",

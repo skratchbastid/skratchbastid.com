@@ -13,9 +13,12 @@ const adjustPlayerSize = () => {
     if (window.innerWidth < 768) {
       playerWidth.value = 870;
       playerHeight.value = 500; // Altezza minore per mobile
-    } else {
+    } else if (window.innerWidth > 768 && window.innerWidth < 1900) {
       playerWidth.value = 1400;
       playerHeight.value = 800; // Altezza per desktop
+    }else {
+      playerWidth.value = 2300;
+      playerHeight.value = 1200; // Altezza per desktop
     }
   }
 };
