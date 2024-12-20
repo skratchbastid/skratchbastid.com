@@ -20,8 +20,9 @@
             </NuxtLink>
             <img 
               src="/img/imgHover/videosHover.png" 
+              style="rotate: 180deg;"
               alt="Videos Image" 
-              :class="{'link-image-active': $route.path === '/videos', 'link-image2': true}">
+              :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
           <div class="link-container">
             <NuxtLink 
@@ -235,7 +236,7 @@ const toggleMenu = () => {
 
 .link-image2 {
   position: absolute;
-  top: -15px;
+  top: -20px;
   width: 100px;
   height: auto;
   opacity: 0;
