@@ -46,6 +46,8 @@ const filteredStreams = computed(() => {
     return result
 })
 
+console.log(streams)
+
 const showModal = ref(false)
 const hoveredVideo = ref(null)
 

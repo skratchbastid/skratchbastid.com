@@ -104,7 +104,8 @@
             <img 
               src="/img/imgHover/videosHover.png" 
               alt="Videos Image" 
-              :class="{'link-image-active': $route.path === '/videos', 'link-image2': true}">
+              style="rotate: 180deg;"
+              :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
           <div class="link-container">
             <NuxtLink 

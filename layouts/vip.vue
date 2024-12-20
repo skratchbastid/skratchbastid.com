@@ -52,7 +52,7 @@
             >
               Videos
             </NuxtLink>
-            <img src="/img/imgHover/videosHover.png" alt="Videos Image" class="link-image2">
+            <img src="/img/imgHover/videosHover.png" alt="Videos Image" style="rotate: 180deg;"class="link-image">
           </div>
           <div class="link-container">
             <NuxtLink 
@@ -154,7 +154,7 @@
               </ul>
             </div>
           </div>
-          <div v-else-if="isClient">
+          <div v-else-if="isClient" class="gap-4">
             <NuxtLink 
               to="/signup"  
               class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
@@ -192,7 +192,7 @@
           <div v-else-if="isClient">
             <NuxtLink 
               to="/signup" 
-              class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100">
+              class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100 mr-4">
               SIGN UP
             </NuxtLink>
             <NuxtLink 

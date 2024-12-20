@@ -113,22 +113,23 @@ function timestampToSeconds(timestamp) {
 </script>
 
 <template>
-    <div class="mx-auto">
-        <div v-if="isVip" class="flex">
-            <div class="w-12">
+    <div class="">
+       <!-- <div v-if="isVip" class="flex">-->
+        <div  class="flex">
+            <!--<div class="w-12">
                 <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full" />
-            </div>
+            </div>-->
             <div class="flex flex-col w-full">
-                <div>
-                    <textarea v-model="commentContent" @input="adjustTextareaHeight" @focus="commenting = true" type="text" placeholder="Add a comment..." rows="1" class="w-full py-1 font-light text-sm border-b-2 focus:border-b-black outline-none focus:outline-none focus:ring-0 overflow-y-auto resize-none" />
+                <div class="relative">
+                    <textarea v-model="commentContent" @input="adjustTextareaHeight" @focus="commenting = true" type="text" placeholder="Add a comment..." rows="1" class="w-full font-light text-sm border-b-2 outline-none focus:outline-none focus:ring-0 overflow-y-auto resize-none border-0 p-4 bg-gray-200 rounded-md text-[#565973] md:w-[30vw]" />
+                    <button @click="submitComment" :disabled="commentContent.length == 0 || loading" class="absolute right-[2%] top-[10%] p-3 bg-[rgba(255,89,65,1)] text-white rounded-md text-[12px] uppercase font-semibold">
+                            Send
+                        </button>
                 </div>
                 <div>
                     <div v-if="commenting" class="flex mt-2 justify-end gap-4">
                         <button @click="clearComment" class="text-gray-800 font-semibold text-sm">
                             Cancel
-                        </button>
-                        <button @click="submitComment" :disabled="commentContent.length == 0 || loading" class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400 text-white font-semibold text-sm py-2 px-4 rounded-full">
-                            Comment
                         </button>
                     </div>
                 </div>
