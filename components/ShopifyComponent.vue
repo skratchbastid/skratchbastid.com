@@ -29,7 +29,7 @@
     </div>
 
     <!-- Prodotti -->
-    <div v-if="loading" class="loading">Caricamento...</div>
+    <div v-if="loading" class="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="products.length" class="products">
       <div v-for="product in products" :key="product.id" class="product-card">
@@ -69,7 +69,7 @@ export default {
       this.products = await fetchProducts();
       console.log(this.products)
     } catch (err) {
-      this.error = "Errore nel caricamento dei prodotti";
+      this.error = "Error";
     } finally {
       this.loading = false;
     }
