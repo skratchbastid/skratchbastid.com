@@ -32,9 +32,8 @@
     <div v-if="loading" class="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="products.length" class="products">
-      <div v-for="product in products" :key="product.id" class="product-card">
+      <div v-for="(product,index) in products" :key="product.id" class="product-card">
         <a :href="product.onlineStoreUrl" target="_blank" rel="noopener noreferrer">
-
         <img 
           :src="product.images.edges[0]?.node.src" 
           :alt="product.images.edges[0]?.node.altText || product.title" 
@@ -62,12 +61,22 @@ export default {
       products: [],
       loading: true,
       error: null,
+      allowedTitles: [
+        "Bastid's BBQ Ball Cap - Available in Black or White",
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
+        "Skratch Bastid Socks"
+      ],
     };
   },
   async created() {
     try {
-      this.products = await fetchProducts();
-      console.log(this.products)
+      const allProducts = await fetchProducts();
+      // Filtra solo i prodotti con i titoli specificati
+      this.products = allProducts.filter(product =>
+        this.allowedTitles.includes(product.title)
+      );
+      console.log(this.products);
     } catch (err) {
       this.error = "Error";
     } finally {
@@ -93,16 +102,23 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  align-items: stretch; /* Assicura che tutte le card abbiano la stessa altezza */
 }
 
 .product-card {
   border: none;
   border-radius: 12px;
   padding: 0;
-  width: 300px;
+  width: 22vw;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+
+  /* Nuova proprietà per altezza minima */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Forza le card a occupare tutta l'altezza disponibile */
 }
 
 .product-card:hover {
@@ -122,6 +138,11 @@ export default {
   font-weight: 600;
   margin: 8px 0;
   color: #333;
+}
+
+.product-title,
+.product-price {
+  margin-top: auto; /* Spinge questi elementi verso il basso */
 }
 
 .product-description {
@@ -149,8 +170,21 @@ export default {
 /* Stile responsive per la testata */
 @media (max-width: 768px) {
   .flex {
-    flex-direction: column;
     align-items: center;
+  }
+
+  .products{
+    display: flex !important;
+    overflow-x: scroll !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .product-card {
+    width: 100% !important;
+  }
+
+  .product-image {
+    min-width: 70vw !important;
   }
 
   .pr-4 {

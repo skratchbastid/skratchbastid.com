@@ -1,101 +1,18 @@
-<script setup>
-import VueHorizontal from "vue-horizontal"
-import { storeToRefs } from 'pinia'
-import { LockIcon } from 'lucide-vue-next'
-import VipUpgradeModal from './VipUpgradeModal.vue'
-
-const userStore = useUserStore()
-const { user, membershipType } = storeToRefs(userStore)
-const isVip = computed(() => membershipType.value === 'vip')
-
-const { latestStreams: streams, loading, error } = useVideos()
-
-const props = defineProps({
-    excludeId: {
-        type: String,
-        required: false
-    },
-    title: {
-        type: String,
-        required: false
-    },
-    seeAll: {
-        type: Boolean,
-        required: false,
-        default: true
-    },
-    vertical: {
-        type: Boolean,
-        required: false,
-        default: false
-    },
-    excludeLatest: {
-        type: [Boolean, String],
-        default: false
-    }
-})
-
-const filteredStreams = computed(() => {
-    let result = streams.value
-    if (props.excludeId) {
-        result = result.filter((video) => video.id !== props.excludeId)
-    }
-    if ((props.excludeLatest === true || props.excludeLatest === 'true') && result.length > 0) {
-        result = result.slice(1)
-    }
-    return result
-})
-
-const showModal = ref(false)
-const hoveredVideo = ref(null)
-
-const openModal = () => {
-    if (!isVip.value) {
-        showModal.value = true
-    }
-}
-
-const closeModal = () => {
-    showModal.value = false
-}
-
-const LinkComponent = computed(() => membershipType?.value === 'vip' ? resolveComponent('NuxtLink') : 'div')
-
-const handleClick = (event, video) => {
-    if (!isVip.value) {
-        event.preventDefault()
-        openModal()
-    }
-}
-
-const thumbnail = (video) => {
-    if (video.streamsFields.vimeoThumbnail) {
-        return video.streamsFields.vimeoThumbnail
-    }
-    if (video.streamsFields.imageLink) {
-        return video.streamsFields.imageLink
-    }
-    if (video.streamsFields.cloudflareVideoID) {
-        return `https://videodelivery.net/${video.streamsFields.cloudflareVideoID}/thumbnails/thumbnail.jpg`
-    }
-    return null 
-}
-</script>
-
 <template>
-    <div class="py-6 bg-white mt-8 px-6">
-      <div v-if="streams.length">
-        <div class="flex justify-between items-center pr-4 mb-4">
-          <div class="flex items-center gap-2">
-            <img 
-              src="/img/storeImg.png" 
-              alt="New in Top Grillin" 
-              class="w-6 h-6"
-            />
-            <h2 class="text-[18px] font-bold text-gray-800">Bastid’s store</h2>
-          </div>
-            <NuxtLink
-              to="/join"
+  <div class="py-6 bg-white mt-8 px-6">
+    <!-- Intestazione -->
+    <div class="flex justify-between items-center pr-4 mb-4">
+      <div class="flex items-center gap-2">
+        <img 
+          src="/img/storeImg.png" 
+          alt="New in Top Grillin" 
+          class="w-6 h-6"
+        />
+        <h2 class="text-[18px] font-bold text-gray-800">Bastid’s store</h2>
+      </div>
+      <div>
+        <NuxtLink
+              to="https://shop.skratchbastid.com/"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
             >
               <div class="flex items-center">
@@ -108,68 +25,158 @@ const thumbnail = (video) => {
                 
               </div>
             </NuxtLink>
-        </div>
-  
-        <vue-horizontal class="ml-0 md:mr-10" v-if="!vertical">
-          <component
-            :is="LinkComponent"
-            v-for="video in filteredStreams" 
-            :key="video.id"
-            :to="isVip ? `/videos/${video.slug}` : undefined"
-            class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
-            @click="handleClick($event, video)"
-            @mouseenter="hoveredVideo = video"
-            @mouseleave="hoveredVideo = null"
-          >
-            <div class="relative overflow-hidden rounded-lg">
-              <img 
-                :src="thumbnail(video)"
-                class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                  class="w-8 h-8"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 3l14 9-14 9V3z"
-                  />
-                </svg>
-              </div>
-            </div>
-
-            <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
-          </component>
-        </vue-horizontal>
       </div>
-  
     </div>
-  </template>
-  
+
+    <!-- Prodotti -->
+    <div v-if="loading" class="loading">Loading...</div>
+    <div v-if="error" class="error">{{ error }}</div>
+    <div v-if="products.length" class="products">
+      <div v-for="(product,index) in products" :key="product.id" class="product-card">
+        <a :href="product.onlineStoreUrl" target="_blank" rel="noopener noreferrer">
+
+        <img 
+          :src="product.images.edges[0]?.node.src" 
+          :alt="product.images.edges[0]?.node.altText || product.title" 
+          class="product-image" 
+        />
+        <h2 class="product-title">{{ product.title }}</h2>
+        <p class="product-price">
+          {{ product.variants.edges[0]?.node.price.amount }} {{ product.variants.edges[0]?.node.price.currencyCode }}
+        </p>
+        </a>
+      </div>
+    </div>
+    <div v-if="!loading && !error && !products.length" class="no-products">
+      Nessun prodotto disponibile.
+    </div>
+  </div>
+</template>
+
+<script>
+import { fetchProducts } from "../pages/api/shopify";
+
+export default {
+  data() {
+    return {
+      products: [],
+      loading: true,
+      error: null,
+      allowedTitles: [
+        "Bastid's BBQ Ball Cap - Available in Black or White",
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
+        "Skratch Bastid Socks"
+      ],
+    };
+  },
+  async created() {
+    try {
+      const allProducts = await fetchProducts();
+      // Filtra solo i prodotti con i titoli specificati
+      this.products = allProducts.filter(product =>
+        this.allowedTitles.includes(product.title)
+      );
+      console.log(this.products);
+    } catch (err) {
+      this.error = "Error";
+    } finally {
+      this.loading = false;
+    }
+  },
+};
+</script>
 
 <style scoped>
+/* Layout per la testata */
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+/* Stile dei prodotti */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch; /* Assicura che tutte le card abbiano la stessa altezza */
+}
+
+.product-card {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  /* Nuova proprietà per altezza minima */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Forza le card a occupare tutta l'altezza disponibile */
+}
+
+.product-card:hover {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background-color: #00000008;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #333;
+}
+
+.product-title,
+.product-price {
+  margin-top: auto; /* Spinge questi elementi verso il basso */
+}
+
+.product-description {
+  font-size: 0.9em;
+  color: #666;
+  margin: 8px 0;
+}
+
+.product-price {
+  font-weight: 400;
+  color: #FF5941;
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.loading,
+.error,
+.no-products {
+  text-align: center;
+  font-size: 1.2em;
+  color: #444;
+  margin-top: 20px;
+}
+
+/* Stile responsive per la testata */
 @media (max-width: 768px) {
-    .vue-horizontal:deep(.v-hl-btn) {
-        display: none !important;
-    }
-}
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.no-select {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    cursor: default;
-}
-
-.group:hover .group-hover\:opacity-70,
-.group:hover .group-hover\:opacity-100 {
-    transition-delay: 0.05s;
+  .pr-4 {
+    padding-right: 0;
+  }
 }
 </style>

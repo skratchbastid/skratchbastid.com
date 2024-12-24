@@ -205,6 +205,7 @@ const onPlayerReady = (event) => {
   .responsivePlayer {
     object-fit: cover; /* Taglia i lati mantenendo il centro */
     object-position: center;
+    left: -50%;
   }
 
   .videoWrapper {

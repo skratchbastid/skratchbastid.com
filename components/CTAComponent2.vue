@@ -25,12 +25,16 @@
         Lorem ipsum dolor sit amet consectetur. Sit quis tincidunt risus et platea nulla sit felis. Leo integer cum imperdiet venenatis bibendum purus accumsan in massa. Adipiscing turpis morbi habitant massa.
       </p>
 
-      <!-- Bottone -->
+      <NuxtLink
+              to="https://bastidsbbq.com/"
+              class="w-[max-content]"
+            >
       <button 
         class="col-span-12 md:col-span-2 bg-[#FF5941] text-white py-2 px-4 rounded-lg hover:bg-[#e04f39] transition"
       >
         Learn more
       </button>
+    </NuxtLink>
     </div>
   </div>
 </template>
