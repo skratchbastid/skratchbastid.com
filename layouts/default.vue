@@ -24,7 +24,7 @@
               alt="Videos Image" 
               :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
-          <div class="link-container">
+          <!--<div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#FF95BC]': $route.path === '/audios' }" 
               to="/audios" 
@@ -36,11 +36,11 @@
               src="/img/imgHover/audioHover.png" 
               alt="Audios Image" 
               :class="{'link-image-active': $route.path === '/audios', 'link-image': true}">
-          </div>
+          </div>-->
           <div class="link-container">
             <NuxtLink 
-              :class="{ 'text-[#85C441]': $route.path === '/events' }" 
-              to="/events" 
+              :class="{ 'text-[#85C441]': $route.path === '/shows' }" 
+              to="/shows" 
               class="hover:text-[#85C441] transition duration-300"
             >
               Events
@@ -48,12 +48,12 @@
             <img 
               src="/img/imgHover/eventsHover.png" 
               alt="Events Image" 
-              :class="{'link-image-active': $route.path === '/events', 'link-image': true}">
+              :class="{'link-image-active': $route.path === '/shows', 'link-image': true}">
           </div>
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#EFDA11]': $route.path === '/top-grillin' }" 
-              to="/top-grillin" 
+              to="/vip" 
               class="hover:text-[#EFDA11] transition duration-300"
             >
               Top Grillin'
@@ -66,7 +66,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#1F85FF]': $route.path === '/bbq-festival' }" 
-              to="/bbq-festival" 
+              to="https://bastidsbbq.com/" 
               class="hover:text-[#1F85FF] transition duration-300"
             >
               BASTID’S BBQ
@@ -79,7 +79,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#D4582D]': $route.path === '/shop' }" 
-              to="/shop" 
+              to="https://shop.skratchbastid.com/" 
               class="hover:text-[#D4582D] transition duration-300"
             >
               Shop
@@ -107,7 +107,7 @@
               style="rotate: 180deg;"
               :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
-          <div class="link-container">
+          <!---<div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#FF95BC]': $route.path === '/audios' }" 
               to="/audios" 
@@ -120,11 +120,11 @@
               src="/img/imgHover/audioHover.png" 
               alt="Audios Image" 
               :class="{'link-image-active': $route.path === '/audios', 'link-image': true}">
-          </div>
+          </div>-->
           <div class="link-container">
             <NuxtLink 
-              :class="{ 'text-[#85C441]': $route.path === '/events' }" 
-              to="/events"
+              :class="{ 'text-[#85C441]': $route.path === '/shows' }" 
+              to="/shows"
               style="width: max-content;"  
               class="hover:text-[#85C441] transition duration-300"
             >
@@ -133,12 +133,12 @@
             <img 
               src="/img/imgHover/eventsHover.png" 
               alt="Events Image" 
-              :class="{'link-image-active': $route.path === '/events', 'link-image': true}">
+              :class="{'link-image-active': $route.path === '/shows', 'link-image': true}">
           </div>
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#EFDA11]': $route.path === '/top-grillin' }" 
-              to="/top-grillin" 
+              to="/vip" 
               style="width: max-content;" 
               class="hover:text-[#EFDA11] transition duration-300"
             >
@@ -152,7 +152,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#1F85FF]': $route.path === '/bbq-festival' }" 
-              to="/bbq-festival"
+              to="https://bastidsbbq.com/"
               style="width: max-content;" 
               class="hover:text-[#1F85FF] transition duration-300"
             >
@@ -166,7 +166,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#D4582D]': $route.path === '/shop' }" 
-              to="/shop"
+              to="https://shop.skratchbastid.com/"
               style="width: max-content;" 
               class="hover:text-[#D4582D] transition duration-300"
             >
@@ -180,7 +180,7 @@
       </div>
       <div class="hidden lg:flex gap-4">
         <NuxtLink 
-          to="/signup" 
+          to="/join" 
           class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100"
         >
           SIGN UP

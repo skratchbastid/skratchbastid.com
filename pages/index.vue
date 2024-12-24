@@ -25,9 +25,9 @@
             </div>
         </div>
         <!---<UpcomingShows />-->
-        <StoreSection
-            class="my-12 mb-6"
-        />
+
+        <ShopifyComponent /> 
+
         <ClientOnly>
             <LatestStreams
                 class="my-12 mb-6"
@@ -41,8 +41,6 @@
             </div>-->
 
             <MixesSlider class="my-10" />
-            
-            <youtubeComponent class="my-10" />
 
             <!---<div v-if="!user.id" class="flex flex-col md:flex-row w-full md:max-w-[85%] m-auto gap-x-4 my-4">
                 <NewsletterSignup />

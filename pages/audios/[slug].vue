@@ -129,123 +129,86 @@ watch(() => video.value, (newVideo) => {
 </script>
 
 <template>
-    <div class="min-h-[95vh]">
-        <client-only>
-            <!-- Loading state -->
-            <div v-if="pending" class="flex flex-col justify-center items-center h-screen bg-slate-800">
-                <Loader2 class="animate-spin text-blue-500 mb-4" size="48" />
-                <p class="text-white text-lg font-semibold">Loading video...</p>
-            </div>
-
-            <!-- Error state -->
-            <div v-else-if="queryError" class="flex justify-center items-center h-screen bg-slate-800">
-                <p class="text-white text-lg">Error: {{ queryError.message }}</p>
-            </div>
-
-            <!-- No video found state -->
-            <div v-else-if="!video" class="flex justify-center items-center h-screen bg-slate-800">
-                <p class="text-white text-lg">No video found</p>
-            </div>
-
-            <!-- Main content -->
-            <template v-else>
-                <div class="bg-slate-800 pb-8 lg:py-8">
-                    <div class="flex justify-start absolute z-50 ml-3 mt-2 lg:mt-0 opacity-40">
-                        <NuxtLink to="/vip" class="text-white text-lg">
-                            <Icon name="zondicons:arrow-left" class="text-white" size="20" />
+    <ClientOnly>
+            <div>
+                <div class="bg-white py-12 px-4 lg:py-8">
+                    <div class="flex justify-start ml-3 mt-2 lg:mt-0">
+                        <NuxtLink to="/audios" class="text-white text-lg font-light">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="black" stroke="black" class="w-3 h-3"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>                                <p class="text-black ml-2 uppercase text-[14px]">
+                                    To audios
+                                </p>
+                            </div>
                         </NuxtLink>
                     </div>
-                    <div v-if="canViewVideo" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
-                        <div v-show="video">
-                            <client-only v-if="video?.streamsFields.vimeoId">
-                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoId" :options="options" @ready="onPlayerReady" />
-                            </client-only>
-                            <client-only v-else-if="video?.streamsFields.cloudflareVideoId">
-                                <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoId" />
-                            </client-only>
-                        </div>
-                    </div>
-                    <div v-else>
-                        <div class="max-w-full lg:w-8/12 mx-auto mb-6 flex items-center justify-center">
-                            <div class="w-full bg-black relative h-[60vh] sm:h-auto">
-                                <div class="aspect-video relative">
-                                    <img :src="video?.streamsFields.imageLink" class="w-full" />
-                                    <div id="poster-gradient" class="h-full w-full absolute top-0 left-0 sm:hidden"></div>
-                                </div>
-                                <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
-                                    <div class="flex items-center justify-center p-8 w-full h-full">
-                                        <div class="w-full">
-                                            <h2 class="font-black text-xl sm:text-3xl shadow mb-4">Join the Top Grillin' VIP Crew</h2>
-                                            <p class="font-thin text-lg md:text-xl text-shadow-sm mb-4">Unlock access to this video and more:</p>
-                                            <div class="text-white">
-                                                <ul>
-                                                    <div class="flex items-center my-1.5 leading-none md:leading-snug" v-for="perk in perks">
-                                                        <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
-                                                        <div class="font-thin text-shadow-sm md:text-lg">
-                                                            {{ perk }}
-                                                        </div>
-                                                    </div>
-                                                </ul>
-                                            </div>
-                                            <NuxtLink to="/join" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row my-3 lg:w-2/3 mx-auto px-6 lg:px-0 items-start">
-                        <div class="flex-1 mb-4 md:mb-0">
-                            <div class="text-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
-                                {{ video?.title }}
-                            </div>
-                            <div v-if="video" class="text-white text-xs font-light">
-                                {{ $dayjs.utc(video?.date).fromNow() }}
-                            </div>
-                        </div>
-                        <div v-if="isVip" class="relative">
-                            <button
-                                @click="toggleMp3Options"
-                                class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-1.5 px-3 text-sm rounded-full flex items-center transition duration-300 ease-in-out"
-                            >
-                                <Icon name="material-symbols:download" class="mr-1.5" size="18" />
-                                Download MP3
-                                <Icon name="material-symbols:arrow-drop-down" :class="{ 'rotate-180': showMp3Options }" size="18" />
-                            </button>
-                            <div
-                                v-if="showMp3Options"
-                                class="absolute top-full right-0 mt-1 bg-white rounded-md shadow-lg z-10 w-full min-w-[120px]"
-                            >
-                            <a
-                                v-if="video.streamsFields.mp3link?.url"
-                                :href="video.streamsFields.mp3link.url"
-                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                Download With Mic
-                            </a>
+                    <div class="flex flex-col items-center my-6 lg:w-2/3 mx-auto px-6 lg:px-0">
+  <!-- Immagine -->
+  <div class="w-[400px] h-[400px] lg:w-[50%] h-auto mb-6">
+    <img src="https://s3-alpha-sig.figma.com/img/bb13/9a44/d45d24462503e112d07c7766d9731495?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JYWAfzCslHpFiK1AbmEyshJ0n35wDsGamK~RF1peAA743UMFdnYc0pEFA1NxAE60uzhn06VgEHqVxXzMejD1~WKfFLRyr37NwFFD6CVnsAGtEkWzwnP0lCgFTr3VpygMVpz~8gpn1SBTLUeXwdGKGEjaOjvouiK0KMipFkmCujk5B6oSaFGeO09NYCpCVQIAg860UTCE3LXwT-wdmTzceDEjrzYka8rzxHmwE2EQCZxnTiL~dM6-B8ZeGmyrJGEAr-HqeOaS3uoDIei4bx4KF0lMglLDz8-S4p3RJlfX2K-VXdRNBwrQsAEbjl-30npGIw3EF4C~gl26iB6Kw2SEeg__" alt="Main Content Image" class="object-cover w-full h-full rounded-lg">
+    <div class="flex space-x-4 mb-4 mt-4">
+    <button class="bg-[#FF5941] font-semibold text-[14px] uppercase text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 w-[33%]" 
+    style="
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;">
 
-                            <a
-                                v-if="video.streamsFields.noMicMP3Link?.url"
-                                :href="video.streamsFields.noMicMP3Link.url"
-                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                            No Mic
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-10 px-2 md:px-12 flex flex-col lg:flex-row gap-10" v-if="video">
-                    <!-- <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="w-full lg:w-2/3" /> -->
-                    <LatestStreams :excludeId="video?.id" :vertical="true" title="More Streams" :seeAll="false" class="w-full lg:w-1/3" />
-                </div>
-            </template>
-        </client-only>
+      Play &nbsp; <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="white" stroke="white" class="w-3 h-3"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9l0-176c0-8.7 4.7-16.7 12.3-20.9z"/></svg>
+    </button>
+    <button class="bg-transparent font-semibold text-[14px] uppercase border border-[#FF5941] text-[#000] px-6 py-2 rounded-lg shadow-md hover:bg-green-600 w-[33%]" style="
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;">
+      Like &nbsp; <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="black" stroke="black" class="w-3 h-3"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+    </button>
+    <button class="bg-transparent font-semibold text-[14px] uppercase border border-[#FF5941] text-[#000] px-6 py-2 rounded-lg shadow-md hover:bg-gray-600 w-[33%]" style="
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;">
+      Share &nbsp; <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="black" stroke="black" class="w-3 h-3"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+    </button>
+  </div>  
+
+  <h2 class="text-2xl font-semibold text-left text-[#231F20]">
+    Bastid's BBQ New York’23 Recap
+  </h2>
+
+    <div class="flex items-center mt-2 gap-2">
+        <div class="border border-[#FF5941] py-1 px-4 rounded-md">
+            <p class="text-[14px] text-[#FF5941]">Rap</p>
+        </div>
+
+        <div class="border border-[#FF5941] py-1 px-4 rounded-md">
+            <p class="text-[14px] text-[#FF5941]">Hip-Hop</p>
+        </div>
+
+        <div class="border border-[#FF5941] py-1 px-4 rounded-md">
+            <p class="text-[14px] text-[#FF5941]">Trance</p>
+        </div>
     </div>
+
+</div>
+
+</div>
+
+                </div>
+                <div class="">
+                    <ClientOnly>
+                        <LatestStreams
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                        />
+                        <MemberFavourites
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                            title="Member Favourites"
+                        />
+                    </ClientOnly>
+                </div>
+            </div>
+    </ClientOnly>
 </template>
 
 <style scoped>

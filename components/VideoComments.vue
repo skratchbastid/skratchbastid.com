@@ -119,16 +119,16 @@ function timestampToSeconds(timestamp) {
             <!--<div class="w-12">
                 <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full" />
             </div>-->
-            <div class="flex flex-col w-full">
+            <div class="flex flex-col w-full md:p-0 p-4">
                 <div class="relative">
-                    <textarea v-model="commentContent" @input="adjustTextareaHeight" @focus="commenting = true" type="text" placeholder="Add a comment..." rows="1" class="w-full font-light text-sm border-b-2 outline-none focus:outline-none focus:ring-0 overflow-y-auto resize-none border-0 p-4 bg-gray-200 rounded-md text-[#565973] md:w-[30vw]" />
-                    <button @click="submitComment" :disabled="commentContent.length == 0 || loading" class="absolute right-[2%] top-[10%] p-3 bg-[rgba(255,89,65,1)] text-white rounded-md text-[12px] uppercase font-semibold">
+                    <textarea v-model="commentContent" @input="adjustTextareaHeight" @focus="commenting = true" type="text" placeholder="Add a comment..." rows="1" class="w-full font-light text-sm border-b-2 outline-none focus:outline-none focus:ring-0 overflow-y-auto resize-none border-0 p-4 bg-[#F3F3F3] rounded-md text-[#565973] md:w-[30vw]" />
+                    <button @click="submitComment" :disabled="commentContent.length == 0 || loading" class="absolute right-[2%] top-[10%] py-3 px-5 bg-[rgba(255,89,65,1)] text-white rounded-md text-[12px] uppercase font-semibold">
                             Send
                         </button>
                 </div>
                 <div>
                     <div v-if="commenting" class="flex mt-2 justify-end gap-4">
-                        <button @click="clearComment" class="text-gray-800 font-semibold text-sm">
+                        <button @click="clearComment" class="text-gray-800 font-semibold text-sm mr-4">
                             Cancel
                         </button>
                     </div>

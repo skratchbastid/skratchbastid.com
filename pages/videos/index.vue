@@ -1,14 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-
-const activeTab = ref('All')
-const tabs = [
-    'All',
-    'Tuesday Morning Mixes',
-    'BBQ Recaps',
-    'ROTW',
-    "Paul's Wall"
-]
 </script>
 
 <template>

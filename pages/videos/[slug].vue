@@ -151,9 +151,9 @@ watch(() => video.value, (newVideo) => {
             <template v-else>
                 <div class="bg-white md:p-8">
                     <div class="flex justify-start z-50 my-8 lg:mt-0 pt-8 pl-4 md:pt-0">
-                        <NuxtLink to="/vip" class="text-white text-lg font-light">
+                        <NuxtLink to="/videos" class="text-white text-lg font-light">
                             <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="black" stroke="black" class="w-4 h-4"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>                                <p class="text-black ml-2 uppercase text-[14px]">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="black" stroke="black" class="w-3 h-3"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>                                <p class="text-black ml-2 uppercase text-[14px]">
                                     To videos
                                 </p>
                             </div>
@@ -236,7 +236,7 @@ watch(() => video.value, (newVideo) => {
                                     </div>
                                 </div>
                                 <div class="flex-1 mb-4 md:mb-0 mt-0 pl-4 pr-4 md:p-0 md:pt-4">
-                                    <div class="text-2xl md:text-2xl font-bold text-black dark:text-white pb-1">
+                                    <div class="text-[24px] md:text-[36px] font-bold text-black dark:text-white pb-1">
                                         {{ video?.title }}
                                     </div>
                                     <div v-if="video" class="text-black text-xs font-light">
@@ -246,17 +246,31 @@ watch(() => video.value, (newVideo) => {
                                 
                             </div>
                         </div>
-                        <div class="mb-10 md:ml-4 flex flex-col lg:flex-row gap-10" v-if="video">
+                        <div class="mb-4 md:ml-4 flex flex-col lg:flex-row gap-10" v-if="video">
                             <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="" />
                         </div>
                     </div>
-                    
+
                 </div>
-                <div class="my-10 px-2 md:px-12 flex flex-col lg:flex-row gap-10" v-if="video">
-                    <LatestStreams :excludeId="video?.id" :vertical="true" title="More Streams" :seeAll="false" class="w-full lg:w-1/3" />
+                <div class="" v-if="video">
+                    <ClientOnly>
+                        <LatestStreams
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                        />
+                        <MemberFavourites
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                            title="Member Favourites"
+                        />
+                    </ClientOnly>
                 </div>
             </template>
         </client-only>
+
+        <CTAComponent />
+
+        <footerComponent class="" />
     </div>
 </template>
 

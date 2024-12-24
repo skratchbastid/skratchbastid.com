@@ -14,13 +14,23 @@
                 <div class="flex">
                     <div>
                         <div class="flex items-center my-1" v-for="perk in perks">
-                            <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
+                            <Icon name="zondicons:checkmark" class="text-[#FF5941] mr-3" size="15" />
                             <div class="text-lg font-light">
                                 {{ perk }}
                             </div>
+                        </div> 
+                        <NuxtLink 
+        to="/join"
+        class="flex flex-col items-center gap-4 max-w-md mx-auto mb-4"
+      >
+        <button 
+          type="submit" 
+          class="w-full bg-[#FF5941] text-white font-bold uppercase py-3 rounded-xl hover:bg-[#e04f39] transition"
+        >
+          Sign Up
+        </button>
+      </NuxtLink>
                         </div>
-                        <NuxtLink to="/join" class="flex items-center justify-center inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
-                    </div>
                 </div>
             </div>
         </div>

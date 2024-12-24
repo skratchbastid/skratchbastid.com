@@ -8,7 +8,7 @@
           <img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" alt="Logo" class="w-24 mb-4" />
         </NuxtLink>
         
-        <NuxtLink to="/join">
+        <NuxtLink to="https://music.apple.com/ng/artist/skratch-bastid/82190619">
           <img src="/img/appleMusic.png" alt="Small Image" class="w-32" />
         </NuxtLink>
       </div>
@@ -17,11 +17,11 @@
       <div class="md:w-3/5">
         <h3 class="text-lg font-bold mb-4 uppercase">Socials</h3>
         <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
-          <li><a href="#" class="hover:underline">Instagram</a></li>
-          <li><a href="#" class="hover:underline">X</a></li>
-          <li><a href="#" class="hover:underline">YouTube</a></li>
-          <li><a href="#" class="hover:underline">Mixcloud</a></li>
-          <li><a href="#" class="hover:underline">TikTok</a></li>
+          <li><a href="https://www.instagram.com/skratchbastid/" class="hover:underline">Instagram</a></li>
+          <li><a href="https://x.com/skratchbastid" class="hover:underline">X</a></li>
+          <li><a href="https://www.youtube.com/@SkratchBastidTV" class="hover:underline">YouTube</a></li>
+          <li><a href="https://www.mixcloud.com/skratchbastid/" class="hover:underline">Mixcloud</a></li>
+          <li><a href="https://www.tiktok.com/@skratchbastid" class="hover:underline">TikTok</a></li>
         </ul>
       </div>
 
@@ -31,16 +31,16 @@
         <div class="grid grid-cols-2 gap-x-4">
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
             <li><a href="#" class="hover:underline">About</a></li>
-            <li><a href="#" class="hover:underline">Videos</a></li>
-            <li><a href="#" class="hover:underline">Audios</a></li>
-            <li><a href="#" class="hover:underline">Events</a></li>
+            <li><a href="/videos" class="hover:underline">Videos</a></li>
+            <!---<li><a href="/audios" class="hover:underline">Audios</a></li>-->
+            <li><a href="/shows" class="hover:underline">Events</a></li>
           </ul>
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
             <li><a href="#" class="hover:underline">Brand Partnerships</a></li>
             <li><a href="#" class="hover:underline">Top Grillin</a></li>
-            <li><a href="#" class="hover:underline">Bastid's BBQ</a></li>
-            <li><a href="#" class="hover:underline">Shop</a></li>
-            <li><a href="#" class="hover:underline">Contact</a></li>
+            <li><a href="https://bastidsbbq.com/" class="hover:underline">Bastid's BBQ</a></li>
+            <li><a href="https://shop.skratchbastid.com/" class="hover:underline">Shop</a></li>
+            <li><a href="mailto:management@skratchbastid.com" class="hover:underline">Contact</a></li>
           </ul>
         </div>
       </div>

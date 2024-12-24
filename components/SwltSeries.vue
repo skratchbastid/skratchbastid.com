@@ -15,11 +15,18 @@ const mixes = [
 </script>
 
 <template>
-    <div>
-        <div class="text-lg font-extrabold mb-2 ml-4 md:ml-10">
-            Songs We Listened To A Lot In...
+    <div class="py-6 mt-8 px-6">
+        <div class="text-lg font-extrabold mb-2">
+        <div class="flex items-center gap-2">
+            <img 
+              src="/img/newintopgrillin.png" 
+              alt="New in Top Grillin" 
+              class="w-6 h-6"
+            />
+            <h2 class="text-[18px] font-bold text-gray-800">Songs We Listened To A Lot In...</h2>
+          </div>
         </div>
-        <vue-horizontal class="ml-4 md:mx-10">
+        <vue-horizontal class="ml-0 md:mr-10">
             <NuxtLink 
                 v-for="(mix, index) in mixes" 
                 :key="index"

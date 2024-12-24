@@ -155,7 +155,6 @@
                             <h2 class="text-[18px] font-bold text-gray-800">New in Top Grillin</h2>
                         </div>
                     </div>
-                    <!-- Contenitore scrollabile su mobile -->
                     <div class="overflow-x-auto md:overflow-visible">
                         <div 
                             class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"

@@ -54,7 +54,7 @@
             </NuxtLink>
             <img src="/img/imgHover/videosHover.png" alt="Videos Image" style="rotate: 180deg;"class="link-image">
           </div>
-          <div class="link-container">
+          <!---<div class="link-container">
             <NuxtLink 
               to="/audios" 
               class="hover:text-[#FF95BC] transition duration-300"
@@ -62,10 +62,10 @@
               Audios
             </NuxtLink>
             <img src="/img/imgHover/audioHover.png" alt="Audios Image" class="link-image">
-          </div>
+          </div>-->
           <div class="link-container">
             <NuxtLink 
-              to="/events"  
+              to="/shows"  
               class="hover:text-[#85C441] transition duration-300"
             >
               Events
@@ -74,7 +74,7 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              to="/top-grillin" 
+              to="/vip" 
               class="hover:text-[#EFDA11] transition duration-300"
             >
               Top Grillin'
@@ -83,7 +83,7 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              to="/bbq-festival" 
+              to="https://bastidsbbq.com/" 
               class="hover:text-[#1F85FF] transition duration-300"
             >
               BASTID’S BBQ
@@ -92,7 +92,7 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              to="/shop"  
+              to="https://shop.skratchbastid.com/"  
               class="hover:text-[#D4582D] transition duration-300"
             >
               Shop
@@ -111,28 +111,28 @@
           class="hover:text-[#F39301] transition duration-300 whitespace-nowrap">
           Videos
         </NuxtLink>
-        <NuxtLink 
+        <!---<NuxtLink 
           to="/audios" 
           class="hover:text-[#FF95BC] transition duration-300 whitespace-nowrap">
           Audios
-        </NuxtLink>
+        </NuxtLink>-->
         <NuxtLink 
-          to="/events"  
+          to="/shows"  
           class="hover:text-[#85C441] transition duration-300 whitespace-nowrap">
           Events
         </NuxtLink>
         <NuxtLink 
-          to="/top-grillin" 
+          to="/vip" 
           class="hover:text-[#EFDA11] transition duration-300 whitespace-nowrap">
           Top Grillin'
         </NuxtLink>
         <NuxtLink 
-          to="/bbq-festival" 
+          to="https://bastidsbbq.com/" 
           class="hover:text-[#1F85FF] transition duration-300 whitespace-nowrap">
           BASTID’S BBQ
         </NuxtLink>
         <NuxtLink 
-          to="/shop"  
+          to="https://shop.skratchbastid.com/"  
           class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
           Shop
         </NuxtLink>
@@ -156,7 +156,7 @@
           </div>
           <div v-else-if="isClient" class="gap-4">
             <NuxtLink 
-              to="/signup"  
+              to="/join"  
               class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
               Sign Up
             </NuxtLink>
@@ -191,7 +191,7 @@
           </div>
           <div v-else-if="isClient">
             <NuxtLink 
-              to="/signup" 
+              to="/join" 
               class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100 mr-4">
               SIGN UP
             </NuxtLink>
@@ -212,14 +212,14 @@
       class="absolute top-[58px] left-0 w-full bg-white dark:bg-gray-900 shadow-md lg:hidden">
       <div class="flex flex-col gap-4 p-4 text-black dark:text-white font-semibold uppercase">
         <NuxtLink to="/videos" class="hover:underline">Videos</NuxtLink>
-        <NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>
-        <NuxtLink to="/events" class="hover:underline">Events</NuxtLink>
+        <!---<NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>-->
+        <NuxtLink to="/shows" class="hover:underline">Events</NuxtLink>
         <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin'</NuxtLink>
-        <NuxtLink to="/bbq-festival" class="hover:underline">BASTID’S BBQ</NuxtLink>
-        <NuxtLink to="/shop" class="hover:underline">Shop</NuxtLink>
+        <NuxtLink to="https://bastidsbbq.com/" class="hover:underline">BASTID’S BBQ</NuxtLink>
+        <NuxtLink to="https://shop.skratchbastid.com/" class="hover:underline">Shop</NuxtLink>
         <div class="flex flex-col gap-2">
           <NuxtLink 
-            to="/signup" 
+            to="/join" 
             class="border border-[#FF5941] text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100 text-center">
             SIGN UP
           </NuxtLink>

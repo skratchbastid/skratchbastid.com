@@ -9,7 +9,7 @@
       />
     </div>
     <p class="mt-8 text-lg">
-      Already have an account? <NuxtLink :to="'/login'" class="text-blue-600 hover:underline">Sign in here!</NuxtLink>
+      Already have an account? <NuxtLink :to="'/login'" class="text-[#FF5941] hover:underline">Sign in here!</NuxtLink>
     </p>
   </div>
 </template>
@@ -32,7 +32,7 @@ const plans = ref([
     theme: {
       bg: 'bg-white',
       text: 'text-black',
-      button: 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+      button: 'bg-white border border-[#FF5941] rounded-lg text-[#FF5941]'
     }
   },
   {
@@ -52,7 +52,7 @@ const plans = ref([
     theme: {
       bg: 'bg-black',
       text: 'text-white',
-      button: 'bg-white text-black hover:bg-gray-200'
+      button: 'bg-[#FF5941] text-white rounded-lg'
     }
   }
 ])
