@@ -183,7 +183,7 @@
                     </div>
                 </div>
 
-                <div class="mb-8 px-4 md:px-10 py-8 bg-gray-200 relative">
+                <!--<div class="mb-8 px-4 md:px-10 py-8 bg-gray-200 relative">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img src="/img/videosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
@@ -225,14 +225,13 @@
                             </NuxtLink>
                         </div>
                     </div>
-                    <!-- Linee centrali orizzontali -->
                     <div class="absolute inset-x-0 top-1/2 transform -translate-y-1/2 hidden md:inline" style="z-index: 1">
                         <div class="w-full h-5 bg-[#FF40A4] mb-2"></div>
                         <div class="w-full h-5 bg-[#FF40A4] mb-2"></div>
                         <div class="w-full h-5 bg-[#FF40A4] mb-2"></div>
                         <div class="w-full h-5 bg-[#FF40A4] mb-2"></div>
                     </div>
-                </div>
+                </div>-->
 
                 <TueMorCoffee/>
 
@@ -256,33 +255,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="overflow-x-auto md:overflow-visible">
-                        <div 
-                            class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
-                            style="scroll-snap-type: x mandatory;"
-                        >
-                            <NuxtLink 
-                                :to="'/videos/' + video.slug" 
-                                v-for="(video, index) in videos.slice(0, 4)" 
-                                :key="video.id"
-                                @mouseenter="hoveredVideo = video"
-                                @mouseleave="hoveredVideo = null"
-                                class="shrink-0 w-[70vw] md:w-auto" 
-                                style="scroll-snap-align: start;"
-                            >
-                                <div class="relative overflow-hidden rounded-lg w-full aspect-video">
-                                    <img 
-                                        :src="thumbnailUrl(video)" 
-                                        class="rounded-lg drop-shadow-lg w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                        loading="lazy" 
-                                        :alt="video.title" 
-                                    />
-                                </div>
-                                <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
-                                <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-                            </NuxtLink>
-                        </div>
-                    </div>
+                    <Bbqrecaps />
                 </div>
                 <div class="mb-8 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
@@ -332,7 +305,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-8 mx-4 md:mx-10 my-8">
+                <!---<div class="mb-8 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
@@ -379,7 +352,7 @@
                             </NuxtLink>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
 
             <div v-else>
@@ -398,26 +371,8 @@
                             <h2 class="text-[30px] font-bold text-gray-800 ml-2">BBQ Recaps</h2>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
-                        <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
-                        >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
-                            </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-                        </NuxtLink>
-                    </div>
+
+                    <Bbqrecaps2 />
                 </div>
                 <div v-if="activeTab === 'ROTW'" class="mb-8 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4 w-full">

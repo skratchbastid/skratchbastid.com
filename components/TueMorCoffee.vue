@@ -2,6 +2,7 @@
 import { useQuery } from '@vue/apollo-composable'
 import { gql } from 'graphql-tag'
 import { useRouter, useRoute } from 'vue-router'
+import VueHorizontal from "vue-horizontal"
 
 const videos = ref([])
 const filteredVideos = computed(() => {
@@ -123,33 +124,29 @@ function setTab(tabName) {
               </div>
           </div>
       </div>
-      <div class="overflow-x-auto md:overflow-visible">
-          <div 
-              class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
-              style="scroll-snap-type: x mandatory;"
-          >
-              <NuxtLink 
-                  :to="'/videos/' + video.slug" 
-                  v-for="(video, index) in filteredVideos" 
+
+      <vue-horizontal class="ml-0 md:mr-10" v-if="!vertical">
+          <NuxtLink
+            class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
+            :to="'/videos/' + video.slug" 
+                  v-for="(video, index) in filteredVideos.slice(0, 10)" 
                   :key="video.id"
                   @mouseenter="hoveredVideo = video"
                   @mouseleave="hoveredVideo = null"
-                  class="shrink-0 w-[70vw] md:w-auto" 
                   style="scroll-snap-align: start;"
-              >
-                  <div class="relative overflow-hidden rounded-lg w-full aspect-video">
+          >
+          <div class="relative overflow-hidden rounded-lg w-full aspect-video">
                       <img 
                           :src="thumbnailUrl(video)" 
-                          class="rounded-lg drop-shadow-lg w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
+                          class="rounded-lg drop-shadow-lg h-full object-cover transition-transform duration-300 transform hover:scale-110" 
                           loading="lazy" 
                           :alt="video.title" 
                       />
                   </div>
                   <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
                   <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-              </NuxtLink>
-          </div>
-      </div>
+          </NuxtLink>
+        </vue-horizontal>
   </div>
 </template>
 
