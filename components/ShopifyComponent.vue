@@ -14,6 +14,7 @@
         <NuxtLink
               to="https://shop.skratchbastid.com/"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
+              target="_blank"
             >
               <div class="flex items-center">
                 <p class="text-[14px] font-bold text-black uppercase tracking-wide text-[14px]">
@@ -32,17 +33,26 @@
     <div v-if="loading" class="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="products.length" class="products">
-      <div v-for="(product,index) in products" :key="product.id" class="product-card">
+      <div v-for="(product, index) in products" :key="product.id" class="product-card">
         <a :href="product.onlineStoreUrl" target="_blank" rel="noopener noreferrer">
-        <img 
-          :src="product.images.edges[0]?.node.src" 
-          :alt="product.images.edges[0]?.node.altText || product.title" 
-          class="product-image" 
-        />
-        <h2 class="product-title">{{ product.title }}</h2>
-        <p class="product-price">
-          {{ product.variants.edges[0]?.node.price.amount }} {{ product.variants.edges[0]?.node.price.currencyCode }}
-        </p>
+          <div style="position: relative;">
+            <img 
+            :src="product.images.edges[0]?.node.src" 
+            :alt="product.images.edges[0]?.node.altText || product.title" 
+            class="product-image" 
+          />
+          <!-- Aggiungi l'immagine rotante sotto al prodotto -->
+          <img 
+            :src="rotatingImages[index % rotatingImages.length]" 
+            alt="Rotating Banner" 
+            class="rotating-banner"
+          />
+          </div>
+          
+          <h2 class="product-title">{{ product.title }}</h2>
+          <p class="product-price">
+            {{ product.variants.edges[0]?.node.price.amount }} {{ product.variants.edges[0]?.node.price.currencyCode }}
+          </p>
         </a>
       </div>
     </div>
@@ -64,9 +74,20 @@ export default {
       allowedTitles: [
         "Bastid's BBQ Ball Cap - Available in Black or White",
         "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
+        "RetroKid X Bastid's BBQ Bucket Hat",
+        "RetroKid x Bastid's BBQ T-Shirt",
+        "Bastid's BBQ Premium Apron",
+        "Bastid's BBQ Ball Cap - Available in Black or White",
+        "Bastid's BBQ Apron",
         "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
         "Skratch Bastid Socks"
       ],
+      rotatingImages: [
+        "/img/zigzag/zigzag1.png",
+        "/img/zigzag/zigzag2.png",
+        "/img/zigzag/zigzag3.png",
+        "/img/zigzag/zigzag4.png"
+      ], // Elenco delle immagini da far ruotare
     };
   },
   async created() {
@@ -87,7 +108,15 @@ export default {
 </script>
 
 <style scoped>
-/* Layout per la testata */
+
+.rotating-banner {
+  width: 100%;
+  margin-top: -4px;
+  border-radius: 0 0 4px 4px;
+  position: absolute;
+  bottom: 0;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -97,19 +126,24 @@ export default {
   background-color: #fff;
 }
 
-/* Stile dei prodotti */
 .products {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2rem;
-  align-items: stretch; /* Assicura che tutte le card abbiano la stessa altezza */
+  align-items: stretch; 
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.products::-webkit-scrollbar {
+  display: none;
 }
 
 .product-card {
   border: none;
   border-radius: 12px;
   padding: 0;
-  width: 22vw;
+  width: 18vw;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -168,7 +202,8 @@ export default {
 }
 
 /* Stile responsive per la testata */
-@media (max-width: 768px) {
+@media (min-width: 769px) {
+
   .flex {
     align-items: center;
   }
@@ -184,11 +219,36 @@ export default {
   }
 
   .product-image {
-    min-width: 70vw !important;
+    max-width: 18vw !important;
   }
 
   .pr-4 {
     padding-right: 0;
   }
+}
+
+@media (max-width: 768px) {
+
+.flex {
+  align-items: center;
+}
+
+.products{
+  display: flex !important;
+  overflow-x: scroll !important;
+  flex-wrap: nowrap !important;
+}
+
+.product-card {
+  width: 100% !important;
+}
+
+.product-image {
+  min-width: 70vw !important;
+}
+
+.pr-4 {
+  padding-right: 0;
+}
 }
 </style>

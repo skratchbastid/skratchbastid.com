@@ -54,7 +54,7 @@
             </NuxtLink>
             <img src="/img/imgHover/videosHover.png" alt="Videos Image" style="rotate: 180deg;"class="link-image">
           </div>
-          <!---<div class="link-container">
+          <div class="link-container">
             <NuxtLink 
               to="/audios" 
               class="hover:text-[#FF95BC] transition duration-300"
@@ -62,7 +62,7 @@
               Audios
             </NuxtLink>
             <img src="/img/imgHover/audioHover.png" alt="Audios Image" class="link-image">
-          </div>-->
+          </div>
           <div class="link-container">
             <NuxtLink 
               to="/shows"  
@@ -212,7 +212,7 @@
       class="absolute top-[58px] left-0 w-full bg-white dark:bg-gray-900 shadow-md lg:hidden">
       <div class="flex flex-col gap-4 p-4 text-black dark:text-white font-semibold uppercase">
         <NuxtLink to="/videos" class="hover:underline">Videos</NuxtLink>
-        <!---<NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>-->
+        <NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>
         <NuxtLink to="/shows" class="hover:underline">Events</NuxtLink>
         <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin'</NuxtLink>
         <NuxtLink to="https://bastidsbbq.com/" class="hover:underline">BASTID’S BBQ</NuxtLink>

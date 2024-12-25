@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white relative overflow-hidden">
-    <img 
+    <!--<img 
       src="/img/left_image.png" 
       alt="Left Image" 
       class="absolute top-1/4 left-[6rem] h-[85%] w-auto object-cover hidden md:block"
@@ -9,9 +9,9 @@
       src="/img/right_image.png" 
       alt="Right Image" 
       class="absolute top-1/4 right-[6rem] h-[85%] w-auto object-cover hidden md:block"
-    />
+    />-->
 
-    <div class="relative z-10 text-center px-8 py-16 md:py-24">
+    <div class="relative z-10 text-center px-8 py-16 md:py-28">
       <h1 class="md:text-5xl text-3xl font-bold uppercase mb-8">
         Subscribe to top grillin
       </h1>
@@ -28,7 +28,7 @@
         </button>
       </NuxtLink>
 
-      <p class="text-sm text-gray-600 mb-6 max-w-3xl mx-auto">
+      <p class="text-sm text-gray-600 mb-14 max-w-3xl mx-auto">
         You can opt out anytime. We will treat your information with respect. 
         For more information about our privacy practices, please read Boiler Room's 
         <a href="#" class="underline">Privacy Policy</a>. 
@@ -39,7 +39,7 @@
         <img 
           src="/img/appleMusicBlack.png" 
           alt="Small Image" 
-          class="w-32 mx-auto"
+          class="w-44 mx-auto"
         />
       </NuxtLink> 
     </div>

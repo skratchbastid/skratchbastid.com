@@ -20,11 +20,11 @@
             </NuxtLink>
             <img 
               src="/img/imgHover/videosHover.png" 
-              style="rotate: 180deg;"
+              style="rotate: 182deg;"
               alt="Videos Image" 
               :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
-          <!--<div class="link-container">
+          <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#FF95BC]': $route.path === '/audios' }" 
               to="/audios" 
@@ -36,7 +36,7 @@
               src="/img/imgHover/audioHover.png" 
               alt="Audios Image" 
               :class="{'link-image-active': $route.path === '/audios', 'link-image': true}">
-          </div>-->
+          </div>
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#85C441]': $route.path === '/shows' }" 
@@ -104,10 +104,10 @@
             <img 
               src="/img/imgHover/videosHover.png" 
               alt="Videos Image" 
-              style="rotate: 180deg;"
+              style="rotate: 182deg;"
               :class="{'link-image-active': $route.path === '/videos', 'link-image': true}">
           </div>
-          <!---<div class="link-container">
+          <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#FF95BC]': $route.path === '/audios' }" 
               to="/audios" 
@@ -120,7 +120,7 @@
               src="/img/imgHover/audioHover.png" 
               alt="Audios Image" 
               :class="{'link-image-active': $route.path === '/audios', 'link-image': true}">
-          </div>-->
+          </div>
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#85C441]': $route.path === '/shows' }" 
@@ -222,7 +222,7 @@ const toggleMenu = () => {
 
 .link-image {
   position: absolute;
-  bottom: -15px;
+  bottom: -18px;
   width: 100px;
   height: auto;
   opacity: 0;

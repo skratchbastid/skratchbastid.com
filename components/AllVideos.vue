@@ -54,9 +54,9 @@
         isClient.value = true
         window.addEventListener('scroll', loadMoreVideos);
 
-        // Leggi il parametro tab dall'URL e aggiorna activeTab
-        const route = useRoute()
-        const initialTab = route.query.tab || 'All';
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialTab = urlParams.get("tab") || 'All';
+
         activeTab.value = initialTab;
     })
 
@@ -98,13 +98,12 @@
     }
 
     const activeTab = ref('All');
-    const tabs = ['All', 'Tuesday Morning Mixes', 'BBQ Recaps', 'ROTW', "Paul's Wall"];
+    const tabs = ['All', 'Tuesday Morning Mixes', 'BBQ Recaps', 'ROTW'];
     const sections = ref({
         'All': true,
         'Tuesday Morning Mixes': false,
         'BBQ Recaps': false,
         'ROTW': false,
-        "Paul's Wall": false
     });
 
     const isActiveSection = (tab) => {
@@ -235,54 +234,8 @@
                     </div>
                 </div>
 
-                <div class="mb-8 mx-4 md:mx-10 my-8">
-                    <div class="flex justify-between items-center pr-4 mb-4">
-                        <div class="flex items-center gap-2">
-                            <img 
-                                src="/img/videosImg.png" 
-                                alt="New in Top Grillin" 
-                                class="w-6 h-6"
-                            />
-                            <h2 class="text-[18px] font-bold text-gray-800">Tuesday Morning Coffee</h2>
-                        </div>
-                        <div
-                            @click="activeTab = 'Tuesday Morning Mixes'"
-                        >
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
-                                    <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="overflow-x-auto md:overflow-visible">
-                        <div 
-                            class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
-                            style="scroll-snap-type: x mandatory;"
-                        >
-                            <NuxtLink 
-                                :to="'/videos/' + video.slug" 
-                                v-for="(video, index) in videos.slice(0, 4)" 
-                                :key="video.id"
-                                @mouseenter="hoveredVideo = video"
-                                @mouseleave="hoveredVideo = null"
-                                class="shrink-0 w-[70vw] md:w-auto" 
-                                style="scroll-snap-align: start;"
-                            >
-                                <div class="relative overflow-hidden rounded-lg w-full aspect-video">
-                                    <img 
-                                        :src="thumbnailUrl(video)" 
-                                        class="rounded-lg drop-shadow-lg w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                        loading="lazy" 
-                                        :alt="video.title" 
-                                    />
-                                </div>
-                                <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
-                                <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-                            </NuxtLink>
-                        </div>
-                    </div>
-                </div>
+                <TueMorCoffee/>
+
                 <div class="mb-8 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
@@ -431,36 +384,8 @@
 
             <div v-else>
                 <div v-if="activeTab === 'Tuesday Morning Mixes'"  class="mb-8 mx-4 md:mx-10 my-8">
-                    <div class="flex justify-between items-center pr-4 mb-4 w-full">
-                        <div class="flex items-center text-center ml-auto mr-auto">
-                            <img 
-                                src="/img/videosImg.png" 
-                                alt="New in Top Grillin" 
-                                class="w-6 h-6"
-                            />
-                            <h2 class="text-[30px] font-bold text-gray-800 ml-2">Tuesday Morning Coffee</h2>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
-                        <NuxtLink 
-                            :to="'/videos/' + video.slug" 
-                            v-for="(video, index) in videos" 
-                            :key="video.id"
-                            @mouseenter="hoveredVideo = video"
-                            @mouseleave="hoveredVideo = null"
-                        >
-                            <div class="relative overflow-hidden rounded-lg">
-                                <img 
-                                    :src="thumbnailUrl(video)" 
-                                    class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform hover:scale-110" 
-                                    loading="lazy" 
-                                    :alt="video.title" 
-                                />
-                            </div>
-                            <div class="font-semibold mt-2 truncate text-[14px] mt-2">{{ video.title }}</div>
-                            <div class="text-xs font-light">{{ $dayjs.utc(video.date).fromNow() }}</div>
-                        </NuxtLink>
-                    </div>
+
+                    <TueMorCoffee2 />
                 </div>
                 <div v-if="activeTab === 'BBQ Recaps'" class="mb-8 mx-4 md:mx-10 my-8">
                     <div class="flex justify-between items-center pr-4 mb-4 w-full">

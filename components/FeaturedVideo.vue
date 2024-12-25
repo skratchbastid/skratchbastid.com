@@ -13,7 +13,10 @@ const adjustPlayerSize = () => {
     if (window.innerWidth < 768) {
       playerWidth.value = 870;
       playerHeight.value = 500; // Altezza minore per mobile
-    } else if (window.innerWidth > 768 && window.innerWidth < 1900) {
+    } else if (window.innerWidth > 768 && window.innerWidth < 1366) {
+      playerWidth.value = 1000;
+      playerHeight.value = 500; // Altezza per desktop
+    }else if (window.innerWidth > 1367 && window.innerWidth < 1900) {
       playerWidth.value = 1400;
       playerHeight.value = 800; // Altezza per desktop
     }else {
@@ -69,10 +72,12 @@ const toggleMute = () => {
   isMuted.value = !isMuted.value;
 };
 
-// Evento quando il player Vimeo è pronto
+const isLoading = ref(true);
+
 const onPlayerReady = (event) => {
   player.value = event;
-  player.value.setVolume(isMuted.value ? 0 : 1); // Imposta il volume inizialmente
+  player.value.setVolume(isMuted.value ? 0 : 1); // Imposta il volume
+  isLoading.value = false; // Rimuovi il caricamento
 };
 </script>
 
@@ -83,7 +88,7 @@ const onPlayerReady = (event) => {
       <vue-vimeo-player
         ref="vimeoPlayer2"
         :video-id="video?.streamsFields.vimeoId"
-        :options="{ autoplay: true, muted: isMuted, loop: false, controls: true }"
+        :options="{ autoplay: true, muted: isMuted, loop: false, controls: false }"
         class="responsivePlayer"
         @ready="onPlayerReady"
         :player-width="playerWidth"
@@ -97,7 +102,7 @@ const onPlayerReady = (event) => {
       <div class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
       <!-- Controlli Video -->
-      <div class="controlsDiv flex flex-col items-end gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
+      <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
         <!-- Watch Now -->
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
           <div class="text-black font-bold uppercase text-lg mb-2">Latest Twitch Stream</div>
@@ -112,7 +117,7 @@ const onPlayerReady = (event) => {
         </div>
         
         <!-- Controlli -->
-        <div class="controlsDivCont flex items-center md:gap-6 gap-2">
+        <div class="controlsDivCont flex md:items-end items-center md:gap-3 gap-2">
           <!-- Mute Button -->
           <button class="bg-white p-3 rounded-xl shadow-md flex items-center justify-center hover:scale-105 transition" @click="toggleMute">
             <svg v-if="isMuted" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6 text-black" stroke="black" fill="black">
@@ -182,10 +187,41 @@ const onPlayerReady = (event) => {
 
 .controlsDiv{
   z-index: 1;
-  flex-direction: column-reverse;
 }
 
 @media (min-width: 769px) {
+  .videoWrapper {
+    position: relative;
+    height: 0;
+    padding-bottom: 39.25%; /* Aspect ratio 16:9 */
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .watchNowCont{
+    width: fit-content;
+  }
+
+  .controlsDivCont{
+    margin-left: auto;
+  }
+
+}
+
+@media (min-width: 769px) and (max-width: 1366px) {
+  .videoWrapper {
+    position: relative;
+    width: 98%;
+    height: 0;
+    padding-bottom: 39.25%; /* Aspect ratio 16:9 */
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1367px) {
   .videoWrapper {
     position: relative;
     width: 90%;
@@ -195,11 +231,8 @@ const onPlayerReady = (event) => {
     margin-left: auto;
     margin-right: auto;
   }
-
-  .watchNowCont{
-    min-width: 250px;
-  }
 }
+
 
 @media (max-width: 768px) {
   .responsivePlayer {
@@ -218,6 +251,10 @@ const onPlayerReady = (event) => {
 
   .watchNowCont{
     width: 100%;
+  }
+
+  .controlsDiv{
+    flex-direction: column-reverse;
   }
 
   .controlsDivCont{

@@ -12,7 +12,7 @@ const selectedStyle = ref(styles[0]);
 <template>
     <div class="mx-4 md:mx-10 my-8 flex justify-between items-center pt-8">
         <!-- Switch Favourites Only -->
-        <div class="flex items-center space-x-2">
+        <!---<div class="flex items-center space-x-2">
             <label class="text-sm font-medium">Favourites only</label>
             <input 
                 type="checkbox" 
@@ -21,9 +21,7 @@ const selectedStyle = ref(styles[0]);
             />
         </div>
 
-        <!-- Dropdown e Date Picker -->
         <div class="flex items-center space-x-4">
-            <!-- Dropdown -->
             <div>
                 <label for="style-select" class="sr-only">Style</label>
                 <select 
@@ -38,7 +36,6 @@ const selectedStyle = ref(styles[0]);
                 </select>
             </div>
 
-            <!-- Input Date -->
             <div>
                 <label for="year-select" class="sr-only">Year</label>
                 <input 
@@ -48,7 +45,7 @@ const selectedStyle = ref(styles[0]);
                     class="border rounded px-3 py-1 text-sm"
                 />
             </div>
-        </div>
+        </div>-->
     </div>
 
     <div>

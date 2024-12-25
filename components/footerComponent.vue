@@ -32,7 +32,7 @@
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
             <li><a href="#" class="hover:underline">About</a></li>
             <li><a href="/videos" class="hover:underline">Videos</a></li>
-            <!---<li><a href="/audios" class="hover:underline">Audios</a></li>-->
+            <li><a href="/audios" class="hover:underline">Audios</a></li>
             <li><a href="/shows" class="hover:underline">Events</a></li>
           </ul>
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">

@@ -32,7 +32,7 @@ const mixes = [
                 :key="index"
                 :to="mix.link" 
                 :target="index === 0 ? '' : '_blank'"
-                class="flex flex-col w-3/5 md:w-1/4 mr-2 md:mr-4 mb-8 hover-effect-container"
+                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
             >
                 <div class="hover-effect">
                     <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />

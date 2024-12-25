@@ -26,7 +26,7 @@ const mixes = useState('mixes')
             >
               <div class="bg-[#FF5941] px-4 py-2 rounded-lg">
                 <p class="text-[14px] font-bold text-white uppercase tracking-wide text-[14px]">
-                  Join top grillin
+                  Sign up
                 </p>
               </div>
             </NuxtLink>
