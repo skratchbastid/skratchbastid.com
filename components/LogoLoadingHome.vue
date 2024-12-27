@@ -38,10 +38,10 @@ onMounted(() => {
   display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1000;
     background: white;
 }
 

@@ -1,7 +1,7 @@
 <script setup>
     import { storeToRefs } from 'pinia';
     import { ref, computed, onMounted, onUnmounted } from 'vue';
-    import LoadingLogo from '../components/LogoLoading.vue'
+    import LoadingLogo from '../components/LogoLoadingHome.vue'
 
     const showSelections = ref(false)
     const { user, userIsVip } = storeToRefs(useUserStore())   
