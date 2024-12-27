@@ -7,7 +7,7 @@
         <NuxtLink to="/join">
           <img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" alt="Logo" class="w-24 mb-4" />
         </NuxtLink>
-        
+
         <NuxtLink to="https://music.apple.com/ng/artist/skratch-bastid/82190619">
           <img src="/img/appleMusic.png" alt="Small Image" class="w-32" />
         </NuxtLink>
@@ -49,49 +49,77 @@
       <div>
         <h3 class="text-lg font-bold mb-4 uppercase">Latest News</h3>
         <p class="mb-4 text-[#8996A2]">Get the latest updates by subscribing to our newsletter.</p>
-        <form class="flex items-center relative">
-          <input 
-            type="email" 
-            placeholder="Your email" 
-            class="px-6 py-4 rounded-full border focus:outline-none focus:ring focus:ring-[#FF5941] w-full"
-            style="background: #1A2A34; color: #4E5D6B; border: 1px solid #344450;"
-          />
-          <button 
-            type="submit" 
-            class="absolute right-6 top-1/2 transform -translate-y-1/2 text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6" fill="#fff" stroke="currentColor" stroke-width="2"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480l0-83.6c0-4 1.5-7.8 4.2-10.8L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
-          </button>
-        </form>
+        <div class="flex flex-col">
+          <div v-if="!submitSuccess">
+            <form @submit.prevent="submitEmail" class="relative flex items-center">
+              <input
+                v-model="email"
+                type="email"
+                placeholder="Your email"
+                class="px-6 py-4 rounded-full border focus:outline-none focus:ring focus:ring-[#FF5941] w-full"
+                style="background: #1A2A34; color: #4E5D6B; border: 1px solid #344450;"
+                :disabled="submitPending"
+              />
+              <button
+                type="submit"
+                :disabled="submitPending"
+                class="absolute right-6 top-1/2 transform -translate-y-1/2 text-white"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6" fill="#fff">
+                  <path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480l0-83.6c0-4 1.5-7.8 4.2-10.8L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/>
+                </svg>
+              </button>
+            </form>
+            <p v-if="error" class="mt-4 text-red-500 text-sm">Please enter a valid email address.</p>
+          </div>
+          <div v-else>
+            <h4 class="text-lg font-semibold mt-4 text-[#FF5941]">You're subscribed!</h4>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Footer Background -->
-    <div 
-      class="relative z-10 text-center text-sm text-[#4E5D6B] py-6 px-4 md:hidden"
-      style="background-color:#142129;"
-    >
+    <!-- Copyright -->
+    <div class="relative z-10 text-center text-sm text-[#4E5D6B] py-6 px-4">
       © {{ currentYear }} Skratch Bastid. All Rights Reserved.
     </div>
-
-    <div 
-      class="relative z-10 mt-0 text-left text-sm text-[#4E5D6B] py-20 px-20 hidden md:block" 
-      style="background: url('/img/footer_background.png') no-repeat center; background-size: cover; background-color:#142129;"
-    >
-      © {{ currentYear }} Skratch Bastid. All Rights Reserved.
-    </div>
-
   </footer>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      currentYear: new Date().getFullYear(),
-    };
-  },
-};
+<script setup>
+import { ref } from 'vue';
+import { sendEmailSignup } from '@/server/services/hiveService.js';
+
+// Variabili reattive
+const email = ref('');
+const submitPending = ref(false);
+const submitSuccess = ref(false);
+const error = ref(false);
+
+// Funzione per inviare l'email
+async function submitEmail() {
+  submitPending.value = true;
+
+  if (!email.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+    error.value = true;
+    submitPending.value = false;
+    return;
+  }
+
+  try {
+    await sendEmailSignup(email.value);
+    submitSuccess.value = true;
+    error.value = false;
+  } catch (err) {
+    console.error('Error submitting email:', err);
+    error.value = true;
+  } finally {
+    submitPending.value = false;
+  }
+}
+
+// Anno corrente
+const currentYear = new Date().getFullYear();
 </script>
 
 <style scoped>
