@@ -93,6 +93,45 @@
 </div>
 
                 </div>
+
+                <div class="py-12">
+  <div class="flex flex-col lg:flex-row w-[90vw] m-auto gap-x-12">
+    <!-- Sezione video -->
+    <div class="w-full lg:w-1/2">
+      <iframe 
+        src="https://player.vimeo.com/video/912780615" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen 
+        class="rounded-lg"
+        style="aspect-ratio: 16/9;">
+      </iframe>
+    </div>
+
+    <!-- Sezione informazioni -->
+    <div class="w-full lg:w-1/2 text-lg">
+      <h2 class="text-4xl uppercase font-extrabold text-left mb-6">About the Mix</h2>
+      <div class="w-full md:w-5/6 text-lg" id="mix-details">
+        <p class="mb-6">
+          Damn near 4 hours of incredible music that Skratch Bastid & Cosmo Baker listened to a lot in 2022. Funny year it was, 2022, eh? Well, music once again got us through life (as it always does).
+        </p>
+        <p class="mb-6">
+          Here are beats, arrangements, themes, moods, and more that resonated with us last year; through our homes, our streams on Twitch 
+          (<a href="http://www.twitch.tv/skratchbastid" target="_blank" class="text-blue-500 underline">http://www.twitch.tv/skratchbastid</a> & 
+          <a href="http://www.twitch.tv/cosmobaker" target="_blank" class="text-blue-500 underline">http://www.twitch.tv/cosmobaker</a>), our headphones, and at our shows. 
+          Please support these artists by buying their music & merch, sharing their art with your friends on & off the internet, supporting concerts, and just finding a way to give back. This mix is part of our offering to them! Long live great art & artists.
+        </p>
+        <p class="mb-6">
+          Art by Rhek
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
                 <div class="">
                     <ClientOnly>
                         <div class="mb-8 px-4 md:px-10 py-8 bg-white relative">
@@ -128,19 +167,6 @@
                 </div>
                     </ClientOnly>
                 </div>
-
-    <div class="py-12">
-        <div class="flex flex-col w-3/4  m-auto gap-x-12">
-            <div class="w-full flex mb-6">
-                <h2 class="text-4xl uppercase font-extrabold">About the Mix</h2>
-            </div>
-            <div class="w-full md:w-5/6 text-lg" id="mix-details">
-                <p class="mb-6">Damn near 4 hours of incredible music that Skratch Bastid & Cosmo Baker listened to a lot in 2022. Funny year it was, 2022, eh? Well, music once again got us through life (as it always does).</p>
-                <p class="mb-6">Here are beats, arrangements, themes, moods, and more that resonated with us last year; through our homes, our streams on Twitch (<a href="http://www.twitch.tv/skratchbastid" target="_blank">http://www.twitch.tv/skratchbastid</a> & <a href="http://www.twitch.tv/cosmobaker" target="_blank">http://www.twitch.tv/cosmobaker</a>), our headphones, and at our shows. Please support these artists by buying their music & merch, sharing their art with your friends on & off the internet, supporting concerts, and just finding a way to give back. This mix is part of our offering to them! Long live great art & artists.</p>
-                <p class="mb-6">Art by Rhek</p>
-            </div>
-        </div>
-    </div>
 
     <CTAComponent />
     <footerComponent class="" />

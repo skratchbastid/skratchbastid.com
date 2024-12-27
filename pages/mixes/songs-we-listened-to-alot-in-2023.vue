@@ -91,6 +91,90 @@
 </div>
 
                 </div>
+
+                <div class="py-12">
+  <div class="flex flex-col lg:flex-row w-[90vw] m-auto gap-x-12">
+    <!-- Sezione video -->
+    <div class="w-full lg:w-1/2">
+      <iframe 
+        src="https://player.vimeo.com/video/912780615" 
+        width="100%" 
+        height="100%" 
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen 
+        class="rounded-lg"
+        style="aspect-ratio: 16/9;">
+      </iframe>
+    </div>
+
+    <!-- Sezione tracklist -->
+    <div class="w-full lg:w-1/2 text-lg">
+      <h2 class="text-4xl uppercase font-extrabold text-left mb-6">Tracklist</h2>
+      <div 
+        class="overflow-y-auto" 
+        style="max-height: 30vh; padding-right: 0.5rem;"
+      >
+        <ol class="tracklist list-decimal text-left px-8">
+          <li>Jonathan Kirby - Crossroads (interlude)</li>
+          <li>Little Simz - Gorilla</li>
+          <li>Tona - Cookin’</li>
+          <li>DJ Premier f/ Rome Street & Westside Gunn - Runway</li>
+          <li>Kaytraminé - Rebuke</li>
+          <li>Lô Borges - Tudo Que Você Podia Ser (interlude)</li>
+          <li>Rogê - Existe Uma Voz</li>
+          <li>Yussef Dayes & Tom Misch - Rust</li>
+          <li>Say She She - Forget Me Not</li>
+          <li>Pamoja - Oooh, Baby</li>
+          <li>Jalen Ngonda - Come Around & Love Me</li>
+          <li>Domo Domo “Happening In The Streets (Domo Domo Rework)”</li>
+          <li>Dave & Omar “Starlight (Extended Album Mix)”</li>
+          <li>Soweto Gospel Choir, Groove Terminator & Latroit “Good Life (Impilo Emnande)”</li>
+          <li>Saucy Lady “Why (Original Mix)”</li>
+          <li>Sy Smith “Slide (Album Version)”</li>
+          <li>DJ Yoda “Way Home”</li>
+          <li>Jungle “Don’t Play”</li>
+          <li>David Zylberman & Ghost “Everybody Loves The Sunshine”</li>
+          <li>Ezra Collective “Life Goes On feat. Sampa The Great”</li>
+          <li>Jorja Smith - Little Things</li>
+          <li>The Al-Dos Band - Doing Our Thing With Pride</li>
+          <li>Young Gun Silver Fox - Simple Imagination</li>
+          <li>Alina Bzhezhinska & HipHarpCollective - Soul Vibrations</li>
+          <li>LTJ X-Perience & Papik “Best Life feat. Anduze”</li>
+          <li>De La Soul “Pain feat. Snoop Dogg”</li>
+          <li>Eddie Chacon “Holy Hell (Mndsgn Remix)”</li>
+          <li>Patrice Rushen “To Each His Own”</li>
+          <li>Bettye Swann “When The Game Is Played On You (Shaka Loves You 12" Disco Edit)”</li>
+          <li>Glenn Echo & Daniel Meinecke “Dancehall Of Grandeur feat. Ibibio Horns”</li>
+          <li>Rhythm Roots Allstars “Island Hustle”</li>
+          <li>Tall Black Guy - Black II Soul</li>
+          <li>Torae & Marco Polo - More Dainja (Original Version)</li>
+          <li>BigXthaPlug - Texas</li>
+          <li>Con Funk Shun - Love Train</li>
+          <li>Bobby Caldwell “You Belong To Me”</li>
+          <li>AM-FM “You Are The One”</li>
+          <li>Gilberto Gil “Maracatu Atomica”</li>
+          <li>Zaime “Smash ’N Grab”</li>
+          <li>monolog “Chameleon”</li>
+          <li>Victoria Monet “Alright”</li>
+          <li>Amp Fiddler “Right Where You Are (Extended Version)”</li>
+          <li>Dizzy Wright “You Get What You See”</li>
+          <li>House Gospel Choir feat. Morgan “Angels (Original Vocal Mix)”</li>
+          <li>The Gap Band “Messin’ With My Mind (Kon Edit)”</li>
+          <li>Johnny Mathis “Love Never Felt So Good”</li>
+          <li>L.J. Reynolds “Trust In Me”</li>
+          <li>Lovetempo “The Sun”</li>
+          <li>Garfield Flemming - Don’t Send Me Away</li>
+          <li>Sunbear - Let Love Flow For Peace</li>
+          <li>El Michels Affair & Black Thought - Alter Ego</li>
+          <li>Erykah Badu & James Poyser - Tempted</li>
+          <li>Lee Hazelwood “Your Sweet Love”</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
                 <div class="">
                     <ClientOnly>
                         <div class="mb-8 px-4 md:px-10 py-8 bg-white relative">
@@ -127,70 +211,6 @@
                     </ClientOnly>
                 </div>
 
-    <div class="py-12">
-        <div class="flex flex-col w-3/4  m-auto gap-x-12">
-            <div class="w-full flex mb-6">
-                <h2 class="text-4xl uppercase font-extrabold text-center m-auto">Tracklist</h2>
-            </div>
-            <div class="w-full text-lg text-center" id="mix-details">
-            <ol class="tracklist">
-                <li>Jonathan Kirby - Crossroads (interlude)</li>
-                <li>Little Simz - Gorilla</li>
-                <li>Tona - Cookin’</li>
-                <li>DJ Premier f/ Rome Street & Westside Gunn - Runway</li>
-                <li>Kaytraminé - Rebuke</li>
-                <li>Lô Borges - Tudo Que Você Podia Ser (interlude)</li>
-                <li>Rogê - Existe Uma Voz</li>
-                <li>Yussef Dayes & Tom Misch - Rust</li>
-                <li>Say She She - Forget Me Not</li>
-                <li>Pamoja - Oooh, Baby</li>
-                <li>Jalen Ngonda - Come Around & Love Me</li>
-                <li>Domo Domo “Happening In The Streets (Domo Domo Rework)”</li>
-                <li>Dave & Omar “Starlight (Extended Album Mix)”</li>
-                <li>Soweto Gospel Choir, Groove Terminator & Latroit “Good Life (Impilo Emnande)”</li>
-                <li>Saucy Lady “Why (Original Mix)”</li>
-                <li>Sy Smith “Slide (Album Version)”</li>
-                <li>DJ Yoda “Way Home”</li>
-                <li>Jungle “Don’t Play”</li>
-                <li>David Zylberman & Ghost “Everybody Loves The Sunshine”</li>
-                <li>Ezra Collective “Life Goes On feat. Sampa The Great”</li>
-                <li>Jorja Smith - Little Things</li>
-                <li>The Al-Dos Band - Doing Our Thing With Pride</li>
-                <li>Young Gun Silver Fox - Simple Imagination</li>
-                <li>Alina Bzhezhinska & HipHarpCollective - Soul Vibrations</li>
-                <li>LTJ X-Perience & Papik “Best Life feat. Anduze”</li>
-                <li>De La Soul “Pain feat. Snoop Dogg”</li>
-                <li>Eddie Chacon “Holy Hell (Mndsgn Remix)”</li>
-                <li>Patrice Rushen “To Each His Own”</li>
-                <li>Bettye Swann “When The Game Is Played On You (Shaka Loves You 12" Disco Edit)”</li>
-                <li>Glenn Echo & Daniel Meinecke “Dancehall Of Grandeur feat. Ibibio Horns”</li>
-                <li>Rhythm Roots Allstars “Island Hustle”</li>
-                <li>Tall Black Guy - Black II Soul</li>
-                <li>Torae & Marco Polo - More Dainja (Original Version)</li>
-                <li>BigXthaPlug - Texas</li>
-                <li>Con Funk Shun - Love Train</li>
-                <li>Bobby Caldwell “You Belong To Me”</li>
-                <li>AM-FM “You Are The One”</li>
-                <li>Gilberto Gil “Maracatu Atomica”</li>
-                <li>Zaime “Smash ’N Grab”</li>
-                <li>monolog “Chameleon”</li>
-                <li>Victoria Monet “Alright”</li>
-                <li>Amp Fiddler “Right Where You Are (Extended Version)”</li>
-                <li>Dizzy Wright “You Get What You See”</li>
-                <li>House Gospel Choir feat. Morgan “Angels (Original Vocal Mix)”</li>
-                <li>The Gap Band “Messin’ With My Mind (Kon Edit)”</li>
-                <li>Johnny Mathis “Love Never Felt So Good”</li>
-                <li>L.J. Reynolds “Trust In Me”</li>
-                <li>Lovetempo “The Sun”</li>
-                <li>Garfield Flemming - Don’t Send Me Away</li>
-                <li>Sunbear - Let Love Flow For Peace</li>
-                <li>El Michels Affair & Black Thought - Alter Ego</li>
-                <li>Erykah Badu & James Poyser - Tempted</li>
-                <li>Lee Hazelwood “Your Sweet Love”</li>
-            </ol>
-            </div>
-        </div>
-    </div>
     <CTAComponent />
     <footerComponent class="" />
 </template>

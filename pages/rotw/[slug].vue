@@ -52,12 +52,10 @@
             router.push(`/rotw/${previousRecord().slug}`)
         }
     }
-    
-
 </script>
 
 <template>
-    <div class="min-h-[calc(100vh-55px)] flex flex-col items-center justify-center relative" style="background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(195,207,226,0.5) 100%);" >
+    <div class="bg-white" >
         <nuxt-link to="/rotw" class="mb-4 absolute left-2 lg:left-5 top-5 z-50">
             <Icon name="material-symbols:arrow-back" size="28" />
         </nuxt-link>
@@ -86,7 +84,7 @@
                     </div>
                 </div>
                 <div class="aspect-video w-full flex flex-col-reverse justify-center lg:w-2/3 lg:flex-col">
-                    <nuxt-link to="/newsletter" class="mx-3 md:mx-0 bg-[#C81C2F] rounded-lg p-2 lg:p-4 text-white text-sm lg:text-base text-center my-3 lg:max-w-[1200px] lg:leading-none hover:bg-[#A6192B] transition-colors duration-200">
+                    <nuxt-link to="/newsletter" class="mx-3 md:mx-0 bg-[#FF5941] rounded-lg p-2 lg:p-4 text-white text-sm lg:text-base text-center my-3 lg:max-w-[1200px] lg:leading-none hover:bg-[#A6192B] transition-colors duration-200">
                         <span class="font-bold block flex items-center justify-center">SUBSCRIBE<Icon name="material-symbols:chevron-right-rounded" size="22" /></span>
                         <span class="text-xs">Get the ROTW in your inbox every week!</span>
                     </nuxt-link>
@@ -99,5 +97,7 @@
                 </div>
             </div>
         </div>
+        <CTAComponent />
+        <footerComponent class="" />
     </div>
 </template>

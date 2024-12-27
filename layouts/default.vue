@@ -68,6 +68,7 @@
               :class="{ 'text-[#1F85FF]': $route.path === '/bbq-festival' }" 
               to="https://bastidsbbq.com/" 
               class="hover:text-[#1F85FF] transition duration-300"
+              target="_blank"
             >
               BASTID’S BBQ
             </NuxtLink>
@@ -155,6 +156,7 @@
               to="https://bastidsbbq.com/"
               style="width: max-content;" 
               class="hover:text-[#1F85FF] transition duration-300"
+              target="_blank"
             >
               BASTID’S BBQ
             </NuxtLink>

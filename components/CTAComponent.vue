@@ -35,7 +35,7 @@
         By clicking above, you agree that we may process your information in accordance with these terms.
       </p>
 
-      <NuxtLink to="https://music.apple.com/ng/artist/skratch-bastid/82190619" style="width: 100%; display: flex; justify-content: center;">
+      <NuxtLink to="https://music.apple.com/ca/curator/bastids-bbq/1735562122" style="width: 100%; display: flex; justify-content: center;">
         <img 
           src="/img/appleMusicBlack.png" 
           alt="Small Image" 

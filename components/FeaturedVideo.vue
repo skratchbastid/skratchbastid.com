@@ -2,6 +2,7 @@
 import { useVideos } from '@/composables/useVideos'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { vueVimeoPlayer } from 'vue-vimeo-player'
+import LoadingLogo from './LogoLoading.vue'
 
 // Stato per larghezza e altezza del player
 const playerWidth = ref('100%');
@@ -16,10 +17,10 @@ const adjustPlayerSize = () => {
     } else if (window.innerWidth > 768 && window.innerWidth < 1366) {
       playerWidth.value = 1000;
       playerHeight.value = 500; // Altezza per desktop
-    }else if (window.innerWidth > 1367 && window.innerWidth < 1900) {
+    } else if (window.innerWidth > 1367 && window.innerWidth < 1900) {
       playerWidth.value = 1400;
       playerHeight.value = 800; // Altezza per desktop
-    }else {
+    } else {
       playerWidth.value = 2300;
       playerHeight.value = 1200; // Altezza per desktop
     }
@@ -45,65 +46,76 @@ const props = defineProps({
   }
 });
 
-// Ottieni i video più recenti dal composable
 const { latestStreams } = useVideos();
 
-// Stato per la gestione del carousel e player
 const currentVideoIndex = ref(0);
-const isMuted = ref(false); // Inizialmente il video non è mutato
+const isMuted = ref(true); 
 const player = ref(null);
 
-// Recupera i video più recenti o utilizza un video predefinito
 const videos = computed(() => latestStreams.value || []);
 const video = computed(() => videos.value[currentVideoIndex.value] || props.video);
 
-// Funzione per passare al video successivo
+const isLoading = ref(false);  // Logo visibile inizialmente
+
 const nextVideo = () => {
+  isLoading.value = true;
   currentVideoIndex.value = (currentVideoIndex.value + 1) % videos.value.length;
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 8000);  // Ritardo di 5 secondi per mostrare il video
 };
 
-// Funzione per passare al video precedente
 const prevVideo = () => {
+  isLoading.value = true;
   currentVideoIndex.value =
-    (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
+  (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
+  setTimeout(() => {
+    isLoading.value = false; 
+  }, 8000);  // Ritardo di 5 secondi per mostrare il video
 };
 
 const toggleMute = () => {
   isMuted.value = !isMuted.value;
 };
 
-const isLoading = ref(true);
-
 const onPlayerReady = (event) => {
   player.value = event;
-  player.value.setVolume(isMuted.value ? 0 : 1); // Imposta il volume
-  isLoading.value = false; // Rimuovi il caricamento
+  player.value.setCurrentTime(500).catch((error) => {
+    console.error("Errore durante l'impostazione del tempo:", error);
+  });
+
+  player.value.setVolume(isMuted.value ? 0 : 1).catch((error) => {
+    console.error("Errore durante l'impostazione del volume:", error);
+  });
 };
 </script>
 
 <template>
   <div v-if="video" class="videoContainer">
-    <!-- Vimeo Player -->
+    <!-- Logo di caricamento -->
+    <LoadingLogo v-if="isLoading" />
+    
+    <!-- Video Wrapper, nascosto inizialmente -->
     <div class="videoWrapper">
-      <vue-vimeo-player
-        ref="vimeoPlayer2"
-        :video-id="video?.streamsFields.vimeoId"
-        :options="{ autoplay: true, muted: isMuted, loop: false, controls: false }"
+      <iframe 
+        :src="'https://player.vimeo.com/video/' + video?.streamsFields.vimeoId + 
+        '?autoplay=1&muted=' + (isMuted.value ? 0 : 1) + 
+        '&loop=0&controls=0#t=5m2s'"
+        :width="playerWidth"
+        :height="playerHeight"
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen 
         class="responsivePlayer"
-        @ready="onPlayerReady"
-        :player-width="playerWidth"
-        :player-height="playerHeight"
-      />
+        style="border-radius: 8px;">
+      </iframe>
     </div>
-
-    <!-- Overlay e controlli -->
+    
+    <!-- Controlli -->
     <div class="absolute inset-0 z-30 flex flex-col justify-end">
-      <!-- Gradiente overlay -->
       <div class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
-      <!-- Controlli Video -->
       <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
-        <!-- Watch Now -->
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
           <div class="text-black font-bold uppercase text-lg mb-2">Latest Twitch Stream</div>
           <NuxtLink
@@ -116,7 +128,6 @@ const onPlayerReady = (event) => {
           </NuxtLink>
         </div>
         
-        <!-- Controlli -->
         <div class="controlsDivCont flex md:items-end items-center md:gap-3 gap-2">
           <!-- Mute Button -->
           <button class="bg-white p-3 rounded-xl shadow-md flex items-center justify-center hover:scale-105 transition" @click="toggleMute">

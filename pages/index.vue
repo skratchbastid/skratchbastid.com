@@ -1,18 +1,24 @@
 <script setup>
-    import { storeToRefs } from 'pinia'
+    import { storeToRefs } from 'pinia';
+    import { ref, computed, onMounted, onUnmounted } from 'vue';
+    import LoadingLogo from '../components/LogoLoading.vue'
+
     const showSelections = ref(false)
     const { user, userIsVip } = storeToRefs(useUserStore())   
 
+    const isLoading = ref(true);
+
     onMounted(() => {
-        // document.addEventListener('keyup', function(e) {
-        //     if (e.key === 's') {
-        //         showSelections.value = !showSelections.value
-        //     }
-        //     })
-    })
+    setTimeout(() => {
+        isLoading.value = false;
+    }, 5000);  
+    });
 </script>
 
 <template>
+
+    <LoadingLogo v-if="isLoading" />
+
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
         <div class="flex flex-col md:flex-row gap-4 md:gap-6 relative">

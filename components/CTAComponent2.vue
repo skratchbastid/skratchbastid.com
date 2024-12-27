@@ -15,14 +15,14 @@
       <h2 
         class="col-span-12 md:col-span-2 text-lg font-bold text-gray-800 mb-2 md:mb-0"
       >
-        Bastid's BBQ Festival
+        Bastid's BBQ
       </h2>
 
       <!-- Descrizione -->
       <p 
         class="col-span-12 md:col-span-8 text-gray-600 mb-4 md:mb-0"
       >
-        Lorem ipsum dolor sit amet consectetur. Sit quis tincidunt risus et platea nulla sit felis. Leo integer cum imperdiet venenatis bibendum purus accumsan in massa. Adipiscing turpis morbi habitant massa.
+        Bastid’s BBQ was founded in 2011 by acclaimed DJ Skratch Bastid as a platform to channel his passions of music, food, and building community. Today, the party has become a globally recognized event series, spanning multiple cities around the world and bringing some of the most talented and legendary DJs and producers in music to its stage. Life is always better with good music, good food, and good people.
       </p>
 
       <NuxtLink

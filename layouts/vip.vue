@@ -85,6 +85,7 @@
             <NuxtLink 
               to="https://bastidsbbq.com/" 
               class="hover:text-[#1F85FF] transition duration-300"
+              target="_blank"
             >
               BASTID’S BBQ
             </NuxtLink>
@@ -128,6 +129,7 @@
         </NuxtLink>
         <NuxtLink 
           to="https://bastidsbbq.com/" 
+          target="_blank"
           class="hover:text-[#1F85FF] transition duration-300 whitespace-nowrap">
           BASTID’S BBQ
         </NuxtLink>
@@ -215,7 +217,7 @@
         <NuxtLink to="/audios" class="hover:underline">Audios</NuxtLink>
         <NuxtLink to="/shows" class="hover:underline">Events</NuxtLink>
         <NuxtLink to="/top-grillin" class="hover:underline">Top Grillin'</NuxtLink>
-        <NuxtLink to="https://bastidsbbq.com/" class="hover:underline">BASTID’S BBQ</NuxtLink>
+        <NuxtLink to="https://bastidsbbq.com/" class="hover:underline" target="_blank">BASTID’S BBQ</NuxtLink>
         <NuxtLink to="https://shop.skratchbastid.com/" class="hover:underline">Shop</NuxtLink>
         <div class="flex flex-col gap-2">
           <NuxtLink 
