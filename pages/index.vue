@@ -95,10 +95,4 @@
 #shop-button {
     box-shadow: 7px 7px 0 black;
 }
-
-@media (max-width: 768px) {
-    .featureVideo{
-        height: 45vh;
-    }
-}
 </style>
