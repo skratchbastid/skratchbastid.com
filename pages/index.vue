@@ -22,10 +22,7 @@
     <div class="mb-6">
         <!-- <TuesdayMorningCoffeePromo /> -->
         <div class="flex flex-col md:flex-row gap-4 md:gap-6 relative">
-            <!-- Move this div to be the first child and add a lower z-index -->
-            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 z-[-1]" 
-                 style="background-image: url('/img/join-bg.png');">
-            </div>
+            
             <div class="w-full rounded-xl flex flex-col items-center relative featureVideo">
                 <FeaturedVideo />
             </div>

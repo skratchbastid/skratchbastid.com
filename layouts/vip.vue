@@ -95,6 +95,7 @@
             <NuxtLink 
               to="https://shop.skratchbastid.com/"  
               class="hover:text-[#D4582D] transition duration-300"
+              target="_blank"
             >
               Shop
             </NuxtLink>

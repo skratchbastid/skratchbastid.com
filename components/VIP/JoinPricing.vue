@@ -24,8 +24,7 @@ const plans = ref([
     price: 0,
     perks: [
       'New Stream Every Tuesday',
-      'Access to the Latest Stream',
-      'General WhatsApp Broadcast Channel'
+      'Access to the Latest Stream'
     ],
     buttonText: 'Sign Up Free',
     buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-free',

@@ -27,7 +27,7 @@
         }
     }
 </script>
-
+ 
 <template>
     <section class="flex flex-col relative bg-[#D3F2FF] mx-2 md:mx-0 mb-4 md:mb-0 md:w-2/3 py-8 border-black border-4 rounded-lg text-center justify-center">
         <div class="z-10">

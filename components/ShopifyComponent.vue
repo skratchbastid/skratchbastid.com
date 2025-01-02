@@ -72,15 +72,13 @@ export default {
       loading: true,
       error: null,
       allowedTitles: [
-        "Bastid's BBQ Ball Cap - Available in Black or White",
         "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
-        "RetroKid X Bastid's BBQ Bucket Hat",
-        "RetroKid x Bastid's BBQ T-Shirt",
-        "Bastid's BBQ Premium Apron",
-        "Bastid's BBQ Ball Cap - Available in Black or White",
-        "Bastid's BBQ Apron",
         "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
-        "Skratch Bastid Socks"
+        "Limoncello 7'' Ft. Shad - Yellow-",
+        "Limoncello 7'' Ft. Shad - Black",
+        "Bastid's BBQ Premium Apron",
+        "Bastid's Hot Sauce 3-pack",
+        "Bastid's BBQ 2024 Bucket Hat"
       ],
       rotatingImages: [
         "/img/zigzag/zigzag1.png",

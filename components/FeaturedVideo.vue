@@ -4,9 +4,22 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { vueVimeoPlayer } from 'vue-vimeo-player'
 import LoadingLogo from './LogoLoading.vue'
 
+// Funzione per ottenere il valore del parametro dall'URL
+const getQueryParam = (param) => {
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+};
+
 // Stato per larghezza e altezza del player
 const playerWidth = ref('100%');
 const playerHeight = ref('480px');
+
+// Stato per l'audio
+const isMuted = ref(getQueryParam('isMuted') === 'false' ? false : true);
+
+const mutedValue = computed(() => (isMuted.value ? 1 : 0));
 
 // Funzione per regolare la dimensione del player
 const adjustPlayerSize = () => {
@@ -18,8 +31,8 @@ const adjustPlayerSize = () => {
       playerWidth.value = 1000;
       playerHeight.value = 500; // Altezza per desktop
     } else if (window.innerWidth > 1367 && window.innerWidth < 1900) {
-      playerWidth.value = 1400;
-      playerHeight.value = 800; // Altezza per desktop
+      playerWidth.value = 3000;
+      playerHeight.value = 3000; // Altezza per desktop
     } else {
       playerWidth.value = 2300;
       playerHeight.value = 1200; // Altezza per desktop
@@ -49,43 +62,49 @@ const props = defineProps({
 const { latestStreams } = useVideos();
 
 const currentVideoIndex = ref(0);
-const isMuted = ref(true); 
 const player = ref(null);
 
 const videos = computed(() => latestStreams.value || []);
 const video = computed(() => videos.value[currentVideoIndex.value] || props.video);
 
-const isLoading = ref(false);  // Logo visibile inizialmente
+const isLoading = ref(false); // Logo visibile inizialmente
 
 const nextVideo = () => {
   isLoading.value = true;
   currentVideoIndex.value = (currentVideoIndex.value + 1) % videos.value.length;
   setTimeout(() => {
     isLoading.value = false;
-  }, 8000);  // Ritardo di 5 secondi per mostrare il video
+  }, 8000); // Ritardo di 5 secondi per mostrare il video
 };
 
 const prevVideo = () => {
   isLoading.value = true;
   currentVideoIndex.value =
-  (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
+    (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
   setTimeout(() => {
-    isLoading.value = false; 
-  }, 8000);  // Ritardo di 5 secondi per mostrare il video
+    isLoading.value = false;
+  }, 8000); // Ritardo di 5 secondi per mostrare il video
 };
 
 const toggleMute = () => {
   isMuted.value = !isMuted.value;
+  if (typeof window !== 'undefined') {
+    const url = new URL(window.location.href);
+    url.searchParams.set('isMuted', isMuted.value);
+    window.history.pushState({}, '', url);
+    window.location.reload();
+  }
+
 };
 
 const onPlayerReady = (event) => {
   player.value = event;
   player.value.setCurrentTime(500).catch((error) => {
-    console.error("Errore durante l'impostazione del tempo:", error);
+    console.error('Errore durante l\'impostazione del tempo:', error);
   });
 
   player.value.setVolume(isMuted.value ? 0 : 1).catch((error) => {
-    console.error("Errore durante l'impostazione del volume:", error);
+    console.error('Errore durante l\'impostazione del volume:', error);
   });
 };
 </script>
@@ -99,10 +118,8 @@ const onPlayerReady = (event) => {
     <div class="videoWrapper">
       <iframe 
         :src="'https://player.vimeo.com/video/' + video?.streamsFields.vimeoId + 
-        '?autoplay=1&muted=' + (isMuted.value ? 0 : 1) + 
-        '&loop=0&controls=0#t=5m2s'"
-        :width="playerWidth"
-        :height="playerHeight"
+        '?autoplay=1&muted=' + mutedValue + 
+        '&loop=0&controls=0#t=10m2s'"
         frameborder="0" 
         allow="autoplay; fullscreen; picture-in-picture" 
         allowfullscreen 
@@ -113,11 +130,11 @@ const onPlayerReady = (event) => {
     
     <!-- Controlli -->
     <div class="absolute inset-0 z-30 flex flex-col justify-end">
-      <div class="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 w-full h-[80%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
 
       <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
-          <div class="text-black font-bold uppercase text-lg mb-2">Latest Twitch Stream</div>
+          <div class="text-black font-bold uppercase text-lg mb-2">Latest Live Set</div>
           <NuxtLink
             :to="user?.id ? '/videos/' + video.slug : '/join'"
             class="text-white hover:text-black hover:bg-white text-sm py-1"
@@ -187,15 +204,6 @@ const onPlayerReady = (event) => {
   height: auto;
 }
 
-.responsivePlayer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .controlsDiv{
   z-index: 1;
 }
@@ -218,45 +226,75 @@ const onPlayerReady = (event) => {
     margin-left: auto;
   }
 
+  .responsivePlayer {
+    position: absolute;
+    top: -33%;
+    left: -3%;
+    width: 106vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
 }
 
 @media (min-width: 769px) and (max-width: 1366px) {
   .videoWrapper {
     position: relative;
-    width: 98%;
-    height: 0;
-    padding-bottom: 39.25%; /* Aspect ratio 16:9 */
+    width: 100%;
+    height: 57vh;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .responsivePlayer {
+    position: absolute;
+    top: -33%;
+    left: -30%;
+    width: 180vw;
+    height: 95vh;
+    object-fit: cover;
   }
 }
 
 @media (min-width: 1367px) {
   .videoWrapper {
     position: relative;
-    width: 90%;
-    height: 0;
-    padding-bottom: 39.25%; /* Aspect ratio 16:9 */
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
+        width: 100%;
+        height: 57vh;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
   }
+
+  .responsivePlayer {
+  position: absolute;
+    top: -50%;
+    left: -4%;
+    width: 108vw;
+    height: 140vh;
+    object-fit: cover;
+}
 }
 
 
 @media (max-width: 768px) {
   .responsivePlayer {
-    object-fit: cover; /* Taglia i lati mantenendo il centro */
+    object-fit: cover;
     object-position: center;
-    left: -50%;
+    position: absolute;
+    top: -8%;
+    left: -16%;
+    width: 190vw;
+    height: 72vh;
+    object-fit: cover;
   }
 
   .videoWrapper {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 100%; /* Aspect ratio 16:9 */
+    padding-bottom: 65%; /* Aspect ratio 16:9 */
     overflow: hidden;
   }
 

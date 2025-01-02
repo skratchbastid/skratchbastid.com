@@ -13,7 +13,7 @@
 
     <div class="relative z-10 text-center px-8 py-16 md:py-28">
       <h1 class="md:text-5xl text-3xl font-bold uppercase mb-8">
-        Subscribe to top grillin
+        Subscribe to top grillin'
       </h1>
 
       <NuxtLink 
@@ -24,7 +24,7 @@
           type="submit" 
           class="w-full bg-[#FF5941] text-white font-bold uppercase py-3 rounded-xl hover:bg-[#e04f39] transition"
         >
-          Sign Up
+          Subscribe
         </button>
       </NuxtLink>
 
@@ -35,7 +35,7 @@
         By clicking above, you agree that we may process your information in accordance with these terms.
       </p>
 
-      <NuxtLink to="https://music.apple.com/ca/curator/bastids-bbq/1735562122" style="width: 100%; display: flex; justify-content: center;">
+      <NuxtLink target="_blank" to="https://music.apple.com/ca/curator/bastids-bbq/1735562122" style="width: 100%; display: flex; justify-content: center;">
         <img 
           src="/img/appleMusicBlack.png" 
           alt="Small Image" 

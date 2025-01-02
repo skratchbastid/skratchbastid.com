@@ -82,6 +82,7 @@
               :class="{ 'text-[#D4582D]': $route.path === '/shop' }" 
               to="https://shop.skratchbastid.com/" 
               class="hover:text-[#D4582D] transition duration-300"
+              target="_blank"
             >
               Shop
             </NuxtLink>
