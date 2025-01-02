@@ -1,7 +1,6 @@
 <script setup>
 import { useVideos } from '@/composables/useVideos'
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { vueVimeoPlayer } from 'vue-vimeo-player'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import LoadingLogo from './LogoLoading.vue'
 
 // Funzione per ottenere il valore del parametro dall'URL
@@ -20,29 +19,30 @@ const playerHeight = ref('480px');
 const isMuted = ref(getQueryParam('isMuted') === 'false' ? false : true);
 
 const mutedValue = computed(() => (isMuted.value ? 1 : 0));
+const iframeSrc = ref(''); // Per gestire dinamicamente l'URL dell'iframe
 
 // Funzione per regolare la dimensione del player
 const adjustPlayerSize = () => {
   if (typeof window !== 'undefined') {
     if (window.innerWidth < 768) {
       playerWidth.value = 870;
-      playerHeight.value = 500; // Altezza minore per mobile
+      playerHeight.value = 500;
     } else if (window.innerWidth > 768 && window.innerWidth < 1366) {
       playerWidth.value = 1000;
-      playerHeight.value = 500; // Altezza per desktop
+      playerHeight.value = 500;
     } else if (window.innerWidth > 1367 && window.innerWidth < 1900) {
       playerWidth.value = 3000;
-      playerHeight.value = 3000; // Altezza per desktop
+      playerHeight.value = 3000;
     } else {
       playerWidth.value = 2300;
-      playerHeight.value = 1200; // Altezza per desktop
+      playerHeight.value = 1200;
     }
   }
 };
 
 // Aggiungi l'ascoltatore di eventi al montaggio
 onMounted(() => {
-  adjustPlayerSize(); // Imposta inizialmente
+  adjustPlayerSize();
   window.addEventListener('resize', adjustPlayerSize);
 });
 
@@ -60,52 +60,25 @@ const props = defineProps({
 });
 
 const { latestStreams } = useVideos();
-
 const currentVideoIndex = ref(0);
-const player = ref(null);
 
 const videos = computed(() => latestStreams.value || []);
 const video = computed(() => videos.value[currentVideoIndex.value] || props.video);
 
-const isLoading = ref(false); // Logo visibile inizialmente
-
-const nextVideo = () => {
-  isLoading.value = true;
-  currentVideoIndex.value = (currentVideoIndex.value + 1) % videos.value.length;
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 8000); // Ritardo di 5 secondi per mostrare il video
-};
-
-const prevVideo = () => {
-  isLoading.value = true;
-  currentVideoIndex.value =
-    (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
-  setTimeout(() => {
-    isLoading.value = false;
-  }, 8000); // Ritardo di 5 secondi per mostrare il video
-};
-
-const toggleMute = () => {
-  isMuted.value = !isMuted.value;
-  if (typeof window !== 'undefined') {
-    const url = new URL(window.location.href);
-    url.searchParams.set('isMuted', isMuted.value);
-    window.history.pushState({}, '', url);
-    window.location.reload();
+// Funzione per aggiornare l'URL dell'iframe
+const updateIframeSrc = () => {
+  if (video.value?.streamsFields?.vimeoId) {
+    iframeSrc.value = `https://player.vimeo.com/video/${video.value.streamsFields.vimeoId}?autoplay=1&muted=${mutedValue.value}&loop=0&controls=0#t=10m2s`;
   }
-
 };
 
-const onPlayerReady = (event) => {
-  player.value = event;
-  player.value.setCurrentTime(500).catch((error) => {
-    console.error('Errore durante l\'impostazione del tempo:', error);
-  });
+// Inizializza l'iframe con il primo video
+watch(video, updateIframeSrc, { immediate: true });
+watch(mutedValue, updateIframeSrc); // Aggiorna l'URL quando cambia mutedValue
 
-  player.value.setVolume(isMuted.value ? 0 : 1).catch((error) => {
-    console.error('Errore durante l\'impostazione del volume:', error);
-  });
+// Funzione per alternare mute/unmute
+const toggleMute = () => {
+  isMuted.value = !isMuted.value; // Inverti stato
 };
 </script>
 
@@ -117,14 +90,11 @@ const onPlayerReady = (event) => {
     <!-- Video Wrapper, nascosto inizialmente -->
     <div class="videoWrapper">
       <iframe 
-        :src="'https://player.vimeo.com/video/' + video?.streamsFields.vimeoId + 
-        '?autoplay=1&muted=' + mutedValue + 
-        '&loop=0&controls=0#t=10m2s'"
+        :src="iframeSrc"
         frameborder="0" 
         allow="autoplay; fullscreen; picture-in-picture" 
         allowfullscreen 
-        class="responsivePlayer"
-        style="border-radius: 8px;">
+        class="responsivePlayer">
       </iframe>
     </div>
     
@@ -237,6 +207,17 @@ const onPlayerReady = (event) => {
 
 }
 
+@media (height: 668px) {
+  .responsivePlayer {
+    position: absolute;
+    top: -15%;
+    left: -34%;
+    width: 165vw;
+    height: 95vh !important;
+    object-fit: cover;
+  }
+}
+
 @media (min-width: 769px) and (max-width: 1366px) {
   .videoWrapper {
     position: relative;
@@ -249,10 +230,10 @@ const onPlayerReady = (event) => {
 
   .responsivePlayer {
     position: absolute;
-    top: -33%;
-    left: -30%;
-    width: 180vw;
-    height: 95vh;
+    top: -15%;
+    left: -34%;
+    width: 165vw;
+    height: 75vh;
     object-fit: cover;
   }
 }
@@ -269,7 +250,7 @@ const onPlayerReady = (event) => {
 
   .responsivePlayer {
   position: absolute;
-    top: -50%;
+    top: -40%;
     left: -4%;
     width: 108vw;
     height: 140vh;
@@ -277,8 +258,7 @@ const onPlayerReady = (event) => {
 }
 }
 
-
-@media (max-width: 768px) {
+@media (width: 768px) {
   .responsivePlayer {
     object-fit: cover;
     object-position: center;
@@ -295,6 +275,29 @@ const onPlayerReady = (event) => {
     width: 100%;
     height: 0;
     padding-bottom: 65%; /* Aspect ratio 16:9 */
+    overflow: hidden;
+  }
+
+}
+
+
+@media (max-width: 767px) {
+  .responsivePlayer {
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: -8%;
+    left: -16%;
+    width: 190vw;
+    height: 50vh;
+    object-fit: cover;
+  }
+
+  .videoWrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Aspect ratio 16:9 */
     overflow: hidden;
   }
 

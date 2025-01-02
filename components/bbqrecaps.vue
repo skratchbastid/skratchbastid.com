@@ -13,7 +13,7 @@ import VueHorizontal from "vue-horizontal"
         <NuxtLink :to="'/bbq-recaps/' + show.slug" v-for="show in events" :key="show.date" class="event flex flex-col cursor-pointer mr-8">
 
             <div class="h-[12rem] md:h-24 lg:h-[10rem]">
-                    <img :src="show.banner" alt="" class="object-cover w-full h-full rounded-lg">
+                    <img :src="show.banner" alt="" class="object-cover w-[300px] h-full rounded-lg">
                 </div>
                 <div class="flex flex-col flex-grow justify-center bg-white shadow-sm pt-3">
                     <span class="text-[14px] font-bold">{{ show.city }}</span>
