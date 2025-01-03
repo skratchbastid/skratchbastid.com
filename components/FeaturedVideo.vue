@@ -1,6 +1,9 @@
 <template>
   <div class="video-carousel">
     <div class="video-wrapper featureVideo">
+
+      <LoadingLogo v-if="isLoading" class="loader-center" />
+
       <video
         ref="videoPlayer"
         :src="videos[currentVideoIndex].src"
@@ -12,8 +15,9 @@
       ></video>
     </div>
 
-    <div class="absolute inset-0 z-30 flex flex-col justify-end">
-      <div class="absolute bottom-0 left-0 w-full h-[80%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
+    <div class="absolute inset-0 flex flex-col justify-end">
+      <div class="absolute z-10 bottom-0 left-0 w-full h-[80%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      <div class="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-[#000000bf] via-transparent to-transparent"></div>
 
       <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
@@ -84,6 +88,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import LoadingLogo from '../components/LogoLoading.vue'
 
 const videos = ref([
   { src: '/videos/video1.mov', title: 'Video 1' },
@@ -94,14 +99,17 @@ const videos = ref([
 
 const currentVideoIndex = ref(0); 
 const isMuted = ref(true); 
+const isLoading = ref(false);
 
 const videoPlayer = ref(null);
 
 const nextVideo = () => {
+  showLoader();
   currentVideoIndex.value = (currentVideoIndex.value + 1) % videos.value.length;
 };
 
 const prevVideo = () => {
+  showLoader();
   currentVideoIndex.value =
     (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
 };
@@ -111,6 +119,13 @@ const toggleMute = () => {
   if (videoPlayer.value) {
     videoPlayer.value.muted = isMuted.value;
   }
+};
+
+const showLoader = () => {
+  isLoading.value = true; // Mostra il loader
+  setTimeout(() => {
+    isLoading.value = false; // Nasconde il loader dopo pochi secondi
+  }, 1000); // Simula un caricamento di 1 secondo
 };
 </script>
 
@@ -146,7 +161,7 @@ const toggleMute = () => {
 }
 
 .controlsDiv {
-  z-index: 1;
+  z-index: 20;
 }
 
 .watchNowCont {
