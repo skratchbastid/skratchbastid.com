@@ -17,9 +17,9 @@
 
       <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
-          <div class="text-black font-bold uppercase text-lg mb-2">Latest Live Set</div>
+          <div class="text-black font-bold uppercase text-lg mb-2">Latest Live Sets</div>
           <NuxtLink
-            :to="user?.id ? '/videos/' + videos[currentVideoIndex].title : '/join'"
+            :to="user?.id ? '/videos' : '/join'"
             class="text-white hover:text-black hover:bg-white text-sm py-1"
           >
             <button class="bg-[#FF5941] text-white font-bold uppercase px-5 py-3 rounded-xl transition hover:bg-orange-600">
@@ -29,7 +29,6 @@
         </div>
 
         <div class="controlsDivCont flex md:items-end items-center md:gap-3 gap-2">
-          <!-- Mute Button -->
           <button class="bg-white p-3 rounded-xl shadow-md flex items-center justify-center hover:scale-105 transition" @click="toggleMute">
             <span v-if="isMuted">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-6 h-6 text-black" stroke="black" fill="black">
@@ -45,7 +44,6 @@
             </span>
           </button>
 
-          <!-- Previous & Next Buttons -->
           <button @click="prevVideo" class="bg-white p-3 rounded-xl shadow-md hover:scale-105 btnLeft">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,31 +85,27 @@
 <script setup>
 import { ref } from 'vue';
 
-// Elenco dei video (puoi sostituire con i tuoi)
 const videos = ref([
-  { src: 'https://test-videos.co.uk/vids/jellyfish/mp4/h264/1080/Jellyfish_1080_10s_1MB.mp4', title: 'Video 1' },
-  { src: 'https://test-videos.co.uk/vids/sintel/mp4/h264/720/Sintel_720_10s_1MB.mp4', title: 'Video 2' },
-  { src: 'video3.mp4', title: 'Video 3' },
-  { src: 'video4.mp4', title: 'Video 4' },
+  { src: '/videos/video1.mov', title: 'Video 1' },
+  { src: '/videos/video2.mov', title: 'Video 2' },
+  { src: '/videos/video3.mov', title: 'Video 3' },
+  { src: '/videos/video4.mov', title: 'Video 4' },
 ]);
 
-const currentVideoIndex = ref(0); // Indice del video corrente
-const isMuted = ref(true); // Stato mute del player
+const currentVideoIndex = ref(0); 
+const isMuted = ref(true); 
 
-const videoPlayer = ref(null); // Riferimento al tag video
+const videoPlayer = ref(null);
 
-// Funzione per passare al video successivo
 const nextVideo = () => {
   currentVideoIndex.value = (currentVideoIndex.value + 1) % videos.value.length;
 };
 
-// Funzione per tornare al video precedente
 const prevVideo = () => {
   currentVideoIndex.value =
     (currentVideoIndex.value - 1 + videos.value.length) % videos.value.length;
 };
 
-// Funzione per alternare mute/unmute
 const toggleMute = () => {
   isMuted.value = !isMuted.value;
   if (videoPlayer.value) {
@@ -133,21 +127,21 @@ const toggleMute = () => {
 
 .video-wrapper {
   width: 100%;
-  height: 50vh; /* Limita l'altezza del componente */
+  height: 50vh; 
   position: relative;
-  overflow: hidden; /* Nasconde eventuali eccedenze */
+  overflow: hidden; 
 }
 
 .video-player {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Adatta il video per coprire interamente il contenitore */
+  object-fit: none; 
   border: none;
 }
 
 .featureVideo {
   width: 100%;
-  height: 50vh; /* Altezza massima del componente principale */
+  height: 50vh; 
   position: relative;
 }
 
@@ -194,7 +188,6 @@ const toggleMute = () => {
   }
 }
 
-/* Responsiveness */
 @media (max-width: 768px) {
   .controlsDiv {
     flex-direction: column-reverse;
