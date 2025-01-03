@@ -6,6 +6,7 @@
         :src="videos[currentVideoIndex].src"
         :muted="isMuted"
         autoplay
+        loop
         class="video-player"
         @ended="nextVideo"
       ></video>
