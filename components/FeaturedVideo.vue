@@ -150,8 +150,9 @@ const showLoader = () => {
 .video-player {
   width: 100%;
   height: 100%;
-  object-fit: none; 
+  object-fit: cover; 
   border: none;
+  transform: scale(1.1);
 }
 
 .featureVideo {
