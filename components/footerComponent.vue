@@ -30,16 +30,16 @@
         <h3 class="text-lg font-bold mb-4 uppercase">Pages</h3>
         <div class="grid grid-cols-2 gap-x-4">
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
-            <li><a href="#" class="hover:underline">About</a></li>
+            <!--<li><a href="#" class="hover:underline">About</a></li>-->
             <li><a href="/videos" class="hover:underline">Videos</a></li>
             <li><a href="/audios" class="hover:underline">Audios</a></li>
             <li><a href="/shows" class="hover:underline">Events</a></li>
           </ul>
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
-            <li><a href="#" class="hover:underline">Brand Partnerships</a></li>
-            <li><a href="#" class="hover:underline">Top Grillin</a></li>
+            <!--<li><a href="#" class="hover:underline">Brand Partnerships</a></li>-->
+            <li><a href="/vip" class="hover:underline" target="_blank">Top Grillin</a></li>
             <li><a href="https://bastidsbbq.com/" class="hover:underline">Bastid's BBQ</a></li>
-            <li><a href="https://shop.skratchbastid.com/" class="hover:underline">Shop</a></li>
+            <li><a href="https://shop.skratchbastid.com/" class="hover:underline" target="_blank">Shop</a></li>
             <li><a href="mailto:management@skratchbastid.com" class="hover:underline">Contact</a></li>
           </ul>
         </div>

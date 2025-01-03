@@ -28,6 +28,7 @@
       <NuxtLink
               to="https://bastidsbbq.com/"
               class="w-[max-content]"
+              target="_blank"
             >
       <button 
         class="col-span-12 md:col-span-2 bg-[#FF5941] text-white py-2 px-4 rounded-lg hover:bg-[#e04f39] transition"
