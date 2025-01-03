@@ -125,7 +125,7 @@ const showLoader = () => {
   isLoading.value = true; // Mostra il loader
   setTimeout(() => {
     isLoading.value = false; // Nasconde il loader dopo pochi secondi
-  }, 1000); // Simula un caricamento di 1 secondo
+  }, 4000); // Simula un caricamento di 1 secondo
 };
 </script>
 
