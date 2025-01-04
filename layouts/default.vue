@@ -180,6 +180,28 @@
               alt="Shop Image" 
               :class="{'link-image-active': $route.path === '/shop', 'link-image': true}">
           </div>
+
+          <div class="link-container">
+            <NuxtLink 
+              :class="{ 'text-[#D4582D]': $route.path === '/join' }" 
+              to="/join"
+              style="width: max-content;" 
+              class="hover:text-[#D4582D] transition duration-300"
+            >
+              Sign Up
+            </NuxtLink>
+          </div>
+
+          <div class="link-container">
+            <NuxtLink 
+              :class="{ 'text-[#D4582D]': $route.path === '/login' }" 
+              to="/login"
+              style="width: max-content;" 
+              class="hover:text-[#D4582D] transition duration-300"
+            >
+              Login
+            </NuxtLink>
+          </div>
       </div>
       <div class="hidden lg:flex gap-4">
         <NuxtLink 

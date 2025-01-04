@@ -67,9 +67,9 @@ onMounted(() => {
                 <!-- Wrap user-dependent components in client-only to prevent hydration issues -->
                 <client-only>
                     <!-- Display appropriate component based on user status -->
-                    <VipGreeting v-if="isClient && isVip" />
-                    <FreeMemberCta class="my-10" v-else-if="isClient && user?.id && !isVip" />
-                    <VipHeroCta class="py-10" v-else-if="isClient && !user?.id" />
+                    <!--<VipGreeting v-if="isClient && isVip" />-->
+                    <FreeMemberCta class="my-10" v-if="isClient && user?.id && !isVip" />
+                    <VipHeroCta class="py-10" v-if="isClient && !user?.id" />
                     
                     <!-- Display latest streams, excluding the latest for free members -->
                     <LatestStreams

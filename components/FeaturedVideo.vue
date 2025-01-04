@@ -20,11 +20,11 @@
       <div class="absolute top-0 left-0 w-full h-[40%] bg-gradient-to-b from-[#000000bf] via-transparent to-transparent"></div>
 
       <div class="controlsDiv flex flex-col gap-2 p-4 md:gap-4 md:flex-row md:justify-between">
-        <div class="bg-white px-6 py-4 rounded-lg shadow-md flex flex-col items-start watchNowCont">
-          <div class="text-black font-bold uppercase text-lg mb-2">Latest Live Sets</div>
+        <div class="bg-white px-6 py-4 rounded-lg shadow-md flex md:flex-col md:items-start items-center watchNowCont">
+          <div class="text-black font-bold uppercase text-lg md:mb-2">Latest Live Sets</div>
           <NuxtLink
             :to="user?.id ? '/videos' : '/join'"
-            class="text-white hover:text-black hover:bg-white text-sm py-1"
+            class="text-white hover:text-black hover:bg-white text-sm py-1 md:ml-0 ml-[auto]"
           >
             <button class="bg-[#FF5941] text-white font-bold uppercase px-5 py-3 rounded-xl transition hover:bg-orange-600">
               {{ membershipType === 'vip' ? 'WATCH NOW' : 'WATCH FOR FREE' }}
