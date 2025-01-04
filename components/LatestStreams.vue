@@ -96,7 +96,7 @@ const thumbnail = (video) => {
             />
             <h2 class="text-[18px] font-bold text-gray-800">{{ title || 'New in Top Grillin' }}</h2>
           </div>
-          <div v-if="membershipType !== 'vip'" class="">
+          <div v-if="!user.id" class="">
             <NuxtLink
               to="/join"
               class="text-white hover:text-black hover:bg-white text-sm py-1"

@@ -30,7 +30,7 @@
 
       <p class="text-sm text-gray-600 mb-14 max-w-3xl mx-auto">
         You can opt out anytime. We will treat your information with respect. 
-        For more information about our privacy practices, please read Boiler Room's 
+        For more information about our privacy practices, please read Skratch Bastid's 
         <a href="#" class="underline">Privacy Policy</a>. 
         By clicking above, you agree that we may process your information in accordance with these terms.
       </p>

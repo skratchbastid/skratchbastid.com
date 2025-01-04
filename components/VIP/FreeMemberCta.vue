@@ -49,6 +49,11 @@ const upgradePlan = {
       <VipPricingCard :plan="upgradePlan" />
     </div>
   </div>-->
-  
-  <FeaturedVideo v-if="latestStream" :video="latestStream" />
+
+  <div class="flex flex-col md:flex-row gap-4 md:gap-6 relative">
+            
+            <div class="w-full rounded-xl flex flex-col items-center relative featureVideo">
+                <FeaturedVideo />
+            </div>
+        </div>
 </template>

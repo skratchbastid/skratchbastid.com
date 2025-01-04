@@ -19,7 +19,7 @@ const mixes = useState('mixes')
             />
             <h2 class="text-[18px] font-bold text-gray-800">{{ 'Mixes' }}</h2>
           </div>
-          <div v-if="membershipType !== 'vip'" class="">
+          <div v-if="!user.id" class="">
             <NuxtLink
               to="/join"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
