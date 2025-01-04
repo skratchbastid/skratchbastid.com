@@ -4,6 +4,9 @@ import { useUserStore } from '@/stores/userStore'
 import { useVideos } from '@/composables/useVideos'
 import { Loader2 } from 'lucide-vue-next'
 
+import { storeToRefs } from 'pinia'
+
+
 definePageMeta({
     layout: 'vip'
 })
@@ -16,6 +19,8 @@ onMounted(() => {
 })
 
 const userStore = useUserStore()
+
+const { user, membershipType } = storeToRefs(userStore)
 const isVip = computed(() => userStore.isVip())
 
 const { latestStreams } = useVideos()
@@ -160,7 +165,7 @@ watch(() => video.value, (newVideo) => {
                         </NuxtLink>
                     </div>
                     <div class="md:flex">
-                        <div class="md:w-[65%]">
+                        <div class="md:w-[100%]">
                             <div v-if="canViewVideo" class="max-w-full aspect-video">
                                 <div v-show="video">
                                     <client-only v-if="video?.streamsFields.vimeoId">
@@ -186,14 +191,14 @@ watch(() => video.value, (newVideo) => {
                                                     <div class="text-white">
                                                         <ul>
                                                             <div class="flex items-center my-1.5 leading-none md:leading-snug" v-for="perk in perks">
-                                                                <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
+                                                                <Icon name="zondicons:checkmark" class="text-[#ff5941] mr-3" size="15" />
                                                                 <div class="font-thin text-shadow-sm md:text-lg">
                                                                     {{ perk }}
                                                                 </div>
                                                             </div>
                                                         </ul>
                                                     </div>
-                                                    <NuxtLink to="/join" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
+                                                    <NuxtLink to="/join" class="inline-block text-white text-sm bg-[#ff5941] rounded-lg px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,9 +251,9 @@ watch(() => video.value, (newVideo) => {
                                 
                             </div>
                         </div>
-                        <div class="mb-4 md:ml-4 flex flex-col lg:flex-row gap-10" v-if="video">
+                        <!--<div class="mb-4 md:ml-4 flex flex-col lg:flex-row gap-10" v-if="video">
                             <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="" />
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>
@@ -268,7 +273,7 @@ watch(() => video.value, (newVideo) => {
             </template>
         </client-only>
 
-        <CTAComponent v-if="!user"/>
+        <CTAComponent v-if="!user.id"/>
 
         <footerComponent class="" />
     </div>

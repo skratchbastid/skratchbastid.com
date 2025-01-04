@@ -38,7 +38,7 @@ onMounted(() => {
             </div>
         </div>
 
-        <CTAComponent v-if="!user" />
+        <CTAComponent v-if="!user.id" />
 
     <footerComponent class="" />
     </div>

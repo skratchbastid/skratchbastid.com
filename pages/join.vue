@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <CTAComponent />
+        <CTAComponent v-if="!user.id" />
 
     <footerComponent class="" />
     </div>

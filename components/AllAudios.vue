@@ -130,7 +130,7 @@
                 </div>
 
         </div>
-        <CTAComponent />
+        <CTAComponent v-if="!user.id" />
         <footerComponent class="" />
         <template #fallback>
             <div class="text-center py-8">Loading...</div>

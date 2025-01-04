@@ -2,13 +2,18 @@
     import { useQuery } from '@vue/apollo-composable'
     import { gql } from 'graphql-tag'
     import { useRouter, useRoute } from 'vue-router'
+    import { storeToRefs } from 'pinia'
 
+    const userStore = useUserStore()
+    const { user, membershipType } = storeToRefs(userStore)
+    
     const videos = ref([])
     const pageInfo = ref(null)
     const loadingMore = ref(false)
     const hoveredVideo = ref(null)
     const isClient = ref(false)
     const props = defineProps(['filter']);
+
 
     const VIDEOS_QUERY = gql`
         query GetStreams($cursor: String) {
@@ -395,7 +400,7 @@
                 </div>
             </div>
         </div>
-        <CTAComponent />
+        <CTAComponent v-if="!user.id" />
         <footerComponent class="" />
         <template #fallback>
             <div class="text-center py-8">Loading...</div>

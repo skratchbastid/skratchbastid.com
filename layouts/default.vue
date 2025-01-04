@@ -181,7 +181,23 @@
               :class="{'link-image-active': $route.path === '/shop', 'link-image': true}">
           </div>
 
-          <div class="link-container">
+          <div v-if="user?.id" class="relative flex justify-center items-center">
+            <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
+            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
+              <ul class="flex flex-col gap-y-2">
+                <li>
+                  <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
+                </li>
+                <li>
+                  <NuxtLink to="/profile" @click.native="menuVisible = false">My Profile</NuxtLink>
+                </li>
+                <li>
+                  <a href="#" @click.prevent="logoutUserOut">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div v-if="!user.id" class="link-container">
             <NuxtLink 
               :class="{ 'text-[#D4582D]': $route.path === '/join' }" 
               to="/join"
@@ -192,7 +208,7 @@
             </NuxtLink>
           </div>
 
-          <div class="link-container">
+          <div v-if="!user.id" class="link-container">
             <NuxtLink 
               :class="{ 'text-[#D4582D]': $route.path === '/login' }" 
               to="/login"
@@ -203,7 +219,27 @@
             </NuxtLink>
           </div>
       </div>
-      <div class="hidden lg:flex gap-4">
+
+      <div class="hidden lg:flex">
+        <div v-if="user?.id" class="relative flex justify-center items-center">
+            <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
+            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2">
+              <ul class="flex flex-col gap-y-2">
+                <li>
+                  <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
+                </li>
+                <li>
+                  <NuxtLink to="/profile" @click.native="menuVisible = false">My Profile</NuxtLink>
+                </li>
+                <li>
+                  <a href="#" @click.prevent="logoutUserOut">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div v-else>
+            
+      <div class="lg:flex gap-4">
         <NuxtLink 
           to="/join" 
           class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100"
@@ -217,6 +253,8 @@
           LOG IN
         </NuxtLink>
       </div>
+          </div>
+      </div>
     </div>
   </div>
   <div class="mt-[58px] dark:bg-gray-900 dark:text-white">
@@ -226,6 +264,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
+
+const userStore = useUserStore()
+const user = computed(() => userStore.user)
 
 const menuOpen = ref(false)
 const toggleMenu = () => {

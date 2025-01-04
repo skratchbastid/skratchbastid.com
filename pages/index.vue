@@ -63,7 +63,7 @@
     </div>
 
     <CTAComponent2 />
-    <CTAComponent />
+    <CTAComponent v-if="!user.id" />
 
     <footerComponent class="" />
 
