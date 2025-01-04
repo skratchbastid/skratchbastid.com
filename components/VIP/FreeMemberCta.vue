@@ -41,12 +41,14 @@ const upgradePlan = {
 </script>
 
 <template>
-  <div class="max-w-[85%] m-auto mb-12 flex flex-col md:flex-row gap-6 items-center">
+  <!--<div class="max-w-[85%] m-auto mb-12 flex flex-col md:flex-row gap-6 items-center">
     <div class="w-full md:w-2/3 flex items-center">
       <FeaturedVideo v-if="latestStream" :video="latestStream" />
     </div>
     <div class="w-full md:w-1/3 flex items-center">
       <VipPricingCard :plan="upgradePlan" />
     </div>
-  </div>
+  </div>-->
+  
+  <FeaturedVideo v-if="latestStream" :video="latestStream" />
 </template>
