@@ -268,7 +268,7 @@ watch(() => video.value, (newVideo) => {
             </template>
         </client-only>
 
-        <CTAComponent />
+        <CTAComponent v-if="!user"/>
 
         <footerComponent class="" />
     </div>

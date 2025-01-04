@@ -168,7 +168,7 @@
                     </ClientOnly>
                 </div>
 
-    <CTAComponent />
+    <CTAComponent v-if="!user" />
     <footerComponent class="" />
 </template>
 

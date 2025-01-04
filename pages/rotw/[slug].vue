@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-        <CTAComponent />
+        <CTAComponent v-if="!user" />
         <footerComponent class="" />
     </div>
 </template>
