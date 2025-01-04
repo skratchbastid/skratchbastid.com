@@ -115,7 +115,7 @@ const thumbnail = (video) => {
             :is="LinkComponent"
             v-for="video in filteredStreams" 
             :key="video.id"
-            :to="isVip ? `/videos/${video.slug}` : undefined"
+            :to="index === 0 ? `/videos/${video.slug}` : isVip ? `/videos/${video.slug}` : undefined"
             class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
             @click="handleClick($event, video)"
             @mouseenter="hoveredVideo = video"

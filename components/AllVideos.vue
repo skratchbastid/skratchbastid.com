@@ -6,6 +6,7 @@
 
     const userStore = useUserStore()
     const { user, membershipType } = storeToRefs(userStore)
+    const isVip = computed(() => membershipType.value === 'vip')
     
     const videos = ref([])
     const pageInfo = ref(null)
@@ -165,7 +166,8 @@
                             style="scroll-snap-type: x mandatory;"
                         >
                             <NuxtLink 
-                                :to="'/videos/' + video.slug" 
+                                :to="index === 0 ? `/videos/${video.slug}` : isVip ? `/videos/${video.slug}` : undefined"
+
                                 v-for="(video, index) in videos.slice(0, 4)" 
                                 :key="video.id"
                                 @mouseenter="hoveredVideo = video"
