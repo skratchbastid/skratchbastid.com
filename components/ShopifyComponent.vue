@@ -1,0 +1,252 @@
+<template>
+  <div class="py-6 bg-white mt-8 px-6">
+    <!-- Intestazione -->
+    <div class="flex justify-between items-center pr-4 mb-4">
+      <div class="flex items-center gap-2">
+        <img 
+          src="/img/storeImg.png" 
+          alt="New in Top Grillin" 
+          class="w-6 h-6"
+        />
+        <h2 class="text-[18px] font-bold text-gray-800">Bastid’s store</h2>
+      </div>
+      <div>
+        <NuxtLink
+              to="https://shop.skratchbastid.com/"
+              class="text-white hover:text-black hover:bg-white text-sm py-1"
+              target="_blank"
+            >
+              <div class="flex items-center">
+                <p class="text-[14px] font-bold text-black uppercase tracking-wide text-[14px]">
+                  Store &nbsp;
+                </p>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000"
+                  stroke="black"
+                  class="w-4 h-4"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                
+              </div>
+            </NuxtLink>
+      </div>
+    </div>
+
+    <!-- Prodotti -->
+    <div v-if="loading" class="loading">Loading...</div>
+    <div v-if="error" class="error">{{ error }}</div>
+    <div v-if="products.length" class="products">
+      <div v-for="(product, index) in products" :key="product.id" class="product-card">
+        <a :href="product.onlineStoreUrl" target="_blank" rel="noopener noreferrer">
+          <div style="position: relative;">
+            <img 
+            :src="product.images.edges[0]?.node.src" 
+            :alt="product.images.edges[0]?.node.altText || product.title" 
+            class="product-image" 
+          />
+          <!-- Aggiungi l'immagine rotante sotto al prodotto -->
+          <img 
+            :src="rotatingImages[index % rotatingImages.length]" 
+            alt="Rotating Banner" 
+            class="rotating-banner"
+          />
+          </div>
+          
+          <h2 class="product-title">{{ product.title }}</h2>
+          <p class="product-price">
+            {{ product.variants.edges[0]?.node.price.amount }} {{ product.variants.edges[0]?.node.price.currencyCode }}
+          </p>
+        </a>
+      </div>
+    </div>
+    <div v-if="!loading && !error && !products.length" class="no-products">
+      Nessun prodotto disponibile.
+    </div>
+  </div>
+</template>
+
+<script>
+import { fetchProducts } from "../pages/api/shopify";
+
+export default {
+  data() {
+    return {
+      products: [],
+      loading: true,
+      error: null,
+      allowedTitles: [
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
+        "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
+        "Limoncello 7'' Ft. Shad - Yellow-",
+        "Limoncello 7'' Ft. Shad - Black",
+        "Bastid's BBQ Premium Apron",
+        "Bastid's Hot Sauce 3-pack",
+        "Bastid's BBQ 2024 Bucket Hat"
+      ],
+      rotatingImages: [
+        "/img/zigzag/zigzag1.png",
+        "/img/zigzag/zigzag2.png",
+        "/img/zigzag/zigzag3.png",
+        "/img/zigzag/zigzag4.png"
+      ], // Elenco delle immagini da far ruotare
+    };
+  },
+  async created() {
+    try {
+      const allProducts = await fetchProducts();
+      // Filtra solo i prodotti con i titoli specificati
+      this.products = allProducts.filter(product =>
+        this.allowedTitles.includes(product.title)
+      );
+      console.log(this.products);
+    } catch (err) {
+      this.error = "Error";
+    } finally {
+      this.loading = false;
+    }
+  },
+};
+</script>
+
+<style scoped>
+
+.rotating-banner {
+  width: 100%;
+  margin-top: -4px;
+  border-radius: 0 0 4px 4px;
+  position: absolute;
+  bottom: 0;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.products {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  align-items: stretch; 
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.products::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  width: 18vw;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  /* Nuova proprietà per altezza minima */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Forza le card a occupare tutta l'altezza disponibile */
+}
+
+.product-card:hover {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background-color: #00000008;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #333;
+}
+
+.product-title,
+.product-price {
+  margin-top: auto; /* Spinge questi elementi verso il basso */
+}
+
+.product-description {
+  font-size: 0.9em;
+  color: #666;
+  margin: 8px 0;
+}
+
+.product-price {
+  font-weight: 400;
+  color: #FF5941;
+  margin-top: 0.5rem;
+  font-size: 14px;
+}
+
+.loading,
+.error,
+.no-products {
+  text-align: center;
+  font-size: 1.2em;
+  color: #444;
+  margin-top: 20px;
+}
+
+/* Stile responsive per la testata */
+@media (min-width: 769px) {
+
+  .flex {
+    align-items: center;
+  }
+
+  .products{
+    display: flex !important;
+    overflow-x: scroll !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .product-card {
+    width: 100% !important;
+  }
+
+  .product-image {
+    max-width: 18vw !important;
+  }
+
+  .pr-4 {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+
+.flex {
+  align-items: center;
+}
+
+.products{
+  display: flex !important;
+  overflow-x: scroll !important;
+  flex-wrap: nowrap !important;
+}
+
+.product-card {
+  width: 100% !important;
+}
+
+.product-image {
+  min-width: 70vw !important;
+}
+
+.pr-4 {
+  padding-right: 0;
+}
+}
+</style>

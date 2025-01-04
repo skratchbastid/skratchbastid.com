@@ -1,19 +1,20 @@
 <script setup>
-definePageMeta({
-    layout: 'vip'
-})
+import { ref } from 'vue'
 </script>
 
 <template>
-    <div class="mx-4 md:mx-10 my-8 flex justify-center">
-        <ul class="flex gap-8 text-lg font-bold">
-            <li class="bg-black text-white px-6 py-1">
-                <NuxtLink to="/videos">Videos</NuxtLink>
-            </li>
-            <li class="px-6 py-1 border">
-                <NuxtLink to="/mixes">Mixes</NuxtLink>
-            </li>
-        </ul>
+
+    <div>
+        <AllVideos></AllVideos>
     </div>
-    <AllVideos />
 </template>
+
+<style scoped>
+.scrollbar-hidden {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}
+</style>

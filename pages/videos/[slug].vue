@@ -132,119 +132,145 @@ watch(() => video.value, (newVideo) => {
     <div class="min-h-[95vh]">
         <client-only>
             <!-- Loading state -->
-            <div v-if="pending" class="flex flex-col justify-center items-center h-screen bg-slate-800">
+            <div v-if="pending" class="flex flex-col justify-center items-center h-screen bg-white">
                 <Loader2 class="animate-spin text-blue-500 mb-4" size="48" />
                 <p class="text-white text-lg font-semibold">Loading video...</p>
             </div>
 
             <!-- Error state -->
-            <div v-else-if="queryError" class="flex justify-center items-center h-screen bg-slate-800">
+            <div v-else-if="queryError" class="flex justify-center items-center h-screen bg-white">
                 <p class="text-white text-lg">Error: {{ queryError.message }}</p>
             </div>
 
             <!-- No video found state -->
-            <div v-else-if="!video" class="flex justify-center items-center h-screen bg-slate-800">
+            <div v-else-if="!video" class="flex justify-center items-center h-screen bg-white">
                 <p class="text-white text-lg">No video found</p>
             </div>
 
             <!-- Main content -->
             <template v-else>
-                <div class="bg-slate-800 pb-8 lg:py-8">
-                    <div class="flex justify-start absolute z-50 ml-3 mt-2 lg:mt-0 opacity-40">
-                        <NuxtLink to="/vip" class="text-white text-lg">
-                            <Icon name="zondicons:arrow-left" class="text-white" size="20" />
+                <div class="bg-white md:p-8">
+                    <div class="flex justify-start z-50 my-8 lg:mt-0 pt-8 pl-4 md:pt-0">
+                        <NuxtLink to="/videos" class="text-white text-lg font-light">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="black" stroke="black" class="w-3 h-3"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>                                <p class="text-black ml-2 uppercase text-[14px]">
+                                    To videos
+                                </p>
+                            </div>
                         </NuxtLink>
                     </div>
-                    <div v-if="canViewVideo" class="max-w-full lg:w-8/12 mx-auto mb-6 aspect-video">
-                        <div v-show="video">
-                            <client-only v-if="video?.streamsFields.vimeoId">
-                                <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoId" :options="options" @ready="onPlayerReady" />
-                            </client-only>
-                            <client-only v-else-if="video?.streamsFields.cloudflareVideoId">
-                                <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoId" />
-                            </client-only>
-                        </div>
-                    </div>
-                    <div v-else>
-                        <div class="max-w-full lg:w-8/12 mx-auto mb-6 flex items-center justify-center">
-                            <div class="w-full bg-black relative h-[60vh] sm:h-auto">
-                                <div class="aspect-video relative">
-                                    <img :src="video?.streamsFields.imageLink" class="w-full" />
-                                    <div id="poster-gradient" class="h-full w-full absolute top-0 left-0 sm:hidden"></div>
+                    <div class="md:flex">
+                        <div class="md:w-[65%]">
+                            <div v-if="canViewVideo" class="max-w-full aspect-video">
+                                <div v-show="video">
+                                    <client-only v-if="video?.streamsFields.vimeoId">
+                                        <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoId" :options="options" @ready="onPlayerReady" />
+                                    </client-only>
+                                    <client-only v-else-if="video?.streamsFields.cloudflareVideoId">
+                                        <CloudflareVideoPlayer :videoId="video.streamsFields.cloudflareVideoId" />
+                                    </client-only>
                                 </div>
-                                <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
-                                    <div class="flex items-center justify-center p-8 w-full h-full">
-                                        <div class="w-full">
-                                            <h2 class="font-black text-xl sm:text-3xl shadow mb-4">Join the Top Grillin' VIP Crew</h2>
-                                            <p class="font-thin text-lg md:text-xl text-shadow-sm mb-4">Unlock access to this video and more:</p>
-                                            <div class="text-white">
-                                                <ul>
-                                                    <div class="flex items-center my-1.5 leading-none md:leading-snug" v-for="perk in perks">
-                                                        <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
-                                                        <div class="font-thin text-shadow-sm md:text-lg">
-                                                            {{ perk }}
-                                                        </div>
+                            </div>
+                            <div v-else>
+                                <div class="max-w-full flex items-center justify-center">
+                                    <div class="w-full bg-black relative h-[60vh] sm:h-auto">
+                                        <div class="aspect-video relative">
+                                            <img :src="video?.streamsFields.imageLink" class="w-full" />
+                                            <div id="poster-gradient" class="h-full w-full absolute top-0 left-0 sm:hidden"></div>
+                                        </div>
+                                        <div class="absolute bg-black bg-opacity-80 top-0 left-0 w-full h-full text-white aspect-video">
+                                            <div class="flex items-center justify-center p-8 w-full h-full">
+                                                <div class="w-full">
+                                                    <h2 class="font-black text-xl sm:text-3xl shadow mb-4">Join the Top Grillin' VIP Crew</h2>
+                                                    <p class="font-thin text-lg md:text-xl text-shadow-sm mb-4">Unlock access to this video and more:</p>
+                                                    <div class="text-white">
+                                                        <ul>
+                                                            <div class="flex items-center my-1.5 leading-none md:leading-snug" v-for="perk in perks">
+                                                                <Icon name="zondicons:checkmark" class="text-blue-500 mr-3" size="15" />
+                                                                <div class="font-thin text-shadow-sm md:text-lg">
+                                                                    {{ perk }}
+                                                                </div>
+                                                            </div>
+                                                        </ul>
                                                     </div>
-                                                </ul>
+                                                    <NuxtLink to="/join" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
+                                                </div>
                                             </div>
-                                            <NuxtLink to="/join" class="inline-block text-white text-sm bg-blue-500 px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row my-3 lg:w-2/3 mx-auto px-6 lg:px-0 items-start">
-                        <div class="flex-1 mb-4 md:mb-0">
-                            <div class="text-xl sm:text-2xl md:text-3xl font-bold text-white dark:text-white pb-1">
-                                {{ video?.title }}
-                            </div>
-                            <div v-if="video" class="text-white text-xs font-light">
-                                {{ $dayjs.utc(video?.date).fromNow() }}
-                            </div>
-                        </div>
-                        <div v-if="isVip" class="relative">
-                            <button
-                                @click="toggleMp3Options"
-                                class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-1.5 px-3 text-sm rounded-full flex items-center transition duration-300 ease-in-out"
-                            >
-                                <Icon name="material-symbols:download" class="mr-1.5" size="18" />
-                                Download MP3
-                                <Icon name="material-symbols:arrow-drop-down" :class="{ 'rotate-180': showMp3Options }" size="18" />
-                            </button>
-                            <div
-                                v-if="showMp3Options"
-                                class="absolute top-full right-0 mt-1 bg-white rounded-md shadow-lg z-10 w-full min-w-[120px]"
-                            >
-                            <a
-                                v-if="video.streamsFields.mp3link?.url"
-                                :href="video.streamsFields.mp3link.url"
-                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                Download With Mic
-                            </a>
 
-                            <a
-                                v-if="video.streamsFields.nomicmp3link?.url"
-                                :href="video.streamsFields.nomicmp3link.url"
-                                class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                            No Mic
-                            </a>
+                            <div class="">
+                                <!-- <div v-if="isVip" class="relative">-->
+                                    <div class="relative">
+                                    <button
+                                        @click="toggleMp3Options"
+                                        class=" md:p-0 p-4 text-[#687787] font-regular underline mt-4 text-[14px] rounded-full flex items-center transition duration-300 ease-in-out"
+                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-3" fill="#687787" stroke="#687787"><path d="M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48l0 128c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80l0-16 0-48 0-48C0 146.6 114.6 32 256 32s256 114.6 256 256l0 48 0 48 0 16c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48l0-128c0-26.5 21.5-48 48-48c10.8 0 21 2.1 30.4 6C449.6 159.4 362.1 80 256 80z"/></svg>                                        Audio available
+                                    </button>
+                                    <div
+                                        v-if="showMp3Options"
+                                        class="absolute top-full left-0 mt-1 bg-white rounded-md shadow-lg z-10 w-[25%] min-w-[120px]"
+                                    >
+                                    <a
+                                        v-if="video.streamsFields.mp3link?.url"
+                                        :href="video.streamsFields.mp3link.url"
+                                        class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >
+                                        Download With Mic
+                                    </a>
+
+                                    <a
+                                        v-if="video.streamsFields.noMicMP3Link?.url"
+                                        :href="video.streamsFields.noMicMP3Link.url"
+                                        class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >
+                                    No Mic
+                                    </a>
+                                    </div>
+                                </div>
+                                <div class="flex-1 mb-4 md:mb-0 mt-0 pl-4 pr-4 md:p-0 md:pt-4">
+                                    <div class="text-[24px] md:text-[36px] font-bold text-black dark:text-white pb-1">
+                                        {{ video?.title }}
+                                    </div>
+                                    <div v-if="video" class="text-black text-xs font-light">
+                                        {{ $dayjs.utc(video?.date).fromNow() }}
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
+                        <div class="mb-4 md:ml-4 flex flex-col lg:flex-row gap-10" v-if="video">
+                            <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="" />
+                        </div>
                     </div>
+
                 </div>
-                <div class="my-10 px-2 md:px-12 flex flex-col lg:flex-row gap-10" v-if="video">
-                    <!-- <VideoComments :videoId="video?.databaseId" @timestamp-clicked="handleTimestampClicked" class="w-full lg:w-2/3" /> -->
-                    <LatestStreams :excludeId="video?.id" :vertical="true" title="More Streams" :seeAll="false" class="w-full lg:w-1/3" />
+                <div class="" v-if="video">
+                    <ClientOnly>
+                        <LatestStreams
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                        />
+                        <MemberFavourites
+                            class="my-12 mb-6"
+                            :excludeLatest="true"
+                            title="Member Favourites"
+                        />
+                    </ClientOnly>
                 </div>
             </template>
         </client-only>
+
+        <CTAComponent />
+
+        <footerComponent class="" />
     </div>
 </template>
 

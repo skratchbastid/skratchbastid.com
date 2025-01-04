@@ -61,15 +61,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="bg-gradient-to-br from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
+    <div class="bg-white from-gray-50 from-10% to-blue-50 to-45% min-h-screen">
         <div>
             <div class="py-6">
                 <!-- Wrap user-dependent components in client-only to prevent hydration issues -->
                 <client-only>
                     <!-- Display appropriate component based on user status -->
-                    <VipGreeting v-if="isClient && isVip" />
-                    <FreeMemberCta class="my-10" v-else-if="isClient && user?.id && !isVip" />
-                    <VipHeroCta class="py-10" v-else-if="isClient && !user?.id" />
+                    <!--<VipGreeting v-if="isClient && isVip" />-->
+                    <FreeMemberCta class="my-10" v-if="isClient && user?.id && !isVip" />
+                    <VipHeroCta class="py-10" v-if="isClient && !user?.id" />
                     
                     <!-- Display latest streams, excluding the latest for free members -->
                     <LatestStreams
@@ -92,6 +92,10 @@ onMounted(() => {
                 </client-only>
             </div>
         </div>
+
+        <CTAComponent />
+
+    <footerComponent class="" />
     </div>
 </template>
 
