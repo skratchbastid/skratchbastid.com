@@ -183,7 +183,7 @@
 
           <div v-if="user?.id" class="relative flex justify-center items-center">
             <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
-            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2 r-0">
+            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2" style="right:0">
               <ul class="flex flex-col gap-y-2">
                 <li>
                   <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
@@ -223,7 +223,7 @@
       <div class="hidden lg:flex">
         <div v-if="user?.id" class="relative flex justify-center items-center">
             <img v-if="user?.avatar" :src="user?.avatar?.url" class="w-8 rounded-full cursor-pointer" @click="toggleMenu" />
-            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2 r-2">
+            <div v-if="menuVisible" class="absolute block bg-white w-[200px] border border-1 m-auto top-[40px] text-center py-2" style="right:0">
               <ul class="flex flex-col gap-y-2">
                 <li>
                   <a href="https://wp.skratchbastid.com/account" target="_blank" @click="menuVisible = false">My Account</a>
