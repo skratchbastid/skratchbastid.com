@@ -273,6 +273,17 @@ const menuOpen = ref(false)
 const toggleMenu = () => {
   menuOpen.value = !menuOpen.value
 }
+
+const menuVisible = ref(false)
+
+function toggleMenu() {
+  menuVisible.value = !menuVisible.value
+}
+
+function logoutUserOut() {
+  menuVisible.value = false
+  logout()
+}
 </script>
 
 <style scoped>
