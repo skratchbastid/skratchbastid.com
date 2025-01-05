@@ -99,7 +99,7 @@ const video = computed(() => videoData.value)
 const isLatestStream = computed(() => {
     return latestStreams.value.length > 0 && latestStreams.value[0].id === video.value?.id
 })
-const canViewVideo = computed(() => (isVip.value || isLatestStream.value) && userStore.user?.id && video.value)
+const canViewVideo = computed(() => (userStore.user?.id || isLatestStream.value))
 
 function handleTimestampClicked(seconds) {
     if (player) {
