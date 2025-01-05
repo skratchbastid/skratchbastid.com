@@ -23,7 +23,7 @@
         <div class="bg-white px-6 py-4 rounded-lg shadow-md flex md:flex-col md:items-start items-center watchNowCont">
           <div class="text-black font-bold uppercase text-lg md:mb-2">Latest Live Sets</div>
           <NuxtLink
-            :to="user?.id ? '/videos' : '/join'"
+            :to="'/videos'"
             class="text-white hover:text-black hover:bg-white text-sm py-1 md:ml-0 ml-[auto]"
           >
             <button class="bg-[#FF5941] text-white font-bold uppercase px-5 py-3 rounded-xl transition hover:bg-orange-600">
