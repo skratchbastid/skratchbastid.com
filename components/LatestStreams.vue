@@ -117,7 +117,7 @@ const thumbnail = (video) => {
             :key="video.id"
             :to="index === 0 ? `/videos/${video.slug}` : isVip ? `/videos/${video.slug}` : undefined"
             class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
-            @click="handleClick($event, video)"
+            @click="index !== 0 && handleClick($event, video)"
             @mouseenter="hoveredVideo = video"
             @mouseleave="hoveredVideo = null"
           >
