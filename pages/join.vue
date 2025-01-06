@@ -17,6 +17,10 @@
 import JoinVIPSlider from '@/components/VIP/JoinVIPSlider.vue';
 import JoinPricing from '@/components/VIP/JoinPricing.vue';
 
+import { storeToRefs } from 'pinia'
+const userStore = useUserStore()
+const { user, membershipType } = storeToRefs(userStore)
+
 const router = useRouter();
 
 function goBack() {
