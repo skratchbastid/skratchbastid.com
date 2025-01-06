@@ -13,7 +13,7 @@
     const hoveredVideo = ref(null)
     const isClient = ref(false)
     const props = defineProps(['filter']);
-
+ 
 
     const VIDEOS_QUERY = gql`
         query GetStreams($cursor: String) {

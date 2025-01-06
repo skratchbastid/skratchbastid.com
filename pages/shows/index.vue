@@ -1,4 +1,8 @@
 <script setup>
+import { storeToRefs } from 'pinia'
+const userStore = useUserStore()
+    const { user, membershipType } = storeToRefs(userStore)
+
 const { $dayjs } = useNuxtApp()
 
 useHead({

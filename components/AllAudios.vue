@@ -2,7 +2,10 @@
     import { useQuery } from '@vue/apollo-composable'
     import { gql } from 'graphql-tag'
     import VueHorizontal from "vue-horizontal";
-
+    import { storeToRefs } from 'pinia'
+const userStore = useUserStore()
+    const { user, membershipType } = storeToRefs(userStore)
+    
     const videos = ref([])
     const pageInfo = ref(null)
     const loadingMore = ref(false)
