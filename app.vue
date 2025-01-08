@@ -15,7 +15,6 @@ const perks = [
 ]
 
 const mixes = [
-  {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/c/2/3/b/9b6a-73f7-4e4a-b98e-8b09709c7cd1', link: 'https://www.mixcloud.com/sizeSessionsCanada/size-sessions-canada-presents-skratch-bastid-size-canada-launch-mix/'},
   {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/0/a/1/9cb7-4ff2-4157-8379-54efebc741ac', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-dinner-a-mixtape-41218/'},
   {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/b/c/2/a3d2-6a91-4c27-9eee-c845a489e030.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-the-gaff-soul-sisters-stand-up-100-female-funksoulrbbreaks/'},
   {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/2/1/e/9/bde2-8de1-4e85-8978-e1aed313c9e6.jpg', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-the-starter-era-dope-raps-1989-1993-sneaker-freaker-magazine-exclusive/'},
