@@ -146,6 +146,44 @@ const thumbnail = (video) => {
 
             <div class="font-semibold mt-2 truncate text-[14px]">{{ video.title }}</div>
           </component>
+
+          <component
+    :is="LinkComponent"
+    class="relative flex flex-col w-[23rem] md:w-4/12 lg:w-1/4 mr-2 md:mr-4 group cursor-pointer"
+    style="flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 1px;
+    scroll-snap-align: start;"
+    :to="isVip ? `/videos/dangerous-pop-up-may-23-2024/` : undefined"
+    @click="handleClick($event, isVip)"
+    @mouseenter="hoveredVideo = { id: 'manual', title: 'Manual Video' }"
+    @mouseleave="hoveredVideo = null"
+  > 
+    <div class="relative overflow-hidden rounded-lg">
+      <img 
+      src="https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/0621f762-8799-4055-a8a4-b00deecd5bab.gif?ClientID=sulu&Date=1716843860&Signature=640fc16d2d1d74e1dd6f2e1bb60649e77b1ca093"
+      class="rounded-lg drop-shadow-lg aspect-video w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" 
+      />
+      <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="white"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 3l14 9-14 9V3z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="font-semibold mt-2 truncate text-[14px]">Dangerous Pop-Up May 23 2024</div>
+  </component>
         </vue-horizontal>
   
         <!--<div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
