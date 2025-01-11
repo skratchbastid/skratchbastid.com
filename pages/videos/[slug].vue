@@ -230,8 +230,8 @@ watch(() => video.value, (newVideo) => {
                                     </a>
 
                                     <a
-                                        v-if="video.streamsFields.noMicMP3Link?.url"
-                                        :href="video.streamsFields.noMicMP3Link.url"
+                                        v-if="video.streamsFields.nomicmp3link?.url"
+                                        :href="video.streamsFields.nomicmp3link.url"
                                         class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
                                         target="_blank"
                                         rel="noopener"
