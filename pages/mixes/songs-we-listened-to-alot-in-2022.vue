@@ -1,13 +1,15 @@
 <script setup>
     import { vueVimeoPlayer } from 'vue-vimeo-player'
     import VueHorizontal from "vue-horizontal";
-
+    import { storeToRefs } from 'pinia'
     const options = {
         responsive: true,
         title: false,
         byline: false,
         portrait: false,
     }
+
+    const { user, membershipType } = storeToRefs(userStore)
 
     const videoId = "792395416"
 

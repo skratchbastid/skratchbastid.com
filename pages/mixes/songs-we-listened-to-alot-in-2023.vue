@@ -1,9 +1,9 @@
 <script setup>
     import { vueVimeoPlayer } from 'vue-vimeo-player'
     import VueHorizontal from "vue-horizontal";
-
+    import { storeToRefs } from 'pinia'
     const mixes = useState('mixes')
-
+    const { user, membershipType } = storeToRefs(userStore)
     const options = {
         responsive: true,
         title: false,
