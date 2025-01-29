@@ -25,9 +25,14 @@ onMounted(() => {
             <div class="">
                 <div v-for="show in futureShowListings" class="flex w-full items-center my-4 bg-[#F7F7F7] px-6 py-4 rounded-xl">
                     <div class="leading-tight w-1/10 text-center text-[#FF5941]">
-                        <div class="uppercase text-xs font-light leading-none">{{ $dayjs(show.eventsFields.eventDate).format('MMM')}}</div>
-                        <div class="text-center text-sm md:text-2xl font-bold leading-none">{{ $dayjs(show.eventsFields.eventDate).format('D')}}</div>
-                    </div>
+    <div class="uppercase text-xs font-light leading-none">
+        {{ new Date(show.eventsFields.eventDate).toLocaleString('en-US', { month: 'short' }) }}
+    </div>
+    <div class="text-center text-sm md:text-2xl font-bold leading-none">
+        {{ new Date(show.eventsFields.eventDate).getDate() }}
+    </div>
+</div>
+
                     <div class="flex flex-col lg:flex-row flex-grow md:flex-grow-0 w-9/12 items-center justify-center">
                         <div class="font-black uppercase md:w-2/3 md:text-2xl text-center">{{ show.eventsFields.location }}</div>
                         <div class="md:w-1/2 text-center">
