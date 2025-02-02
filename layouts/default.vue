@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[58px] z-50 bg-white dark:bg-gray-900 flex items-center fixed top-0 left-0 w-full border-b dark:border-b-0">
+  <div v-if="$route.path !== '/bastidbbq'" class="h-[58px] z-50 bg-white dark:bg-gray-900 flex items-center fixed top-0 left-0 w-full border-b dark:border-b-0">
     <div class="w-[96%] mx-auto flex h-[58px] items-center justify-between">
       <div class="flex items-center gap-6">
         <NuxtLink to="/" class="h-[70%]">
@@ -257,7 +257,7 @@
       </div>
     </div>
   </div>
-  <div class="mt-[58px] dark:bg-gray-900 dark:text-white">
+  <div :class="{'mt-[58px]': $route.path !== '/bastidbbq'}" class="dark:bg-gray-900 dark:text-white">
     <slot />
   </div>
 </template>
