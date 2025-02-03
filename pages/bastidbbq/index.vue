@@ -222,7 +222,7 @@ nav {
             </p>
     
             <!-- Pulsante Join Now -->
-            <nuxt-link to="/" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            <nuxt-link to="https://link.dice.fm/xc9c8dfa2b72" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 SAVE THE DATE
             </nuxt-link>
         </div>
