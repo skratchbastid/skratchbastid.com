@@ -6,6 +6,7 @@ import PricingCard from '../../components/VIP/PricingCard.vue';
 import Bbqrecaps from '~/components/bbqrecaps.vue';
 import { sendToHive } from '@/server/services/hiveService.js';
 import { storeToRefs } from 'pinia';
+import VueHorizontal from "vue-horizontal";
 
 const userStore = useUserStore();
 const { user, membershipType } = storeToRefs(userStore);
@@ -130,6 +131,16 @@ async function submitForm() {
   }
 }
 
+const AppleMusic = [
+        {image: '/appleMusicCover/image1.jpg', link: 'https://music.apple.com/ca/album/skratch-bastid-b2b-hedspin-at-bastids-bbq-toronto-2024/1770889892', title: 'Skratch Bastid b2b Hedspin at Bastid\'s BBQ Toronto 2024'},
+        {image: '/appleMusicCover/image2.jpg', link: 'https://music.apple.com/ca/album/dj-craze-at-bastids-bbq-toronto-2024-dj-mix/1771554892', title: 'DJ Craze at Bastid\'s BBQ Toronto 2024'},
+        {image: '/appleMusicCover/image3.jpg', link: 'https://music.apple.com/ca/album/dj-lykx-at-bastids-bbq-toronto-2024-dj-mix/1771553703', title: 'DJ LYKX at Bastid\'s BBQ Toronto 2024'},
+        {image: '/appleMusicCover/image4.jpg', link: 'https://music.apple.com/ca/album/iced-misto-at-bastids-bbq-toronto-2024-dj-mix/1777868025', title: 'Iced Misto at Bastid\'s BBQ Toronto 2024'},
+        {image: '/appleMusicCover/image5.jpg', link: 'https://music.apple.com/ca/album/dj-spinbad-80s-megamix-vol-1-dj-mix/1783816065', title: 'DJ Spinbad 80s Megamix VOL I '},
+        {image: '/appleMusicCover/image6.jpg', link: 'https://music.apple.com/ca/album/dj-spinbad-80s-megamix-vol-2-dj-mix/1787085893', title: 'DJ Spinbad 80s Megamix VOL II'},
+        {image: '/appleMusicCover/image7.jpg', link: 'https://music.apple.com/ca/album/nye-2025-dj-mix/1783918753', title: 'Skratch Bastid NYE 2025'}
+    ]
+
 </script>
 
 <style scoped>
@@ -188,7 +199,7 @@ nav {
                 <div class="text-left md:text-left">
                     <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD MUSIC,</h1>
                     <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD FOOD,</h1>
-                    <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">AND GOOD PEOPLE.</h1>
+                    <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD PEOPLE.</h1>
                     <p class="mt-6 text-[14px] md:w-[50%]">Bastid’s BBQ, founded in 2011 by DJ Skratch Bastid, began as a celebration of his love for music, food, and community. Over a decade later, it has grown into a globally celebrated event series, bringing together fans and artists in cities across the world. Featuring an unparalleled lineup of legendary DJs and producers, Bastid’s BBQ has become a must-attend event for those who crave the perfect blend of beats, bites, and vibes. Because life is always better with good music, good food, and good people.</p>
                 </div>
                 <div style="width: 100%;display: flex;">
@@ -223,7 +234,7 @@ nav {
     
             <!-- Pulsante Join Now -->
             <nuxt-link to="https://link.dice.fm/xc9c8dfa2b72" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-                SAVE THE DATE
+                BUY TICKETS
             </nuxt-link>
         </div>
     </div>      
@@ -234,11 +245,10 @@ nav {
             <img src="/img/bbqimg2.jpg" alt="Image 1" class="rounded-lg w-full h-[50vh] object-cover" />
         </div> 
 
-        <!-- Sezione destra con contenuto -->
         <div class="flex-1 md:w-30">
         <h2 class="text-3xl font-bold">Sign Up</h2>
         <p class="mt-2 text-gray-300 mb-4 font-light">
-            Access to Skratch Bastid's DJ Streams – Get up close and personal with epic sets you won’t hear anywhere else.
+            Access to Bastid’s BBQ Updates.
         </p>
 
         <div class="flex flex-col">
@@ -317,7 +327,7 @@ nav {
     </div>
 
     <div class="mb-8 mx-4 md:mx-10 my-8" id="recaps">
-                    <div class="flex justify-between items-center pr-4 mb-4">
+        <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
                             <img 
                                 src="/img/videosImg.png" 
@@ -335,11 +345,34 @@ nav {
                                 </svg>
                             </div>
                         </div>
-                    </div>
-                    <Bbqrecaps />
-                </div>
+        </div>
+        <Bbqrecaps />
+    </div>
 
-    <MixesSlider class="my-10" id="mixes" />
+    <div class="mb-8 px-4 md:px-10 py-8 bg-white relative" id="mixes">
+        <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img src="/img/audiosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
+                            <h2 class="text-[18px] font-bold text-gray-800">Listen on Apple Music</h2>
+                        </div>
+    </div>
+
+    <div class="overflow-x-auto md:overflow-visible" style="z-index: 2; position: relative">
+                        <vue-horizontal class="ml-0 md:mr-10">
+                            <NuxtLink 
+                                v-for="(mix, index) in AppleMusic" 
+                                :key="index"
+                                :to="mix.link" 
+                                :target="index === 0 ? '' : '_blank'"
+                                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
+                            >
+                                <div class="hover-effect">
+                                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
+                                </div>
+                            </NuxtLink>
+                        </vue-horizontal>
+        </div>
+    </div>
 
     <div class="bg-white relative">
         <img 
