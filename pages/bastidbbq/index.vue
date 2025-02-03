@@ -233,7 +233,7 @@ nav {
         <div class="flex-1 md:w-70 flex flex-col gap-4">
             <img src="/img/bbqimg2.jpg" alt="Image 1" class="rounded-lg w-full h-[50vh] object-cover" />
             <img src="/img/bbqimg3.jpg" alt="Image 2" class="rounded-lg w-full h-[50vh] object-cover" />
-        </div>
+        </div> 
 
         <!-- Sezione destra con contenuto -->
         <div class="flex-1 md:w-30">
