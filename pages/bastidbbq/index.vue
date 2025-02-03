@@ -13,10 +13,10 @@ const { $dayjs } = useNuxtApp();
 
 // SEO Metadata
 useSeoMeta({
-  title: `Record of the Week | Skratch Bastid`,
-  ogTitle: `Record of the Week | Skratch Bastid`,
-  ogDescription: `Record of the Week | Skratch Bastid`,
-  ogUrl: `https://www.skratchbastid.com/rotw`,
+  title: `Bastid's BBQ | Skratch Bastid`,
+  ogTitle: `Bastid's BBQ  | Skratch Bastid`,
+  ogDescription: `Bastid's BBQ  | Skratch Bastid`,
+  ogUrl: `https://www.skratchbastid.com/bastidbbq`,
 });
 
 // Stato per mostrare il video
