@@ -275,11 +275,10 @@ nav {
       <select
         v-model="form.city"
         required
-        placeholder="Select Your City"
         class="w-full px-4 py-3 border rounded-lg focus:ring text-[#142129] focus:ring-[#FF5941]"
       >
-        <option selected value="Select Your City">Select Your City</option>
-        <option v-for="city in cities" :key="city" :value="city">
+      <option value="" disabled>Select Your City</option> 
+      <option v-for="city in cities" :key="city" :value="city">
           {{ city }}
         </option>
       </select>
