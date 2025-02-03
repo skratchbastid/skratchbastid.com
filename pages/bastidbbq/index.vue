@@ -219,36 +219,25 @@ nav {
         </div>
     </div>
 
-    <div class="bg-[#fff] text-white px-6 py-12 md:flex items-center justify-center gap-8" id="signup">
+    <div class="bg-[#142129] text-white px-6 py-12 md:flex items-center justify-center gap-8" id="signup">
         
-        <div class="flex justify-center mb-6">
+        <div class="justify-center mb-6" style="display: grid;">
             <img src="/img/BASTIDBBQ_Toronto_SaveTheDate_2025.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
-        </div>
-    
-        <!-- Sezione destra con contenuto -->
-        <div class="text-center">
-            <h2 class="text-3xl font-bold text-[#142129]">Save The Date</h2>
-            <p class="mt-2 text-[#142129] mb-4 font-light">
-                Toronto BBQ
-            </p>
-    
-            <!-- Pulsante Join Now -->
-            <nuxt-link to="https://link.dice.fm/xc9c8dfa2b72" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            <nuxt-link to="https://link.dice.fm/xc9c8dfa2b72" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
         </div>
     </div>      
 
-    <div class="bg-[#142129] text-white md:px-12 px-6 py-12 flex flex-col-reverse md:flex-row items-center gap-24" id="signup">
+    <div class="bg-[#fff] text-white md:px-12 px-6 py-12 flex flex-col-reverse md:flex-row items-center gap-24" id="signup">
         
         <div class="flex-1 md:w-70 flex flex-col gap-4">
             <img src="/img/bbqimg2.jpg" alt="Image 1" class="rounded-lg w-full h-[50vh] object-cover" />
         </div> 
 
-        <div class="flex-1 md:w-30">
-        <h2 class="text-3xl font-bold">Sign Up</h2>
+        <div class="flex-1 md:w-30 text-[#142129]">
+        <h2 class="text-3xl font-bold">Sign Up for Bastid’s BBQ</h2>
         <p class="mt-2 text-gray-300 mb-4 font-light">
-            Access to Bastid’s BBQ Updates.
         </p>
 
         <div class="flex flex-col">
@@ -326,6 +315,31 @@ nav {
         </div>
     </div>
 
+    <div class="mb-8 px-4 md:px-10 py-8 relative bg-[#142129]" id="mixes">
+        <div class="flex justify-between items-center pr-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <img src="/img/audiosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
+                            <h2 class="text-[18px] font-bold text-white">Listen on Apple Music</h2>
+                        </div>
+        </div>
+
+        <div class="overflow-x-auto md:overflow-visible" style="z-index: 2; position: relative">
+                        <vue-horizontal class="ml-0 md:mr-10">
+                            <NuxtLink 
+                                v-for="(mix, index) in AppleMusic" 
+                                :key="index"
+                                :to="mix.link" 
+                                :target="index === 0 ? '' : '_blank'"
+                                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
+                            >
+                                <div class="hover-effect">
+                                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
+                                </div>
+                            </NuxtLink>
+                        </vue-horizontal>
+        </div>
+    </div>
+
     <div class="mb-8 mx-4 md:mx-10 my-8" id="recaps">
         <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
@@ -349,30 +363,7 @@ nav {
         <Bbqrecaps />
     </div>
 
-    <div class="mb-8 px-4 md:px-10 py-8 bg-white relative" id="mixes">
-        <div class="flex justify-between items-center pr-4 mb-4">
-                        <div class="flex items-center gap-2">
-                            <img src="/img/audiosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
-                            <h2 class="text-[18px] font-bold text-gray-800">Listen on Apple Music</h2>
-                        </div>
-    </div>
-
-    <div class="overflow-x-auto md:overflow-visible" style="z-index: 2; position: relative">
-                        <vue-horizontal class="ml-0 md:mr-10">
-                            <NuxtLink 
-                                v-for="(mix, index) in AppleMusic" 
-                                :key="index"
-                                :to="mix.link" 
-                                :target="index === 0 ? '' : '_blank'"
-                                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
-                            >
-                                <div class="hover-effect">
-                                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
-                                </div>
-                            </NuxtLink>
-                        </vue-horizontal>
-        </div>
-    </div>
+    
 
     <div class="bg-white relative">
         <img 
