@@ -201,33 +201,21 @@ nav {
 
         <!-- Hero Section -->
         <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
+            
             <div class="absolute inset-0 bg-black opacity-60 z-0"></div>
-
-                <!-- Contenitore principale centrato -->
-                <div class="relative z-10 w-full md:flex items-center justify-center text-center px-6 md:px-12" style="gap: 10rem">
-                    
-                    <!-- Logo e Testo -->
-                    <div class="" style="font-family: 'Blur Bold', sans-serif;">
-                        <img 
-                            src="/img/BBQ_Black_Yellow.png" 
-                            class="max-h-40 mx-auto mb-8" 
-                            alt="Logo Skratch Bastid" 
-                        />
-                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD MUSIC,</h1>
-                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD FOOD,</h1>
-                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD PEOPLE.</h1>
-                    </div>
-
-                    <!-- Bottone Play -->
-                    <div class="mt-8">
-                        <button @click="showVideo = true">
-                            <img src="/img/play.png" alt="Play" class="w-24 md:w-32 mx-auto" />
-                        </button>
-                    </div>
-
+            <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
+                <div class="text-left md:w-[60vw] md:ml-20" style="font-family: 'Blur Bold', sans-serif;">
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD MUSIC,</h1>
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD FOOD,</h1>
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD PEOPLE.</h1>
+                </div>
+                <div style="display: flex;">
+                    <button @click="showVideo = true" class="md:mt-0 mt-12 md:mt-0 md:mr-44">
+                        <img src="/img/play.png" alt="Play" class="w-32 md:w-50" />
+                    </button>
                 </div>
             </div>
-
+        </div>
 
         <!-- Video Popup -->
         <div v-if="showVideo" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
