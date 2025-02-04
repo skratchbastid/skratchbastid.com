@@ -148,6 +148,14 @@ const AppleMusic = [
 nav {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+@font-face {
+    font-family: 'Blur Bold';
+    src: url('/fonts/Blur-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 </style>
 
 <template>
@@ -193,22 +201,33 @@ nav {
 
         <!-- Hero Section -->
         <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
-            
             <div class="absolute inset-0 bg-black opacity-60 z-0"></div>
-            <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
-                <div class="text-left md:text-left">
-                    <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD MUSIC,</h1>
-                    <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD FOOD,</h1>
-                    <h1 class="text-[56px] md:text-[56px] font-bold" style="line-height: 4rem;">GOOD PEOPLE.</h1>
-                    <p class="mt-6 text-[14px] md:w-[50%]">Bastid’s BBQ, founded in 2011 by DJ Skratch Bastid, began as a celebration of his love for music, food, and community. Over a decade later, it has grown into a globally celebrated event series, bringing together fans and artists in cities across the world. Featuring an unparalleled lineup of legendary DJs and producers, Bastid’s BBQ has become a must-attend event for those who crave the perfect blend of beats, bites, and vibes. Because life is always better with good music, good food, and good people.</p>
-                </div>
-                <div style="width: 100%;display: flex;">
-                    <button @click="showVideo = true" class="md:mt-6 mt-12 md:mt-0 mr-auto ml-auto">
-                        <img src="/img/play.png" alt="Play" class="w-32 md:w-50" />
-                    </button>
+
+                <!-- Contenitore principale centrato -->
+                <div class="relative z-10 w-full md:flex items-center justify-center text-center px-6 md:px-12" style="gap: 10rem">
+                    
+                    <!-- Logo e Testo -->
+                    <div class="" style="font-family: 'Blur Bold', sans-serif;">
+                        <img 
+                            src="/img/BBQ_Black_Yellow.png" 
+                            class="max-h-40 mx-auto mb-8" 
+                            alt="Logo Skratch Bastid" 
+                        />
+                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD MUSIC,</h1>
+                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD FOOD,</h1>
+                        <h1 class="text-[48px] md:text-[64px] font-bold leading-tight">GOOD PEOPLE.</h1>
+                    </div>
+
+                    <!-- Bottone Play -->
+                    <div class="mt-8">
+                        <button @click="showVideo = true">
+                            <img src="/img/play.png" alt="Play" class="w-24 md:w-32 mx-auto" />
+                        </button>
+                    </div>
+
                 </div>
             </div>
-        </div>
+
 
         <!-- Video Popup -->
         <div v-if="showVideo" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
