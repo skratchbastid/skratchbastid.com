@@ -113,7 +113,7 @@ function setTab(tabName) {
                                 alt="New in Top Grillin" 
                                 class="w-6 h-6"
                             />
-                            <h2 class="text-[30px] font-bold text-gray-800 ml-2">Latest</h2>
+                            <h2 class="text-[30px] font-bold text-gray-800 ml-2">General</h2>
                         </div>
                     </div>
           <div 

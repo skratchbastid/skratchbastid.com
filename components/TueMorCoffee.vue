@@ -116,7 +116,7 @@ function setTab(tabName) {
               />
               <h2 class="text-[18px] font-bold text-gray-800">Tuesday Morning Coffee</h2>
           </div>
-          <div @click="setTab('Tuesday Morning Mixes')">
+          <div @click="setTab('Tuesday Morning Coffee')">
               <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#000" stroke="black" class="w-4 h-4">
                       <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>

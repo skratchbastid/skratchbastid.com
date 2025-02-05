@@ -103,14 +103,14 @@
     }
 
     const activeTab = ref('All');
-    const tabs = ['All', 'Tuesday Morning Mixes', 'BBQ Recaps', 'ROTW', 'Popup', 'Latest'];
+    const tabs = ['All', 'General', 'Tuesday Morning Coffee', 'BBQ Recaps', 'ROTW', 'Popup'];
     const sections = ref({
         'All': true,
-        'Tuesday Morning Mixes': false,
+        "General": false,
+        'Tuesday Morning Coffee': false,
         'BBQ Recaps': false,
         'ROTW': false,
         'Popup': false,
-        "Latest": false,
     });
 
     const isActiveSection = (tab) => {
@@ -191,9 +191,7 @@
                     </div>
                 </div>
 
-                <LatestV />
-
-                <Popups />
+                <!--<Popups />-->
 
                 <!--<div class="mb-8 px-4 md:px-10 py-8 bg-gray-200 relative">
                     <div class="flex justify-between items-center pr-4 mb-4">
@@ -342,14 +340,14 @@
             </div>
 
             <div v-else>
-                <div v-if="activeTab === 'Tuesday Morning Mixes'"  class="mb-8 mx-4 md:mx-10 my-8">
+                <div v-if="activeTab === 'Tuesday Morning Coffee'"  class="mb-8 mx-4 md:mx-10 my-8">
 
                     <TueMorCoffee2 />
                 </div>
-                <div v-if="activeTab === 'Popup'"  class="mb-8 mx-4 md:mx-10 my-8">
+                <!--<div v-if="activeTab === 'Popup'"  class="mb-8 mx-4 md:mx-10 my-8">
                     <Popups2 />
-                </div>
-                <div v-if="activeTab === 'Latest'"  class="mb-8 mx-4 md:mx-10 my-8">
+                </div>-->
+                <div v-if="activeTab === 'General'"  class="mb-8 mx-4 md:mx-10 my-8">
                     <latestV2 />
                 </div>
                 <div v-if="activeTab === 'BBQ Recaps'" class="mb-8 mx-4 md:mx-10 my-8">
