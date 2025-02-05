@@ -11,7 +11,7 @@ useHead({
 const shows = useState('shows')
 const futureShowListings = computed(() => {
     return shows.value.filter(show => {
-        const eventDate = $dayjs.utc(show.date); // Converte la data in UTC
+        const eventDate = $dayjs.utc(show.date); 
         return $dayjs().isSameOrBefore(eventDate, 'day') || $dayjs().isToday();
     });
 });
@@ -30,11 +30,12 @@ onMounted(() => {
                 <div v-for="show in futureShowListings" class="flex w-full items-center my-4 bg-[#F7F7F7] px-6 py-4 rounded-xl">
                     <div class="leading-tight w-1/10 text-center text-[#FF5941]">
                         <div class="uppercase text-xs font-light leading-none">
-                            {{ new Date(show.eventsFields.eventDate).toLocaleString('en-US', { month: 'short' }) }}
+                            {{ $dayjs.utc(show.eventsFields.eventDate).format('MMM') }} <!-- Mese abbreviato -->
                         </div>
                         <div class="text-center text-sm md:text-2xl font-bold leading-none">
-                            {{ new Date(show.eventsFields.eventDate).getDate() }}
+                            {{ $dayjs.utc(show.eventsFields.eventDate).format('D') }} <!-- Giorno -->
                         </div>
+
                     </div>
                     <div class="flex flex-col lg:flex-row flex-grow md:flex-grow-0 w-9/12 items-center justify-center">
                         <div class="font-black uppercase md:w-2/3 md:text-2xl text-center">{{ show.eventsFields.location }}</div>
