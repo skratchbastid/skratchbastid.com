@@ -1,7 +1,7 @@
 <template>
   <div class="px-4 py-0 text-center">
     <h2 class="text-2xl md:text-4xl font-extrabold mb-8">Choose Your Top Grillin' Experience</h2>
-    <div class="flex flex-col-reverse md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+    <div class="md:flex flex-col-reverse md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
       <PricingCard
         v-for="plan in plans"
         :key="plan.name"

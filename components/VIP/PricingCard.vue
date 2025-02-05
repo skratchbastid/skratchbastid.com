@@ -1,5 +1,5 @@
 <template>
-  <div class="['flex-1 rounded-xl p-6 flex flex-col border-2 border-[#c0c0c05e] w-[35%]">
+  <div class="['flex-1 rounded-xl p-6 flex flex-col border-2 border-[#c0c0c05e] md:w-[35%] mb-2">
     <div class="relative mb-4">
       <h3 class=" inset-0 text-left font-bold text-2xl" :class="plan.name === 'Free' ? 'text-[#142129]' : 'text-[#142129]'">
         {{ plan.name }}

@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col min-h-[calc(100vh-58px)]">
         <div class="relative flex-grow flex justify-center items-center py-12">
-            <div class="w-full max-w-2xl z-10">
+            <div class="w-full z-10">
                 <!-- <JoinVIPSlider /> -->
                 <JoinPricing />
             </div>
