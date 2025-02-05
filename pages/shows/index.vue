@@ -10,8 +10,12 @@ useHead({
 })
 const shows = useState('shows')
 const futureShowListings = computed(() => {
-        return shows.value.filter(show => $dayjs().isSameOrBefore($dayjs(show.date, 'day')) || $dayjs(show.date).isToday())
-    })
+    return shows.value.filter(show => {
+        const eventDate = $dayjs.utc(show.date); // Converte la data in UTC
+        return $dayjs().isSameOrBefore(eventDate, 'day') || $dayjs().isToday();
+    });
+});
+
 
 onMounted(() => {
     window.scrollTo(0,0)
