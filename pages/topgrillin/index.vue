@@ -67,7 +67,7 @@ const plans = ref([
       '10% off entire online store.',
     ],
     buttonText: 'Get VIP Access',
-    buttonLink: 'https://wp.skratchbastid.com/register/top-grillin',
+    buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-monthly/',
     theme: {
       bg: 'bg-black',
       text: 'text-white',
@@ -127,15 +127,19 @@ nav {
         </nav>
 
         <!-- Hero Section -->
-        <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
-            
-            <div class="absolute inset-0 bg-black opacity-60 z-0"></div>
+        <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center">
+          <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+              <source src="/videos/video1.mov" type="video/mp4">
+              Il tuo browser non supporta i video HTML5.
+        </video>
+
+            <div class="absolute inset-0 bg-black opacity-80 z-0"></div>
             <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
                 <div class="text-left md:w-[60vw] md:ml-20">
                     <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">Welcome to </h1>
                     <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">TOP GRILLIN’</h1>
-                    <p class="text-[16px] font-regular text-white md:w-[40vw] mt-4" >
-                      Beneath the waves, a vibrant ecosystem thrives, revealing mesmerizing marine life. Sunlight dances through crystal-clear waters, illuminating coral reefs and colorful fish.
+                    <p class="text-[16px] font-regular text-white md:w-[40vw] mt-4">
+                        Beneath the waves, a vibrant ecosystem thrives, revealing mesmerizing marine life. Sunlight dances through crystal-clear waters, illuminating coral reefs and colorful fish.
                     </p>
 
                     <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
@@ -150,13 +154,19 @@ nav {
             </div>
         </div>
 
+
         <!-- Video Popup -->
         <div v-if="showVideo" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-            <div class="relative w-full max-w-3xl">
-                <button @click="showVideo = false" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
-                <iframe class="w-full h-[300px] md:h-[500px]" src="https://player.vimeo.com/video/yourvideo" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
+    <div class="w-full max-w-3xl">
+        <button @click="showVideo = false" class="absolute top-[20%] right-[20%] text-white text-3xl font-bold">&times;</button>
+        
+        <video controls autoplay class="w-full rounded-lg">
+            <source src="/videos/video1.mov" type="video/mp4">
+            Il tuo browser non supporta i video HTML5.
+        </video>
+    </div>
+</div>
+
     </div>
 
     <div class="bg-[#142129] text-white md:px-12 px-6 py-12 flex flex-col items-center md:flex-row gap-24">

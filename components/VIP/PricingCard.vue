@@ -35,14 +35,14 @@
       <span class="text-sm font-medium text-[#5F5F5F] ml-2">Annual</span>
     </div>
 
-
     <div class="text-[20px] font-bold mb-0 text-[#142129]">
       ${{ displayedPrice }}<span class="text-[14px] font-light">{{ isAnnual ? '/year' : '/month' }}</span>
     </div>
 
-    <nuxt-link :to="plan.buttonLink" class="text-center mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+    <!-- Link dinamico per il pulsante -->
+    <a :href="buttonLink" class="text-center mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
       SELECT
-    </nuxt-link>
+    </a>
   </div>
 </template>
 
@@ -65,5 +65,19 @@ const displayedPrice = computed(() => {
     return isAnnual.value ? (9.99 * 12).toFixed(2) : 12.99;
   }
   return props.plan.price;
+});
+
+// Link dinamico per il pulsante
+const buttonLink = computed(() => {
+
+  if (props.plan.name === 'VIP') {
+    return isAnnual.value 
+      ? 'https://wp.skratchbastid.com/register/top-grillin-annual/' 
+      : 'https://wp.skratchbastid.com/register/top-grillin-monthly/';
+  } else if (props.plan.price === 0) {
+    return 'https://wp.skratchbastid.com/register/top-grillin-free/';
+  } else {
+    return props.plan.buttonLink;
+  }
 });
 </script>
