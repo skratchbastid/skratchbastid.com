@@ -14,16 +14,16 @@
 import { ref, onMounted } from 'vue';
 
 // URL dell'immagine del logo
-const imageSrc = 'https://bastidsbbq.com/images/sb-face.svg';
+const imageSrc = '/img/logo_loading.png';
 
 // Classe reattiva che alterna tra le due
-const logoClass = ref('w-[50px] md:w-[65px] m-auto pb-2');
+const logoClass = ref('w-[100px] md:w-[200px] m-auto pb-2');
 
 // Funzione per alternare la classe ogni 2 secondi
 const toggleLogoClass = () => {
-  logoClass.value = logoClass.value === 'w-[50px] md:w-[65px] m-auto pb-2'
-    ? 'w-[50px] md:w-[65px] m-auto pb-2 transform -scale-x-100'
-    : 'w-[50px] md:w-[65px] m-auto pb-2';
+  logoClass.value = logoClass.value === 'w-[100px] md:w-[200px] m-auto pb-2'
+    ? 'w-[100px] md:w-[200px] m-auto pb-2 transform -scale-x-100'
+    : 'w-[100px] md:w-[200px] m-auto pb-2';
 };
 
 // Impostiamo l'aggiornamento ogni 2 secondi al momento del montaggio

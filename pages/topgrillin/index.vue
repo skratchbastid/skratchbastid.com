@@ -5,10 +5,10 @@ import { useSeoMeta } from '#app';
 import PricingCard from '../../components/VIP/PricingCard.vue'
 
 useSeoMeta({
-    title: `Record of the Week | Skratch Bastid`,
-    ogTitle: `Record of the Week | Skratch Bastid`,
-    ogDescription: `Record of the Week | Skratch Bastid`,
-    ogUrl: `https://www.skratchbastid.com/rotw`,
+    title: `Top Grillin' | Skratch Bastid`,
+    ogTitle: `Top Grillin' | Skratch Bastid`,
+    ogDescription: `Top Grillin' | Skratch Bastid`,
+    ogUrl: `https://www.skratchbastid.com/topgrillin`,
 });
 
 const showVideo = ref(false);
@@ -106,10 +106,10 @@ nav {
     <!-- Link di navigazione -->
     <div class="hidden md:flex gap-8 text-[16px]">
       <nuxt-link to="/bastidbbq" class="hover:text-gray-400">Home</nuxt-link>
-      <nuxt-link to="/rotw" class="hover:text-gray-400">Pricing</nuxt-link>
-      <nuxt-link to="/about" class="hover:text-gray-400">Videos</nuxt-link>
+      <nuxt-link to="#signup" class="hover:text-gray-400">Sign Up</nuxt-link>
+      <nuxt-link to="#recaps" class="hover:text-gray-400">Recaps</nuxt-link>
+      <nuxt-link to="#mixes" class="hover:text-gray-400">Mixes</nuxt-link>
       <nuxt-link to="/" class="hover:text-gray-400">Homepage</nuxt-link>
-      <nuxt-link to="/" class="hover:text-gray-400">Contact Us</nuxt-link>
     </div>
 
     <!-- Menu Mobile -->
@@ -119,27 +119,34 @@ nav {
 
     <div v-if="menuOpen" class="absolute top-20 left-0 w-full bg-white text-black p-4 px-6 shadow-lg md:hidden">
         <nuxt-link to="/bastidbbq" class="block py-2 hover:text-gray-400">Home</nuxt-link>
-        <nuxt-link to="/rotw" class="block py-2 hover:text-gray-400">Pricing</nuxt-link>
-        <nuxt-link to="/about" class="block py-2 hover:text-gray-400">Videos</nuxt-link>
+        <nuxt-link to="#signup" class="block py-2 hover:text-gray-400">Sign Up</nuxt-link>
+        <nuxt-link to="#recaps" class="block py-2 hover:text-gray-400">Recaps</nuxt-link>
+        <nuxt-link to="#mixes" class="block py-2 hover:text-gray-400">Mixes</nuxt-link>
         <nuxt-link to="/" class="block py-2 hover:text-gray-400">Homepage</nuxt-link>
-        <nuxt-link to="/" class="block py-2 hover:text-gray-400">Contact Us</nuxt-link>
     </div>
-  </nav>
+        </nav>
 
         <!-- Hero Section -->
-        <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bastidbbq_cover.png');">
+        <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
+            
+            <div class="absolute inset-0 bg-black opacity-60 z-0"></div>
             <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
-                <div class="text-left md:text-left">
-                    <h1 class="text-[56px] md:text-[56px] font-bold">Welcome to </h1>
-                    <h1 class="text-[56px] md:text-[56px] mt-2 md:mt-8 font-bold">TOP GRILLIN’</h1>
-                    <p class="mt-6 text-[14px] md:w-[50%]">Beneath the waves, a vibrant ecosystem thrives, revealing mesmerizing marine life. Sunlight dances through crystal-clear waters, illuminating coral reefs and colorful fish.</p>
-                    <nuxt-link to="/newsletter" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+                <div class="text-left md:w-[60vw] md:ml-20">
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">Welcome to </h1>
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">TOP GRILLIN’</h1>
+                    <p class="text-[16px] font-regular text-white md:w-[40vw] mt-4" >
+                      Beneath the waves, a vibrant ecosystem thrives, revealing mesmerizing marine life. Sunlight dances through crystal-clear waters, illuminating coral reefs and colorful fish.
+                    </p>
+
+                    <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                         JOIN NOW
                     </nuxt-link>
                 </div>
-                <button @click="showVideo = true" class="mt-6 md:mt-0 mr-36">
-                    <img src="/img/play.png" alt="Play" class="w-32 md:w-40" />
-                </button>
+                <div style="display: flex;">
+                    <button @click="showVideo = true" class="md:mt-0 mt-12 md:mt-0 md:mr-44 m-auto">
+                        <img src="/img/play.png" alt="Play" class="w-32 md:w-50" />
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -177,7 +184,7 @@ nav {
         </div>
 
         <!-- Pulsante Join Now -->
-        <nuxt-link to="/newsletter" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+        <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                         JOIN NOW
                     </nuxt-link>
         </div>
@@ -224,13 +231,14 @@ nav {
 
       </div>
 
-      <!-- Pulsante Join Now -->
-      <nuxt-link to="/newsletter" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-        START NOW
-      </nuxt-link>
+      
       <p class="mt-2 text-gray-300">
         Become a Top Griller today!        
     </p>
+
+      <nuxt-link to="/newsletter" class="mt-6 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+        START NOW
+      </nuxt-link>
     </div>
 
     <!-- Sezione sinistra con immagini -->
@@ -252,6 +260,14 @@ nav {
       />
     </div>
   </div>
+
+  <div class="bg-white relative">
+        <img 
+        src="/img/bottom_image.png" 
+        alt="Bottom Image" 
+        class="bottom-0 left-0 w-full object-cover"
+        />
+    </div>
 
     <footerComponent class="" />
 </template>

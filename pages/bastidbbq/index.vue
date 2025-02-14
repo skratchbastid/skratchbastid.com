@@ -197,7 +197,7 @@ nav {
         <nuxt-link to="#mixes" class="block py-2 hover:text-gray-400">Mixes</nuxt-link>
         <nuxt-link to="/" class="block py-2 hover:text-gray-400">Homepage</nuxt-link>
     </div>
-  </nav>
+        </nav>
 
         <!-- Hero Section -->
         <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
@@ -210,7 +210,7 @@ nav {
                     <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD PEOPLE.</h1>
                 </div>
                 <div style="display: flex;">
-                    <button @click="showVideo = true" class="md:mt-0 mt-12 md:mt-0 md:mr-44">
+                    <button @click="showVideo = true" class="md:mt-0 mt-12 md:mt-0 md:mr-44 m-auto">
                         <img src="/img/play.png" alt="Play" class="w-32 md:w-50" />
                     </button>
                 </div>
@@ -369,8 +369,6 @@ nav {
         </div>
         <Bbqrecaps />
     </div>
-
-    
 
     <div class="bg-white relative">
         <img 
