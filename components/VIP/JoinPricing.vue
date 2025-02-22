@@ -20,11 +20,12 @@ import PricingCard from './PricingCard.vue'
 
 const plans = ref([
   {
-    name: 'Free Access',
+    name: 'Free',
     price: 0,
     perks: [
-      'New Stream Every Tuesday',
-      'Access to the Latest Stream'
+      'New Stream Every Tuesday.',
+      'Access to the Latest Stream.',
+      'Limited WhatsApp Community.'
     ],
     buttonText: 'Sign Up Free',
     buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-free',
@@ -35,19 +36,18 @@ const plans = ref([
     }
   },
   {
-    name: 'VIP Access',
+    name: 'VIP',
     price: 9.99,
     perks: [
-      'Access to the full archive of Twitch streams',
-      'VIP-only streams',
-      'Full WhatsApp Community Access',
-      '10% off entire online store',
-      'Pre-sale and first access to new merch drops',
-      // 'VIP Backstage access at Bastid\s BBQ events',
-      // '50% off Bastid\s BBQ tickets',
+      'Free features.',
+      'Stream over 2,000 hours of exclusive DJ sets.',
+      'VIP-only streams.',
+      'Discord Server.',
+      'Pre-sale and first access to new merch drops.',
+      '10% off entire online store.',
     ],
     buttonText: 'Get VIP Access',
-    buttonLink: 'https://wp.skratchbastid.com/register/top-grillin',
+    buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-monthly/',
     theme: {
       bg: 'bg-black',
       text: 'text-white',

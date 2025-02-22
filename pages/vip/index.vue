@@ -58,6 +58,7 @@ onMounted(() => {
         showModal.value = true
     }
 })
+
 </script>
 
 <template>
