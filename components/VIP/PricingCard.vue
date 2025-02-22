@@ -36,7 +36,7 @@
     </div>
 
     <div class="text-[20px] font-bold mb-0 text-[#142129]">
-      ${{ displayedPrice }}<span class="text-[14px] font-light">{{ isAnnual ? '/year' : '/month' }}</span>
+      ${{ displayedPrice }}<span class="text-[14px] font-light">{{ isAnnual ? '/month (billed annually)' : '/month' }}</span>
     </div>
 
     <!-- Link dinamico per il pulsante -->
@@ -62,7 +62,7 @@ const isAnnual = ref(false);
 // Prezzo dinamico per il piano VIP
 const displayedPrice = computed(() => {
   if (props.plan.name === 'VIP') {
-    return isAnnual.value ? (9.99 * 12).toFixed(2) : 12.99;
+    return isAnnual.value ? 9.99 : 12.99;
   }
   return props.plan.price;
 });
