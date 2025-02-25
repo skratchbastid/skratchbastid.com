@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!['/bastidbbq', '/topgrillin'].includes($route.path)" class="h-[58px] z-50 bg-white dark:bg-gray-900 flex items-center fixed top-0 left-0 w-full border-b dark:border-b-0">
+  <div class="h-[58px] z-50 bg-white dark:bg-gray-900 flex items-center fixed top-0 left-0 w-full border-b dark:border-b-0">
     <div class="w-[96%] mx-auto flex h-[58px] items-center justify-between">
       <div class="flex items-center gap-6">
         <NuxtLink to="/" class="h-[70%]">

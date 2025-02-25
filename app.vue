@@ -1,5 +1,6 @@
 <script setup>
 import { useRuntimeConfig } from '#app'
+import { onMounted } from 'vue'
 
 const config = useRuntimeConfig()
 
@@ -13,6 +14,27 @@ const perks = [
   '10% off entire online store',
   'Pre-sale and first access to new merch drops',
 ]
+
+onMounted(() => {
+  // Inietta dinamicamente il codice GTM nel <head>
+  const scriptTag = document.createElement('script');
+  scriptTag.innerHTML = `
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K6XW97WC');
+  `;
+  document.head.appendChild(scriptTag);
+
+  // Aggiungi il <noscript> nel <body>
+  const noscriptTag = document.createElement('noscript');
+  noscriptTag.innerHTML = `
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6XW97WC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  `;
+  document.body.appendChild(noscriptTag);
+});
 
 const mixes = [
   {image: 'https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/e/0/a/1/9cb7-4ff2-4157-8379-54efebc741ac', link: 'https://www.mixcloud.com/skratchbastid/skratch-bastid-dinner-a-mixtape-41218/'},

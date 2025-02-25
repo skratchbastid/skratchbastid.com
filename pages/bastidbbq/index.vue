@@ -160,44 +160,6 @@ nav {
 
 <template>
     <div>
-        <!-- Navbar -->
-        <nav
-    :class="{
-      'bg-transparent text-white': !isScrolled,
-      'bg-white text-black shadow-lg': isScrolled
-    }"
-    class="flex items-center justify-between md:px-12 px-6 py-3 fixed w-full top-0 transition-all duration-300"
-    style="z-index: 100;"
-  >
-    <!-- Logo -->
-    <img 
-      src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" 
-      class="h-full max-h-16 object-contain" 
-      alt="Logo Skratch Bastid"
-    />
-
-    <!-- Link di navigazione -->
-    <div class="hidden md:flex gap-8 text-[16px]">
-      <nuxt-link to="/bastidbbq" class="hover:text-gray-400">Home</nuxt-link>
-      <nuxt-link to="#signup" class="hover:text-gray-400">Sign Up</nuxt-link>
-      <nuxt-link to="#recaps" class="hover:text-gray-400">Recaps</nuxt-link>
-      <nuxt-link to="#mixes" class="hover:text-gray-400">Mixes</nuxt-link>
-      <nuxt-link to="/" class="hover:text-gray-400">Homepage</nuxt-link>
-    </div>
-
-    <!-- Menu Mobile -->
-    <button class="md:hidden" @click="toggleMenu">
-      <Icon name="material-symbols:menu" size="28" />
-    </button>
-
-    <div v-if="menuOpen" class="absolute top-20 left-0 w-full bg-white text-black p-4 px-6 shadow-lg md:hidden">
-        <nuxt-link to="/bastidbbq" class="block py-2 hover:text-gray-400">Home</nuxt-link>
-        <nuxt-link to="#signup" class="block py-2 hover:text-gray-400">Sign Up</nuxt-link>
-        <nuxt-link to="#recaps" class="block py-2 hover:text-gray-400">Recaps</nuxt-link>
-        <nuxt-link to="#mixes" class="block py-2 hover:text-gray-400">Mixes</nuxt-link>
-        <nuxt-link to="/" class="block py-2 hover:text-gray-400">Homepage</nuxt-link>
-    </div>
-        </nav>
 
         <!-- Hero Section -->
         <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('/img/bbqimage5.JPG');">
