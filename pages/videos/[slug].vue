@@ -101,6 +101,8 @@ const isLatestStream = computed(() => {
 })
 const canViewVideo = computed(() => (isVip.value || isLatestStream.value))
 
+console.log(video)
+
 function handleTimestampClicked(seconds) {
     if (player) {
         player.setCurrentTime(seconds)
@@ -131,6 +133,16 @@ watch(() => video.value, (newVideo) => {
         })
     }
 }, { immediate: true })
+
+const correctedMp3Url = (url) => {
+    if (!url) return null;
+
+    return url.startsWith("https://skratch-bastid.") 
+        ? url.replace("https://skratch-bastid.", "https://3957-skratch-bastid.") 
+        : url;
+
+};
+
 </script>
 
 <template>
@@ -221,7 +233,7 @@ watch(() => video.value, (newVideo) => {
                                     >
                                     <a
                                         v-if="video.streamsFields.mp3link?.url"
-                                        :href="video.streamsFields.mp3link.url"
+                                        :href="correctedMp3Url(video?.streamsFields.mp3link?.url)"
                                         class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
                                         target="_blank"
                                         rel="noopener"
@@ -231,7 +243,7 @@ watch(() => video.value, (newVideo) => {
 
                                     <a
                                         v-if="video.streamsFields.nomicmp3link?.url"
-                                        :href="video.streamsFields.nomicmp3link.url"
+                                        :href="correctedMp3Url(video?.streamsFields.nomicmp3link?.url)"
                                         class="block px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100"
                                         target="_blank"
                                         rel="noopener"
