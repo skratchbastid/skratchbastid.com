@@ -6,6 +6,14 @@
         v-for="plan in plans"
         :key="plan.name"
         :plan="plan"
+        v-if="!user?.id"
+      />
+
+      <PricingCard
+        v-for="plan in plans2"
+        :key="plan.name"
+        :plan="plan"
+        v-if="!userIsVip"
       />
     </div>
     <p class="mt-8 text-lg">
@@ -15,8 +23,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import PricingCard from './PricingCard.vue'
+import { useUserStore } from '@/stores/userStore'
+
+const userStore = useUserStore()
+const user = computed(() => userStore.user)
+const userIsVip = computed(() => userStore.userIsVip)
 
 const plans = ref([
   {
@@ -34,7 +47,10 @@ const plans = ref([
       text: 'text-black',
       button: 'bg-white border border-[#FF5941] rounded-lg text-[#FF5941]'
     }
-  },
+  }
+])
+
+const plans2 = ref([
   {
     name: 'VIP',
     price: 9.99,
