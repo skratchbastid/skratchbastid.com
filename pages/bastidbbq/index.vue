@@ -188,14 +188,14 @@ nav {
         </div>
     </div>
 
-    <div class="bg-[#142129] text-white px-6 py-12 md:flex items-center justify-center gap-8" id="signup">
+    <div class="bg-[#142129] text-white px-6 py-12 items-center justify-center gap-8" id="signup">
         
         <div class="justify-center mb-6 md:flex gap-8">
           <div style="display: grid;">
-            <nuxt-link to="https://link.dice.fm/B931284bb955" >
+            <nuxt-link to="https://link.dice.fm/B931284bb955" target="_blank">
               <img src="/img/bastidLA.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
             </nuxt-link>
-            <nuxt-link to="https://link.dice.fm/B931284bb955" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            <nuxt-link to="https://link.dice.fm/B931284bb955" target="_blank" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
           </div>
@@ -204,6 +204,26 @@ nav {
               <img src="/img/BASTIDBBQ_Toronto_SaveTheDate_2025.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
             </nuxt-link>
             <nuxt-link to="https://link.dice.fm/xc9c8dfa2b72" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+                BUY TICKETS
+            </nuxt-link>
+          </div>
+            
+        </div>
+
+        <div class="justify-center mb-6 md:flex gap-8 mt-12">
+          <div style="display: grid;">
+            <nuxt-link to="https://link.dice.fm/t99844367402" target="_blank" >
+              <img src="/img/bbq_nyc.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
+            </nuxt-link>
+            <nuxt-link to="https://link.dice.fm/t99844367402" target="_blank" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+                BUY TICKETS
+            </nuxt-link>
+          </div>
+          <div class="mt-8 md:mt-0" style="display: grid;">
+            <nuxt-link to="https://link.dice.fm/B931284bb955" target="_blank">
+              <img src="/img/bbq_la.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
+            </nuxt-link>
+            <nuxt-link to="https://link.dice.fm/B931284bb955" target="_blank" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
           </div>
