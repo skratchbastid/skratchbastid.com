@@ -3,15 +3,12 @@ import { vueVimeoPlayer } from 'vue-vimeo-player'
 import { useUserStore } from '@/stores/userStore'
 import { useVideos } from '@/composables/useVideos'
 import { Loader2 } from 'lucide-vue-next'
-
 import { storeToRefs } from 'pinia'
-
 
 definePageMeta({
     layout: 'vip'
 })
 
-// Make the component client-only
 defineComponent({ name: 'VideoPage' })
 
 onMounted(() => {
@@ -22,6 +19,9 @@ const userStore = useUserStore()
 
 const { user, membershipType } = storeToRefs(userStore)
 const isVip = computed(() => userStore.isVip())
+
+//console.log(membershipType.value)
+//console.log(isVip.value)
 
 const { latestStreams } = useVideos()
 
@@ -86,7 +86,6 @@ watch([data, pending, queryError], () => {
         if (queryError.value) {
             console.error('Error fetching video:', queryError.value)
         } else if (data.value?.stream) {
-            console.log(data.value?.stream)
             videoData.value = data.value.stream
         } else {
             console.error('No video found')
@@ -101,7 +100,6 @@ const isLatestStream = computed(() => {
 })
 const canViewVideo = computed(() => (isVip.value || isLatestStream.value))
 
-console.log(video)
 
 function handleTimestampClicked(seconds) {
     if (player) {

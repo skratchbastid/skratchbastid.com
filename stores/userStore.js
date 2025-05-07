@@ -21,13 +21,19 @@ export const useUserStore = defineStore('user', () => {
     })
 
     function isVip() {
-        const vip = user.value.subscriptions?.includes('64') ?? false
-        const admin = user.value.roles?.nodes?.some((role) => role.name === 'administrator') ?? false
-        return vip || admin
+        const vipIds = ['64', '1071', '1072']
+        const subscriptions = user.value.subscriptions || []
+        const isVip = subscriptions.some(sub => vipIds.includes(sub))
+        const isAdmin = user.value.roles?.nodes?.some(role => role.name === 'administrator') ?? false
+    
+        return isVip || isAdmin
     }
+    
 
     const membershipType = computed(() => {
-        if (!user.value.id) return 'guest'
+        //console.log(JSON.stringify(user.value?.subscriptions))
+
+        if (!user.value?.id) return 'guest'
         if (isVip()) return 'vip'
         return 'free'
     })

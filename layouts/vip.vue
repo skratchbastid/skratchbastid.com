@@ -6,6 +6,8 @@
   const user = computed(() => userStore.user)
   const userIsVip = computed(() => userStore.userIsVip)
 
+  console.log(userStore)
+
   const menuVisible = ref(false)
 
   function toggleMenu() {
