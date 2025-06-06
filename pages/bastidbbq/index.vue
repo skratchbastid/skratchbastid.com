@@ -158,7 +158,7 @@ nav {
 
 </style>
 
-<template>
+<template> 
     <div>
 
         <!-- Hero Section -->
