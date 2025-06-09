@@ -220,7 +220,7 @@ nav {
   </div>
 
   <div class="bg-[#fff] text-white md:px-12 px-6 py-12 items-center md:flex-row gap-24">
-    <h2 class="text-3xl text-[#142129] font-bold">Choose your plan</h2>
+    <h2 class="text-3xl text-[#142129] font-bold">Become a VIP Top Griller now</h2>
       <p class="mt-2 text-[#142129]">
         Our membership offerings
         </p>
