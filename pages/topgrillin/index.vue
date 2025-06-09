@@ -53,7 +53,7 @@ const plans = ref([
       bg: 'bg-white',
       text: 'text-black',
       button: 'bg-white border border-[#FF5941] rounded-lg text-[#FF5941]'
-    }
+    }    
   },
   {
     name: 'VIP',
