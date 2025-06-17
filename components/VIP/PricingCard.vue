@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 rounded-xl p-6 flex flex-col border-2 border-[#c0c0c05e] md:w-[35%] mb-2">
+  <div class="flex-1 rounded-xl p-6 flex flex-col border-2 border-[#c0c0c05e] md:w-[35%] mb-2" >
     <div class="relative mb-4">
       <h3 class="text-left font-bold text-2xl text-[#142129]">
         {{ plan.name }}
@@ -16,7 +16,7 @@
     </ul>
 
     <!-- Switch per il piano VIP -->
-    <div v-if="plan.name === 'VIP'" class="flex items-center justify-center mb-4">
+    <div v-if="plan.name === 'Join now'" class="flex items-center justify-center mb-4">
       <span class="text-sm font-medium text-[#5F5F5F] mr-2">Monthly</span>
 
       <!-- Toggle Button -->
@@ -61,7 +61,7 @@ const isAnnual = ref(false);
 
 // Prezzo dinamico per il piano VIP
 const displayedPrice = computed(() => {
-  if (props.plan.name === 'VIP') {
+  if (props.plan.name === 'Join now') {
     return isAnnual.value ? 9.99 : 12.99;
   }
   return props.plan.price;
@@ -70,7 +70,7 @@ const displayedPrice = computed(() => {
 // Link dinamico per il pulsante
 const buttonLink = computed(() => {
 
-  if (props.plan.name === 'VIP') {
+  if (props.plan.name === 'Join now') {
     return isAnnual.value 
       ? 'https://wp.skratchbastid.com/register/top-grillin-annual/' 
       : 'https://wp.skratchbastid.com/register/top-grillin-monthly/';

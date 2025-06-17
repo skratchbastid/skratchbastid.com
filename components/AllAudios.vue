@@ -2,8 +2,9 @@
     import { useQuery } from '@vue/apollo-composable'
     import { gql } from 'graphql-tag'
     import VueHorizontal from "vue-horizontal";
-    import { storeToRefs } from 'pinia'
-const userStore = useUserStore()
+    import { storeToRefs } from 'pinia';
+
+    const userStore = useUserStore()
     const { user, membershipType } = storeToRefs(userStore)
     
     const videos = ref([])
@@ -42,30 +43,29 @@ const userStore = useUserStore()
         <div v-if="loading && !videos.length" class="text-center py-8">Loading...</div>
         <div v-else-if="error" class="text-center py-8 text-red-500">Error loading videos</div>
         <div v-else>
-                <div class="mb-16 mx-4 md:mx-10 my-8">
+                <div class="mb-16 mx-4 md:mx-10 my-8 relative">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
-                            <img 
-                                src="/img/audiosImg.png" 
-                                alt="New in Top Grillin" 
-                                class="w-6 h-6"
-                            />
-                            <h2 class="text-[18px] font-bold text-gray-800">Songs We Listened To A Lot In...</h2>
+                            <img src="/img/audiosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
+                            <h2 class="text-[18px] font-bold text-gray-800">Listen on Apple Music</h2>
                         </div>
                     </div>
-                    <vue-horizontal class="ml-0 md:mr-10">
-                        <NuxtLink 
-                            v-for="(mix, index) in mixes2" 
-                            :key="index"
-                            :to="mix.link" 
-                            :target="index === 0 ? '' : '_blank'"
-                            class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
-                        >
-                            <div class="hover-effect">
-                                <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
-                            </div>
-                        </NuxtLink>
-                    </vue-horizontal>
+
+                    <div class="overflow-x-auto md:overflow-visible" style="z-index: 2; position: relative">
+                        <vue-horizontal class="ml-0 md:mr-10">
+                            <NuxtLink 
+                                v-for="(mix, index) in AppleMusic" 
+                                :key="index"
+                                :to="mix.link" 
+                                :target="index === 0 ? '' : '_blank'"
+                                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
+                            >
+                                <div class="hover-effect">
+                                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
+                                </div>
+                            </NuxtLink>
+                        </vue-horizontal>
+                    </div>
                 </div>
 
                 <div class="mb-8 px-4 md:px-10 py-8 bg-gray-200 relative">
@@ -107,29 +107,30 @@ const userStore = useUserStore()
                     </div>
                 </div>
 
-                <div class="mb-8 px-4 md:px-10 py-8 bg-white relative">
+                <div class="mb-8 px-4 md:px-10 py-8 bg-white relative ">
                     <div class="flex justify-between items-center pr-4 mb-4">
                         <div class="flex items-center gap-2">
-                            <img src="/img/audiosImg.png" alt="New in Top Grillin" class="w-6 h-6" />
-                            <h2 class="text-[18px] font-bold text-gray-800">Listen on Apple Music</h2>
+                            <img 
+                                src="/img/audiosImg.png" 
+                                alt="New in Top Grillin" 
+                                class="w-6 h-6"
+                            />
+                            <h2 class="text-[18px] font-bold text-gray-800">Songs We Listened To A Lot In...</h2>
                         </div>
                     </div>
-
-                    <div class="overflow-x-auto md:overflow-visible" style="z-index: 2; position: relative">
-                        <vue-horizontal class="ml-0 md:mr-10">
-                            <NuxtLink 
-                                v-for="(mix, index) in AppleMusic" 
-                                :key="index"
-                                :to="mix.link" 
-                                :target="index === 0 ? '' : '_blank'"
-                                class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
-                            >
-                                <div class="hover-effect">
-                                    <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
-                                </div>
-                            </NuxtLink>
-                        </vue-horizontal>
-                    </div>
+                    <vue-horizontal class="ml-0 md:mr-10">
+                        <NuxtLink 
+                            v-for="(mix, index) in mixes2" 
+                            :key="index"
+                            :to="mix.link" 
+                            :target="index === 0 ? '' : '_blank'"
+                            class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
+                        >
+                            <div class="hover-effect">
+                                <img :src="mix.image" class="rounded-lg aspect-square w-full h-full object-cover" />
+                            </div>
+                        </NuxtLink>
+                    </vue-horizontal>
                 </div>
 
         </div>
@@ -143,10 +144,10 @@ const userStore = useUserStore()
 
 <style scoped>
 .scrollbar-hidden {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none; 
 }
 .scrollbar-hidden::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 </style>

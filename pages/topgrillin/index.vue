@@ -40,23 +40,7 @@ const toggleMenu = () => {
 
 const plans = ref([
   {
-    name: 'Free',
-    price: 0,
-    perks: [
-      'New Stream Every Tuesday.',
-      'Access to the Latest Stream.',
-      'Limited WhatsApp Community.'
-    ],
-    buttonText: 'Sign Up Free',
-    buttonLink: 'https://wp.skratchbastid.com/register/top-grillin-free',
-    theme: {
-      bg: 'bg-white',
-      text: 'text-black',
-      button: 'bg-white border border-[#FF5941] rounded-lg text-[#FF5941]'
-    }    
-  },
-  {
-    name: 'VIP',
+    name: 'Join now',
     price: 9.99,
     perks: [
       'Free features.',
@@ -88,34 +72,6 @@ nav {
 <template>
     <div>
 
-        <!-- Hero Section -->
-        <div class="relative h-screen flex items-center justify-center text-white bg-cover bg-center">
-          <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-              <source src="/videos/video1.mov" type="video/mp4">
-              Il tuo browser non supporta i video HTML5.
-        </video>
-
-            <div class="absolute inset-0 bg-black opacity-80 z-0"></div>
-            <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
-                <div class="text-left md:w-[60vw] md:ml-20">
-                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">Welcome to </h1>
-                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">TOP GRILLIN’</h1>
-                    <p class="text-[16px] font-regular text-white md:w-[40vw] mt-4">
-                        Beneath the waves, a vibrant ecosystem thrives, revealing mesmerizing marine life. Sunlight dances through crystal-clear waters, illuminating coral reefs and colorful fish.
-                    </p>
-
-                    <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-                        JOIN NOW
-                    </nuxt-link>
-                </div>
-                <div style="display: flex;">
-                    <button @click="showVideo = true" class="md:mt-0 mt-12 md:mt-0 md:mr-44 m-auto">
-                        <img src="/img/play.png" alt="Play" class="w-32 md:w-50" />
-                    </button>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Video Popup -->
         <div v-if="showVideo" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -131,21 +87,20 @@ nav {
 
     </div>
 
-    <div class="bg-[#142129] text-white md:px-12 px-6 py-12 flex flex-col items-center md:flex-row gap-24">
-        <!-- Sezione sinistra con immagini -->
+    <div class="bg-[#142129] text-white md:px-12 px-6 py-28 flex flex-col items-center md:flex-row gap-24">
         <div class="flex-1 md:w-70 flex flex-col gap-4">
         <img src="/img/services2.png" alt="Image 1" class="rounded-lg w-full h-100 object-cover" />
         <img src="/img/services1.png" alt="Image 2" class="rounded-lg w-full h-100 object-cover" />
         </div>
 
-        <!-- Sezione destra con contenuto -->
         <div class="flex-1 md:w-30">
-        <h2 class="text-3xl font-bold">As a VIP, you’ll enjoy</h2>
+          <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">Welcome to </h1>
+          <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">TOP GRILLIN’</h1>
+        <h2 class="text-2xl mt-2 font-bold">As a VIP, you’ll enjoy</h2>
         <p class="mt-2 text-gray-300">
             Access to Skratch Bastid's DJ Streams – Get up close and personal with epic sets you won’t hear anywhere else.
         </p>
 
-        <!-- Box con bordo arancione a sinistra -->
         <div class="mt-4 border-l-4 border-[#FF5941] pl-8 p-4 mt-8 mb-8">
             <ul class="list-disc list-inside text-gray-300">
             <li class="mb-6">Complete Archive of Twitch Streams – Access over 500 hours of Skratch Bastid's streaming content, including Tuesday Morning Coffee sessions, Pop-Up events, and more.</li>
@@ -155,10 +110,9 @@ nav {
             </ul>
         </div>
 
-        <!-- Pulsante Join Now -->
         <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-                        JOIN NOW
-                    </nuxt-link>
+          JOIN NOW
+        </nuxt-link>
         </div>
     </div>
 
@@ -168,7 +122,6 @@ nav {
             />
 
   <div class="bg-[#142129] text-white md:px-12 px-6 py-12 flex flex-col items-center md:flex-row gap-24">
-    <!-- Sezione destra con contenuto -->
     <div class="flex-1 md:w-30">
       <h2 class="text-3xl font-bold">Platform</h2>
       <p class="mt-2 text-gray-300">
@@ -220,11 +173,13 @@ nav {
   </div>
 
   <div class="bg-[#fff] text-white md:px-12 px-6 py-12 items-center md:flex-row gap-24">
-    <h2 class="text-3xl text-[#142129] font-bold">Become a VIP Top Griller now</h2>
-      <p class="mt-2 text-[#142129]">
+    <h2 class="text-3xl text-[#142129] font-bold text-center">Become a VIP Top Griller now</h2>
+      <p class="mt-2 text-[#142129] text-center">
         Our membership offerings
         </p>
-    <div class="flex flex-col-reverse md:flex-row justify-center items-stretch gap-16 mt-8">
+    <div class="flex flex-col-reverse md:flex-row justify-center items-stretch gap-16 mt-8" style="max-width: 30%;
+    margin-left: auto;
+    margin-right: auto;">
       <PricingCard
         v-for="plan in plans"
         :key="plan.name"
@@ -233,13 +188,7 @@ nav {
     </div>
   </div>
 
-  <div class="bg-white relative">
-        <img 
-        src="/img/bottom_image.png" 
-        alt="Bottom Image" 
-        class="bottom-0 left-0 w-full object-cover"
-        />
-    </div>
+  <CTAComponentEmail />
 
     <footerComponent class="" />
 </template>

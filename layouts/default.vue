@@ -30,7 +30,7 @@
               to="/audios" 
               class="hover:text-[#FF95BC] transition duration-300"
             >
-              Audios
+              Audio
             </NuxtLink>
             <img 
               src="/img/imgHover/audioHover.png" 
@@ -52,8 +52,8 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              :class="{ 'text-[#EFDA11]': $route.path === '/top-grillin' }" 
-              to="/vip" 
+              :class="{ 'text-[#EFDA11]': $route.path === '/topgrillin' }" 
+              to="/topgrillin" 
               class="hover:text-[#EFDA11] transition duration-300"
             >
               Top Grillin'
@@ -116,7 +116,7 @@
               style="width: max-content;" 
               class="hover:text-[#FF95BC] transition duration-300"
             >
-              Audios
+              Audio
             </NuxtLink>
             <img 
               src="/img/imgHover/audioHover.png" 
@@ -139,8 +139,8 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              :class="{ 'text-[#EFDA11]': $route.path === '/top-grillin' }" 
-              to="/vip" 
+              :class="{ 'text-[#EFDA11]': $route.path === '/topgrillin' }" 
+              to="/topgrillin" 
               style="width: max-content;" 
               class="hover:text-[#EFDA11] transition duration-300"
             >

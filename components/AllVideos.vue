@@ -49,7 +49,7 @@
 
     watch(result, (data) => {
         if (data?.streams) {
-            console.log(data?.streams)
+            //console.log(data?.streams)
             videos.value = data.streams.nodes
             pageInfo.value = data.streams.pageInfo
         }
@@ -122,7 +122,7 @@
 
     const toggleSectionVisibility = (tab) => {
         activeTab.value = tab;
-        console.log(tab)
+        //console.log(tab)
         //router.push({ query: { tab: tab } });
     };
 

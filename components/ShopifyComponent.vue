@@ -72,13 +72,10 @@ export default {
       loading: true,
       error: null,
       allowedTitles: [
-        "Bastid's BBQ 2024 Short Sleeve T-Shirt Black",
-        "Bastid's BBQ 2024 Short Sleeve T-Shirt White",
-        "Limoncello 7'' Ft. Shad - Yellow-",
-        "Limoncello 7'' Ft. Shad - Black",
-        "Bastid's BBQ Premium Apron",
-        "Bastid's Hot Sauce 3-pack",
-        "Bastid's BBQ 2024 Bucket Hat"
+        "OBEYxBastid - Tee  - Limited Capsule Drop",
+        "OBEYxBastid - Hoodie  - Limited Capsule Drop",
+        "OBEYxBastid - Hat - Limited Capsule Drop",
+        "Bastid's No. 1 Original Hot Sauce",
       ],
       rotatingImages: [
         "/img/zigzag/zigzag1.png",
@@ -91,7 +88,7 @@ export default {
   async created() {
     try {
       const allProducts = await fetchProducts();
-      // Filtra solo i prodotti con i titoli specificati
+      console.log(allProducts)
       this.products = allProducts.filter(product =>
         this.allowedTitles.includes(product.title)
       );
@@ -159,8 +156,9 @@ export default {
 }
 
 .product-image {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 4px;
   background-color: #00000008;
 }
@@ -217,7 +215,7 @@ export default {
   }
 
   .product-image {
-    max-width: 18vw !important;
+    max-width: 23vw !important;
   }
 
   .pr-4 {

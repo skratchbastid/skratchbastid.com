@@ -61,7 +61,7 @@
               to="/audios" 
               class="hover:text-[#FF95BC] transition duration-300"
             >
-              Audios
+              Audio
             </NuxtLink>
             <img src="/img/imgHover/audioHover.png" alt="Audios Image" class="link-image">
           </div>
@@ -76,7 +76,7 @@
           </div>
           <div class="link-container">
             <NuxtLink 
-              to="/vip" 
+              to="/topgrillin" 
               class="hover:text-[#EFDA11] transition duration-300"
             >
               Top Grillin'
@@ -126,7 +126,7 @@
           Events
         </NuxtLink>
         <NuxtLink 
-          to="/vip" 
+          to="/topgrillin" 
           class="hover:text-[#EFDA11] transition duration-300 whitespace-nowrap">
           Top Grillin'
         </NuxtLink>
