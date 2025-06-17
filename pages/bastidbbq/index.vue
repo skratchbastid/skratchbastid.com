@@ -199,7 +199,7 @@ nav {
             <nuxt-link to="https://link.dice.fm/q5efad8bc74c" target="_blank" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
-          </div>
+          </div> 
 
           <div class="mt-8 md:mt-0" style="display: grid;">
 
