@@ -1,34 +1,50 @@
 <template>
   <div class="bg-white relative overflow-hidden">
-    <!--<img 
-      src="/img/left_image.png" 
-      alt="Left Image" 
-      class="absolute top-1/4 left-[6rem] h-[85%] w-auto object-cover hidden md:block"
-    />
-    <img 
-      src="/img/right_image.png" 
-      alt="Right Image" 
-      class="absolute top-1/4 right-[6rem] h-[85%] w-auto object-cover hidden md:block"
-    />-->
 
-    <div class="relative z-10 text-center px-8 py-16 md:py-28">
+    <div class="relative z-10 text-center px-8 py-16 md:py-28 max-w-md mx-auto">
       <h1 class="md:text-5xl text-3xl font-bold uppercase mb-8">
         Subscribe now
       </h1>
 
-      <NuxtLink 
-        to="/join"
-        class="flex flex-col items-center gap-4 max-w-md mx-auto mb-4"
+      <form 
+        v-if="!user?.id"
+        class="hive-signup-form mx-auto" 
+        @submit.prevent="submitHiveForm"
+        style="max-width: 400px;"
       >
+        <input data-HIVE-FORM-FIELD="swid" type="hidden" value="9308" />
+
+        <label for="_HIVE-email-9308" class="text-left w-full">Email</label>
+        <input 
+          data-HIVE-FORM-FIELD="email" 
+          id="_HIVE-email-9308" 
+          name="email" 
+          type="email" 
+          placeholder="Enter an email..." 
+          autocomplete="email" 
+          required 
+        />
+
+        <label for="_HIVE-firstName-9308" class="text-left w-full">First Name</label>
+        <input 
+          data-HIVE-FORM-FIELD="firstName" 
+          id="_HIVE-firstName-9308" 
+          name="fname" 
+          type="text" 
+          placeholder="Enter a first name..." 
+          autocomplete="given-name" 
+        />
+
         <button 
           type="submit" 
+          data-HIVE-FORM-FIELD="submitButton"
           class="w-full bg-[#FF5941] text-white font-bold uppercase py-3 rounded-xl hover:bg-[#e04f39] transition"
         >
           Subscribe
         </button>
-      </NuxtLink>
+      </form>
 
-      <p class="text-sm text-gray-600 mb-14 max-w-3xl mx-auto">
+      <p class="text-sm text-gray-600 mt-8 max-w-3xl mx-auto">
         Wanna have a taste of the Top Grillin’ Experience? Sign up for a free trial (no card information required).
         <a href="#" class="underline">Privacy Policy</a>. 
         By clicking above, you agree that we may process your information in accordance with these terms.
@@ -43,29 +59,84 @@
   </div>
 </template>
 
-<style scoped>
-div {
-  position: relative;
-  overflow: hidden;
-}
+<script setup>
+import { onMounted } from 'vue';
+import { useUserStore } from '@/stores/userStore'
 
-img {
-  position: absolute;
-  z-index: 0;
-}
+const userStore = useUserStore()
+const user = computed(() => userStore.user)
 
-img[src="/img/left_image.png"] {
-  left: 6rem;
-}
 
-img[src="/img/right_image.png"] {
-  right: 6rem;
-}
+onMounted(() => {
+  if (!window.HIVE_SDK) {
+    const script = document.createElement('script');
+    script.src = 'https://cdn-prod.hive.co/static/js/sdk-loader.js?sef=1&r=' + parseInt(new Date() / 60000);
+    script.async = true;
+    script.id = 'HIVE_SDK';
+    document.head.appendChild(script);
 
-@media (max-width: 768px) {
-  img[src="/img/left_image.png"],
-  img[src="/img/right_image.png"] {
-    display: none;
+    script.onload = () => {
+      window.HIVE_SDK('init', 133267);
+    };
+  } else {
+    window.HIVE_SDK('init', 133267);
+  }
+});
+
+function submitHiveForm(event) {
+  const form = event.target;
+  if(window.HIVE_SDK) {
+    window.HIVE_SDK('submitSignupForm', form, onFormSubmitSuccess);
   }
 }
+
+function onFormSubmitSuccess() {
+  alert("Thanks for joining the Top Grillin' Trial! Check your email for dope stuff!");
+}
+</script>
+
+<style scoped>
+.hive-signup-form-has-error {
+  border-color: #ff00008a !important;
+}
+.hive-signup-form label, 
+.hive-signup-form input, 
+.hive-signup-form button, 
+.hive-signup-form span, 
+.hive-signup-form .iti {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 400px;
+}
+.hive-signup-form label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.hive-signup-form input {
+  margin-bottom: 16px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.04);
+}
+.hive-signup-form input:focus{
+  border: 1px solid rgba(0, 0, 0, 0.65);
+  outline: none;
+}
+.hive-signup-form button {
+  padding: 10px 24px;
+  border-radius: 12px;
+  background-color: rgba(255, 89, 65);
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  justify-content: center;
+}
+.hive-signup-form button:hover {
+  background-color: #e04f39;
+}
 </style>
+
