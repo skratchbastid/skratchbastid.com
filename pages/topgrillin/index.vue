@@ -197,24 +197,24 @@ nav {
 
           <div class="flex-1 md:w-30 ml-auto">
             <h1 class="text-[48px] md:text-[64px] text-center font-bold mb-4 w-[50vw] ml-auto mr-auto" style="line-height: 4rem;">Thank you for being a part of Top Grillin’ VIP!</h1>
-            <p class="text-[24px] text-center mt-2 text-gray-300 mt-8">Use the code [CODE] to get 10% on the entire 
+            <p class="text-[24px] text-center mt-2 text-gray-300 mt-8">Use the code TOPGRILLINVIP25 to get 10% on the entire 
               <NuxtLink 
                 to="https://shop.skratchbastid.com/" 
-                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap">
+                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap text-[#008eff]">
                 Skratch Bastid store
               </NuxtLink>
               </p>
             <p class="text-[24px] text-center mt-2 text-gray-300">Join the private Discord server 
               <NuxtLink 
-                to="/videos" 
-                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap">
+                to="https://discord.gg/hdZHaVED4B" 
+                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap text-[#008eff]">
                 HERE
               </NuxtLink>
             </p>
             <p class="text-[24px] text-center mt-2 text-gray-300">Stream over 2,000 hours of exclusive DJ sets 
               <NuxtLink 
                 to="/videos" 
-                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap">
+                class="hover:text-[#F39301] transition duration-300 whitespace-nowrap text-[#008eff]">
                 HERE
               </NuxtLink>
             </p>

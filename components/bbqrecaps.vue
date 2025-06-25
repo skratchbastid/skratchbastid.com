@@ -10,8 +10,8 @@ const imagesByCity = {
   "Vancouver": "https://i.ytimg.com/vi/qln1xpuuzKs/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBcn_Ozzje7jBLA5iTnD9d9FNX6bQ",
   "Toronto": "https://i.ytimg.com/vi/nRXq3odkjxw/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDtrDP6CcwcmIE97turiP1a20RYzw",
   "Chicago": "https://i.ytimg.com/vi/zTlpY8kDmms/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD2PtWGY0hI0uDdtw9XwAcyXWZosg",
-    "New York City": "https://i.ytimg.com/vi/EGxJ9pwXkqE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBpsa7Xm8_JSB-lRKi8dPbHVIGh4w",
-
+  "New York City": "https://i.ytimg.com/vi/EGxJ9pwXkqE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBpsa7Xm8_JSB-lRKi8dPbHVIGh4w",
+  "Calgary": "https://i.ytimg.com/vi/dvX-XijCIZE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBSFS6Fq4g9HL003gQ-2vDvTnxN9w"
 }
 
 const events = computed(() => {
