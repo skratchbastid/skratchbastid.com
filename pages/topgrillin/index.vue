@@ -207,6 +207,7 @@ nav {
             <p class="text-[24px] text-center mt-2 text-gray-300">Join the private Discord server 
               <NuxtLink 
                 to="https://discord.gg/hdZHaVED4B" 
+                target="_blank"
                 class="hover:text-[#F39301] transition duration-300 whitespace-nowrap text-[#008eff]">
                 HERE
               </NuxtLink>
