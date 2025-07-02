@@ -4,9 +4,15 @@
   <div class="bg-white relative overflow-hidden">
 
     <div class="relative z-10 text-center px-8 py-16 md:py-28 max-w-md mx-auto">
-      <h1 class="md:text-5xl text-3xl font-bold uppercase mb-8">
-        Subscribe now
+      <h1 class="md:text-3xl text-3xl font-bold uppercase mb-2">
+        Try it for free
       </h1>
+
+      <p class="text-sm text-gray-600 mb-8 max-w-3xl mx-auto">
+        Wanna have a taste of the Top Grillin’ Experience? Sign up for a free trial (no card information required).
+        <a href="#" class="underline">Privacy Policy</a>. 
+        By clicking above, you agree that we may process your information in accordance with these terms.
+      </p> 
 
       <form 
         v-if="!user?.id"
@@ -37,12 +43,22 @@
           autocomplete="given-name" 
         />
 
+        <label for="_HIVE-phoneNumber-9308" class="text-left w-full">Phone number</label>
+        <input 
+          data-HIVE-FORM-FIELD="phoneNumber" 
+          id="_HIVE-phoneNumber-9308" 
+          name="pnumber" 
+          type="text" 
+          placeholder="Enter a phone number..." 
+          autocomplete="given-name" 
+        />
+
         <button 
           type="submit" 
           data-HIVE-FORM-FIELD="submitButton"
           class="w-full bg-[#FF5941] text-white font-bold uppercase py-3 rounded-xl hover:bg-[#e04f39] transition"
         >
-          Subscribe
+          Start your free trial
         </button>
       </form>
 
@@ -54,11 +70,6 @@
         />
       </NuxtLink> 
 
-      <p class="text-sm text-gray-600 mt-8 max-w-3xl mx-auto">
-        Wanna have a taste of the Top Grillin’ Experience? Sign up for a free trial (no card information required).
-        <a href="#" class="underline">Privacy Policy</a>. 
-        By clicking above, you agree that we may process your information in accordance with these terms.
-      </p> 
     </div>
 
     <img 

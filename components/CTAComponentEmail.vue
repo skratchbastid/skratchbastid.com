@@ -3,7 +3,7 @@
 
     <div class="relative z-10 text-center px-8 py-8 md:py-8 max-w-lg mx-auto">
       <h1 class="md:text-3xl text-3xl font-bold uppercase mb-2">
-        Subscribe now
+        Try it for free
       </h1>
 
       <p class="text-[16px] text-gray-600 mb-8 mx-auto">
@@ -56,7 +56,7 @@
           data-HIVE-FORM-FIELD="submitButton"
           class="w-full bg-[#FF5941] text-white font-bold uppercase mb-12 py-3 rounded-xl hover:bg-[#e04f39] transition"
         >
-          Try it for Free!
+          Start your free trial
         </button>
       </form>
     </div>
