@@ -72,7 +72,15 @@
         Start your free trial
       </button>
     </form>
+    
   </div>
+  <div class="bg-white relative">
+        <img 
+        src="/img/bottom_image.png" 
+        alt="Bottom Image" 
+        class="bottom-0 left-0 w-full object-cover"
+        />
+    </div>
 </template>
 
 <script>
