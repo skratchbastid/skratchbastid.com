@@ -60,6 +60,15 @@ export const sendToHive = async (formData) => {
     }
 };
 
+export const sendToHiveCTA = async (formElement) => {
+  console.log("Sending signup form to Hive...", formElement)
+
+  return new Promise((resolve, reject) => {
+    HIVE_SDK("submitSignupForm", formElement, resolve, reject)
+  })
+}
+
+
 
 export const addProperty = async (property, value) => {
     const customData = {

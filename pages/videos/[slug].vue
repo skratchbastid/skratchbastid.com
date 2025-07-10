@@ -98,8 +98,15 @@ const video = computed(() => videoData.value)
 const isLatestStream = computed(() => {
     return latestStreams.value.length > 0 && latestStreams.value[0].id === video.value?.id
 })
-const canViewVideo = computed(() => (isVip.value || isLatestStream.value))
 
+const openAccessSlugs = [
+  'skratch-bastid-tuesday-morning-coffee-w-guest-dj-big-jacks-may-6-2025',
+  'skratch-bastid-tuesday-morning-coffee-w-guest-interview-w-dj-premier-july-8-2025'
+]
+
+const canViewVideo = computed(() => {
+  return isVip.value || isLatestStream.value || openAccessSlugs.includes(slug)
+})
 
 function handleTimestampClicked(seconds) {
     if (player) {

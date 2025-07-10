@@ -176,9 +176,7 @@ nav {
           <p class="mt-2 text-[#142129] text-center">
             Our membership offerings
             </p>
-        <div class="flex flex-col-reverse md:flex-row justify-center items-stretch gap-16 mt-8" style="max-width: 30%;
-        margin-left: auto;
-        margin-right: auto;">
+        <div class="md:max-w-[30%] ml-auto mr-auto flex flex-col-reverse md:flex-row justify-center items-stretch gap-16 mt-8" >
           <PricingCard
             v-for="plan in plans"
             :key="plan.name"

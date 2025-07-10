@@ -1,138 +1,137 @@
-
-
 <template>
-  <div class="bg-white relative overflow-hidden">
-
-    <div class="relative z-10 text-center px-8 py-16 md:py-28 max-w-md mx-auto">
-      <h1 class="md:text-3xl text-3xl font-bold uppercase mb-2">
-        Try it for free
-      </h1>
-
-      <p class="text-sm text-gray-600 mb-8 max-w-3xl mx-auto">
-        Wanna have a taste of the Top Grillin’ Experience? Sign up for a free trial (no card information required).
-        <a href="#" class="underline">Privacy Policy</a>. 
-        By clicking above, you agree that we may process your information in accordance with these terms.
-      </p> 
-
-      <form 
-        v-if="!user?.id"
-        class="hive-signup-form mx-auto" 
-        @submit.prevent="submitHiveForm"
-        style="max-width: 400px;"
-      >
-        <input data-HIVE-FORM-FIELD="swid" type="hidden" value="9308" />
-
-        <label for="_HIVE-email-9308" class="text-left w-full">Email</label>
-        <input 
-          data-HIVE-FORM-FIELD="email" 
-          id="_HIVE-email-9308" 
-          name="email" 
-          type="email" 
-          placeholder="Enter an email..." 
-          autocomplete="email" 
-          required 
-        />
-
-        <label for="_HIVE-firstName-9308" class="text-left w-full">First Name</label>
-        <input 
-          data-HIVE-FORM-FIELD="firstName" 
-          id="_HIVE-firstName-9308" 
-          name="fname" 
-          type="text" 
-          placeholder="Enter a first name..." 
-          autocomplete="given-name" 
-        />
-
-        <label for="_HIVE-phoneNumber-9308" class="text-left w-full">Phone number</label>
-        <input 
-          data-HIVE-FORM-FIELD="phoneNumber" 
-          id="_HIVE-phoneNumber-9308" 
-          name="pnumber" 
-          type="text" 
-          placeholder="Enter a phone number..." 
-          autocomplete="given-name" 
-        />
-
-        <button 
-          type="submit" 
-          data-HIVE-FORM-FIELD="submitButton"
-          class="w-full bg-[#FF5941] text-white font-bold uppercase py-3 rounded-xl hover:bg-[#e04f39] transition"
-        >
-          Start your free trial
-        </button>
-      </form>
-
-      <NuxtLink target="_blank" to="https://music.apple.com/ca/curator/bastids-bbq/1735562122" style="width: 100%; display: flex; justify-content: center;">
-        <img 
-          src="/img/appleMusicBlack.png" 
-          alt="Small Image" 
-          class="w-44 mx-auto mt-8"
-        />
-      </NuxtLink> 
-
+  <div class="bg-white relative overflow-hidden py-8 px-6 max-w-md mx-auto">
+    <div class="relative z-10 text-center mb-8">
+      <h1 class="text-3xl font-bold uppercase mb-2">Try it for free</h1>
+      <p class="text-gray-600 text-base mb-6 mx-auto max-w-xs">
+        Wanna have a taste of the Top Grillin’ Experience? Sign up for a free trial (no card info required). 
+        <a href="#" class="underline">Privacy Policy</a>. By clicking above, you agree we may process your info per these terms.
+      </p>
     </div>
 
-    <img 
-      src="/img/bottom_image.png" 
-      alt="Bottom Image" 
-      class="absolute bottom-0 left-0 w-full object-cover"
-    />
+    <form
+      ref="hiveForm"
+      class="hive-signup-form"
+      @submit.prevent="submitForm"
+      novalidate
+    >
+      <!-- HIVE required hidden field -->
+      <input data-HIVE-FORM-FIELD="swid" type="hidden" value="9308" />
+
+      <label for="_HIVE-email-9308">Email</label>
+      <input
+        data-HIVE-FORM-FIELD="email"
+        id="_HIVE-email-9308"
+        name="email"
+        type="email"
+        placeholder="Enter an email..."
+        autocomplete="email"
+        required
+      />
+
+      <label for="_HIVE-firstName-9308">First Name</label>
+      <input
+        data-HIVE-FORM-FIELD="firstName"
+        id="_HIVE-firstName-9308"
+        name="fname"
+        type="text"
+        placeholder="Enter a first name..."
+        autocomplete="given-name"
+      />
+
+      <label for="_HIVE-lastName-9308">Last Name</label>
+      <input
+        data-HIVE-FORM-FIELD="lastName"
+        id="_HIVE-lastName-9308"
+        name="lname"
+        type="text"
+        placeholder="Enter a last name..."
+        autocomplete="family-name"
+      />
+
+      <label for="_HIVE-phoneNumber-9308">Phone Number</label>
+      <input
+        data-HIVE-FORM-FIELD="phoneNumber"
+        data-HIVE-INTL-PHONE-NUMBER="true"
+        id="_HIVE-phoneNumber-9308"
+        name="phone"
+        type="tel"
+        placeholder="Enter a phone number..."
+        autocomplete="tel"
+      />
+
+      <!-- Non-toggleable segments hidden -->
+      <input data-HIVE-FORM-FIELD="addToSegment" type="hidden" value="Signup Form - Homepage" />
+      <input data-HIVE-FORM-FIELD="addToSegment" type="hidden" value="VIP Free Trial" />
+
+      <!-- Bot detection -->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" data-HIVE-FORM-FIELD="areUReal" tabindex="-1" value="" />
+      </div>
+
+      <button type="submit" data-HIVE-FORM-FIELD="submitButton" class="mt-4">
+        Start your free trial
+      </button>
+    </form>
   </div>
 </template>
 
-<script setup>
-import { onMounted } from 'vue';
-import { useUserStore } from '@/stores/userStore'
+<script>
+export default {
+  name: 'HiveSignupForm',
 
-const userStore = useUserStore()
-const user = computed(() => userStore.user)
+  mounted() {
+    if (!window.HIVE_SDK) {
+      const script = document.createElement('script')
+      script.src =
+        'https://cdn-prod.hive.co/static/js/sdk-loader.js?sef=1&r=' +
+        parseInt(new Date() / 60000)
+      script.async = true
+      script.id = 'HIVE_SDK'
+      document.head.appendChild(script)
+      script.onload = () => {
+        window.HIVE_SDK('init', 133267)
+        console.log('HIVE_SDK loaded and initialized')
+      }
+    } else {
+      window.HIVE_SDK('init', 133267)
+    }
+  },
 
-
-onMounted(() => {
-  if (!window.HIVE_SDK) {
-    const script = document.createElement('script');
-    script.src = 'https://cdn-prod.hive.co/static/js/sdk-loader.js?sef=1&r=' + parseInt(new Date() / 60000);
-    script.async = true;
-    script.id = 'HIVE_SDK';
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      window.HIVE_SDK('init', 133267);
-    };
-  } else {
-    window.HIVE_SDK('init', 133267);
+  methods: {
+    submitForm() {
+      if (!this.$refs.hiveForm) {
+        console.error('Form reference not found')
+        return
+      }
+      if (!window.HIVE_SDK) {
+        alert('Please wait, the signup service is still loading.')
+        return
+      }
+      try {
+        window.HIVE_SDK('submitSignupForm', this.$refs.hiveForm, () => {
+          alert('Thanks for joining the Top Grillin’ Trial! Check your email for dope stuff!')
+        })
+      } catch (err) {
+        console.error('Error submitting form via Hive SDK:', err)
+        alert('Something went wrong. Please try again later.')
+      }
+    }
   }
-});
-
-function submitHiveForm(event) {
-  const form = event.target;
-  if(window.HIVE_SDK) {
-    window.HIVE_SDK('submitSignupForm', form, onFormSubmitSuccess);
-  }
-}
-
-function onFormSubmitSuccess() {
-  alert("Thanks for joining the Top Grillin' Trial! Check your email for dope stuff!");
 }
 </script>
 
 <style scoped>
-.hive-signup-form-has-error {
-  border-color: #ff00008a !important;
-}
-.hive-signup-form label, 
-.hive-signup-form input, 
-.hive-signup-form button, 
-.hive-signup-form span, 
-.hive-signup-form .iti {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
+/* Stile ispirato al tuo secondo snippet */
+.hive-signup-form {
   max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .hive-signup-form label {
-  margin-bottom: 8px;
   font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
 }
 .hive-signup-form input {
   margin-bottom: 16px;
@@ -140,25 +139,26 @@ function onFormSubmitSuccess() {
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  font-size: 1rem;
 }
-.hive-signup-form input:focus{
+.hive-signup-form input:focus {
   border: 1px solid rgba(0, 0, 0, 0.65);
   outline: none;
 }
 .hive-signup-form button {
   padding: 10px 24px;
   border-radius: 12px;
-  background-color: rgba(255, 89, 65);
+  background-color: rgba(255, 89, 65, 1);
   cursor: pointer;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
   transition: background-color 0.3s ease;
+  display: flex;
   justify-content: center;
 }
 .hive-signup-form button:hover {
   background-color: #e04f39;
 }
 </style>
-
-

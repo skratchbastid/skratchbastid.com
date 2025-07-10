@@ -1,12 +1,14 @@
 <script setup>
     import { useRouter } from 'vue-router'
-    const router = useRouter()
+    import { useUserStore } from '@/stores/userStore'
     import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
     import 'vue-lite-youtube-embed/style.css'
-
+    import { records } from '~/assets/rotw.js'
+    import { useRoute } from 'vue-router'
     const route = useRoute()
     const slug = route.params.slug
-    import { records } from '~/assets/rotw.js'
+    const userStore = useUserStore()
+    const user = computed(() => userStore.user)
 
     const record = records.find(record => record.slug == slug)
 
