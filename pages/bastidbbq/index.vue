@@ -192,10 +192,10 @@ nav {
         
         <div class="justify-center mb-6 md:flex gap-8">
           <div style="display: grid;">
-            <nuxt-link to="https://dice.fm/event?canonicalLng=x-default&lng=en-US">
+            <nuxt-link to="https://link.dice.fm/gaf9af5bce9d">
               <img src="/img/bbq_lv.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
             </nuxt-link>
-            <nuxt-link to="https://dice.fm/event?canonicalLng=x-default&lng=en-US" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            <nuxt-link to="https://link.dice.fm/gaf9af5bce9d" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
           </div> 
