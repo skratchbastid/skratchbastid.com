@@ -192,37 +192,37 @@ nav {
         
         <div class="justify-center mb-6 md:flex gap-8">
           <div style="display: grid;">
-            <nuxt-link to="https://dice.fm/bundles/bastids-bbq---toronto-25-bd6g">
-              <img src="/img/BASTIDBBQ_Toronto_SaveTheDate_2025.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
+            <nuxt-link to="https://dice.fm/event?canonicalLng=x-default&lng=en-US">
+              <img src="/img/bbq_lv.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
             </nuxt-link>
-            <nuxt-link to="https://dice.fm/bundles/bastids-bbq---toronto-25-bd6g" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            <nuxt-link to="https://dice.fm/event?canonicalLng=x-default&lng=en-US" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
           </div> 
 
-          <!--<div class="mt-8 md:mt-0" style="display: grid;">
+          <div class="mt-8 md:mt-0" style="display: grid;">
 
-            <nuxt-link to="https://dice.fm/bundles/bastids-bbq---toronto-25-bd6g">
-              <img src="/img/BASTIDBBQ_Toronto_SaveTheDate_2025.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
-            </nuxt-link>
-            <nuxt-link to="https://dice.fm/bundles/bastids-bbq---toronto-25-bd6g" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-                BUY TICKETS
-            </nuxt-link>
-
-          </div>-->
-            
-        </div>
-
-        <div class="justify-center mb-6 md:flex gap-8 mt-12">
-          
-          <div style="display: grid;">
             <nuxt-link to="https://link.dice.fm/U2545b8e9bf8">
               <img src="/img/bbq_van.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
             </nuxt-link>
             <nuxt-link to="https://link.dice.fm/U2545b8e9bf8" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
                 BUY TICKETS
             </nuxt-link>
+
           </div>
+            
+        </div>
+
+        <div class="justify-center mb-6 md:flex gap-8 mt-12">
+          
+          <!--<div style="display: grid;">
+            <nuxt-link to="https://link.dice.fm/U2545b8e9bf8">
+              <img src="/img/bbq_van.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
+            </nuxt-link>
+            <nuxt-link to="https://link.dice.fm/U2545b8e9bf8" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+                BUY TICKETS
+            </nuxt-link>
+          </div>-->
 
           <div class="mt-8 md:mt-0" style="display: grid;">
             
