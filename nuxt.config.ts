@@ -75,6 +75,7 @@ export default defineNuxtConfig({
 
   plugins: [
       '~/plugins/hive-sdk.client.js',
+        '~/plugins/hls.js'
   ],
 
   dayjs: {

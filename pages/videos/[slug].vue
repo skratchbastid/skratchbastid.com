@@ -50,6 +50,8 @@ const videoQuery = gql`
     streamsFields {
       vimeoId
       cloudflareVideoId
+      crateqStreamVideoId
+      crateqStreamImageUrl
       imageLink
       vimeoThumbnail
       mp3link {
@@ -185,7 +187,17 @@ const correctedMp3Url = (url) => {
                         <div class="md:w-[100%]">
                             <div v-if="canViewVideo" class="max-w-full aspect-video">
                                 <div v-show="video">
-                                    <client-only v-if="video?.streamsFields.vimeoId">
+                                    <client-only v-if="video?.streamsFields.crateqStreamVideoId">
+                                            <video
+                                                ref="hlsPlayer"
+                                                v-hls="video?.streamsFields.crateqStreamVideoId"
+                                                :poster="video?.streamsFields.crateqStreamImageUrl"
+                                                controls
+                                                class="w-full h-full"
+                                                playsinline
+                                            />
+                                    </client-only>
+                                    <client-only v-else-if="video?.streamsFields.vimeoId">
                                         <vue-vimeo-player ref="vimeoPlayer" :video-id="video?.streamsFields.vimeoId" :options="options" @ready="onPlayerReady" />
                                     </client-only>
                                     <client-only v-else-if="video?.streamsFields.cloudflareVideoId">

@@ -27,6 +27,8 @@ const VIDEOS_QUERY = gql`
                 streamsFields {
                     vimeoId
                     cloudflareVideoId
+                    crateqStreamVideoId
+                    crateqStreamImageUrl
                     imageLink
                     vimeoThumbnail
                 }
@@ -91,9 +93,10 @@ function loadMoreVideos() {
 }
 
 const thumbnailUrl = (video) => {
-    if (hoveredVideo.value === video && video.streamsFields.imageLink) return video.streamsFields.imageLink
-    if (video.streamsFields.cloudflareVideoId) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoId}/thumbnails/thumbnail.jpg`
-    if (video.streamsFields.vimeoThumbnail) return video.streamsFields.vimeoThumbnail
+    if (hoveredVideo.value === video && video.streamsFields.imageLink) return video.streamsFields.imageLink;
+    if (video.streamsFields.crateqStreamImageUrl) return video.streamsFields.crateqStreamImageUrl;
+    if (video.streamsFields.cloudflareVideoId) return `https://videodelivery.net/${video.streamsFields.cloudflareVideoId}/thumbnails/thumbnail.jpg`;
+    if (video.streamsFields.vimeoThumbnail) return video.streamsFields.vimeoThumbnail;
     return video.streamsFields.imageLink
 }
 
