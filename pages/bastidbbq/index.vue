@@ -200,16 +200,9 @@ nav {
             </nuxt-link>
           </div> 
 
-          <div class="mt-8 md:mt-0" style="display: grid;">
+          <!--<div class="mt-8 md:mt-0" style="display: grid;">
 
-            <nuxt-link to="https://link.dice.fm/U2545b8e9bf8">
-              <img src="/img/bbq_van.jpg" alt="Image 1" class="rounded-lg md:w-[30vw] h-auto" />
-            </nuxt-link>
-            <nuxt-link to="https://link.dice.fm/U2545b8e9bf8" class="mt-4 m-auto inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-                BUY TICKETS
-            </nuxt-link>
-
-          </div>
+          </div>-->
             
         </div>
 
