@@ -72,6 +72,7 @@ export default {
       loading: true,
       error: null,
       allowedTitles: [
+        "Skratch Bastid x OBEY: Serato Control Vinyl",
         "OBEYxBastid - Tee  - Limited Capsule Drop",
         "OBEYxBastid - Hoodie  - Limited Capsule Drop",
         "OBEYxBastid - Hat - Limited Capsule Drop",
@@ -81,7 +82,8 @@ export default {
         "/img/zigzag/zigzag1.png",
         "/img/zigzag/zigzag2.png",
         "/img/zigzag/zigzag3.png",
-        "/img/zigzag/zigzag4.png"
+        "/img/zigzag/zigzag4.png",
+        "/img/zigzag/zigzag0.png"
       ], // Elenco delle immagini da far ruotare
     };
   },
@@ -91,7 +93,12 @@ export default {
       console.log(allProducts)
       this.products = allProducts.filter(product =>
         this.allowedTitles.includes(product.title)
-      );
+      ).sort((a, b) => {
+        // Sort to put "Skratch Bastid x OBEY: Serato Control Vinyl" first
+        if (a.title === "Skratch Bastid x OBEY: Serato Control Vinyl") return -1;
+        if (b.title === "Skratch Bastid x OBEY: Serato Control Vinyl") return 1;
+        return 0;
+      });
       console.log(this.products);
     } catch (err) {
       this.error = "Error";
