@@ -31,7 +31,7 @@ const mixes = [
                 v-for="(mix, index) in mixes" 
                 :key="index"
                 :to="mix.link" 
-                :target="index === 0 ? '' : '_blank'"
+                :target="'_blank'"
                 class="flex flex-col w-3/5 md:w-1/5 mr-2 md:mr-4 mb-8 hover-effect-container"
             >
                 <div class="hover-effect">
