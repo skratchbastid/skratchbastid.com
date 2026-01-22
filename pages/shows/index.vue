@@ -10,6 +10,7 @@ useHead({
 })
 const shows = useState('shows')
 const futureShowListings = computed(() => {
+    return shows.value;
     return shows.value.filter(show => {
         const eventDate = $dayjs.utc(show.eventsFields.eventDate); 
         return $dayjs().isBefore(eventDate.add(1, 'day'), 'day');

@@ -7,11 +7,13 @@ const shows = useState('shows')
 
 // Computed property to filter future show listings
 const futureShowListings = computed(() => {
-  return shows.value.filter(show =>
-    $dayjs().isSameOrBefore($dayjs(show.eventsFields.eventDate, 'day')) || 
-    $dayjs(show.eventsFields.eventDate).isToday()
-  )
-})
+    return shows.value;
+    return shows.value.filter(show => {
+        const eventDate = $dayjs.utc(show.eventsFields.eventDate); 
+        return $dayjs().isBefore(eventDate.add(1, 'day'), 'day');
+    });
+});
+
 
 // References to control horizontal scrolling
 const scrollContainer = ref(null)

@@ -21,15 +21,17 @@ export function filterAndSortEventsByDate(events) {
     //     return 0;
     // });
     // Refactor to use dayjs for filtering and sorting
+    const today = dayjs().startOf('day');
     const filteredEvents = events.filter((event) => {
-        const eventDate = dayjs(event.eventsFields.eventDate);
-        return eventDate.isSameOrAfter(dayjs(), 'day') || eventDate.isToday();
+        // Apply a one-day grace window when comparing dates
+        const eventDate = dayjs(event.eventsFields.eventDate).add(1, 'day').startOf('day');
+        return eventDate.isSameOrAfter(today, 'day');
     });
 
     // Sort events in ascending order by eventDate
     filteredEvents.sort((a, b) => {
-        const dateA = dayjs(a.eventsFields.eventDate);
-        const dateB = dayjs(b.eventsFields.eventDate);
+        const dateA = dayjs(a.eventsFields.eventDate).add(1, 'day');
+        const dateB = dayjs(b.eventsFields.eventDate).add(1, 'day');
 
         return dateA.diff(dateB);
     });
