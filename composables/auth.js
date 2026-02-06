@@ -112,8 +112,8 @@ export async function login(email, password, url) {
         const { data } = await useAsyncQuery(userQuery)
         if (data?.value?.viewer) {
             userStore.setUser(data.value.viewer)
-            // Check if url is '/join' and redirect to '/vip' instead
-            return navigateTo(url === '/join' ? '/vip' : (url || '/vip'))
+            // Check if url is '/topgrillin' and redirect to '/vip' instead
+            return navigateTo(url === '/topgrillin' ? '/vip' : (url || '/vip'))
         }
     }).catch((err, data) => {
         return err.message

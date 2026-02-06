@@ -38,7 +38,7 @@ const scrollRight = () => {
     <div class="flex justify-between items-center px-0 mb-4">
       <h2 class="text-[18px] font-bold text-gray-800">Upcoming</h2>
         <NuxtLink
-                :to="user?.id ? '/videos/' + video.slug : '/join'"
+                :to="user?.id ? '/videos/' + video.slug : '/topgrillin'"
                 class="text-white hover:text-black hover:bg-white text-sm py-1"
             >
             <div class="flex gap-2 flex items-center">

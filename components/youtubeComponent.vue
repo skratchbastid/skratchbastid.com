@@ -34,7 +34,7 @@ const videoId = 'dQw4w9WgXcQ'; // Sostituisci con l'ID del video desiderato
 
     <!-- Pulsante Join per dispositivi mobili -->
     <div v-if="membershipType !== 'vip'" class="block md:hidden mt-6">
-      <NuxtLink to="/join">
+      <NuxtLink to="/topgrillin">
         <div class="bg-[#FF5941] px-4 py-2 rounded-lg text-center">
           <p class="text-[12px] font-bold text-white uppercase tracking-wide">
             Join Top Grillin

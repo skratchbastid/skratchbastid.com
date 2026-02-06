@@ -109,7 +109,7 @@ nav {
               </ul>
           </div>
 
-          <nuxt-link to="/join" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+          <nuxt-link to="/topgrillin" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
             JOIN NOW
           </nuxt-link>
           </div>

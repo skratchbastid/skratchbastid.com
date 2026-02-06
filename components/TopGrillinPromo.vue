@@ -27,7 +27,7 @@ const { user, membershipType, userIsVip } = storeToRefs(userStore);
                         </ul>
                     </div>
                     <div class="flex flex-grow justify-center items-center md:justify-start md:ml-24">
-                        <NuxtLink to="/join" id="vip-join-button" class="border-cyan-700 border-2 text-2xl md:text-4xl bg-white text-cyan-700 px-4 md:px-8 py-2 uppercase font-black text-center rotate-2 md:rotate-3 whitespace-nowrap transition-all duration-300 hover:bg-cyan-700 hover:text-white hover:scale-105 hover:rotate-0 hover:shadow-[7px_7px_0_#3DD1E7]">Join Now</NuxtLink>
+                        <NuxtLink to="/topgrillin" id="vip-join-button" class="border-cyan-700 border-2 text-2xl md:text-4xl bg-white text-cyan-700 px-4 md:px-8 py-2 uppercase font-black text-center rotate-2 md:rotate-3 whitespace-nowrap transition-all duration-300 hover:bg-cyan-700 hover:text-white hover:scale-105 hover:rotate-0 hover:shadow-[7px_7px_0_#3DD1E7]">Join Now</NuxtLink>
                     </div>
                 </div>
             </div>

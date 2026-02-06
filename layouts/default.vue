@@ -199,8 +199,8 @@
           </div>
           <div v-if="!user.id" class="link-container">
             <NuxtLink 
-              :class="{ 'text-[#D4582D]': $route.path === '/join' }" 
-              to="/join"
+              :class="{ 'text-[#D4582D]': $route.path === '/topgrillin' }" 
+              to="/topgrillin"
               style="width: max-content;" 
               class="hover:text-[#D4582D] transition duration-300"
             >
@@ -241,7 +241,7 @@
             
       <div class="lg:flex gap-4">
         <NuxtLink 
-          to="/join" 
+          to="/topgrillin" 
           class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100"
         >
           SIGN UP

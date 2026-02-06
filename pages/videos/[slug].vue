@@ -227,7 +227,7 @@ const correctedMp3Url = (url) => {
                                                             </div>
                                                         </ul>
                                                     </div>
-                                                    <NuxtLink to="/join" class="inline-block text-white text-sm bg-[#ff5941] rounded-lg px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
+                                                    <NuxtLink to="/topgrillin" class="inline-block text-white text-sm bg-[#ff5941] rounded-lg px-20 py-2 font-bold mt-7 uppercase">Join the Crew</NuxtLink>
                                                 </div>
                                             </div>
                                         </div>

@@ -161,7 +161,7 @@
           </div>
           <div v-else-if="isClient" class="gap-4">
             <NuxtLink 
-              to="/join"  
+              to="/topgrillin"  
               class="hover:text-[#D4582D] transition duration-300 whitespace-nowrap">
               Sign Up
             </NuxtLink>
@@ -196,7 +196,7 @@
           </div>
           <div v-else-if="isClient">
             <NuxtLink 
-              to="/join" 
+              to="/topgrillin" 
               class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100 mr-4">
               SIGN UP
             </NuxtLink>
@@ -224,7 +224,7 @@
         <NuxtLink to="https://shop.skratchbastid.com/" class="hover:underline">Shop</NuxtLink>
         <div class="flex flex-col gap-2">
           <NuxtLink 
-            to="/join" 
+            to="/topgrillin" 
             class="border border-[#FF5941] text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100 text-center">
             SIGN UP
           </NuxtLink>

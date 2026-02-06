@@ -21,7 +21,7 @@ const mixes = useState('mixes')
           </div>
           <div v-if="!user.id" class="">
             <NuxtLink
-              to="/join"
+              to="/topgrillin"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
             >
               <div class="bg-[#FF5941] px-4 py-2 rounded-lg">
@@ -48,7 +48,7 @@ const mixes = useState('mixes')
 
         <!--<div v-if="membershipType !== 'vip'" class="block md:hidden mt-4">
          <NuxtLink
-            to="/join"
+            to="/topgrillin"
             class="text-white hover:text-black hover:bg-white text-sm py-1"
           >
             <div class="bg-[#FF5941] px-4 py-2 rounded-lg text-center">

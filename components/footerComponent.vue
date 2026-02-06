@@ -4,7 +4,7 @@
     <div class="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8 md:py-20 py-5 md:px-20 px-6 bg-[#142129]">
       <!-- Colonna 1: Logo -->
       <div class="md:w-3/5 border-b md:border-0 border-[#29404E] md:pb-0 pb-8 pt-12 md:pt-0">
-        <NuxtLink to="/join">
+        <NuxtLink to="/topgrillin">
           <img src="https://cdn.shopify.com/s/files/1/0275/0188/7533/files/skratch_bastid_beard_logo_360x.png?v=1614314315" alt="Logo" class="w-24 mb-4" />
         </NuxtLink>
 
