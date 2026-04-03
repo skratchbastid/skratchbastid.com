@@ -106,6 +106,7 @@ const cities = ref([
 ]);
 
 const loading = ref(false);
+const submitSuccess = ref(false);
 const successMessage = ref("");
 const errorMessage = ref("");
 
@@ -113,6 +114,7 @@ const errorMessage = ref("");
 async function submitForm() {
   if (!form.value.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
     errorMessage.value = "Please enter a valid email address.";
+    submitSuccess.value = false;
     return;
   }
 
@@ -123,9 +125,12 @@ async function submitForm() {
   try {
     await sendToHive(form.value);
     successMessage.value = "You're successfully signed up!";
+    errorMessage.value = "";
+    submitSuccess.value = true;
   } catch (error) {
     console.error("Error:", error);
     errorMessage.value = "Something went wrong. Please try again.";
+    submitSuccess.value = false;
   } finally {
     loading.value = false;
   }
@@ -167,7 +172,7 @@ nav {
             <div class="absolute inset-0 bg-black opacity-60 z-0"></div>
             <div class="relative z-10 w-full md:flex md:items-center md:justify-between md:px-12 px-6 m-auto">
                 <div class="text-left md:w-[60vw] md:ml-20" style="font-family: 'Blur Bold', sans-serif;">
-                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD MUSIC,</h1>
+                    <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD MUSIC</h1>
                     <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD FOOD,</h1>
                     <h1 class="text-[48px] md:text-[64px] font-bold" style="line-height: 4rem;">GOOD PEOPLE.</h1>
                 </div>
@@ -301,7 +306,6 @@ nav {
       <!-- Messaggio di successo -->
       <p v-if="successMessage" class="text-green-500 text-center mt-2">{{ successMessage }}</p>
     </form>
-            <p v-if="error" class="mt-4 text-red-500 text-sm">Please enter a valid email address.</p>
           </div>
           <div v-else>
             <h4 class="text-lg font-semibold mt-4 text-[#FF5941]">You're subscribed!</h4>
