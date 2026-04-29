@@ -26,7 +26,7 @@
       </p>
 
       <NuxtLink
-              to="https://bastidsbbq.com/"
+              to="https://skratchbastid.live/bastidsbbq/"
               class="w-[max-content]"
               target="_blank"
             >

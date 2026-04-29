@@ -14,7 +14,7 @@
 import { ref, onMounted } from 'vue';
 
 // URL dell'immagine del logo
-const imageSrc = 'https://bastidsbbq.com/images/sb-face.svg';
+const imageSrc = 'https://skratchbastid.live/bastidsbbq/images/sb-face.svg';
 
 // Classe reattiva che alterna tra le due
 const logoClass = ref('w-[50px] md:w-[65px] m-auto pb-2');

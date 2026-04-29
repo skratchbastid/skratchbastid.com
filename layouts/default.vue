@@ -66,7 +66,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#1F85FF]': $route.path === '/bbq-festival' }" 
-              to="https://bastidsbbq.com/" 
+              to="https://skratchbastid.live/bastidsbbq/" 
               class="hover:text-[#1F85FF] transition duration-300"
               target="_blank"
             >
@@ -154,7 +154,7 @@
           <div class="link-container">
             <NuxtLink 
               :class="{ 'text-[#1F85FF]': $route.path === '/bbq-festival' }" 
-              to="https://bastidsbbq.com/"
+              to="https://skratchbastid.live/bastidsbbq/"
               style="width: max-content;" 
               class="hover:text-[#1F85FF] transition duration-300"
               target="_blank"
