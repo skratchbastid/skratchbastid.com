@@ -37,7 +37,7 @@
           </ul>
           <ul class="space-y-2 text-[#8996A2] uppercase font-semibold border-b md:border-0 border-[#29404E] md:pb-0 pb-8">
             <li><a href="mailto:management@skratchbastid.com" class="hover:underline">Brand Partnerships</a></li>
-            <li><a href="/vip" class="hover:underline" target="_blank">Top Grillin</a></li>
+            <li><a href="/topgrillin" class="hover:underline" target="_blank">Top Grillin</a></li>
             <li><a href="https://skratchbastid.live/bastidsbbq/" class="hover:underline">Bastid's BBQ</a></li>
             <li><a href="https://shop.skratchbastid.com/" class="hover:underline" target="_blank">Shop</a></li>
             <li><a href="mailto:management@skratchbastid.com" class="hover:underline">Contact</a></li>
