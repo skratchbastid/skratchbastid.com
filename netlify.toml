@@ -4,3 +4,9 @@
 [build]
   command = "yarn build"
   publish = "dist"
+
+[[redirects]]
+  from = "/vip"
+  to = "/topgrillin"
+  status = 301
+  force = true
