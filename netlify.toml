@@ -10,3 +10,15 @@
   to = "/topgrillin"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/bastidsbbq"
+  to = "https://www.skratchbastid.live/bastidsbbq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bastidsbbq/"
+  to = "https://www.skratchbastid.live/bastidsbbq"
+  status = 301
+  force = true
