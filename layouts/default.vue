@@ -244,7 +244,7 @@
           to="/topgrillin" 
           class="border border-orange-500 text-black font-bold px-5 py-2 text-xs rounded-[8px] bg-white hover:bg-orange-100"
         >
-          SIGN UP
+          JOIN NOW
         </NuxtLink>
         <NuxtLink 
           to="/login" 

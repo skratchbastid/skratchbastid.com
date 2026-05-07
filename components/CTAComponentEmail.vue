@@ -1,4 +1,5 @@
 <template>
+  <!--
   <div class="bg-white relative overflow-hidden py-8 px-6 max-w-md mx-auto">
     <div class="relative z-10 text-center mb-8">
       <h1 class="text-3xl font-bold uppercase mb-2">Try it for free</h1>
@@ -14,7 +15,6 @@
       @submit.prevent="submitForm"
       novalidate
     >
-      <!-- HIVE required hidden field -->
       <input data-HIVE-FORM-FIELD="swid" type="hidden" value="9308" />
 
       <label for="_HIVE-email-9308">Email</label>
@@ -59,11 +59,9 @@
         autocomplete="tel"
       />
 
-      <!-- Non-toggleable segments hidden -->
       <input data-HIVE-FORM-FIELD="addToSegment" type="hidden" value="Signup Form - Homepage" />
       <input data-HIVE-FORM-FIELD="addToSegment" type="hidden" value="VIP Free Trial" />
 
-      <!-- Bot detection -->
       <div style="position: absolute; left: -5000px;" aria-hidden="true">
         <input type="text" data-HIVE-FORM-FIELD="areUReal" tabindex="-1" value="" />
       </div>
@@ -72,18 +70,20 @@
         Start your free trial
       </button>
     </form>
-    
   </div>
+
   <div class="bg-white relative">
-        <img 
-        src="/img/bottom_image.png" 
-        alt="Bottom Image" 
-        class="bottom-0 left-0 w-full object-cover"
-        />
-    </div>
+    <img
+      src="/img/bottom_image.png"
+      alt="Bottom Image"
+      class="bottom-0 left-0 w-full object-cover"
+    />
+  </div>
+  -->
 </template>
 
 <script>
+/*
 export default {
   name: 'HiveSignupForm',
 
@@ -126,21 +126,24 @@ export default {
     }
   }
 }
+*/
 </script>
 
 <style scoped>
-/* Stile ispirato al tuo secondo snippet */
+/*
 .hive-signup-form {
   max-width: 400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
+
 .hive-signup-form label {
   font-weight: 600;
   margin-bottom: 8px;
   display: block;
 }
+
 .hive-signup-form input {
   margin-bottom: 16px;
   padding: 8px 10px;
@@ -150,10 +153,12 @@ export default {
   width: 100%;
   font-size: 1rem;
 }
+
 .hive-signup-form input:focus {
   border: 1px solid rgba(0, 0, 0, 0.65);
   outline: none;
 }
+
 .hive-signup-form button {
   padding: 10px 24px;
   border-radius: 12px;
@@ -166,7 +171,9 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .hive-signup-form button:hover {
   background-color: #e04f39;
 }
+*/
 </style>

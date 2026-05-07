@@ -97,12 +97,12 @@ const thumbnail = (video) => {
           </div>
           <div v-if="!user.id" class="">
             <NuxtLink
-              to="/topgrillin"
+              to="/topgrillin#vip-membership"
               class="text-white hover:text-black hover:bg-white text-sm py-1"
             >
               <div class="bg-[#FF5941] px-4 py-2 rounded-lg">
                 <p class="text-[14px] font-bold text-white uppercase tracking-wide text-[14px]">
-                  Sign up
+                  JOIN NOW
                 </p>
               </div>
             </NuxtLink>

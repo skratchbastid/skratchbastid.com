@@ -109,9 +109,9 @@ nav {
               </ul>
           </div>
 
-          <nuxt-link to="/topgrillin" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+          <a href="#vip-membership" class="mt-4 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
             JOIN NOW
-          </nuxt-link>
+          </a>
           </div>
       </div>
 
@@ -160,9 +160,9 @@ nav {
             Become a Top Griller today!        
         </p>
 
-          <nuxt-link to="/newsletter" class="mt-6 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
-            START NOW
-          </nuxt-link>
+          <a href="#vip-membership" class="mt-6 inline-block bg-[#FF5941] text-white py-3 px-20 font-bold rounded-lg hover:bg-orange-600 transition">
+            JOIN NOW
+          </a>
         </div>
 
         <!-- Sezione sinistra con immagini -->
@@ -171,7 +171,7 @@ nav {
         </div>
       </div>
 
-      <div class="bg-[#fff] text-white md:px-12 px-6 py-12 items-center md:flex-row gap-24">
+      <div id="vip-membership" class="bg-[#fff] text-white md:px-12 px-6 py-12 items-center md:flex-row gap-24">
         <h2 class="text-3xl text-[#142129] font-bold text-center">Become a VIP Top Griller now</h2>
           <p class="mt-2 text-[#142129] text-center">
             Our membership offerings
