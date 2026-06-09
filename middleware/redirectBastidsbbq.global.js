@@ -1,6 +1,8 @@
 export default defineNuxtRouteMiddleware((to) => {
-  if (to.path === '/bastidsbbq' || to.path === '/bastidsbbq/') {
-    return navigateTo('https://www.skratchbastid.live/bastidsbbq', {
+  const bastidsBbqPaths = ['/bastidbbq', '/bastidbbq/', '/bastidsbbq', '/bastidsbbq/']
+
+  if (bastidsBbqPaths.includes(to.path)) {
+    return navigateTo('https://skratchbastid.live/bastidsbbq/', {
       external: true,
       redirectCode: 301,
     })
