@@ -14,7 +14,7 @@ const shopifyApi = axios.create({
 export const fetchProducts = async () => {
   const query = `
   {
-    products(first: 30) {
+    products(first: 100, sortKey: CREATED_AT, reverse: true) {
       edges {
         node {
           id

@@ -72,6 +72,10 @@ export default {
       loading: true,
       error: null,
       allowedTitles: [
+        // Add new products here. The display order follows this list.
+        "OBEYxBastid Collegiate - Tee 2026",
+        "OBEYxBastid Collegiate - Hoodie 2026",
+        "OBEYxBastid - Hat - Good Music, Good Food, Good People",
         "Skratch Bastid x OBEY: Serato Control Vinyl",
         "OBEYxBastid - Tee  - Limited Capsule Drop",
         "OBEYxBastid - Hoodie  - Limited Capsule Drop",
@@ -94,10 +98,7 @@ export default {
       this.products = allProducts.filter(product =>
         this.allowedTitles.includes(product.title)
       ).sort((a, b) => {
-        // Sort to put "Skratch Bastid x OBEY: Serato Control Vinyl" first
-        if (a.title === "Skratch Bastid x OBEY: Serato Control Vinyl") return -1;
-        if (b.title === "Skratch Bastid x OBEY: Serato Control Vinyl") return 1;
-        return 0;
+        return this.allowedTitles.indexOf(a.title) - this.allowedTitles.indexOf(b.title);
       });
       console.log(this.products);
     } catch (err) {
